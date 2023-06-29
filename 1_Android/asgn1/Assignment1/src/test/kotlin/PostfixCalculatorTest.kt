@@ -11,6 +11,7 @@
 
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertThrows
 
 class PostfixCalculatorTest {
   @Test
@@ -39,6 +40,11 @@ class PostfixCalculatorTest {
     val calculator = PostfixCalculator()
     val result = calculator.parse("12 3 /")
     assertEquals(4.0, result)
+  }
+
+  @Test
+  internal fun `division by zero`() {
+    assertThrows<IllegalArgumentException> { PostfixCalculator().parse("1 0 /") }
   }
 
   @Test
