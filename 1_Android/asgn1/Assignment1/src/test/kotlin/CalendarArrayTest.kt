@@ -9,12 +9,23 @@
 #######################################################################
 */
 
+import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
-import kotlin.test.fail
+import java.time.YearMonth
+import java.time.DateTimeException
 
-class CalendarArrayTest {
+internal class CalendarArrayTest {
   @Test
-  internal fun `write some real tests`() {
-    fail("Is said write some real tests!")
+  fun generateCalendarArrayForApril2023Example() {
+    val calendarArray: Array<IntArray> = CalendarArray().generate(YearMonth.of(2023, 4))
+    val expectedArray = arrayOf(
+      intArrayOf(0, 0, 0, 0, 0, 0, 1),
+      intArrayOf(2, 3, 4, 5, 6, 7, 8),
+      intArrayOf(9, 10, 11, 12, 13, 14, 15),
+      intArrayOf(16, 17, 18, 19, 20, 21, 22),
+      intArrayOf(23, 24, 25, 26, 27, 28, 29),
+      intArrayOf(30, 0, 0, 0, 0, 0, 0)
+    )
+    Assertions.assertArrayEquals(expectedArray, calendarArray)
   }
 }
