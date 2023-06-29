@@ -70,4 +70,11 @@ internal class CalendarArrayTest {
     )
     Assertions.assertArrayEquals(expectedArray, calendarArray)
   }
+
+  @Test
+  fun generateCalendarArrayForInvalidMonth() {
+    Assertions.assertThrows(DateTimeException::class.java) {
+      CalendarArray().generate(YearMonth.of(2023, 13))
+    }
+  }
 }
