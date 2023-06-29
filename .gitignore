@@ -1,3 +1,7 @@
 
 1_Android/asgn1/.DS_Store
 .DS_Store
+*.class
+*.kotlin_module
+*.xml
+*.iml

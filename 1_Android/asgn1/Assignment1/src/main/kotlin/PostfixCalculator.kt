@@ -10,10 +10,27 @@
 */
 
 class PostfixCalculator {
-  /**
-   * See assignment specification.
-   */
   fun parse(expression: String): Double {
-    TODO("Not yet implemented")
+    val tokens = expression.split(" ")
+    val stack = mutableListOf<Double>()
+
+    for (token in tokens) {
+      if (token.matches(Regex("-?\\d+(\\.\\d+)?"))) {
+        stack.add(token.toDouble())
+      } else {
+        val secondOperand = stack.removeAt(stack.size - 1)
+        val firstOperand = stack.removeAt(stack.size - 1)
+        val result = when (token) {
+          "+" -> firstOperand + secondOperand
+          "-" -> firstOperand - secondOperand
+          "*" -> firstOperand * secondOperand
+          "/" -> firstOperand / secondOperand
+          else -> throw IllegalArgumentException("Invalid operator: $token")
+        }
+        stack.add(result)
+      }
+    }
+
+    return stack[0]
   }
 }
