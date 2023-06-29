@@ -14,6 +14,29 @@ import org.junit.jupiter.api.Test
 import java.time.YearMonth
 import java.time.DateTimeException
 
+fun generateExpectedCalendarArray(yearMonth: YearMonth): Array<IntArray> {
+  val firstDayOfMonth = yearMonth.atDay(1)
+  val firstDayOfWeek = firstDayOfMonth.dayOfWeek.value % 7 // Adjust the first day of the week to match your calendar
+  val daysInMonth = yearMonth.lengthOfMonth()
+  val expectedArray = Array(6) { IntArray(7) { 0 } } // Initialize the calendar with 0's
+  var day = 1
+
+  for (i in 0 until 6) {
+    for (j in 0 until 7) {
+      if (i == 0 && j < firstDayOfWeek) {
+        // In the original function, these slots are 0
+        expectedArray[i][j] = 0
+      } else if (day <= daysInMonth) {
+        expectedArray[i][j] = day++
+      } else {
+        // Once we run out of days in the month, fill in with 0's
+        expectedArray[i][j] = 0
+      }
+    }
+  }
+  return expectedArray
+}
+
 internal class CalendarArrayTest {
   @Test
   fun generateCalendarArrayForApril2023Example() {
@@ -40,6 +63,13 @@ internal class CalendarArrayTest {
       intArrayOf(25, 26, 27, 28, 29, 0, 0),
       intArrayOf(0, 0, 0, 0, 0, 0, 0)
     )
+    Assertions.assertArrayEquals(expectedArray, calendarArray)
+  }
+
+  @Test
+  fun generateCalendarArrayForLeapYearFeb2028() {
+    val calendarArray: Array<IntArray> = CalendarArray().generate(YearMonth.of(2028, 2))
+    val expectedArray = generateExpectedCalendarArray(YearMonth.of(2028, 2))
     Assertions.assertArrayEquals(expectedArray, calendarArray)
   }
 
@@ -77,4 +107,6 @@ internal class CalendarArrayTest {
       CalendarArray().generate(YearMonth.of(2023, 13))
     }
   }
+
+
 }
