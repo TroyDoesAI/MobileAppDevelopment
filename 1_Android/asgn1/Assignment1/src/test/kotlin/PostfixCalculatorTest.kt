@@ -9,12 +9,35 @@
 #######################################################################
 */
 
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
-import kotlin.test.fail
 
 class PostfixCalculatorTest {
   @Test
-  internal fun `write some real tests`() {
-    fail("Is said write some real tests!")
+  fun `test addition`() {
+    val calculator = PostfixCalculator()
+    val result = calculator.parse("5 3 +")
+    assertEquals(8.0, result)
+  }
+
+  @Test
+  fun `test subtraction`() {
+    val calculator = PostfixCalculator()
+    val result = calculator.parse("10 3 -")
+    assertEquals(7.0, result)
+  }
+
+  @Test
+  fun `test multiplication`() {
+    val calculator = PostfixCalculator()
+    val result = calculator.parse("4 5 *")
+    assertEquals(20.0, result)
+  }
+
+  @Test
+  fun `test division`() {
+    val calculator = PostfixCalculator()
+    val result = calculator.parse("12 3 /")
+    assertEquals(4.0, result)
   }
 }
