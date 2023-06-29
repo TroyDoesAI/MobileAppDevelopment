@@ -8,7 +8,6 @@
 #
 #######################################################################
 */
-
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 import java.time.YearMonth
@@ -21,7 +20,7 @@ fun generateExpectedCalendarArray(yearMonth: YearMonth): Array<IntArray> {
   val expectedArray = Array(6) { IntArray(7) { 0 } } // Initialize the calendar with 0's
   var day = 1
 
-  for (i in 0 until 6) {
+  for (i in 0 until 6) { // Range Loops until Ref: https://kotlinlang.org/docs/ranges.html
     for (j in 0 until 7) {
       if (i == 0 && j < firstDayOfWeek) {
         // In the original function, these slots are 0
@@ -39,7 +38,7 @@ fun generateExpectedCalendarArray(yearMonth: YearMonth): Array<IntArray> {
 
 internal class CalendarArrayTest {
   @Test
-  fun generateCalendarArrayForApril2023Example() {
+  fun generateCalendarArrayForApril2023_GivenAssignmentExample() {
     val calendarArray: Array<IntArray> = CalendarArray().generate(YearMonth.of(2023, 4))
     val expectedArray = arrayOf(
       intArrayOf(0, 0, 0, 0, 0, 0, 1),
@@ -49,6 +48,13 @@ internal class CalendarArrayTest {
       intArrayOf(23, 24, 25, 26, 27, 28, 29),
       intArrayOf(30, 0, 0, 0, 0, 0, 0)
     )
+    Assertions.assertArrayEquals(expectedArray, calendarArray)
+  }
+
+  @Test
+  fun generateCalendarArrayForApril2023_GivenAssignmentExample_Using_generateExpectedCalendarArrayFunction() {
+    val calendarArray: Array<IntArray> = CalendarArray().generate(YearMonth.of(2023, 4))
+    val expectedArray = generateExpectedCalendarArray(YearMonth.of(2023, 4))
     Assertions.assertArrayEquals(expectedArray, calendarArray)
   }
 
@@ -74,7 +80,7 @@ internal class CalendarArrayTest {
   }
 
   @Test
-  fun generateCalendarArrayForNonLeapYear() {
+  fun generateCalendarArrayForNonLeapYearFeb2023() {
     val calendarArray: Array<IntArray> = CalendarArray().generate(YearMonth.of(2023, 2))
     val expectedArray = arrayOf(
       intArrayOf(0, 0, 0, 1, 2, 3, 4),
@@ -88,7 +94,7 @@ internal class CalendarArrayTest {
   }
 
   @Test
-  fun generateCalendarArrayForDecember() {
+  fun generateCalendarArrayForDecember2023() {
     val calendarArray: Array<IntArray> = CalendarArray().generate(YearMonth.of(2023, 12))
     val expectedArray = arrayOf(
       intArrayOf(0, 0, 0, 0, 0, 1, 2),
@@ -102,11 +108,39 @@ internal class CalendarArrayTest {
   }
 
   @Test
+  fun generateCalendarArrayForLeapYears() {
+    val leapYears = listOf(2024, 2028, 2032, 2036) // Add more leap years as needed
+    val months = (1..12).toList() // All months
+
+    for (year in leapYears) {
+      for (month in months) {
+        val yearMonth = YearMonth.of(year, month)
+        val calendarArray: Array<IntArray> = CalendarArray().generate(yearMonth)
+        val expectedArray = generateExpectedCalendarArray(yearMonth)
+        Assertions.assertArrayEquals(expectedArray, calendarArray)
+      }
+    }
+  }
+
+  @Test
+  fun generateCalendarArrayForNonLeapYears() {
+    val nonLeapYears = listOf(2023, 2025, 2026, 2027) // Add more non-leap years as needed
+    val months = (1..12).toList() // All months
+
+    for (year in nonLeapYears) {
+      for (month in months) {
+        val yearMonth = YearMonth.of(year, month)
+        val calendarArray: Array<IntArray> = CalendarArray().generate(yearMonth)
+        val expectedArray = generateExpectedCalendarArray(yearMonth)
+        Assertions.assertArrayEquals(expectedArray, calendarArray)
+      }
+    }
+  }
+
+  @Test
   fun generateCalendarArrayForInvalidMonth() {
     Assertions.assertThrows(DateTimeException::class.java) {
       CalendarArray().generate(YearMonth.of(2023, 13))
     }
   }
-
-
 }
