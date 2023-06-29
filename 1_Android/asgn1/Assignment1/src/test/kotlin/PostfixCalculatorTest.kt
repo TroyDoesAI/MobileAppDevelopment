@@ -53,4 +53,15 @@ class PostfixCalculatorTest {
     assertEquals(1.0, PostfixCalculator().parse("10 0 ^"))
     assertEquals(1.0, PostfixCalculator().parse("1 100000 ^"))
   }
+
+  @Test
+  internal fun `invalid operator`() {
+    assertThrows<IllegalArgumentException> { PostfixCalculator().parse("1 1 $") }
+  }
+
+  @Test
+  internal fun `non-numeric operands`() {
+    assertThrows<NumberFormatException> { PostfixCalculator().parse("1a 2 +") }
+  }
+
 }
