@@ -40,4 +40,11 @@ class PostfixCalculatorTest {
     val result = calculator.parse("12 3 /")
     assertEquals(4.0, result)
   }
+
+  @Test
+  internal fun `integer power operation`() {
+    assertEquals(8.0, PostfixCalculator().parse("2 3 ^"))
+    assertEquals(1.0, PostfixCalculator().parse("10 0 ^"))
+    assertEquals(1.0, PostfixCalculator().parse("1 100000 ^"))
+  }
 }
