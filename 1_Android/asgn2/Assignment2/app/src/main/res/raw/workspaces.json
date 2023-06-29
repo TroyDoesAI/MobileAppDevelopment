@@ -1,0 +1,378 @@
+[
+  {
+    "name": "CSE118 Spring 23",
+    "channels": [
+      {
+        "name": "Assignment 1",
+        "messages": [
+          {
+            "user": {
+              "name": "Raimund Brellin",
+              "email": "rbrellin0@slideshare.net"
+            },
+            "date": "2022-08-03T23:44:39Z",
+            "content": "Etiam vel augue. Vestibulum rutrum rutrum neque."
+          },
+          {
+            "user": {
+              "name": "Jan Rupel",
+              "email": "jrupel1@ifeng.com"
+            },
+            "date": "2022-03-22T08:52:27Z",
+            "content": "Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst. Maecenas ut massa quis augue luctus tincidunt."
+          },
+          {
+            "user": {
+              "name": "Cathleen Ephgrave",
+              "email": "cephgrave2@nba.com"
+            },
+            "date": "2022-08-05T02:48:40Z",
+            "content": "Nam nulla."
+          },
+          {
+            "user": {
+              "name": "Nertie Monnelly",
+              "email": "nmonnelly3@facebook.com"
+            },
+            "date": "2022-01-27T02:29:18Z",
+            "content": "Ut at dolor quis odio consequat varius."
+          },
+          {
+            "user": {
+              "name": "Adriano Barritt",
+              "email": "abarritt4@linkedin.com"
+            },
+            "date": "2022-06-29T20:48:12Z",
+            "content": "Sed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci."
+          },
+          {
+            "user": {
+              "name": "Paloma Elton",
+              "email": "pelton5@artisteer.com"
+            },
+            "date": "2022-05-07T12:30:20Z",
+            "content": "Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus. Curabitur at ipsum ac tellus semper interdum."
+          },
+          {
+            "user": {
+              "name": "Gabie Juckes",
+              "email": "gjuckes6@icq.com"
+            },
+            "date": "2021-12-18T07:36:20Z",
+            "content": "Proin risus. Praesent lectus."
+          },
+          {
+            "user": {
+              "name": "Carolyn Behrendsen",
+              "email": "cbehrendsen7@google.es"
+            },
+            "date": "2022-09-21T14:51:33Z",
+            "content": "Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros. Vestibulum ac est lacinia nisi venenatis tristique. Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue."
+          },
+          {
+            "user": {
+              "name": "Dorothea McCarter",
+              "email": "dmccarter8@bbc.co.uk"
+            },
+            "date": "2022-08-28T02:59:00Z",
+            "content": "Suspendisse potenti. Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris."
+          },
+          {
+            "user": {
+              "name": "Cyndi Bytheway",
+              "email": "cbytheway9@friendfeed.com"
+            },
+            "date": "2021-11-26T13:48:35Z",
+            "content": "Nunc nisl. Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum."
+          },
+          {
+            "user": {
+              "name": "Granny Drinkwater",
+              "email": "gdrinkwatera@bloglovin.com"
+            },
+            "date": "2022-08-07T18:14:14Z",
+            "content": "Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus. Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci."
+          },
+          {
+            "user": {
+              "name": "Ariana Stealey",
+              "email": "astealeyb@cnn.com"
+            },
+            "date": "2021-11-05T03:32:53Z",
+            "content": "Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus."
+          },
+          {
+            "user": {
+              "name": "Desi Keenlayside",
+              "email": "dkeenlaysidec@yahoo.co.jp"
+            },
+            "date": "2021-10-12T02:09:56Z",
+            "content": "In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem. Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat."
+          },
+          {
+            "user": {
+              "name": "Alyda Delacroix",
+              "email": "adelacroixd@china.com.cn"
+            },
+            "date": "2022-03-27T12:22:31Z",
+            "content": "Nullam molestie nibh in lectus. Pellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus."
+          },
+          {
+            "user": {
+              "name": "Boyd Haymes",
+              "email": "bhaymese@imgur.com"
+            },
+            "date": "2022-03-24T01:22:00Z",
+            "content": "Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl. Aenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum."
+          },
+          {
+            "user": {
+              "name": "Truman Haddeston",
+              "email": "thaddestonf@npr.org"
+            },
+            "date": "2022-04-23T13:42:27Z",
+            "content": "Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem."
+          },
+          {
+            "user": {
+              "name": "Lorianna Jakoviljevic",
+              "email": "ljakoviljevicg@go.com"
+            },
+            "date": "2022-08-17T08:52:10Z",
+            "content": "Curabitur convallis. Duis consequat dui nec nisi volutpat eleifend. Donec ut dolor."
+          },
+          {
+            "user": {
+              "name": "Rowe Oliveti",
+              "email": "rolivetih@cnet.com"
+            },
+            "date": "2022-03-15T14:42:08Z",
+            "content": "Etiam faucibus cursus urna."
+          },
+          {
+            "user": {
+              "name": "Joann Stang-Gjertsen",
+              "email": "jstanggjertseni@wordpress.com"
+            },
+            "date": "2022-04-29T10:25:57Z",
+            "content": "Nulla justo. Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros."
+          },
+          {
+            "user": {
+              "name": "Betsey McPherson",
+              "email": "bmcphersonj@unc.edu"
+            },
+            "date": "2022-05-12T11:31:56Z",
+            "content": "Curabitur convallis. Duis consequat dui nec nisi volutpat eleifend."
+          },
+          {
+            "user": {
+              "name": "Hallsy Billing",
+              "email": "hbillingk@foxnews.com"
+            },
+            "date": "2022-02-08T08:17:08Z",
+            "content": "Fusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl."
+          },
+          {
+            "user": {
+              "name": "Kizzie Twallin",
+              "email": "ktwallinl@loc.gov"
+            },
+            "date": "2022-03-02T07:28:18Z",
+            "content": "In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem. Duis aliquam convallis nunc."
+          },
+          {
+            "user": {
+              "name": "Wallis Davitt",
+              "email": "wdavittm@cmu.edu"
+            },
+            "date": "2022-05-01T21:29:16Z",
+            "content": "Donec posuere metus vitae ipsum. Aliquam non mauris."
+          },
+          {
+            "user": {
+              "name": "Glynis Wooster",
+              "email": "gwoostern@hibu.com"
+            },
+            "date": "2022-01-20T00:58:54Z",
+            "content": "Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum."
+          }
+        ]
+      },
+      {
+        "name": "Assignment 2",
+        "messages": [
+          {
+            "user": {
+              "name": "Reg Haye",
+              "email": "rhaye0@senate.gov"
+            },
+            "date": "2022-03-17T09:51:16Z",
+            "content": "Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl. Aenean lectus. Pellentesque eget nunc."
+          },
+          {
+            "user": {
+              "name": "Gill Ewestace",
+              "email": "gewestace1@globo.com"
+            },
+            "date": "2022-08-14T20:43:18Z",
+            "content": "Praesent blandit. Nam nulla."
+          },
+          {
+            "user": {
+              "name": "Emmott McLinden",
+              "email": "emclinden2@meetup.com"
+            },
+            "date": "2022-05-19T04:57:55Z",
+            "content": "Donec posuere metus vitae ipsum. Aliquam non mauris."
+          },
+          {
+            "user": {
+              "name": "Rochell Speeks",
+              "email": "rspeeks3@sciencedirect.com"
+            },
+            "date": "2022-08-14T12:16:25Z",
+            "content": "Mauris ullamcorper purus sit amet nulla. Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam."
+          },
+          {
+            "user": {
+              "name": "Sondra Prinett",
+              "email": "sprinett4@cdbaby.com"
+            },
+            "date": "2021-12-04T00:46:14Z",
+            "content": "Curabitur at ipsum ac tellus semper interdum."
+          },
+          {
+            "user": {
+              "name": "Caprice Keedy",
+              "email": "ckeedy5@globo.com"
+            },
+            "date": "2022-09-18T23:24:20Z",
+            "content": "Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede. Morbi porttitor lorem id ligula."
+          },
+          {
+            "user": {
+              "name": "Max Rist",
+              "email": "mrist6@statcounter.com"
+            },
+            "date": "2022-09-11T12:15:43Z",
+            "content": "Aenean sit amet justo. Morbi ut odio."
+          },
+          {
+            "user": {
+              "name": "Aloysius Curling",
+              "email": "acurling7@cmu.edu"
+            },
+            "date": "2022-09-08T02:33:00Z",
+            "content": "Duis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit. Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue."
+          },
+          {
+            "user": {
+              "name": "Diannne Doak",
+              "email": "ddoak8@ameblo.jp"
+            },
+            "date": "2021-12-16T18:21:40Z",
+            "content": "Maecenas ut massa quis augue luctus tincidunt."
+          },
+          {
+            "user": {
+              "name": "Jarib Scanes",
+              "email": "jscanes9@statcounter.com"
+            },
+            "date": "2022-07-27T03:20:02Z",
+            "content": "Maecenas pulvinar lobortis est. Phasellus sit amet erat."
+          },
+          {
+            "user": {
+              "name": "Babbie Wannop",
+              "email": "bwannopa@nature.com"
+            },
+            "date": "2022-07-08T04:02:31Z",
+            "content": "Praesent id massa id nisl venenatis lacinia."
+          },
+          {
+            "user": {
+              "name": "Lief Hatherell",
+              "email": "lhatherellb@geocities.jp"
+            },
+            "date": "2022-02-21T01:12:54Z",
+            "content": "Fusce consequat. Nulla nisl."
+          }
+        ]
+      },
+      {
+        "name": "Assignment 3",
+        "messages": [
+          {
+            "user": {
+              "name": "Michele McPhate",
+              "email": "mmcphate0@nationalgeographic.com"
+            },
+            "date": "2022-05-13T11:44:07Z",
+            "content": "Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam."
+          },
+          {
+            "user": {
+              "name": "Lavina Wyon",
+              "email": "lwyon1@washington.edu"
+            },
+            "date": "2022-04-02T11:46:42Z",
+            "content": "Nunc nisl. Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum."
+          },
+          {
+            "user": {
+              "name": "Jacintha Motten",
+              "email": "jmotten2@ycombinator.com"
+            },
+            "date": "2022-08-11T04:31:36Z",
+            "content": "In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue."
+          },
+          {
+            "user": {
+              "name": "Gaile Toomey",
+              "email": "gtoomey3@geocities.com"
+            },
+            "date": "2022-02-19T14:50:10Z",
+            "content": "Quisque ut erat. Curabitur gravida nisi at nibh. In hac habitasse platea dictumst."
+          },
+          {
+            "user": {
+              "name": "Irena Matzl",
+              "email": "imatzl4@ca.gov"
+            },
+            "date": "2022-05-12T21:45:19Z",
+            "content": "Duis at velit eu est congue elementum."
+          },
+          {
+            "user": {
+              "name": "Brian Ormond",
+              "email": "bormond5@wiley.com"
+            },
+            "date": "2021-10-23T07:25:31Z",
+            "content": "Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "No Messages",
+    "channels": [
+      {
+        "name": "Channel 1",
+        "messages": [
+        ]
+      },
+      {
+        "name": "Channel 2",
+        "messages": [
+        ]
+      }
+    ]
+  },
+  {
+    "name": "No Channels",
+    "channels": [
+    ]
+  }
+]
