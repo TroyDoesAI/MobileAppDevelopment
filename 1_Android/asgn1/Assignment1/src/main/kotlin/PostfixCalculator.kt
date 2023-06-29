@@ -1,3 +1,6 @@
+import java.lang.IllegalArgumentException
+import kotlin.math.pow
+
 /*
 #######################################################################
 #
@@ -11,26 +14,21 @@
 
 class PostfixCalculator {
   fun parse(expression: String): Double {
-    val tokens = expression.split(" ")
-    val stack = mutableListOf<Double>()
-
-    for (token in tokens) {
-      if (token.matches(Regex("-?\\d+(\\.\\d+)?"))) {
-        stack.add(token.toDouble())
-      } else {
-        val secondOperand = stack.removeAt(stack.size - 1)
-        val firstOperand = stack.removeAt(stack.size - 1)
-        val result = when (token) {
-          "+" -> firstOperand + secondOperand
-          "-" -> firstOperand - secondOperand
-          "*" -> firstOperand * secondOperand
-          "/" -> firstOperand / secondOperand
-          else -> throw IllegalArgumentException("Invalid operator: $token")
-        }
-        stack.add(result)
-      }
+    val (operand1, operand2, operator) = expression.split(" ").map { it.trim() } // splits the expression string by whitespace, trims each resulting element, and assigns them respectively to the variables operand1, operand2, and operator. When using a lambda expression with only a single parameter, you can use the implicit "it" keyword https://kotlinlang.org/docs/lambdas.html#it-implicit-name-of-a-single-parameter
+    require(operator.isNotEmpty() && operand1.isNotEmpty() && operand2.isNotEmpty()) {
+      "Malformed expression"
     }
-
-    return stack[0]
+    return when (operator) {
+      "+" -> operand1.toDouble() + operand2.toDouble()
+      "-" -> operand1.toDouble() - operand2.toDouble()
+      "*" -> operand1.toDouble() * operand2.toDouble()
+      "/" -> {
+        val divisor = operand2.toDouble()
+        require(divisor != 0.0) { "Division by zero" }
+        operand1.toDouble() / divisor
+      }
+      "^" -> operand1.toDouble().pow(operand2.toDouble())
+      else -> throw IllegalArgumentException("Invalid operator")
+    }
   }
 }
