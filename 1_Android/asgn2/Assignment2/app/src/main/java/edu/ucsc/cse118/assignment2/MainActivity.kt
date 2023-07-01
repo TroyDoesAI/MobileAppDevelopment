@@ -19,18 +19,22 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.commit
 
+
 class MainActivity : AppCompatActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_main)
 
-    // Adding the LoginFragment to the 'fragmentContainerView'
     if (savedInstanceState == null) {
-      supportFragmentManager.commit {
-        setReorderingAllowed(true)
-        add(R.id.fragmentContainerView, LoginFragment::class.java, null)
-      }
+      showLoginFragment()
     }
+  }
+
+  fun showLoginFragment() {
+    supportFragmentManager.commit {
+      replace(R.id.fragmentContainerView, LoginFragment::class.java, null)
+    }
+    supportActionBar?.setDisplayHomeAsUpEnabled(false)
   }
 
   fun navigateToWorkspaces() {
@@ -38,6 +42,12 @@ class MainActivity : AppCompatActivity() {
       replace(R.id.fragmentContainerView, WorkspacesFragment::class.java, null)
       addToBackStack(null)
     }
+    supportActionBar?.setDisplayHomeAsUpEnabled(true)
+  }
+
+  override fun onSupportNavigateUp(): Boolean {
+    supportFragmentManager.popBackStack()
+    supportActionBar?.setDisplayHomeAsUpEnabled(false)
+    return true
   }
 }
-
