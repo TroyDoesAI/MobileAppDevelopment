@@ -19,7 +19,6 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.commit
 
-
 class MainActivity : AppCompatActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -33,7 +32,9 @@ class MainActivity : AppCompatActivity() {
   fun showLoginFragment() {
     supportFragmentManager.commit {
       replace(R.id.fragmentContainerView, LoginFragment::class.java, null)
+      setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out) // Optional animation
     }
+    supportActionBar?.title = "CSE118 Assignment 2"
     supportActionBar?.setDisplayHomeAsUpEnabled(false)
   }
 
@@ -41,7 +42,9 @@ class MainActivity : AppCompatActivity() {
     supportFragmentManager.commit {
       replace(R.id.fragmentContainerView, WorkspacesFragment::class.java, null)
       addToBackStack(null)
+      setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out) // Optional animation
     }
+    supportActionBar?.title = "Workspaces"
     supportActionBar?.setDisplayHomeAsUpEnabled(true)
   }
 
