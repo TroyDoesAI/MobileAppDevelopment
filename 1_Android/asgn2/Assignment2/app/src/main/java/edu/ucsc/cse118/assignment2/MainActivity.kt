@@ -32,5 +32,12 @@ class MainActivity : AppCompatActivity() {
       }
     }
   }
+
+  fun navigateToWorkspaces() {
+    supportFragmentManager.commit {
+      replace(R.id.fragmentContainerView, WorkspacesFragment::class.java, null)
+      addToBackStack(null)
+    }
+  }
 }
 

@@ -2319,6 +2319,7 @@ id textSpacerNoButtons
 id textSpacerNoTitle
 id textStart
 id textTop
+id textViewTitle
 id textWatcher
 id text_input_end_icon
 id text_input_error_icon
@@ -2454,6 +2455,7 @@ layout design_navigation_menu_item
 layout design_text_input_end_icon
 layout design_text_input_start_icon
 layout fragment_login
+layout fragment_workspaces
 layout material_chip_input_combo
 layout material_clock_display
 layout material_clock_display_divider
