@@ -5,3 +5,8 @@
 *.kotlin_module
 *.xml
 *.iml
+*.lock
+*.bin
+*.lock
+*.lock
+*.jar

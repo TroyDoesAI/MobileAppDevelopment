@@ -1992,6 +1992,7 @@ id center_vertical
 id chain
 id chain2
 id chains
+id channelsTextView
 id checkbox
 id checked
 id chip
@@ -2223,6 +2224,7 @@ id progress_horizontal
 id radio
 id ratio
 id rectangles
+id recyclerview
 id reverseSawtooth
 id right
 id rightToLeft
@@ -2319,7 +2321,7 @@ id textSpacerNoButtons
 id textSpacerNoTitle
 id textStart
 id textTop
-id textViewTitle
+id textView
 id textWatcher
 id text_input_end_icon
 id text_input_error_icon
@@ -2524,6 +2526,7 @@ layout text_view_with_line_height_from_layout
 layout text_view_with_line_height_from_style
 layout text_view_with_theme_line_height
 layout text_view_without_line_height
+layout workspace_item
 mipmap ic_launcher
 mipmap ic_launcher_round
 plurals mtrl_badge_content_description

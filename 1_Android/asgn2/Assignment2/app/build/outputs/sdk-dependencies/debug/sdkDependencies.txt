@@ -1046,6 +1046,19 @@ library {
     value: 1
   }
 }
+library {
+  maven_library {
+    groupId: "com.google.code.gson"
+    artifactId: "gson"
+    version: "2.8.9"
+  }
+  digests {
+    sha256: "\323\231\222\221\205]\344\225\311Lt7a\270\253Qv\317\352\276(\032Z\260\330\350\324S&\375p>"
+  }
+  repo_index {
+    value: 1
+  }
+}
 library_dependencies {
   library_index: 1
   library_dep_index: 2
@@ -1593,6 +1606,7 @@ module_dependencies {
   dependency_index: 83
   dependency_index: 85
   dependency_index: 3
+  dependency_index: 87
 }
 repositories {
   maven_repo {
