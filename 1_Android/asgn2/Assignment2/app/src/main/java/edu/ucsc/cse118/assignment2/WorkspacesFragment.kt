@@ -40,7 +40,7 @@ class WorkspacesFragment : Fragment() {
 
         // Set the list of Workspace objects on the adapter
         workspaceAdapter = WorkspaceAdapter(workspaceList, ::onWorkspaceClicked)
-        recyclerView.adapter = workspaceAdapter // corrected here
+        recyclerView.adapter = workspaceAdapter
     }
 
     override fun onDestroyView() {

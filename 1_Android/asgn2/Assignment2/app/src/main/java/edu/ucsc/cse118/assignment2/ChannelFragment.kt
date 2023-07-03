@@ -35,7 +35,7 @@ class ChannelsFragment : Fragment() {
 
             val recyclerView = view.findViewById<RecyclerView>(R.id.channelsRecyclerView)
             recyclerView.layoutManager = LinearLayoutManager(context)
-            channelAdapter = ChannelAdapter(workspace.channels)
+            channelAdapter = ChannelAdapter(workspace.channels, ::onChannelClicked)
             recyclerView.adapter = channelAdapter
         }
     }
@@ -53,5 +53,28 @@ class ChannelsFragment : Fragment() {
             // Set the action bar title to the workspace name
             (activity as AppCompatActivity).supportActionBar?.title = workspace.name
         }
+    }
+
+    fun onChannelClicked(channel: DataClasses.Channel) {
+        // Instantiate the new fragment
+        val messagesFragment = MessagesFragment()
+
+        // Create a new bundle to hold the arguments
+        val args = Bundle()
+
+        // Convert channel object to JSON
+        val channelJson = Gson().toJson(channel)
+
+        // Add the channel JSON string to the arguments
+        args.putString("channel", channelJson)
+
+        // Set the arguments for the fragment
+        messagesFragment.arguments = args
+
+        // Replace the current fragment with the new one
+        requireActivity().supportFragmentManager.beginTransaction()
+            .replace(R.id.fragmentContainerView, messagesFragment)
+            .addToBackStack(null)
+            .commit()
     }
 }
