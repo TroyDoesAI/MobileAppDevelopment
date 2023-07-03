@@ -15,8 +15,8 @@ class MessageAdapter(private val messages: List<DataClasses.Message>) :
         private val content: TextView = view.findViewById(R.id.content)
 
         fun bind(message: DataClasses.Message) {
-            userName.text = message.user.name // <--- Access user name
-            date.text = message.date // <--- Access date
+            userName.text = message.user.name
+            date.text = message.date
             content.text = if (message.content.length > 100) {
                 "${message.content.take(100)}..."
             } else {

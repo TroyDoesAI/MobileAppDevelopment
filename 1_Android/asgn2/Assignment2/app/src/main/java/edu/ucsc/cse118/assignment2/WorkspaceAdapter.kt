@@ -20,7 +20,7 @@ class WorkspaceAdapter(private val workspaces: List<DataClasses.Workspace>, priv
 
         fun bind(workspace: DataClasses.Workspace) {
             name.text = workspace.name
-            channelsTextView.text = "${workspace.channels.size} channels"
+            channelsTextView.text = "${workspace.channels.size} Channels"
 
             itemView.setOnClickListener {
                 listener.invoke(workspace)
