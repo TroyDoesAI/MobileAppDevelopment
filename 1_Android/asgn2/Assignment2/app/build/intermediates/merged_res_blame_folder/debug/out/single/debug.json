@@ -32,16 +32,24 @@
         "source": "/Users/jair/.gradle/daemon/7.5/edu.ucsc.cse118.assignment2.app-main-52:/mipmap-xxxhdpi/ic_launcher.png"
     },
     {
+        "merged": "/Users/jair/.gradle/daemon/7.5/edu.ucsc.cse118.assignment2.app-merged_res-50:/layout_fragment_channels.xml.flat",
+        "source": "/Users/jair/.gradle/daemon/7.5/edu.ucsc.cse118.assignment2.app-main-52:/layout/fragment_channels.xml"
+    },
+    {
+        "merged": "/Users/jair/.gradle/daemon/7.5/edu.ucsc.cse118.assignment2.app-merged_res-50:/layout_channel_item.xml.flat",
+        "source": "/Users/jair/.gradle/daemon/7.5/edu.ucsc.cse118.assignment2.app-main-52:/layout/channel_item.xml"
+    },
+    {
+        "merged": "edu.ucsc.cse118.assignment2.app-merged_res-50:/layout_fragment_workspaces.xml.flat",
+        "source": "edu.ucsc.cse118.assignment2.app-main-52:/layout/fragment_workspaces.xml"
+    },
+    {
         "merged": "/Users/jair/.gradle/daemon/7.5/edu.ucsc.cse118.assignment2.app-merged_res-50:/mipmap-xhdpi_ic_launcher_round.png.flat",
         "source": "/Users/jair/.gradle/daemon/7.5/edu.ucsc.cse118.assignment2.app-main-52:/mipmap-xhdpi/ic_launcher_round.png"
     },
     {
         "merged": "/Users/jair/.gradle/daemon/7.5/edu.ucsc.cse118.assignment2.app-merged_res-50:/layout_fragment_login.xml.flat",
         "source": "/Users/jair/.gradle/daemon/7.5/edu.ucsc.cse118.assignment2.app-main-52:/layout/fragment_login.xml"
-    },
-    {
-        "merged": "edu.ucsc.cse118.assignment2.app-merged_res-50:/layout_workspace_item.xml.flat",
-        "source": "edu.ucsc.cse118.assignment2.app-main-52:/layout/workspace_item.xml"
     },
     {
         "merged": "/Users/jair/.gradle/daemon/7.5/edu.ucsc.cse118.assignment2.app-merged_res-50:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",

@@ -1992,6 +1992,8 @@ id center_vertical
 id chain
 id chain2
 id chains
+id channelNameTextView
+id channelsRecyclerView
 id channelsTextView
 id checkbox
 id checked
@@ -2146,6 +2148,7 @@ id material_timepicker_ok_button
 id material_timepicker_view
 id material_value_index
 id message
+id messageCountTextView
 id middle
 id mini
 id month_grid
@@ -2440,6 +2443,7 @@ layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_main
+layout channel_item
 layout custom_dialog
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog
@@ -2456,6 +2460,7 @@ layout design_navigation_menu
 layout design_navigation_menu_item
 layout design_text_input_end_icon
 layout design_text_input_start_icon
+layout fragment_channels
 layout fragment_login
 layout fragment_workspaces
 layout material_chip_input_combo
