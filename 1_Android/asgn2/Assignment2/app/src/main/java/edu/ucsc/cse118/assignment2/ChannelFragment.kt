@@ -24,24 +24,34 @@ class ChannelsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         // Get the workspace JSON string from the arguments
-        val workspaceJson = arguments?.getString("workspace")!!
+        val workspaceJson = arguments?.getString("workspace")
 
-        // Convert JSON string back to Workspace object
-        val workspace: DataClasses.Workspace = Gson().fromJson(workspaceJson, DataClasses.Workspace::class.java)
+        if (workspaceJson != null) {
+            // Convert JSON string back to Workspace object
+            val workspace: DataClasses.Workspace = Gson().fromJson(workspaceJson, DataClasses.Workspace::class.java)
 
-        (activity as AppCompatActivity).supportActionBar?.title = workspace.name
-        (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
+            // Set the action bar title to the workspace name
+            (activity as AppCompatActivity).supportActionBar?.title = workspace.name
 
-        val recyclerView = view.findViewById<RecyclerView>(R.id.channelsRecyclerView)
-        recyclerView.layoutManager = LinearLayoutManager(context)
-        recyclerView.layoutManager = LinearLayoutManager(context)
-
-        channelAdapter = ChannelAdapter(workspace.channels)
-        recyclerView.adapter = channelAdapter
+            val recyclerView = view.findViewById<RecyclerView>(R.id.channelsRecyclerView)
+            recyclerView.layoutManager = LinearLayoutManager(context)
+            channelAdapter = ChannelAdapter(workspace.channels)
+            recyclerView.adapter = channelAdapter
+        }
     }
-    override fun onDestroyView() {
-        super.onDestroyView()
-        (activity as AppCompatActivity).supportActionBar?.title = "Workspaces"
-        (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+    override fun onResume() {
+        super.onResume()
+
+        // Get the workspace JSON string from the arguments
+        val workspaceJson = arguments?.getString("workspace")
+
+        if (workspaceJson != null) {
+            // Convert JSON string back to Workspace object
+            val workspace: DataClasses.Workspace = Gson().fromJson(workspaceJson, DataClasses.Workspace::class.java)
+
+            // Set the action bar title to the workspace name
+            (activity as AppCompatActivity).supportActionBar?.title = workspace.name
+        }
     }
 }
