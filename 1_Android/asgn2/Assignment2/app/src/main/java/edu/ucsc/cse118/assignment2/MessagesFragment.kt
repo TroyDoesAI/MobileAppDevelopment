@@ -34,8 +34,7 @@ class MessagesFragment : Fragment() {
         val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerview)
         recyclerView.layoutManager = LinearLayoutManager(context)
 
-        messageAdapter = MessageAdapter(channel.messages.sortedBy { it.date }, ::onMessageClicked)
-
+        messageAdapter = MessageAdapter(channel.messages.sortedByDescending { it.date }, ::onMessageClicked)
         recyclerView.adapter = messageAdapter
     }
 
