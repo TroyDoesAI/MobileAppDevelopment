@@ -31,16 +31,39 @@ class MessagesFragment : Fragment() {
 
         (activity as AppCompatActivity).supportActionBar?.title = channel.name
 
-        val recyclerView = view.findViewById<RecyclerView>(R.id.messagesRecyclerView)
+        val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerview)
         recyclerView.layoutManager = LinearLayoutManager(context)
 
-        messageAdapter = MessageAdapter(channel.messages.sortedBy { it.date })
+        messageAdapter = MessageAdapter(channel.messages.sortedBy { it.date }, ::onMessageClicked)
+
         recyclerView.adapter = messageAdapter
+    }
+
+    fun onMessageClicked(message: DataClasses.Message) {
+        // Instantiate the new fragment
+        val messageFragment = MessageFragment()
+
+        // Create a new bundle to hold the arguments
+        val args = Bundle()
+
+        // Convert message object to JSON
+        val messageJson = Gson().toJson(message)
+
+        // Add the message JSON string to the arguments
+        args.putString("message", messageJson)
+
+        // Set the arguments for the fragment
+        messageFragment.arguments = args
+
+        // Replace the current fragment with the new one
+        requireActivity().supportFragmentManager.beginTransaction()
+            .replace(R.id.fragmentContainerView, messageFragment)
+            .addToBackStack(null)
+            .commit()
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
-        (activity as AppCompatActivity).supportActionBar?.title = "Channels"
         (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 }

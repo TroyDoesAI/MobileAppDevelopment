@@ -33,7 +33,7 @@ class ChannelsFragment : Fragment() {
             // Set the action bar title to the workspace name
             (activity as AppCompatActivity).supportActionBar?.title = workspace.name
 
-            val recyclerView = view.findViewById<RecyclerView>(R.id.channelsRecyclerView)
+            val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerview)
             recyclerView.layoutManager = LinearLayoutManager(context)
             channelAdapter = ChannelAdapter(workspace.channels, ::onChannelClicked)
             recyclerView.adapter = channelAdapter
