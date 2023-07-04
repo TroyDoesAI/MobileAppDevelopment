@@ -24,11 +24,14 @@ class MainActivity : AppCompatActivity() {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_main)
 
+    // If the activity is created for the first time (not due to configuration changes),
+    // show the LoginFragment
     if (savedInstanceState == null) {
       showLoginFragment()
     }
   }
 
+  // Function to show the LoginFragment
   fun showLoginFragment() {
     supportFragmentManager.commit {
       replace(R.id.fragmentContainerView, LoginFragment::class.java, null)
@@ -38,6 +41,7 @@ class MainActivity : AppCompatActivity() {
     supportActionBar?.setDisplayHomeAsUpEnabled(false)
   }
 
+  // Function to navigate to the WorkspacesFragment
   fun navigateToWorkspaces() {
     supportFragmentManager.commit {
       replace(R.id.fragmentContainerView, WorkspacesFragment::class.java, null)
@@ -48,6 +52,7 @@ class MainActivity : AppCompatActivity() {
     supportActionBar?.setDisplayHomeAsUpEnabled(true)
   }
 
+  // Called when the user presses the "Up" button in the action bar
   override fun onSupportNavigateUp(): Boolean {
     supportFragmentManager.popBackStack()
     supportActionBar?.setDisplayHomeAsUpEnabled(false)

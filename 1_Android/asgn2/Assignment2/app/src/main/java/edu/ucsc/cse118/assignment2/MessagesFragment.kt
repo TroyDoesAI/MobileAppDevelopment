@@ -34,7 +34,7 @@ class MessagesFragment : Fragment() {
         val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerview)
         recyclerView.layoutManager = LinearLayoutManager(context)
 
-        messageAdapter = MessageAdapter(channel.messages.sortedByDescending { it.date }, ::onMessageClicked)
+        messageAdapter = MessageAdapter(channel.messages.sortedByDescending { it.date }, ::onMessageClicked) // Sort messages by date REF: https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/sorted-by-descending.html
         recyclerView.adapter = messageAdapter
     }
 

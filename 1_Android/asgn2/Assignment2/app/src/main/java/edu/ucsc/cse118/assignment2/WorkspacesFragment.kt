@@ -13,16 +13,21 @@ import com.google.gson.Gson
 class WorkspacesFragment : Fragment() {
     private lateinit var workspaceAdapter: WorkspaceAdapter
 
+    // Called to create the view hierarchy associated with the fragment
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        // Inflate the layout for the WorkspacesFragment
         return inflater.inflate(R.layout.fragment_workspaces, container, false)
     }
 
+    // Called immediately after onCreateView() has returned a view
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        // Set the action bar title to "Workspaces"
         (requireActivity() as AppCompatActivity).supportActionBar?.title = "Workspaces"
         (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
@@ -34,7 +39,7 @@ class WorkspacesFragment : Fragment() {
         val inputStream = resources.openRawResource(R.raw.workspaces)
         val json = inputStream.bufferedReader().use { it.readText() }
 
-        // Parse the JSON into a list of Workspace objects
+        // Parse the JSON into a list of Workspace objects using Gson
         val gson = Gson()
         val workspaceList = gson.fromJson(json, Array<Workspace>::class.java).toList()
 
@@ -43,11 +48,14 @@ class WorkspacesFragment : Fragment() {
         recyclerView.adapter = workspaceAdapter
     }
 
+    // Called when the view hierarchy associated with the fragment is being removed
     override fun onDestroyView() {
         super.onDestroyView()
+        // Reset the action bar title to "CSE118 Assignment 2"
         (requireActivity() as AppCompatActivity).supportActionBar?.title = "CSE118 Assignment 2"
     }
 
+    // Function to handle the click event on a workspace item
     fun onWorkspaceClicked(workspace: DataClasses.Workspace) {
         // Instantiate the new fragment
         val channelsFragment = ChannelsFragment()
@@ -70,6 +78,4 @@ class WorkspacesFragment : Fragment() {
             .addToBackStack(null)
             .commit()
     }
-
-
 }

@@ -13,13 +13,16 @@ import androidx.recyclerview.widget.LinearLayoutManager
 class ChannelsFragment : Fragment() {
     private lateinit var channelAdapter: ChannelAdapter
 
+    // Called to create the view hierarchy associated with the fragment
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        // Inflate the layout for the ChannelsFragment
         return inflater.inflate(R.layout.fragment_channels, container, false)
     }
 
+    // Called immediately after onCreateView() has returned a view
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -33,13 +36,17 @@ class ChannelsFragment : Fragment() {
             // Set the action bar title to the workspace name
             (activity as AppCompatActivity).supportActionBar?.title = workspace.name
 
+            // Find the RecyclerView in the layout and set its layout manager
             val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerview)
             recyclerView.layoutManager = LinearLayoutManager(context)
+
+            // Create an instance of the ChannelAdapter and set it as the adapter for the RecyclerView
             channelAdapter = ChannelAdapter(workspace.channels, ::onChannelClicked)
             recyclerView.adapter = channelAdapter
         }
     }
 
+    // Called when the fragment is visible to the user and actively running
     override fun onResume() {
         super.onResume()
 
@@ -55,6 +62,7 @@ class ChannelsFragment : Fragment() {
         }
     }
 
+    // Function to handle the click event on a channel item
     fun onChannelClicked(channel: DataClasses.Channel) {
         // Instantiate the new fragment
         val messagesFragment = MessagesFragment()
