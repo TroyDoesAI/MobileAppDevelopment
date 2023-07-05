@@ -13,6 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+// Ref : CSE118 example code from Dr. Harrison
+// Understanding recycler view and Creating dynamic lists with RecyclerView https://developer.android.com/develop/ui/views/layout/recyclerview
+// kotlin stdlib https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/sorted-by-descending.html
+// How to set Onclick Listeners https://stackoverflow.com/questions/44301301/android-how-to-achieve-setonclicklistener-in-kotlin
+// How to add a back button to the action bar at the top : https://devofandroid.blogspot.com/2018/03/add-back-button-to-action-bar-android.html
+// How to go to the previous fragment by back button in action bar : https://stackoverflow.com/questions/62622943/how-to-go-to-the-previous-fragment-by-back-button-in-action-bar-kotlin
+// Google Search for syntax error messages
+
 package edu.ucsc.cse118.assignment2
 
 import android.os.Bundle
