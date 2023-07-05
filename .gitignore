@@ -725,3 +725,9 @@
 1_Android/asgn2/Assignment2/.gradle/7.5/executionHistory/executionHistory.bin
 *.bin
 *.kapt_metadata
+*.kapt_metadata
+*.kapt_metadata
+*.bin
+*.lock
+*.probe
+*.txt
