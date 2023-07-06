@@ -5,11 +5,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import edu.ucsc.cse118.assignment3.data.DataClasses
+import edu.ucsc.cse118.assignment3.data.Channel
 
 class ChannelAdapter(
-    private val channels: List<DataClasses.Channel>,
-    private val clickListener: (DataClasses.Channel) -> Unit
+    private val channels: List<Channel>,
+    private val clickListener: (Channel) -> Unit
 ) :
     RecyclerView.Adapter<ChannelAdapter.ChannelViewHolder>() {
 
@@ -19,7 +19,7 @@ class ChannelAdapter(
         private val messages: TextView = view.findViewById(R.id.messageCountTextView)
 
         // Binds data to the views and sets the click listener
-        fun bind(channel: DataClasses.Channel, clickListener: (DataClasses.Channel) -> Unit) {
+        fun bind(channel: Channel, clickListener: (Channel) -> Unit) {
             name.text = channel.name
             messages.text = "${channel.messages.size} Messages"
 

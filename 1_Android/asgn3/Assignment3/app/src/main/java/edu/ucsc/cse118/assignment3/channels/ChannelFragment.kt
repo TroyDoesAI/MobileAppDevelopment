@@ -12,7 +12,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import edu.ucsc.cse118.assignment3.ChannelAdapter
 import edu.ucsc.cse118.assignment3.messages.MessagesFragment
 import edu.ucsc.cse118.assignment3.R
-import edu.ucsc.cse118.assignment3.data.DataClasses
+import edu.ucsc.cse118.assignment3.data.Workspace
+import edu.ucsc.cse118.assignment3.data.Channel
 
 class ChannelsFragment : Fragment() {
     private lateinit var channelAdapter: ChannelAdapter
@@ -35,7 +36,7 @@ class ChannelsFragment : Fragment() {
 
         if (workspaceJson != null) {
             // Convert JSON string back to Workspace object
-            val workspace: DataClasses.Workspace = Gson().fromJson(workspaceJson, DataClasses.Workspace::class.java)
+            val workspace: Workspace = Gson().fromJson(workspaceJson, Workspace::class.java)
 
             // Set the action bar title to the workspace name
             (activity as AppCompatActivity).supportActionBar?.title = workspace.name
@@ -59,7 +60,7 @@ class ChannelsFragment : Fragment() {
 
         if (workspaceJson != null) {
             // Convert JSON string back to Workspace object
-            val workspace: DataClasses.Workspace = Gson().fromJson(workspaceJson, DataClasses.Workspace::class.java)
+            val workspace: Workspace = Gson().fromJson(workspaceJson, Workspace::class.java)
 
             // Set the action bar title to the workspace name
             (activity as AppCompatActivity).supportActionBar?.title = workspace.name
@@ -67,7 +68,7 @@ class ChannelsFragment : Fragment() {
     }
 
     // Function to handle the click event on a channel item
-    fun onChannelClicked(channel: DataClasses.Channel) {
+    fun onChannelClicked(channel: Channel) {
         // Instantiate the new fragment
         val messagesFragment = MessagesFragment()
 

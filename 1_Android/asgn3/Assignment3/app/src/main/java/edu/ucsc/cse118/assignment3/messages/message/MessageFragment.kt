@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.appcompat.app.AppCompatActivity
 import com.google.gson.Gson
 import edu.ucsc.cse118.assignment3.R
-import edu.ucsc.cse118.assignment3.data.DataClasses
+import edu.ucsc.cse118.assignment3.data.Message
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -32,7 +32,7 @@ class MessageFragment : Fragment() {
         val messageJson = arguments?.getString("message")
         if (messageJson != null) {
             // Convert JSON string back to Message object
-            val message: DataClasses.Message = Gson().fromJson(messageJson, DataClasses.Message::class.java)
+            val message: Message = Gson().fromJson(messageJson, Message::class.java)
 
             // Set the action bar title to the user's name
             (activity as AppCompatActivity).supportActionBar?.title = message.user.name

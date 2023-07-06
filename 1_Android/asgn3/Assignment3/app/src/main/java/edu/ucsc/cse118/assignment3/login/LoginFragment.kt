@@ -43,6 +43,12 @@ class LoginFragment : Fragment() {
         passwordInput = view.findViewById(R.id.password)
         buttonLogin = view.findViewById(R.id.login)
 
+        // TODO REMOVE THIS SECTION
+        // Assign hardcoded login credentials
+        emailInput.setText("traschul@ucsc.edu")
+        passwordInput.setText("1815098")
+        // TODO REMOVE THIS SECTION
+
         // Disable the login button by default
         buttonLogin.isEnabled = false
 

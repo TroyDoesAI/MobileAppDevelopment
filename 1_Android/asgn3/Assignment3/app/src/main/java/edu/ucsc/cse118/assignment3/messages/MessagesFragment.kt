@@ -12,7 +12,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import edu.ucsc.cse118.assignment3.MessageAdapter
 import edu.ucsc.cse118.assignment3.messages.message.MessageFragment
 import edu.ucsc.cse118.assignment3.R
-import edu.ucsc.cse118.assignment3.data.DataClasses
+import edu.ucsc.cse118.assignment3.data.Channel
+import edu.ucsc.cse118.assignment3.data.Message
 
 class MessagesFragment : Fragment() {
     private lateinit var messageAdapter: MessageAdapter
@@ -31,7 +32,7 @@ class MessagesFragment : Fragment() {
         val channelJson = arguments?.getString("channel")!!
 
         // Convert JSON string back to Channel object
-        val channel: DataClasses.Channel = Gson().fromJson(channelJson, DataClasses.Channel::class.java)
+        val channel: Channel = Gson().fromJson(channelJson, Channel::class.java)
 
         (activity as AppCompatActivity).supportActionBar?.title = channel.name
 
@@ -42,7 +43,7 @@ class MessagesFragment : Fragment() {
         recyclerView.adapter = messageAdapter
     }
 
-    fun onMessageClicked(message: DataClasses.Message) {
+    fun onMessageClicked(message: Message) {
         // Instantiate the new fragment
         val messageFragment = MessageFragment()
 
