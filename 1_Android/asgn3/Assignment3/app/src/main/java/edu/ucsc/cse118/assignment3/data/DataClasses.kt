@@ -22,6 +22,7 @@ data class Channel(
     val messages: List<Message>
 )
 
+
 @Serializable
 data class Message(
     val user: User,

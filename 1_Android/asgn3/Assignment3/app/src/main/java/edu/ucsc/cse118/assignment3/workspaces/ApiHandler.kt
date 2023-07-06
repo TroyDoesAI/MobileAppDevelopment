@@ -11,7 +11,6 @@ import java.net.HttpURLConnection
 import java.net.URL
 
 object ApiHandler {
-
     private fun makeHttpRequest(method : String, endpt : String ): Pair<String, Int> {
         val url = URL(endpt)
         val connection = url.openConnection() as HttpURLConnection

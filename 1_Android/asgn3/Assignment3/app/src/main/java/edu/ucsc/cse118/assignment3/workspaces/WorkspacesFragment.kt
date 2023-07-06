@@ -38,15 +38,15 @@ class WorkspacesFragment : Fragment() {
         val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerview)
         recyclerView.layoutManager = LinearLayoutManager(context)
 
-        workspacesViewModel.workspacesLiveData.observe(viewLifecycleOwner, { workspaces ->
+        workspacesViewModel.workspacesLiveData.observe(viewLifecycleOwner) { workspaces ->
             workspaceAdapter = WorkspaceAdapter(workspaces, ::onWorkspaceClicked)
             recyclerView.adapter = workspaceAdapter
-        })
+        }
 
         workspacesViewModel.fetchWorkspaces()
     }
 
-    fun onWorkspaceClicked(workspace: Workspace) {
+    private fun onWorkspaceClicked(workspace: Workspace) {
         val channelsFragment = ChannelsFragment()
 
         val args = Bundle()
