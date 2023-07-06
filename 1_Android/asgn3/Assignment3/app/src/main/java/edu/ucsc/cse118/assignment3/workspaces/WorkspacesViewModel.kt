@@ -15,7 +15,7 @@ class WorkspacesViewModel : ViewModel() {
     fun fetchWorkspaces() {
         viewModelScope.launch {
             try {
-                val workspaceList = WorkspaceApi.getWorkspaces()
+                val workspaceList = ApiHandler.getWorkspaces()
                 _workspacesLiveData.value = workspaceList
             } catch (e: Exception) {
                 // Log the exception

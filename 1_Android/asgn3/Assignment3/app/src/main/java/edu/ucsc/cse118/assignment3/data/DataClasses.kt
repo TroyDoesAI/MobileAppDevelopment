@@ -34,11 +34,3 @@ data class User(
     val name: String,
     val email: String
 )
-
-//@Serializable
-//data class Member(
-//    val id: String,
-//    val name: String,
-//    val role: String,
-//    val accessToken: String
-//)

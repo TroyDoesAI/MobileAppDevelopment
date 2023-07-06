@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import edu.ucsc.cse118.assignment3.data.Channel
 
 class ChannelAdapter(
-    private val channels: List<Channel>,
+    private val channels : List<Channel>,
     private val clickListener: (Channel) -> Unit
 ) :
     RecyclerView.Adapter<ChannelAdapter.ChannelViewHolder>() {
@@ -21,7 +21,7 @@ class ChannelAdapter(
         // Binds data to the views and sets the click listener
         fun bind(channel: Channel, clickListener: (Channel) -> Unit) {
             name.text = channel.name
-            messages.text = "${channel.messages.size} Messages"
+            messages.text = "${channel.messages} Messages"
 
             // Set the click listener to trigger the specified function when an item is clicked
             itemView.setOnClickListener {
