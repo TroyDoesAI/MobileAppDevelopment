@@ -2,6 +2,7 @@ package edu.ucsc.cse118.assignment3.channels
 
 import ApiHandler
 import android.os.Bundle
+import android.provider.ContactsContract.Data
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -51,7 +52,9 @@ class ChannelsFragment : Fragment() {
                 recyclerView.layoutManager = LinearLayoutManager(context)
 
                 // Create an instance of the ChannelAdapter and set it as the adapter for the RecyclerView
-                channelAdapter = ChannelAdapter(workspace.channels, ::onChannelClicked)
+                // workspace.channels
+                val dummyList : List<DataClasses.Channel> = listOf()
+                channelAdapter = ChannelAdapter(dummyList, ::onChannelClicked)
                 recyclerView.adapter = channelAdapter
             }
         }

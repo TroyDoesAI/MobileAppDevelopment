@@ -9,18 +9,21 @@ class DataClasses {
     data class Workspace(
         val name: String,
         val id: String,
-        val channels: List<Channel>,
+        val channels: Int,
         var owner: String = "",
     ) {
         companion object {
             fun fromJson(json: String): Workspace {
                 val jsonObject = JSONObject(json)
+                /*
                 val channelsJsonArray = jsonObject.getJSONArray("channels")
+
                 val channels = mutableListOf<Channel>()
                 for (i in 0 until channelsJsonArray.length()) {
                     channels.add(Channel.fromJson(channelsJsonArray.getJSONObject(i).toString()))
                 }
-                return Workspace(jsonObject.getString("name"), jsonObject.getString("id"), channels)
+                 */
+                return Workspace(jsonObject.getString("name"), jsonObject.getString("id"), jsonObject.getInt("channels"))
             }
         }
 
@@ -28,14 +31,15 @@ class DataClasses {
             val jsonObject = JSONObject()
             jsonObject.put("name", name)
             jsonObject.put("id", id)
-
+            /*
             val channelsJsonArray = JSONArray()
             channels.forEach { channel ->
                 channelsJsonArray.put(JSONObject(channel.toJson()))
             }
 
             jsonObject.put("channels", channelsJsonArray)
-
+            */
+            jsonObject.put("channels", channels)
             return jsonObject.toString()
         }
     }

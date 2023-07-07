@@ -20,7 +20,7 @@ class WorkspaceAdapter(
         // Binds data to the views and sets the click listener
         fun bind(workspace: Workspace) {
             name.text = workspace.name
-            channelsTextView.text = "${workspace.channels.size} Channels"
+            channelsTextView.text = "${workspace.channels} Channels"
 
             // Set the click listener to trigger the specified function when an item is clicked
             itemView.setOnClickListener {
