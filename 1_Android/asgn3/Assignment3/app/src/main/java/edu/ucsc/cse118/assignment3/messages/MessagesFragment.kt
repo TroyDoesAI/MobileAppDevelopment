@@ -1,6 +1,7 @@
 package edu.ucsc.cse118.assignment3.messages
 
 import android.os.Bundle
+import android.provider.ContactsContract.Data
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -36,8 +37,9 @@ class MessagesFragment : Fragment() {
 
         val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerview)
         recyclerView.layoutManager = LinearLayoutManager(context)
-
-        messageAdapter = MessageAdapter(channel.messages.sortedByDescending { it.date }, ::onMessageClicked) // Sort messages by date REF: https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/sorted-by-descending.html
+        val dummyMessageList = listOf<DataClasses.Message>()
+        // channel.messages.sortedByDescending { it.date }
+        messageAdapter = MessageAdapter(dummyMessageList, ::onMessageClicked) // Sort messages by date REF: https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/sorted-by-descending.html
         recyclerView.adapter = messageAdapter
     }
 

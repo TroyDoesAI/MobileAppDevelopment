@@ -47,30 +47,36 @@ class DataClasses {
     @Serializable
     data class Channel(
         val name: String,
-        val messages: List<Message>
+        val id: String,
+        val messages: Int
     ) {
         companion object {
             fun fromJson(json: String): Channel {
                 val jsonObject = JSONObject(json)
+                /*
                 val messagesJsonArray = jsonObject.getJSONArray("messages")
                 val messages = mutableListOf<Message>()
                 for (i in 0 until messagesJsonArray.length()) {
                     messages.add(Message.fromJson(messagesJsonArray.getJSONObject(i).toString()))
                 }
-                return Channel(jsonObject.getString("name"), messages)
+                 */
+                return Channel(jsonObject.getString("name"), jsonObject.getString("id"), jsonObject.getInt("messages"))
             }
         }
 
         fun toJson(): String {
             val jsonObject = JSONObject()
             jsonObject.put("name", name)
-
+            jsonObject.put("id", id)
+            jsonObject.put("messages", messages)
+            /*
             val messagesJsonArray = JSONArray()
             messages.forEach { message ->
                 messagesJsonArray.put(JSONObject(message.toJson()))
             }
 
             jsonObject.put("messages", messagesJsonArray)
+             */
 
             return jsonObject.toString()
         }

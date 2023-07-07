@@ -46,7 +46,7 @@ object ApiHandler {
 
     suspend fun getChannels(workspaceId: String): List<Channel> {
         return withContext(Dispatchers.IO) {
-            val responsePair = makeHttpRequest("GET", "https://cse118.com/api/v2/workspace/$workspaceId/channel")
+            val responsePair = makeHttpRequest("GET", "https://cse118.com/api/v2/workspace/${workspaceId}/channel")
 
             if (responsePair.second == HttpURLConnection.HTTP_OK) {
                 val channels = Json.decodeFromString<List<Channel>>(responsePair.first.toString())
@@ -57,4 +57,6 @@ object ApiHandler {
             }
         }
     }
+
+    // TODO suspend fun getMessages
 }

@@ -1,6 +1,7 @@
 package edu.ucsc.cse118.assignment3.channels
 
 import ApiHandler
+import ApiHandler.getChannels
 import android.os.Bundle
 import android.provider.ContactsContract.Data
 import android.view.LayoutInflater
@@ -17,11 +18,14 @@ import edu.ucsc.cse118.assignment3.R
 import edu.ucsc.cse118.assignment3.data.DataClasses
 import edu.ucsc.cse118.assignment3.data.DataClasses.Workspace
 import edu.ucsc.cse118.assignment3.data.DataClasses.Channel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import org.json.JSONObject
 
 class ChannelsFragment : Fragment() {
     private lateinit var channelAdapter: ChannelAdapter
+    private val coroutineScope = CoroutineScope(Dispatchers.Main)
 
     // Called to create the view hierarchy associated with the fragment
     override fun onCreateView(
@@ -35,28 +39,18 @@ class ChannelsFragment : Fragment() {
     // Called immediately after onCreateView() has returned a view
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        viewLifecycleOwner.lifecycleScope.launch {
+        coroutineScope.launch {
+            var channels: List<DataClasses.Channel> = listOf()
             val workspaceJson = arguments?.getString("workspace")
-
             if (workspaceJson != null) {
                 val workspace: DataClasses.Workspace = DataClasses.Workspace.fromJson(workspaceJson)
-                // TODO Need to get channels from the server api call but not there yet.
-//                channels = ApiHandler.getChannels()
-
-                // Set the action bar title to the workspace name
-                (activity as AppCompatActivity).supportActionBar?.title = workspace.name
-
-                // Find the RecyclerView in the layout and set its layout manager
-                val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerview)
-                recyclerView.layoutManager = LinearLayoutManager(context)
-
-                // Create an instance of the ChannelAdapter and set it as the adapter for the RecyclerView
-                // workspace.channels
-                val dummyList : List<DataClasses.Channel> = listOf()
-                channelAdapter = ChannelAdapter(dummyList, ::onChannelClicked)
-                recyclerView.adapter = channelAdapter
+                channels = ApiHandler.getChannels(workspace.id)
             }
+            channelAdapter = ChannelAdapter(channels, ::onChannelClicked)
+            // Find the RecyclerView in the layout and set its layout manager
+            val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerview)
+            recyclerView.layoutManager = LinearLayoutManager(context)
+            recyclerView.adapter = channelAdapter
         }
     }
 

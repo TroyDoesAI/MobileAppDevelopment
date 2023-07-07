@@ -7,9 +7,9 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.appcompat.app.AppCompatActivity
-import com.google.gson.Gson
+//import com.google.gson.Gson
 import edu.ucsc.cse118.assignment3.R
-import edu.ucsc.cse118.assignment3.data.Message
+//import edu.ucsc.cse118.assignment3.data.Message
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -29,6 +29,7 @@ class MessageFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         // Get the message JSON string from the arguments
+        /*
         val messageJson = arguments?.getString("message")
         if (messageJson != null) {
             // Convert JSON string back to Message object
@@ -50,6 +51,7 @@ class MessageFragment : Fragment() {
             dateTextView.text = formattedDate
             contentTextView.text = message.content
         }
+         */
     }
 
     // Called when the view hierarchy associated with the fragment is being removed
