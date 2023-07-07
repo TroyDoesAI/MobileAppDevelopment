@@ -8,20 +8,19 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import edu.ucsc.cse118.assignment3.data.DataClasses.Channel
 import kotlinx.coroutines.launch
-import edu.ucsc.cse118.assignment3.model.SharedViewModel.Companion.member
 
 class ChannelsViewModel : ViewModel() {
     private val _channelsLiveData = MutableLiveData<List<Channel>>()
-    val workspacesLiveData: LiveData<List<Channel>> = _channelsLiveData
+    val channelsLiveData: LiveData<List<Channel>> = _channelsLiveData
 
-    fun fetchWorkspaces() {
+    fun fetchChannels(workspaceId: String) {
         viewModelScope.launch {
             try {
-                val channelList = ApiHandler.getChannels(member!!.id)
+                val channelList = ApiHandler.getChannels(workspaceId)
                 _channelsLiveData.value = channelList
             } catch (e: Exception) {
                 // Log the exception
-                Log.e("WorkspacesViewModel", "Error fetching workspaces", e)
+                Log.e("ChannelsViewModel", "Error fetching channels", e)
             }
         }
     }

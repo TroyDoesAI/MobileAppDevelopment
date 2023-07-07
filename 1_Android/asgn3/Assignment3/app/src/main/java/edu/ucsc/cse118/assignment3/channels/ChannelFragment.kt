@@ -1,24 +1,21 @@
 package edu.ucsc.cse118.assignment3.channels
 
-import edu.ucsc.cse118.assignment3.ApiHandler
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.LinearLayoutManager
 import edu.ucsc.cse118.assignment3.messages.MessagesFragment
 import edu.ucsc.cse118.assignment3.R
 import edu.ucsc.cse118.assignment3.data.DataClasses
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
 class ChannelsFragment : Fragment() {
     private lateinit var channelAdapter: ChannelAdapter
-    private val coroutineScope = CoroutineScope(Dispatchers.Main)
+    private lateinit var channelsViewModel: ChannelsViewModel
     private var workspaceJson: String? = null  // Declare workspaceJson here
 
     override fun onCreateView(
@@ -34,12 +31,17 @@ class ChannelsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        coroutineScope.launch {
-            var channels: List<DataClasses.Channel> = listOf()
-            workspaceJson?.let {
-                val workspace: DataClasses.Workspace = DataClasses.Workspace.fromJson(it)
-                channels = ApiHandler.getChannels(workspace.id)
-            }
+
+        // Instantiate the ViewModel
+        channelsViewModel = ViewModelProvider(this).get(ChannelsViewModel::class.java)
+
+        workspaceJson?.let {
+            val workspace: DataClasses.Workspace = DataClasses.Workspace.fromJson(it)
+            channelsViewModel.fetchChannels(workspace.id) // fetch channels
+        }
+
+        // Observe changes in the ViewModel's LiveData
+        channelsViewModel.channelsLiveData.observe(viewLifecycleOwner) { channels ->
             channelAdapter = ChannelAdapter(channels, ::onChannelClicked)
             // Find the RecyclerView in the layout and set its layout manager
             val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerview)

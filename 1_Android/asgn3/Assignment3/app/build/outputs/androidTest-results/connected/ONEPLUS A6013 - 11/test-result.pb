@@ -1,7 +1,7 @@
 
-î
-Z
-	BasicTestedu.ucsc.cse118.assignment3login_button_enabled2ûé¡¥À°ƒÃ:ıé¡¥€„ÁÓ"æ
+í
+Y
+	BasicTestedu.ucsc.cse118.assignment3login_button_enabled2ïî¡¥€Œ–˜:òî¡¥€ë“O"æ
 
 logcatandroidĞ
 Í/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/logcat-edu.ucsc.cse118.assignment3.BasicTest-login_button_enabled.txt"´
@@ -15,7 +15,7 @@ Z
 device-info.cpuinfoandroid’
 /Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/cpuinfoå
 U
-	BasicTestedu.ucsc.cse118.assignment3login_email_hint2ıé¡¥€Õ‹Ü:ÿé¡¥€›î"â
+	BasicTestedu.ucsc.cse118.assignment3login_email_hint2òî¡¥€ÎÒY:òî¡¥À×ìï"â
 
 logcatandroidÌ
 É/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/logcat-edu.ucsc.cse118.assignment3.BasicTest-login_email_hint.txt"´
@@ -29,7 +29,7 @@ U
 device-info.cpuinfoandroid’
 /Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/cpuinfoİ
 Q
-	BasicTestedu.ucsc.cse118.assignment3message_date2ÿé¡¥€¤è:ê¡¥€Ö°˜"Ş
+	BasicTestedu.ucsc.cse118.assignment3message_date2òî¡¥Ààæğ:õî¡¥À™²+"Ş
 
 logcatandroidÈ
 Å/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/logcat-edu.ucsc.cse118.assignment3.BasicTest-message_date.txt"´
@@ -43,7 +43,7 @@ Q
 device-info.cpuinfoandroid’
 /Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/cpuinfoß
 R
-	BasicTestedu.ucsc.cse118.assignment3message_title2ê¡¥€ßª™:„ê¡¥€«"ß
+	BasicTestedu.ucsc.cse118.assignment3message_title2õî¡¥À«¦-:÷î¡¥À÷®"ß
 
 logcatandroidÉ
 Æ/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/logcat-edu.ucsc.cse118.assignment3.BasicTest-message_title.txt"´
@@ -55,9 +55,9 @@ R
 /Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/meminfo"µ
 
 device-info.cpuinfoandroid’
-/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/cpuinfoà
-R
-	BasicTestedu.ucsc.cse118.assignment3channel_counts2„ê¡¥€½ƒ:†ê¡¥À®§V"à
+/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/cpuinfoâ
+T
+	BasicTestedu.ucsc.cse118.assignment3channel_counts2÷î¡¥€à:ùî¡¥ÀõÛ›"à
 
 logcatandroidÊ
 Ç/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/logcat-edu.ucsc.cse118.assignment3.BasicTest-channel_counts.txt"´
@@ -69,9 +69,9 @@ R
 /Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/meminfo"µ
 
 device-info.cpuinfoandroid’
-/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/cpuinfoİ
-Q
-	BasicTestedu.ucsc.cse118.assignment3login_button2†ê¡¥À·¡W:†ê¡¥ÀšéÛ"Ş
+/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/cpuinfoŞ
+R
+	BasicTestedu.ucsc.cse118.assignment3login_button2ùî¡¥€ƒ“:ùî¡¥À¢Çš"Ş
 
 logcatandroidÈ
 Å/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/logcat-edu.ucsc.cse118.assignment3.BasicTest-login_button.txt"´
@@ -83,9 +83,9 @@ Q
 /Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/meminfo"µ
 
 device-info.cpuinfoandroid’
-/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/cpuinfoå
-U
-	BasicTestedu.ucsc.cse118.assignment3workspace_counts2†ê¡¥€Ÿ¦Ü:ˆê¡¥ÀøÊP"â
+/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/cpuinfoæ
+V
+	BasicTestedu.ucsc.cse118.assignment3workspace_counts2ùî¡¥À©î¨:ûî¡¥Àóˆ©"â
 
 logcatandroidÌ
 É/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/logcat-edu.ucsc.cse118.assignment3.BasicTest-workspace_counts.txt"´
@@ -97,9 +97,9 @@ U
 /Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/meminfo"µ
 
 device-info.cpuinfoandroid’
-/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/cpuinfoá
-S
-	BasicTestedu.ucsc.cse118.assignment3name_in_header2ˆê¡¥€ı‡Q:‰ê¡¥À…†¥"à
+/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/cpuinfoâ
+T
+	BasicTestedu.ucsc.cse118.assignment3name_in_header2ûî¡¥Àü‚ª:ıî¡¥ÀŒ›¿"à
 
 logcatandroidÊ
 Ç/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/logcat-edu.ucsc.cse118.assignment3.BasicTest-name_in_header.txt"´
@@ -111,10 +111,10 @@ S
 /Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/meminfo"µ
 
 device-info.cpuinfoandroid’
-/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/cpuinfoÚ
-P
+/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/cpuinfoÙ
+O
 	BasicTestedu.ucsc.cse118.assignment3
-workspaces2‰ê¡¥À€¦:‹ê¡¥€ı™Å"Ü
+workspaces2ıî¡¥À••À:ÿî¡¥€Õùg"Ü
 
 logcatandroidÆ
 Ã/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/logcat-edu.ucsc.cse118.assignment3.BasicTest-workspaces.txt"´
@@ -128,7 +128,7 @@ workspaces2‰ê¡¥À€¦:‹ê¡¥€ı™Å"Ü
 device-info.cpuinfoandroid’
 /Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/cpuinfoá
 S
-	BasicTestedu.ucsc.cse118.assignment3message_member2‹ê¡¥€†”Æ:ê¡¥ÀÕ‡	"à
+	BasicTestedu.ucsc.cse118.assignment3message_member2ÿî¡¥€Şóh:ï¡¥ÀÌŸü"à
 
 logcatandroidÊ
 Ç/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/logcat-edu.ucsc.cse118.assignment3.BasicTest-message_member.txt"´
@@ -140,9 +140,9 @@ S
 /Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/meminfo"µ
 
 device-info.cpuinfoandroid’
-/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/cpuinfoæ
-U
-	BasicTestedu.ucsc.cse118.assignment3login_short_email2ê¡¥€ÚÄ	:ê¡¥À«¦-"ã
+/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/cpuinfoè
+W
+	BasicTestedu.ucsc.cse118.assignment3login_short_email2ï¡¥€ÚÖı:‚ï¡¥À›—’"ã
 
 logcatandroidÍ
 Ê/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/logcat-edu.ucsc.cse118.assignment3.BasicTest-login_short_email.txt"´
@@ -154,9 +154,9 @@ U
 /Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/meminfo"µ
 
 device-info.cpuinfoandroid’
-/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/cpuinfoï
-Z
-	BasicTestedu.ucsc.cse118.assignment3login_button_disabled2ê¡¥€·Š<:ê¡¥À â³"ç
+/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/cpuinfoğ
+[
+	BasicTestedu.ucsc.cse118.assignment3login_button_disabled2‚ï¡¥€²È”:‚ï¡¥€Ò“­"ç
 
 logcatandroidÑ
 Î/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/logcat-edu.ucsc.cse118.assignment3.BasicTest-login_button_disabled.txt"´
@@ -170,7 +170,7 @@ Z
 device-info.cpuinfoandroid’
 /Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/cpuinfoî
 Z
-	BasicTestedu.ucsc.cse118.assignment3login_short_password2ê¡¥€¥Ÿ´:ê¡¥ÀŞœø"æ
+	BasicTestedu.ucsc.cse118.assignment3login_short_password2‚ï¡¥ÀÖĞ­:„ï¡¥À°ƒÃ"æ
 
 logcatandroidĞ
 Í/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/logcat-edu.ucsc.cse118.assignment3.BasicTest-login_short_password.txt"´
@@ -182,9 +182,9 @@ Z
 /Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/meminfo"µ
 
 device-info.cpuinfoandroid’
-/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/cpuinfoÜ
-Q
-	BasicTestedu.ucsc.cse118.assignment3login_error2ê¡¥€ãÙø:’ê¡¥€´›‡"İ
+/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/cpuinfoÛ
+P
+	BasicTestedu.ucsc.cse118.assignment3login_error2„ï¡¥ÀÂ÷Ä:†ï¡¥€íæA"İ
 
 logcatandroidÇ
 Ä/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/logcat-edu.ucsc.cse118.assignment3.BasicTest-login_error.txt"´
@@ -196,9 +196,9 @@ Q
 /Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/meminfo"µ
 
 device-info.cpuinfoandroid’
-/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/cpuinfoÜ
-Q
-	BasicTestedu.ucsc.cse118.assignment3login_title2’ê¡¥€Ä¼–:’ê¡¥€Âò"İ
+/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/cpuinfoÛ
+P
+	BasicTestedu.ucsc.cse118.assignment3login_title2†ï¡¥€ˆÕD:†ï¡¥ÀˆõÙ"İ
 
 logcatandroidÇ
 Ä/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/logcat-edu.ucsc.cse118.assignment3.BasicTest-login_title.txt"´
@@ -210,9 +210,9 @@ Q
 /Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/meminfo"µ
 
 device-info.cpuinfoandroid’
-/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/cpuinfoë
-X
-	BasicTestedu.ucsc.cse118.assignment3login_password_hint2’ê¡¥ÀÆ¯:“ê¡¥ÀÂîJ"å
+/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/cpuinfoì
+Y
+	BasicTestedu.ucsc.cse118.assignment3login_password_hint2†ï¡¥À‘ïÚ:†ï¡¥ÀŠÑÆ"å
 
 logcatandroidÏ
 Ì/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/logcat-edu.ucsc.cse118.assignment3.BasicTest-login_password_hint.txt"´
