@@ -98,7 +98,6 @@ class DataClasses {
         }
     }
 
-    //TODO EXperimental code to get name of user
     @Serializable
     data class Member(
         val id: String,
@@ -118,10 +117,4 @@ class DataClasses {
             return jsonObject.toString()
         }
     }
-
-
-
-
-
-
 }

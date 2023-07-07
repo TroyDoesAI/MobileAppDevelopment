@@ -85,8 +85,7 @@ class LoginFragment : Fragment() {
             event.getContentIfNotHandled()?.let { isLoggedIn ->
                 if (isLoggedIn) {
                     mainActivity.navigateToWorkspaces()
-                } else {
-                    // Show error message in the password input field
+                } else { // Show error message in the password input field
                     passwordInput.text =
                         Editable.Factory.getInstance().newEditable("Failed to login : HTTP 401")
                 }

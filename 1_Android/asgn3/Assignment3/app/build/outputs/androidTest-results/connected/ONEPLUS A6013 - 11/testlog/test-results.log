@@ -225,7 +225,7 @@ INSTRUMENTATION_STATUS: test=login_password_hint
 INSTRUMENTATION_STATUS_CODE: 0
 INSTRUMENTATION_RESULT: stream=
 
-Time: 23.65
+Time: 68.409
 
 OK (16 tests)
 
