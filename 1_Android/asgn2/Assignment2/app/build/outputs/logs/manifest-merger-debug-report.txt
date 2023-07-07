@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/jair/Desktop/CSE118_Submission/Assignment2/app/src/main/AndroidManifest.xml:17:1-36:12
-INJECTED from /Users/jair/Desktop/CSE118_Submission/Assignment2/app/src/main/AndroidManifest.xml:17:1-36:12
-INJECTED from /Users/jair/Desktop/CSE118_Submission/Assignment2/app/src/main/AndroidManifest.xml:17:1-36:12
-INJECTED from /Users/jair/Desktop/CSE118_Submission/Assignment2/app/src/main/AndroidManifest.xml:17:1-36:12
+ADDED from /Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn2/Assignment2/app/src/main/AndroidManifest.xml:17:1-36:12
+INJECTED from /Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn2/Assignment2/app/src/main/AndroidManifest.xml:17:1-36:12
+INJECTED from /Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn2/Assignment2/app/src/main/AndroidManifest.xml:17:1-36:12
+INJECTED from /Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn2/Assignment2/app/src/main/AndroidManifest.xml:17:1-36:12
 MERGED from [androidx.databinding:databinding-adapters:7.4.2] /Users/jair/.gradle/caches/transforms-3/9402975571cfb430a8896d6371e974e8/transformed/databinding-adapters-7.4.2/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.databinding:databinding-ktx:7.4.2] /Users/jair/.gradle/caches/transforms-3/39174d05bd32610420718cd7b4f467d1/transformed/jetified-databinding-ktx-7.4.2/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.databinding:databinding-runtime:7.4.2] /Users/jair/.gradle/caches/transforms-3/193daf42634af98aa38d24ede881687b/transformed/databinding-runtime-7.4.2/AndroidManifest.xml:2:1-7:12
@@ -66,25 +66,25 @@ MERGED from [androidx.documentfile:documentfile:1.0.0] /Users/jair/.gradle/cache
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/jair/.gradle/caches/transforms-3/8edfd0370d84e741b78e8652f0fbb7ff/transformed/localbroadcastmanager-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.print:print:1.0.0] /Users/jair/.gradle/caches/transforms-3/4ddec08a633528d636c451590f7e1fe8/transformed/print-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.annotation:annotation-experimental:1.1.0] /Users/jair/.gradle/caches/transforms-3/5a8bb08104a3c32b2dc27bb7bc04fac7/transformed/jetified-annotation-experimental-1.1.0/AndroidManifest.xml:17:1-24:12
-INJECTED from /Users/jair/Desktop/CSE118_Submission/Assignment2/app/src/main/AndroidManifest.xml:17:1-36:12
-INJECTED from /Users/jair/Desktop/CSE118_Submission/Assignment2/app/src/main/AndroidManifest.xml:17:1-36:12
-INJECTED from /Users/jair/Desktop/CSE118_Submission/Assignment2/app/src/main/AndroidManifest.xml:17:1-36:12
+INJECTED from /Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn2/Assignment2/app/src/main/AndroidManifest.xml:17:1-36:12
+INJECTED from /Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn2/Assignment2/app/src/main/AndroidManifest.xml:17:1-36:12
+INJECTED from /Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn2/Assignment2/app/src/main/AndroidManifest.xml:17:1-36:12
 	package
-		INJECTED from /Users/jair/Desktop/CSE118_Submission/Assignment2/app/src/main/AndroidManifest.xml
-		ADDED from /Users/jair/Desktop/CSE118_Submission/Assignment2/app/src/main/AndroidManifest.xml:17:1-36:12
-		INJECTED from /Users/jair/Desktop/CSE118_Submission/Assignment2/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn2/Assignment2/app/src/main/AndroidManifest.xml
+		ADDED from /Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn2/Assignment2/app/src/main/AndroidManifest.xml:17:1-36:12
+		INJECTED from /Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn2/Assignment2/app/src/main/AndroidManifest.xml
 	android:versionName
-		INJECTED from /Users/jair/Desktop/CSE118_Submission/Assignment2/app/src/main/AndroidManifest.xml
-		ADDED from /Users/jair/Desktop/CSE118_Submission/Assignment2/app/src/main/AndroidManifest.xml:17:1-36:12
-		INJECTED from /Users/jair/Desktop/CSE118_Submission/Assignment2/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn2/Assignment2/app/src/main/AndroidManifest.xml
+		ADDED from /Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn2/Assignment2/app/src/main/AndroidManifest.xml:17:1-36:12
+		INJECTED from /Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn2/Assignment2/app/src/main/AndroidManifest.xml
 	android:versionCode
-		INJECTED from /Users/jair/Desktop/CSE118_Submission/Assignment2/app/src/main/AndroidManifest.xml
-		ADDED from /Users/jair/Desktop/CSE118_Submission/Assignment2/app/src/main/AndroidManifest.xml:17:1-36:12
-		INJECTED from /Users/jair/Desktop/CSE118_Submission/Assignment2/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn2/Assignment2/app/src/main/AndroidManifest.xml
+		ADDED from /Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn2/Assignment2/app/src/main/AndroidManifest.xml:17:1-36:12
+		INJECTED from /Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn2/Assignment2/app/src/main/AndroidManifest.xml
 	xmlns:android
-		ADDED from /Users/jair/Desktop/CSE118_Submission/Assignment2/app/src/main/AndroidManifest.xml:17:11-69
+		ADDED from /Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn2/Assignment2/app/src/main/AndroidManifest.xml:17:11-69
 application
-ADDED from /Users/jair/Desktop/CSE118_Submission/Assignment2/app/src/main/AndroidManifest.xml:19:5-34:19
+ADDED from /Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn2/Assignment2/app/src/main/AndroidManifest.xml:19:5-34:19
 MERGED from [com.google.android.material:material:1.4.0-beta01] /Users/jair/.gradle/caches/transforms-3/27bceab93d141d4c8579ad9d270927a5/transformed/material-1.4.0-beta01/AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.4.0-beta01] /Users/jair/.gradle/caches/transforms-3/27bceab93d141d4c8579ad9d270927a5/transformed/material-1.4.0-beta01/AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] /Users/jair/.gradle/caches/transforms-3/6b971613ab4e1d37ed43cbe8f6386e42/transformed/constraintlayout-2.1.4/AndroidManifest.xml:9:5-20
@@ -104,37 +104,37 @@ MERGED from [androidx.startup:startup-runtime:1.1.1] /Users/jair/.gradle/caches/
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.8.0] /Users/jair/.gradle/caches/transforms-3/7a78cbec79366990acdd06cb9de4e370/transformed/core-1.8.0/AndroidManifest.xml:24:18-86
 	android:supportsRtl
-		ADDED from /Users/jair/Desktop/CSE118_Submission/Assignment2/app/src/main/AndroidManifest.xml:24:9-35
+		ADDED from /Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn2/Assignment2/app/src/main/AndroidManifest.xml:24:9-35
 	android:label
-		ADDED from /Users/jair/Desktop/CSE118_Submission/Assignment2/app/src/main/AndroidManifest.xml:22:9-41
+		ADDED from /Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn2/Assignment2/app/src/main/AndroidManifest.xml:22:9-41
 	android:roundIcon
-		ADDED from /Users/jair/Desktop/CSE118_Submission/Assignment2/app/src/main/AndroidManifest.xml:23:9-54
+		ADDED from /Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn2/Assignment2/app/src/main/AndroidManifest.xml:23:9-54
 	android:icon
-		ADDED from /Users/jair/Desktop/CSE118_Submission/Assignment2/app/src/main/AndroidManifest.xml:21:9-43
+		ADDED from /Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn2/Assignment2/app/src/main/AndroidManifest.xml:21:9-43
 	android:allowBackup
-		ADDED from /Users/jair/Desktop/CSE118_Submission/Assignment2/app/src/main/AndroidManifest.xml:20:9-35
+		ADDED from /Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn2/Assignment2/app/src/main/AndroidManifest.xml:20:9-35
 	android:theme
-		ADDED from /Users/jair/Desktop/CSE118_Submission/Assignment2/app/src/main/AndroidManifest.xml:25:9-49
+		ADDED from /Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn2/Assignment2/app/src/main/AndroidManifest.xml:25:9-49
 activity#edu.ucsc.cse118.assignment2.MainActivity
-ADDED from /Users/jair/Desktop/CSE118_Submission/Assignment2/app/src/main/AndroidManifest.xml:26:9-33:20
+ADDED from /Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn2/Assignment2/app/src/main/AndroidManifest.xml:26:9-33:20
 	android:exported
-		ADDED from /Users/jair/Desktop/CSE118_Submission/Assignment2/app/src/main/AndroidManifest.xml:28:13-36
+		ADDED from /Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn2/Assignment2/app/src/main/AndroidManifest.xml:28:13-36
 	android:name
-		ADDED from /Users/jair/Desktop/CSE118_Submission/Assignment2/app/src/main/AndroidManifest.xml:27:13-68
+		ADDED from /Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn2/Assignment2/app/src/main/AndroidManifest.xml:27:13-68
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from /Users/jair/Desktop/CSE118_Submission/Assignment2/app/src/main/AndroidManifest.xml:29:13-32:29
+ADDED from /Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn2/Assignment2/app/src/main/AndroidManifest.xml:29:13-32:29
 action#android.intent.action.MAIN
-ADDED from /Users/jair/Desktop/CSE118_Submission/Assignment2/app/src/main/AndroidManifest.xml:30:17-69
+ADDED from /Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn2/Assignment2/app/src/main/AndroidManifest.xml:30:17-69
 	android:name
-		ADDED from /Users/jair/Desktop/CSE118_Submission/Assignment2/app/src/main/AndroidManifest.xml:30:25-66
+		ADDED from /Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn2/Assignment2/app/src/main/AndroidManifest.xml:30:25-66
 category#android.intent.category.LAUNCHER
-ADDED from /Users/jair/Desktop/CSE118_Submission/Assignment2/app/src/main/AndroidManifest.xml:31:17-77
+ADDED from /Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn2/Assignment2/app/src/main/AndroidManifest.xml:31:17-77
 	android:name
-		ADDED from /Users/jair/Desktop/CSE118_Submission/Assignment2/app/src/main/AndroidManifest.xml:31:27-74
+		ADDED from /Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn2/Assignment2/app/src/main/AndroidManifest.xml:31:27-74
 uses-sdk
-INJECTED from /Users/jair/Desktop/CSE118_Submission/Assignment2/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
-INJECTED from /Users/jair/Desktop/CSE118_Submission/Assignment2/app/src/main/AndroidManifest.xml
-INJECTED from /Users/jair/Desktop/CSE118_Submission/Assignment2/app/src/main/AndroidManifest.xml
+INJECTED from /Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn2/Assignment2/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn2/Assignment2/app/src/main/AndroidManifest.xml
+INJECTED from /Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn2/Assignment2/app/src/main/AndroidManifest.xml
 MERGED from [androidx.databinding:databinding-adapters:7.4.2] /Users/jair/.gradle/caches/transforms-3/9402975571cfb430a8896d6371e974e8/transformed/databinding-adapters-7.4.2/AndroidManifest.xml:5:5-44
 MERGED from [androidx.databinding:databinding-adapters:7.4.2] /Users/jair/.gradle/caches/transforms-3/9402975571cfb430a8896d6371e974e8/transformed/databinding-adapters-7.4.2/AndroidManifest.xml:5:5-44
 MERGED from [androidx.databinding:databinding-ktx:7.4.2] /Users/jair/.gradle/caches/transforms-3/39174d05bd32610420718cd7b4f467d1/transformed/jetified-databinding-ktx-7.4.2/AndroidManifest.xml:5:5-44
@@ -259,16 +259,16 @@ MERGED from [androidx.print:print:1.0.0] /Users/jair/.gradle/caches/transforms-3
 MERGED from [androidx.print:print:1.0.0] /Users/jair/.gradle/caches/transforms-3/4ddec08a633528d636c451590f7e1fe8/transformed/print-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.annotation:annotation-experimental:1.1.0] /Users/jair/.gradle/caches/transforms-3/5a8bb08104a3c32b2dc27bb7bc04fac7/transformed/jetified-annotation-experimental-1.1.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.annotation:annotation-experimental:1.1.0] /Users/jair/.gradle/caches/transforms-3/5a8bb08104a3c32b2dc27bb7bc04fac7/transformed/jetified-annotation-experimental-1.1.0/AndroidManifest.xml:20:5-22:41
-INJECTED from /Users/jair/Desktop/CSE118_Submission/Assignment2/app/src/main/AndroidManifest.xml
-INJECTED from /Users/jair/Desktop/CSE118_Submission/Assignment2/app/src/main/AndroidManifest.xml
+INJECTED from /Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn2/Assignment2/app/src/main/AndroidManifest.xml
+INJECTED from /Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn2/Assignment2/app/src/main/AndroidManifest.xml
 	android:targetSdkVersion
-		INJECTED from /Users/jair/Desktop/CSE118_Submission/Assignment2/app/src/main/AndroidManifest.xml
-		ADDED from /Users/jair/Desktop/CSE118_Submission/Assignment2/app/src/main/AndroidManifest.xml
-		INJECTED from /Users/jair/Desktop/CSE118_Submission/Assignment2/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn2/Assignment2/app/src/main/AndroidManifest.xml
+		ADDED from /Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn2/Assignment2/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn2/Assignment2/app/src/main/AndroidManifest.xml
 	android:minSdkVersion
-		INJECTED from /Users/jair/Desktop/CSE118_Submission/Assignment2/app/src/main/AndroidManifest.xml
-		ADDED from /Users/jair/Desktop/CSE118_Submission/Assignment2/app/src/main/AndroidManifest.xml
-		INJECTED from /Users/jair/Desktop/CSE118_Submission/Assignment2/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn2/Assignment2/app/src/main/AndroidManifest.xml
+		ADDED from /Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn2/Assignment2/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn2/Assignment2/app/src/main/AndroidManifest.xml
 uses-library#androidx.window.extensions
 ADDED from [androidx.window:window:1.0.0] /Users/jair/.gradle/caches/transforms-3/42af34351bf38e773bf359f92f6b8330/transformed/jetified-window-1.0.0/AndroidManifest.xml:25:9-27:40
 	android:required

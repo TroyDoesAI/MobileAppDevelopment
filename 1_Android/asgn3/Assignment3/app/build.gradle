@@ -69,6 +69,4 @@ dependencies {
     androidTestImplementation('com.adevinta.android:barista:4.3.0') {
         exclude group: 'org.jetbrains.kotlin'
     }
-    // Gson is a Java library that can be used to convert Java Objects into their JSON representation. It can also be used to convert a JSON string to an equivalent Java object. Gson can work with arbitrary Java objects including pre-existing objects that you do not have source-code of.
-    implementation 'com.google.code.gson:gson:2.8.9' // reference: https://github.com/google/gson
 }

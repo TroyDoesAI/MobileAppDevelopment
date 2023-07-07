@@ -5,13 +5,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import edu.ucsc.cse118.assignment3.data.Message
+import edu.ucsc.cse118.assignment3.data.DataClasses
 import java.text.SimpleDateFormat
 import java.util.Locale
 
 class MessageAdapter(
-    private val messages: List<Message>,
-    private val onMessageClicked: (Message) -> Unit
+    private val messages: List<DataClasses.Message>,
+    private val onMessageClicked: (DataClasses.Message) -> Unit
 ) : RecyclerView.Adapter<MessageAdapter.MessageViewHolder>() {
 
     // ViewHolder class to hold and manage the views for each item
@@ -21,7 +21,7 @@ class MessageAdapter(
         private val content: TextView = view.findViewById(R.id.content)
 
         // Binds data to the views and sets the click listener
-        fun bind(message: Message, onMessageClicked: (Message) -> Unit) {
+        fun bind(message: DataClasses.Message, onMessageClicked: (DataClasses.Message) -> Unit) {
             userName.text = message.user.name
 
             // Format the date string to the desired format

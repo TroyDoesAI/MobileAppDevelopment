@@ -5,18 +5,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import edu.ucsc.cse118.assignment3.data.Workspace
+import edu.ucsc.cse118.assignment3.data.DataClasses.Workspace
 import kotlin.reflect.KFunction1
 
 class WorkspaceAdapter(
     private val workspaces: List<Workspace>,
     private val listener: KFunction1<Workspace, Unit>
 ) : RecyclerView.Adapter<WorkspaceAdapter.WorkspaceViewHolder>() {
-
-    // Interface to handle click events on workspace items
-    interface WorkspaceClickListener {
-        fun onWorkspaceClicked(workspace: Workspace)
-    }
 
     inner class WorkspaceViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val name: TextView = view.findViewById(R.id.textView)
@@ -25,7 +20,7 @@ class WorkspaceAdapter(
         // Binds data to the views and sets the click listener
         fun bind(workspace: Workspace) {
             name.text = workspace.name
-            channelsTextView.text = "${workspace.channels} Channels"
+            channelsTextView.text = "${workspace.channels.size} Channels"
 
             // Set the click listener to trigger the specified function when an item is clicked
             itemView.setOnClickListener {

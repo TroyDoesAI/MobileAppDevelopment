@@ -8,10 +8,9 @@ import androidx.fragment.app.Fragment
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
-import com.google.gson.Gson
 import edu.ucsc.cse118.assignment3.channels.ChannelsFragment
 import edu.ucsc.cse118.assignment3.R
-import edu.ucsc.cse118.assignment3.data.Workspace
+import edu.ucsc.cse118.assignment3.data.DataClasses.Workspace
 import edu.ucsc.cse118.assignment3.WorkspaceAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 
@@ -38,10 +37,10 @@ class WorkspacesFragment : Fragment() {
         val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerview)
         recyclerView.layoutManager = LinearLayoutManager(context)
 
-        workspacesViewModel.workspacesLiveData.observe(viewLifecycleOwner) { workspaces ->
-            workspaceAdapter = WorkspaceAdapter(workspaces, ::onWorkspaceClicked)
+        workspacesViewModel.workspacesLiveData.observe(viewLifecycleOwner, { workspaces ->
+            workspaceAdapter = WorkspaceAdapter(workspaces, this::onWorkspaceClicked)
             recyclerView.adapter = workspaceAdapter
-        }
+        })
 
         workspacesViewModel.fetchWorkspaces()
     }
@@ -50,7 +49,7 @@ class WorkspacesFragment : Fragment() {
         val channelsFragment = ChannelsFragment()
 
         val args = Bundle()
-        val workspaceJson = Gson().toJson(workspace)
+        val workspaceJson = workspace.toJson()
 
         args.putString("workspace", workspaceJson)
         channelsFragment.arguments = args

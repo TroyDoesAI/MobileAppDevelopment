@@ -5,12 +5,12 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import edu.ucsc.cse118.assignment3.data.Workspace
+import edu.ucsc.cse118.assignment3.data.DataClasses
 import kotlinx.coroutines.launch
 
 class WorkspacesViewModel : ViewModel() {
-    private val _workspacesLiveData = MutableLiveData<List<Workspace>>()
-    val workspacesLiveData: LiveData<List<Workspace>> = _workspacesLiveData
+    private val _workspacesLiveData = MutableLiveData<List<DataClasses.Workspace>>()
+    val workspacesLiveData: LiveData<List<DataClasses.Workspace>> = _workspacesLiveData
 
     fun fetchWorkspaces() {
         viewModelScope.launch {

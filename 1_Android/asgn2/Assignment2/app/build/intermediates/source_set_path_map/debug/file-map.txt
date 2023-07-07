@@ -43,10 +43,10 @@ edu.ucsc.cse118.assignment2.app-jetified-lifecycle-runtime-ktx-2.5.1-41 /Users/j
 edu.ucsc.cse118.assignment2.app-jetified-lifecycle-livedata-core-ktx-2.5.1-42 /Users/jair/.gradle/caches/transforms-3/e65eed6cdba3c4359727c0ba4369433a/transformed/jetified-lifecycle-livedata-core-ktx-2.5.1/res
 edu.ucsc.cse118.assignment2.app-lifecycle-livedata-core-2.5.1-43 /Users/jair/.gradle/caches/transforms-3/f684b98078c7c794e93d6ed38ec83201/transformed/lifecycle-livedata-core-2.5.1/res
 edu.ucsc.cse118.assignment2.app-slidingpanelayout-1.2.0-44 /Users/jair/.gradle/caches/transforms-3/f98579fa52b831ae5771b50c6af2e88f/transformed/slidingpanelayout-1.2.0/res
-edu.ucsc.cse118.assignment2.app-resValues-45 /Users/jair/Desktop/CSE118_Submission/Assignment2/app/build/generated/res/resValues/debug
-edu.ucsc.cse118.assignment2.app-rs-46 /Users/jair/Desktop/CSE118_Submission/Assignment2/app/build/generated/res/rs/debug
-edu.ucsc.cse118.assignment2.app-mergeDebugResources-47 /Users/jair/Desktop/CSE118_Submission/Assignment2/app/build/intermediates/incremental/debug/mergeDebugResources/merged.dir
-edu.ucsc.cse118.assignment2.app-mergeDebugResources-48 /Users/jair/Desktop/CSE118_Submission/Assignment2/app/build/intermediates/incremental/debug/mergeDebugResources/stripped.dir
-edu.ucsc.cse118.assignment2.app-merged_res-49 /Users/jair/Desktop/CSE118_Submission/Assignment2/app/build/intermediates/merged_res/debug
-edu.ucsc.cse118.assignment2.app-debug-50 /Users/jair/Desktop/CSE118_Submission/Assignment2/app/src/debug/res
-edu.ucsc.cse118.assignment2.app-main-51 /Users/jair/Desktop/CSE118_Submission/Assignment2/app/src/main/res
+edu.ucsc.cse118.assignment2.app-resValues-45 /Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn2/Assignment2/app/build/generated/res/resValues/debug
+edu.ucsc.cse118.assignment2.app-rs-46 /Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn2/Assignment2/app/build/generated/res/rs/debug
+edu.ucsc.cse118.assignment2.app-mergeDebugResources-47 /Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn2/Assignment2/app/build/intermediates/incremental/debug/mergeDebugResources/merged.dir
+edu.ucsc.cse118.assignment2.app-mergeDebugResources-48 /Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn2/Assignment2/app/build/intermediates/incremental/debug/mergeDebugResources/stripped.dir
+edu.ucsc.cse118.assignment2.app-merged_res-49 /Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn2/Assignment2/app/build/intermediates/merged_res/debug
+edu.ucsc.cse118.assignment2.app-debug-50 /Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn2/Assignment2/app/src/debug/res
+edu.ucsc.cse118.assignment2.app-main-51 /Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn2/Assignment2/app/src/main/res

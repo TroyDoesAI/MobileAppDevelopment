@@ -9,18 +9,18 @@ import androidx.fragment.app.Fragment
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
-import com.google.gson.Gson
 import androidx.recyclerview.widget.LinearLayoutManager
 import edu.ucsc.cse118.assignment3.ChannelAdapter
 import edu.ucsc.cse118.assignment3.messages.MessagesFragment
 import edu.ucsc.cse118.assignment3.R
-import edu.ucsc.cse118.assignment3.data.Workspace
-import edu.ucsc.cse118.assignment3.data.Channel
+import edu.ucsc.cse118.assignment3.data.DataClasses
+import edu.ucsc.cse118.assignment3.data.DataClasses.Workspace
+import edu.ucsc.cse118.assignment3.data.DataClasses.Channel
 import kotlinx.coroutines.launch
+import org.json.JSONObject
 
 class ChannelsFragment : Fragment() {
     private lateinit var channelAdapter: ChannelAdapter
-    private lateinit var channels : List<Channel>
 
     // Called to create the view hierarchy associated with the fragment
     override fun onCreateView(
@@ -39,8 +39,9 @@ class ChannelsFragment : Fragment() {
             val workspaceJson = arguments?.getString("workspace")
 
             if (workspaceJson != null) {
-                val workspace: Workspace = Gson().fromJson(workspaceJson, Workspace::class.java)
-                channels = ApiHandler.getChannels(workspace.id)
+                val workspace: DataClasses.Workspace = DataClasses.Workspace.fromJson(workspaceJson)
+                // TODO Need to get channels from the server api call but not there yet.
+//                channels = ApiHandler.getChannels()
 
                 // Set the action bar title to the workspace name
                 (activity as AppCompatActivity).supportActionBar?.title = workspace.name
@@ -50,14 +51,14 @@ class ChannelsFragment : Fragment() {
                 recyclerView.layoutManager = LinearLayoutManager(context)
 
                 // Create an instance of the ChannelAdapter and set it as the adapter for the RecyclerView
-                channelAdapter = ChannelAdapter(channels, ::onChannelClicked)
+                channelAdapter = ChannelAdapter(workspace.channels, ::onChannelClicked)
                 recyclerView.adapter = channelAdapter
             }
         }
     }
 
     // Function to handle the click event on a channel item
-    fun onChannelClicked(channel: Channel) {
+    fun onChannelClicked(channel: DataClasses.Channel) {
         // Instantiate the new fragment
         val messagesFragment = MessagesFragment()
 
@@ -67,7 +68,7 @@ class ChannelsFragment : Fragment() {
         val args = Bundle()
 
         // Convert channel object to JSON
-        val channelJson = Gson().toJson(channel)
+        val channelJson = channel.toJson()
 
         // Add the channel JSON string to the arguments
         args.putString("channel", channelJson)

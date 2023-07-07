@@ -170,25 +170,6 @@
             "outputFile": "edu.ucsc.cse118.assignment2.app-merged_res-50:/values-night-v8_values-night-v8.arsc.flat",
             "map": [
                 {
-                    "source": "/Users/jair/Desktop/CSE118_Submission/Assignment2/app/src/main/res/values-night/themes.xml",
-                    "from": {
-                        "startLines": "18",
-                        "startColumns": "4",
-                        "startOffsets": "775",
-                        "endLines": "30",
-                        "endColumns": "12",
-                        "endOffsets": "1495"
-                    },
-                    "to": {
-                        "startLines": "9",
-                        "startColumns": "4",
-                        "startOffsets": "732",
-                        "endLines": "21",
-                        "endColumns": "12",
-                        "endOffsets": "1329"
-                    }
-                },
-                {
                     "source": "/Users/jair/.gradle/caches/transforms-3/27bceab93d141d4c8579ad9d270927a5/transformed/material-1.4.0-beta01/res/values-night-v8/values-night-v8.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24",
@@ -220,6 +201,25 @@
                         "startOffsets": "100,170,254,338,434,536,638,3196",
                         "endColumns": "69,83,83,95,101,101,93,88",
                         "endOffsets": "165,249,333,429,531,633,727,3280"
+                    }
+                },
+                {
+                    "source": "/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn2/Assignment2/app/src/main/res/values-night/themes.xml",
+                    "from": {
+                        "startLines": "18",
+                        "startColumns": "4",
+                        "startOffsets": "775",
+                        "endLines": "30",
+                        "endColumns": "12",
+                        "endOffsets": "1495"
+                    },
+                    "to": {
+                        "startLines": "9",
+                        "startColumns": "4",
+                        "startOffsets": "732",
+                        "endLines": "21",
+                        "endColumns": "12",
+                        "endOffsets": "1329"
                     }
                 }
             ]
@@ -4872,25 +4872,6 @@
                     }
                 },
                 {
-                    "source": "/Users/jair/Desktop/CSE118_Submission/Assignment2/app/src/main/res/values/themes.xml",
-                    "from": {
-                        "startLines": "18",
-                        "startColumns": "4",
-                        "startOffsets": "775",
-                        "endLines": "30",
-                        "endColumns": "12",
-                        "endOffsets": "1495"
-                    },
-                    "to": {
-                        "startLines": "3923",
-                        "startColumns": "4",
-                        "startOffsets": "253965",
-                        "endLines": "3935",
-                        "endColumns": "12",
-                        "endOffsets": "254562"
-                    }
-                },
-                {
                     "source": "/Users/jair/.gradle/caches/transforms-3/7a78cbec79366990acdd06cb9de4e370/transformed/core-1.8.0/res/values/values.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,89,90,94,95,96,97,103,113,146,167,200",
@@ -4948,23 +4929,6 @@
                     }
                 },
                 {
-                    "source": "/Users/jair/Desktop/CSE118_Submission/Assignment2/app/src/main/res/values/colors.xml",
-                    "from": {
-                        "startLines": "7,2,3,4,5,6,8",
-                        "startColumns": "4,4,4,4,4,4,4",
-                        "startOffsets": "286,55,102,149,196,241,328",
-                        "endColumns": "41,46,46,46,44,44,41",
-                        "endOffsets": "323,97,144,191,236,281,365"
-                    },
-                    "to": {
-                        "startLines": "507,595,596,597,608,609,612",
-                        "startColumns": "4,4,4,4,4,4,4",
-                        "startOffsets": "24309,30302,30349,30396,31140,31185,31351",
-                        "endColumns": "41,46,46,46,44,44,41",
-                        "endOffsets": "24346,30344,30391,30438,31180,31225,31388"
-                    }
-                },
-                {
                     "source": "/Users/jair/.gradle/caches/transforms-3/4a1a5a6819a500dbdf8b456c215a4fa2/transformed/coordinatorlayout-1.1.0/res/values/values.xml",
                     "from": {
                         "startLines": "2,3,6,16",
@@ -5015,6 +4979,23 @@
                         "startOffsets": "65720",
                         "endColumns": "59",
                         "endOffsets": "65775"
+                    }
+                },
+                {
+                    "source": "/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn2/Assignment2/app/src/main/res/values/colors.xml",
+                    "from": {
+                        "startLines": "7,2,3,4,5,6,8",
+                        "startColumns": "4,4,4,4,4,4,4",
+                        "startOffsets": "286,55,102,149,196,241,328",
+                        "endColumns": "41,46,46,46,44,44,41",
+                        "endOffsets": "323,97,144,191,236,281,365"
+                    },
+                    "to": {
+                        "startLines": "507,595,596,597,608,609,612",
+                        "startColumns": "4,4,4,4,4,4,4",
+                        "startOffsets": "24309,30302,30349,30396,31140,31185,31351",
+                        "endColumns": "41,46,46,46,44,44,41",
+                        "endOffsets": "24346,30344,30391,30438,31180,31225,31388"
                     }
                 },
                 {
@@ -5070,6 +5051,25 @@
                         "endLines": "1096,5268,8096,8102",
                         "endColumns": "52,24,24,24",
                         "endOffsets": "62989,338128,442626,442868"
+                    }
+                },
+                {
+                    "source": "/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn2/Assignment2/app/src/main/res/values/themes.xml",
+                    "from": {
+                        "startLines": "18",
+                        "startColumns": "4",
+                        "startOffsets": "775",
+                        "endLines": "30",
+                        "endColumns": "12",
+                        "endOffsets": "1495"
+                    },
+                    "to": {
+                        "startLines": "3923",
+                        "startColumns": "4",
+                        "startOffsets": "253965",
+                        "endLines": "3935",
+                        "endColumns": "12",
+                        "endOffsets": "254562"
                     }
                 },
                 {
@@ -5223,23 +5223,6 @@
                     }
                 },
                 {
-                    "source": "/Users/jair/Desktop/CSE118_Submission/Assignment2/app/src/main/res/values/strings.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "56",
-                        "endOffsets": "107"
-                    },
-                    "to": {
-                        "startLines": "1215",
-                        "startColumns": "4",
-                        "startOffsets": "70058",
-                        "endColumns": "56",
-                        "endOffsets": "70110"
-                    }
-                },
-                {
                     "source": "/Users/jair/.gradle/caches/transforms-3/1310be0564d68a8614c17515cf0c6951/transformed/navigation-ui-2.5.2/res/values/values.xml",
                     "from": {
                         "startLines": "2,3,4",
@@ -5273,6 +5256,23 @@
                         "endLines": "9171",
                         "endColumns": "24",
                         "endOffsets": "480691"
+                    }
+                },
+                {
+                    "source": "/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn2/Assignment2/app/src/main/res/values/strings.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "56",
+                        "endOffsets": "107"
+                    },
+                    "to": {
+                        "startLines": "1215",
+                        "startColumns": "4",
+                        "startOffsets": "70058",
+                        "endColumns": "56",
+                        "endOffsets": "70110"
                     }
                 },
                 {

@@ -1,5 +1,5 @@
-import edu.ucsc.cse118.assignment3.data.Channel
-import edu.ucsc.cse118.assignment3.data.Workspace
+import edu.ucsc.cse118.assignment3.data.DataClasses.Channel
+import edu.ucsc.cse118.assignment3.data.DataClasses.Workspace
 import edu.ucsc.cse118.assignment3.model.SharedViewModel.Companion.member
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext

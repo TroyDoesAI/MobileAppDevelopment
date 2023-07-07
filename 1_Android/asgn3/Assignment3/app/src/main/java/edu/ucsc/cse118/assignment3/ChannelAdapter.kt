@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import edu.ucsc.cse118.assignment3.data.Channel
+import edu.ucsc.cse118.assignment3.data.DataClasses.Channel
 
 class ChannelAdapter(
     private val channels : List<Channel>,
