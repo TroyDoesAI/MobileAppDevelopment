@@ -23,15 +23,6 @@ class DataClasses {
             val jsonObject = JSONObject()
             jsonObject.put("name", name)
             jsonObject.put("id", id)
-            /*
-            var channelString = "channel"
-            channelString = if (channels == 1)
-                "channel"
-            else
-                "channels"
-
-            jsonObject.put(channelString, channels)
-             */
             jsonObject.put("channels", channels)
             return jsonObject.toString()
         }
@@ -106,5 +97,31 @@ class DataClasses {
             return jsonObject.toString()
         }
     }
+
+    //TODO EXperimental code to get name of user
+    @Serializable
+    data class Member(
+        val id: String,
+        val name: String
+    ) {
+        companion object {
+            fun fromJson(json: String): Member {
+                val jsonObject = JSONObject(json)
+                return Member(jsonObject.getString("id"), jsonObject.getString("name"))
+            }
+        }
+
+        fun toJson(): String {
+            val jsonObject = JSONObject()
+            jsonObject.put("id", id)
+            jsonObject.put("name", name)
+            return jsonObject.toString()
+        }
+    }
+
+
+
+
+
 
 }

@@ -18,7 +18,8 @@ import kotlinx.coroutines.launch
 
 class MessagesFragment : Fragment() {
     private lateinit var messageAdapter: MessageAdapter
-    private val coroutineScope = CoroutineScope(Dispatchers.Main)
+    private val uiScope = CoroutineScope(Dispatchers.Main)
+    private val bgScope = CoroutineScope(Dispatchers.IO)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,47 +30,65 @@ class MessagesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        var channel: DataClasses.Channel? = null
+        var channelName: String?
 
-        coroutineScope.launch {
+        bgScope.launch {
+//            var messages: List<DataClasses.Message> = listOf()
             val channelJson = arguments?.getString("channel") // Get the channel JSON string from the arguments
             if (channelJson != null) {
-                val channel = DataClasses.Channel.fromJson(channelJson) // Convert JSON string back to Channel object
-                val messages = ApiHandler.getMessages(channel.id) // Get the messages for the channel
+                channel = DataClasses.Channel.fromJson(channelJson) // Convert JSON string back to Channel object
+                if (channel != null) {
+                    // messages = ApiHandler.getMessages(channel!!.id) // Get the messages for the channel
+                    val messages = ApiHandler.getMessages(channel!!.id) // Get the messages for the channel
+                    val members = messages.map {
+                        // Fetch member data for each message
+                        val member = ApiHandler.getMemberById(it.member)
+                        it to member
+                    }
+                    uiScope.launch {
+                        // Find the RecyclerView in the layout and set its layout manager
+                        val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerview)
+                        recyclerView.layoutManager = LinearLayoutManager(context)
+                        messageAdapter = MessageAdapter(members, ::onMessageClicked)
+                        recyclerView.adapter = messageAdapter
 
-                messageAdapter = MessageAdapter(messages, ::onMessageClicked)
-                // Find the RecyclerView in the layout and set its layout manager
-                val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerview)
-                recyclerView.layoutManager = LinearLayoutManager(context)
-                recyclerView.adapter = messageAdapter
+                        (activity as AppCompatActivity).supportActionBar?.title = "${channel?.name ?: "Unknown Channel"}" // handle null case
+                    }
+                }
+//                channelName = channel!!.name
+//                println("\n\n")
+//                println(channelName)
 
-                // Set the ActionBar title here
-                (activity as AppCompatActivity).supportActionBar?.title = "${channel.name ?: "Unknown Channel"}" // handle null case
             }
+//            messageAdapter = MessageAdapter(messages, ::onMessageClicked)
+//            // Find the RecyclerView in the layout and set its layout manager
+//            val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerview)
+//            recyclerView.layoutManager = LinearLayoutManager(context)
+//            recyclerView.adapter = messageAdapter
         }
+
+//        (activity as AppCompatActivity).supportActionBar?.title = "${channel?.name ?: "Unknown Channel"}" // handle null case
     }
 
-    private fun onMessageClicked(message: DataClasses.Message) {
-        // Instantiate the new fragment
+    private fun onMessageClicked(messageMemberPair: Pair<DataClasses.Message, DataClasses.Member>) {
         val messageFragment = MessageFragment()
 
-        // Create a new bundle to hold the arguments
         val args = Bundle()
+        val messageJson = messageMemberPair.first.toJson()
+        val memberJson = messageMemberPair.second.toJson() // serialize the member to JSON as well
 
-        // Convert message object to JSON
-        val messageJson = message.toJson()
-
-        // Add the message JSON string to the arguments
         args.putString("message", messageJson)
+        args.putString("member", memberJson) // pass the member as an argument
 
-        // Set the arguments for the fragment
         messageFragment.arguments = args
 
-        // Replace the current fragment with the new one
         requireActivity().supportFragmentManager.beginTransaction()
             .replace(R.id.fragmentContainerView, messageFragment)
             .addToBackStack(null)
             .commit()
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()

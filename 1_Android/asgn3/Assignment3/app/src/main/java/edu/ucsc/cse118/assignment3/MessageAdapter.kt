@@ -9,21 +9,22 @@ import edu.ucsc.cse118.assignment3.data.DataClasses
 import java.text.SimpleDateFormat
 import java.util.Locale
 
+
 class MessageAdapter(
-    private val messages: List<DataClasses.Message>,
-    private val onMessageClicked: (DataClasses.Message) -> Unit
+    private val messageMembers: List<Pair<DataClasses.Message, DataClasses.Member>>,
+    private val onMessageClicked: (Pair<DataClasses.Message, DataClasses.Member>) -> Unit
 ) : RecyclerView.Adapter<MessageAdapter.MessageViewHolder>() {
 
     // ViewHolder class to hold and manage the views for each item
     class MessageViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        private val memberId: TextView = view.findViewById(R.id.userName)
+        private val userName: TextView = view.findViewById(R.id.userName)
         private val posted: TextView = view.findViewById(R.id.date)
         private val content: TextView = view.findViewById(R.id.content)
 
         // Binds data to the views and sets the click listener
-        // Binds data to the views and sets the click listener
-        fun bind(message: DataClasses.Message, onMessageClicked: (DataClasses.Message) -> Unit) {
-            memberId.text = message.member
+        fun bind(messageMember: Pair<DataClasses.Message, DataClasses.Member>, onMessageClicked: (Pair<DataClasses.Message, DataClasses.Member>) -> Unit) {
+            val (message, member) = messageMember
+            userName.text = member.name
 
             // Format the posted string to the desired format
             val originalFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.US)
@@ -36,7 +37,7 @@ class MessageAdapter(
 
             // Set the click listener to trigger the specified function when an item is clicked
             itemView.setOnClickListener {
-                onMessageClicked(message)
+                onMessageClicked(messageMember)
             }
         }
 
@@ -53,12 +54,12 @@ class MessageAdapter(
 
     // Called to display the data at the specified position
     override fun onBindViewHolder(holder: MessageViewHolder, position: Int) {
-        // Bind the message at the current position to the ViewHolder
-        holder.bind(messages[position], onMessageClicked)
+        // Bind the message and member at the current position to the ViewHolder
+        holder.bind(messageMembers[position], onMessageClicked)
     }
 
     // Returns the total number of items in the data set
     override fun getItemCount(): Int {
-        return messages.size
+        return messageMembers.size
     }
 }

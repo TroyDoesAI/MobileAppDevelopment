@@ -2,6 +2,7 @@ import edu.ucsc.cse118.assignment3.data.DataClasses.Channel
 import edu.ucsc.cse118.assignment3.data.DataClasses.Workspace
 import edu.ucsc.cse118.assignment3.data.DataClasses.Message
 import edu.ucsc.cse118.assignment3.model.SharedViewModel.Companion.member
+import edu.ucsc.cse118.assignment3.data.DataClasses.Member
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.decodeFromString
@@ -72,4 +73,31 @@ object ApiHandler {
             }
         }
     }
+
+    //TODO EXperimental code to get name of user
+    suspend fun getMembers(): List<Member> {
+        return withContext(Dispatchers.IO) {
+            val responsePair = makeHttpRequest("GET", "https://cse118.com/api/v2/member")
+
+            if (responsePair.second == HttpURLConnection.HTTP_OK) {
+                val members = Json.decodeFromString<List<Member>>(responsePair.first.toString())
+                members
+            }
+            else {
+                throw Exception("Error response code: ${responsePair.second}")
+            }
+        }
+    }
+
+    suspend fun getMemberById(memberId: String): Member {
+        return withContext(Dispatchers.IO) {
+            val allMembers = getMembers()
+            val member = allMembers.find { it.id == memberId }
+                ?: throw Exception("Member not found with id: $memberId")
+            member
+        }
+    }
+
+
+
 }

@@ -9,10 +9,15 @@ import androidx.fragment.app.Fragment
 import androidx.appcompat.app.AppCompatActivity
 import edu.ucsc.cse118.assignment3.R
 import edu.ucsc.cse118.assignment3.data.DataClasses
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
 
 class MessageFragment : Fragment() {
+    private val uiScope = CoroutineScope(Dispatchers.Main)
+    private val bgScope = CoroutineScope(Dispatchers.IO)
 
     // Called to create the view hierarchy associated with the fragment
     override fun onCreateView(
@@ -32,21 +37,29 @@ class MessageFragment : Fragment() {
             // Convert JSON string back to Message object
             val message: DataClasses.Message = DataClasses.Message.fromJson(messageJson)
 
-            // Set the action bar title to the user's name
-            (activity as AppCompatActivity).supportActionBar?.title = message.member
+            // Fetch the member name in the background
+            bgScope.launch {
+                val member = ApiHandler.getMemberById(message.member)
 
-            // Find the date and content TextViews in the layout
-            val dateTextView: TextView = view.findViewById(R.id.date)
-            val contentTextView: TextView = view.findViewById(R.id.content)
+                // Update the UI on the main thread
+                uiScope.launch {
+                    // Set the action bar title to the user's name
+                    (activity as AppCompatActivity).supportActionBar?.title = member.name
 
-            // Format the date string to the desired format
-            val originalFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.US)
-            val targetFormat = SimpleDateFormat("MMM d, yyyy, hh:mm:ss a", Locale.US)
-            val formattedDate = targetFormat.format(originalFormat.parse(message.posted))
+                    // Find the date and content TextViews in the layout
+                    val dateTextView: TextView = view.findViewById(R.id.date)
+                    val contentTextView: TextView = view.findViewById(R.id.content)
 
-            // Set the formatted date and content text to the TextViews
-            dateTextView.text = formattedDate
-            contentTextView.text = message.content
+                    // Format the date string to the desired format
+                    val originalFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.US)
+                    val targetFormat = SimpleDateFormat("MMM d, yyyy, hh:mm:ss a", Locale.US)
+                    val formattedDate = targetFormat.format(originalFormat.parse(message.posted))
+
+                    // Set the formatted date and content text to the TextViews
+                    dateTextView.text = formattedDate
+                    contentTextView.text = message.content
+                }
+            }
         }
     }
 
