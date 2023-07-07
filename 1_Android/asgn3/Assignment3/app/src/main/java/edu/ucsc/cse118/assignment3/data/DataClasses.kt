@@ -62,22 +62,22 @@ class DataClasses {
     @Serializable
     data class Message(
         val id: String,
-        val name: String,
-        val date: String,
+        val member: String,
+        val posted: String,
         val content: String
     ) {
         companion object {
             fun fromJson(json: String): Message {
                 val jsonObject = JSONObject(json)
-                return Message(jsonObject.getString("id"), jsonObject.getString("user"), jsonObject.getString("date"), jsonObject.getString("content"))
+                return Message(jsonObject.getString("id"), jsonObject.getString("member"), jsonObject.getString("posted"), jsonObject.getString("content"))
             }
         }
 
         fun toJson(): String {
             val jsonObject = JSONObject()
             jsonObject.put("id", id)
-            jsonObject.put("name", name)
-            jsonObject.put("date", date)
+            jsonObject.put("member", member)
+            jsonObject.put("posted", posted)
             jsonObject.put("content", content)
             return jsonObject.toString()
         }

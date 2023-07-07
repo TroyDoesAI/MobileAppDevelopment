@@ -33,7 +33,7 @@ class MessageFragment : Fragment() {
             val message: DataClasses.Message = DataClasses.Message.fromJson(messageJson)
 
             // Set the action bar title to the user's name
-            (activity as AppCompatActivity).supportActionBar?.title = message.name
+            (activity as AppCompatActivity).supportActionBar?.title = message.member
 
             // Find the date and content TextViews in the layout
             val dateTextView: TextView = view.findViewById(R.id.date)
@@ -42,13 +42,12 @@ class MessageFragment : Fragment() {
             // Format the date string to the desired format
             val originalFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.US)
             val targetFormat = SimpleDateFormat("MMM d, yyyy, hh:mm:ss a", Locale.US)
-            val formattedDate = targetFormat.format(originalFormat.parse(message.date))
+            val formattedDate = targetFormat.format(originalFormat.parse(message.posted))
 
             // Set the formatted date and content text to the TextViews
             dateTextView.text = formattedDate
             contentTextView.text = message.content
         }
-
     }
 
     // Called when the view hierarchy associated with the fragment is being removed
@@ -56,6 +55,5 @@ class MessageFragment : Fragment() {
         super.onDestroyView()
         // Show the "Up" button in the action bar
         (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
     }
 }

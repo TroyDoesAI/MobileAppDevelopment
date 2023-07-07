@@ -16,19 +16,20 @@ class MessageAdapter(
 
     // ViewHolder class to hold and manage the views for each item
     class MessageViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        private val userName: TextView = view.findViewById(R.id.userName)
-        private val date: TextView = view.findViewById(R.id.date)
+        private val memberId: TextView = view.findViewById(R.id.userName)
+        private val posted: TextView = view.findViewById(R.id.date)
         private val content: TextView = view.findViewById(R.id.content)
 
         // Binds data to the views and sets the click listener
+        // Binds data to the views and sets the click listener
         fun bind(message: DataClasses.Message, onMessageClicked: (DataClasses.Message) -> Unit) {
-            userName.text = message.user.name
+            memberId.text = message.member
 
-            // Format the date string to the desired format
+            // Format the posted string to the desired format
             val originalFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.US)
             val targetFormat = SimpleDateFormat("MMM d, yyyy, hh:mm:ss a", Locale.US)
-            val formattedDate = targetFormat.format(originalFormat.parse(message.date))
-            date.text = formattedDate
+            val formattedPosted = targetFormat.format(originalFormat.parse(message.posted))
+            posted.text = formattedPosted
 
             // Display only the first 80 characters of the content
             content.text = message.content.take(80)
@@ -38,6 +39,7 @@ class MessageAdapter(
                 onMessageClicked(message)
             }
         }
+
     }
 
     // Called when RecyclerView needs a new ViewHolder
