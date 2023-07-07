@@ -67,7 +67,7 @@ class MessageFragment : Fragment() {
     // Called when the view hierarchy associated with the fragment is being removed
     override fun onDestroyView() {
         super.onDestroyView()
-        // Show the "Up" button in the action bar
+        // Show the "Back" button in the action bar
         (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 }

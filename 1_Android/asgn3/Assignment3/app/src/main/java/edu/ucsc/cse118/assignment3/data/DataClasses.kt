@@ -18,7 +18,6 @@ class DataClasses {
                 return Workspace(jsonObject.getString("name"), jsonObject.getString("id"), jsonObject.getInt("channels"))
             }
         }
-
         fun toJson(): String {
             val jsonObject = JSONObject()
             jsonObject.put("name", name)
@@ -40,7 +39,6 @@ class DataClasses {
                 return Channel(jsonObject.getString("name"), jsonObject.getString("id"), jsonObject.getInt("messages"))
             }
         }
-
         fun toJson(): String {
             val jsonObject = JSONObject()
             jsonObject.put("name", name)
@@ -63,7 +61,6 @@ class DataClasses {
                 return Message(jsonObject.getString("id"), jsonObject.getString("member"), jsonObject.getString("posted"), jsonObject.getString("content"))
             }
         }
-
         fun toJson(): String {
             val jsonObject = JSONObject()
             jsonObject.put("id", id)
@@ -88,7 +85,6 @@ class DataClasses {
                 )
             }
         }
-
         fun toJson(): String {
             val jsonObject = JSONObject()
             jsonObject.put("name", name)
@@ -109,7 +105,6 @@ class DataClasses {
                 return Member(jsonObject.getString("id"), jsonObject.getString("name"))
             }
         }
-
         fun toJson(): String {
             val jsonObject = JSONObject()
             jsonObject.put("id", id)

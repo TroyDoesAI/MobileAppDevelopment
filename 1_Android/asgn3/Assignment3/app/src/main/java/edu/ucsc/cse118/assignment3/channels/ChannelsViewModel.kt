@@ -18,8 +18,7 @@ class ChannelsViewModel : ViewModel() {
             try {
                 val channelList = ApiHandler.getChannels(workspaceId)
                 _channelsLiveData.value = channelList
-            } catch (e: Exception) {
-                // Log the exception
+            } catch (e: Exception) { // Log the exception
                 Log.e("ChannelsViewModel", "Error fetching channels", e)
             }
         }

@@ -12,9 +12,16 @@ import kotlinx.serialization.json.Json
 import java.net.URL
 import javax.net.ssl.HttpsURLConnection
 
+@Serializable
+data class Member(
+    val id: String,
+    val name: String,
+    val role: String,
+    val accessToken: String
+)
+
 class SharedViewModel : ViewModel() {
     private val _loginEvent = MutableLiveData<ViewModelEvent<Boolean>>()
-//    val loginEvent: LiveData<ViewModelEvent<Boolean>> get() = _loginEvent
     val loginEvent: LiveData<ViewModelEvent<Boolean>> get() = _loginEvent
     private val _navigateToWorkspacesEvent = MutableLiveData<ViewModelEvent<Unit>>()
     val navigateToWorkspacesEvent: LiveData<ViewModelEvent<Unit>> get() = _navigateToWorkspacesEvent
@@ -62,11 +69,3 @@ class MemberRepository {
         }
     }
 }
-
-@Serializable
-data class Member(
-    val id: String,
-    val name: String,
-    val role: String,
-    val accessToken: String
-)

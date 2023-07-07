@@ -16,17 +16,14 @@ import edu.ucsc.cse118.assignment3.data.DataClasses
 class ChannelsFragment : Fragment() {
     private lateinit var channelAdapter: ChannelAdapter
     private lateinit var channelsViewModel: ChannelsViewModel
-    private var workspaceJson: String? = null  // Declare workspaceJson here
+    private var workspaceJson: String? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Get the workspace JSON here
-        workspaceJson = arguments?.getString("workspace")
-
-        // Inflate the layout for the ChannelsFragment
-        return inflater.inflate(R.layout.fragment_channels, container, false)
+        workspaceJson = arguments?.getString("workspace") // Get the workspace JSON
+        return inflater.inflate(R.layout.fragment_channels, container, false) // Inflate the layout for the ChannelsFragment
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -61,22 +58,12 @@ class ChannelsFragment : Fragment() {
     }
 
     fun onChannelClicked(channel: DataClasses.Channel) {
-        // Instantiate the new fragment
-        val messagesFragment = MessagesFragment()
+        val messagesFragment = MessagesFragment() // Instantiate the new fragment
+        val args = Bundle() // Create a new bundle to hold the arguments
+        val channelJson = channel.toJson() // Convert channel object to JSON
 
-        print("channel: ${channel}")
-
-        // Create a new bundle to hold the arguments
-        val args = Bundle()
-
-        // Convert channel object to JSON
-        val channelJson = channel.toJson()
-
-        // Add the channel JSON string to the arguments
-        args.putString("channel", channelJson)
-
-        // Set the arguments for the fragment
-        messagesFragment.arguments = args
+        args.putString("channel", channelJson) // Add the channel JSON string to the arguments
+        messagesFragment.arguments = args // Set the arguments for the fragment
 
         // Replace the current fragment with the new one
         requireActivity().supportFragmentManager.beginTransaction()

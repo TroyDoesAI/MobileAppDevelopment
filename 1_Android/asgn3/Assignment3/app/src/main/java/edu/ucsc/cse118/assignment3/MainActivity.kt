@@ -34,26 +34,20 @@ class MainActivity : AppCompatActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_main)
-
-    // If the activity is created for the first time (not due to configuration changes),
-    // show the LoginFragment
-    if (savedInstanceState == null) {
+    if (savedInstanceState == null) { // If the activity is created for the first time, show the LoginFragment
       showLoginFragment()
     }
   }
 
-  // Function to show the LoginFragment
-  fun showLoginFragment() {
+  private fun showLoginFragment() { // Function to show the LoginFragment
     supportFragmentManager.commit {
       replace(R.id.fragmentContainerView, LoginFragment::class.java, null)
-      setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out) // Optional animation
     }
     supportActionBar?.title = "CSE118 Assignment 3"
     supportActionBar?.setDisplayHomeAsUpEnabled(false)
   }
-
-  // Function to navigate to the WorkspacesFragment
-  fun navigateToWorkspaces() {
+  
+  fun navigateToWorkspaces() { // Function to navigate to the WorkspacesFragment
     supportFragmentManager.commit {
       replace(R.id.fragmentContainerView, WorkspacesFragment::class.java, null)
       addToBackStack(null)
@@ -61,12 +55,5 @@ class MainActivity : AppCompatActivity() {
     }
     supportActionBar?.title = "Workspaces"
     supportActionBar?.setDisplayHomeAsUpEnabled(true)
-  }
-
-  // Called when the user presses the "Up" button in the action bar
-  override fun onSupportNavigateUp(): Boolean {
-    supportFragmentManager.popBackStack()
-    supportActionBar?.setDisplayHomeAsUpEnabled(false)
-    return true
   }
 }
