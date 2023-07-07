@@ -36,21 +36,11 @@ class LoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         mainActivity = activity as MainActivity
-
         emailInput = view.findViewById(R.id.email)
         passwordInput = view.findViewById(R.id.password)
         buttonLogin = view.findViewById(R.id.login)
-
-        // TODO REMOVE THIS SECTION
-        // Assign hardcoded login credentials
-//        emailInput.setText("traschul@ucsc.edu")
-//        passwordInput.setText("1815098")
-        // TODO REMOVE THIS SECTION
-
-        // Disable the login button by default
-        buttonLogin.isEnabled = false
+        buttonLogin.isEnabled = false // Disable the login button by default
 
         val watcher = object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
@@ -67,7 +57,6 @@ class LoginFragment : Fragment() {
 
         emailInput.addTextChangedListener(watcher)
         passwordInput.addTextChangedListener(watcher)
-
         buttonLogin.setOnClickListener {
             var email = emailInput.text.toString()
             var password = passwordInput.text.toString()
@@ -83,12 +72,16 @@ class LoginFragment : Fragment() {
 
         sharedViewModel.loginEvent.observe(viewLifecycleOwner, Observer { event ->
             event.getContentIfNotHandled()?.let { isLoggedIn ->
-                if (isLoggedIn) {
-                    mainActivity.navigateToWorkspaces()
-                } else { // Show error message in the password input field
+                if (!isLoggedIn) { // Show error message in the password input field
                     passwordInput.text =
                         Editable.Factory.getInstance().newEditable("Failed to login : HTTP 401")
                 }
+            }
+        })
+
+        sharedViewModel.navigateToWorkspacesEvent.observe(viewLifecycleOwner, Observer { event ->
+            event.getContentIfNotHandled()?.let {
+                mainActivity.navigateToWorkspaces()
             }
         })
     }

@@ -14,7 +14,10 @@ import javax.net.ssl.HttpsURLConnection
 
 class SharedViewModel : ViewModel() {
     private val _loginEvent = MutableLiveData<ViewModelEvent<Boolean>>()
+//    val loginEvent: LiveData<ViewModelEvent<Boolean>> get() = _loginEvent
     val loginEvent: LiveData<ViewModelEvent<Boolean>> get() = _loginEvent
+    private val _navigateToWorkspacesEvent = MutableLiveData<ViewModelEvent<Unit>>()
+    val navigateToWorkspacesEvent: LiveData<ViewModelEvent<Unit>> get() = _navigateToWorkspacesEvent
 
     companion object{
         var member: Member? = null
@@ -26,6 +29,7 @@ class SharedViewModel : ViewModel() {
                 val memberRepository = MemberRepository()
                 member = memberRepository.login(email, password)
                 _loginEvent.postValue(ViewModelEvent(true))
+                _navigateToWorkspacesEvent.postValue(ViewModelEvent(Unit)) // Navigation event
             } catch (e: Exception) {
                 _loginEvent.postValue(ViewModelEvent(false))
             }
