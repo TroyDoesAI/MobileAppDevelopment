@@ -13,6 +13,7 @@ import edu.ucsc.cse118.assignment3.data.DataClasses
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -52,9 +53,29 @@ class MessageFragment : Fragment() {
                     val contentTextView: TextView = view.findViewById(R.id.content)
 
                     // Format the date string to the desired format
-                    val originalFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.US)
+                    val formats = arrayOf(
+                        SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.US),
+                        SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.US)
+                    )
+
+                    var date: Date? = null
+
+                    for (format in formats) {
+                        try {
+                            date = format.parse(message.posted)
+                            break
+                        } catch (e: ParseException) {
+                            // Date string doesn't match this format, try the next one
+                        }
+                    }
+
                     val targetFormat = SimpleDateFormat("MMM d, yyyy, hh:mm:ss a", Locale.US)
-                    val formattedDate = targetFormat.format(originalFormat.parse(message.posted))
+                    val formattedDate = if (date != null) {
+                        targetFormat.format(date)
+                    } else {
+                        // Handle the case when the date couldn't be parsed
+                        "Unknown Date"
+                    }
 
                     // Set the formatted date and content text to the TextViews
                     dateTextView.text = formattedDate

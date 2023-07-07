@@ -7,9 +7,9 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import edu.ucsc.cse118.assignment3.R
 import edu.ucsc.cse118.assignment3.data.DataClasses
+import java.text.ParseException
 import java.text.SimpleDateFormat
-import java.util.Locale
-
+import java.util.*
 
 class MessageAdapter(
     private val messageMembers: List<Pair<DataClasses.Message, DataClasses.Member>>,
@@ -27,10 +27,19 @@ class MessageAdapter(
             val (message, member) = messageMember
             userName.text = member.name
 
-            // Format the posted string to the desired format
-            val originalFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.US)
-            val targetFormat = SimpleDateFormat("MMM d, yyyy, hh:mm:ss a", Locale.US)
-            val formattedPosted = targetFormat.format(originalFormat.parse(message.posted))
+            val format = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.US)
+
+            val formattedPosted = try {
+                val date = format.parse(message.posted)
+                val targetFormat = SimpleDateFormat("MMM d, yyyy, hh:mm:ss a", Locale.US)
+                targetFormat.format(date)
+            } catch (e: ParseException) {
+                val fallbackFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.US)
+                val date = fallbackFormat.parse(message.posted)
+                val targetFormat = SimpleDateFormat("MMM d, yyyy, hh:mm:ss a", Locale.US)
+                targetFormat.format(date)
+            }
+
             posted.text = formattedPosted
 
             // Display only the first 80 characters of the content
@@ -41,7 +50,6 @@ class MessageAdapter(
                 onMessageClicked(messageMember)
             }
         }
-
     }
 
     // Called when RecyclerView needs a new ViewHolder

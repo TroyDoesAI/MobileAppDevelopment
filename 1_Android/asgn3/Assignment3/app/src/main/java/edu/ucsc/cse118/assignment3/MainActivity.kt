@@ -56,4 +56,11 @@ class MainActivity : AppCompatActivity() {
     supportActionBar?.title = "Workspaces"
     supportActionBar?.setDisplayHomeAsUpEnabled(true)
   }
+
+  // Called when the user presses the "Up" button in the action bar
+  override fun onSupportNavigateUp(): Boolean {
+    supportFragmentManager.popBackStack()
+    supportActionBar?.setDisplayHomeAsUpEnabled(false)
+    return true
+  }
 }
