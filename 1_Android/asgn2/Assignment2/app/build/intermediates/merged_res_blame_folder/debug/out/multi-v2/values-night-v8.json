@@ -4,6 +4,25 @@
             "outputFile": "edu.ucsc.cse118.assignment2.app-mergeDebugResources-48:/values-night-v8/values-night-v8.xml",
             "map": [
                 {
+                    "source": "/Users/jair/Desktop/CSE118_Submission/Assignment2/app/src/main/res/values-night/themes.xml",
+                    "from": {
+                        "startLines": "18",
+                        "startColumns": "4",
+                        "startOffsets": "775",
+                        "endLines": "30",
+                        "endColumns": "12",
+                        "endOffsets": "1495"
+                    },
+                    "to": {
+                        "startLines": "9",
+                        "startColumns": "4",
+                        "startOffsets": "732",
+                        "endLines": "21",
+                        "endColumns": "12",
+                        "endOffsets": "1329"
+                    }
+                },
+                {
                     "source": "/Users/jair/.gradle/caches/transforms-3/27bceab93d141d4c8579ad9d270927a5/transformed/material-1.4.0-beta01/res/values-night-v8/values-night-v8.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24",
@@ -35,25 +54,6 @@
                         "startOffsets": "100,170,254,338,434,536,638,3196",
                         "endColumns": "69,83,83,95,101,101,93,88",
                         "endOffsets": "165,249,333,429,531,633,727,3280"
-                    }
-                },
-                {
-                    "source": "/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn2/Assignment2/app/src/main/res/values-night/themes.xml",
-                    "from": {
-                        "startLines": "18",
-                        "startColumns": "4",
-                        "startOffsets": "775",
-                        "endLines": "30",
-                        "endColumns": "12",
-                        "endOffsets": "1495"
-                    },
-                    "to": {
-                        "startLines": "9",
-                        "startColumns": "4",
-                        "startOffsets": "732",
-                        "endLines": "21",
-                        "endColumns": "12",
-                        "endOffsets": "1329"
                     }
                 }
             ]

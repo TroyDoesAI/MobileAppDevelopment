@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
-import com.google.gson.Gson
 import androidx.recyclerview.widget.LinearLayoutManager
 
 class MessagesFragment : Fragment() {
@@ -27,7 +26,7 @@ class MessagesFragment : Fragment() {
         val channelJson = arguments?.getString("channel")!!
 
         // Convert JSON string back to Channel object
-        val channel: DataClasses.Channel = Gson().fromJson(channelJson, DataClasses.Channel::class.java)
+        val channel: DataClasses.Channel = DataClasses.Channel.fromJson(channelJson)
 
         (activity as AppCompatActivity).supportActionBar?.title = channel.name
 
@@ -46,7 +45,7 @@ class MessagesFragment : Fragment() {
         val args = Bundle()
 
         // Convert message object to JSON
-        val messageJson = Gson().toJson(message)
+        val messageJson = message.toJson()
 
         // Add the message JSON string to the arguments
         args.putString("message", messageJson)
