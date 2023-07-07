@@ -20,32 +20,25 @@ import kotlinx.coroutines.launch
 class ChannelsFragment : Fragment() {
     private lateinit var channelAdapter: ChannelAdapter
     private val coroutineScope = CoroutineScope(Dispatchers.Main)
+    private var workspaceJson: String? = null  // Declare workspaceJson here
 
-    // Called to create the view hierarchy associated with the fragment
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Get the channel name
-        val workspaceJson = arguments?.getString("workspace")
-        if (workspaceJson != null) {
-            val workspace: DataClasses.Workspace = DataClasses.Workspace.fromJson(workspaceJson)
-            (requireActivity() as AppCompatActivity).supportActionBar?.title = workspace.name
-            (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        }
+        // Get the workspace JSON here
+        workspaceJson = arguments?.getString("workspace")
+
         // Inflate the layout for the ChannelsFragment
         return inflater.inflate(R.layout.fragment_channels, container, false)
     }
 
-    // Called immediately after onCreateView() has returned a view
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         coroutineScope.launch {
             var channels: List<DataClasses.Channel> = listOf()
-            val workspaceJson = arguments?.getString("workspace")
-            if (workspaceJson != null) {
-                val workspace: DataClasses.Workspace = DataClasses.Workspace.fromJson(workspaceJson)
+            workspaceJson?.let {
+                val workspace: DataClasses.Workspace = DataClasses.Workspace.fromJson(it)
                 channels = ApiHandler.getChannels(workspace.id)
             }
             channelAdapter = ChannelAdapter(channels, ::onChannelClicked)
@@ -56,7 +49,16 @@ class ChannelsFragment : Fragment() {
         }
     }
 
-    // Function to handle the click event on a channel item
+    override fun onResume() {
+        super.onResume()
+        // Get the workspace name
+        workspaceJson?.let {
+            val workspace: DataClasses.Workspace = DataClasses.Workspace.fromJson(it)
+            (activity as AppCompatActivity).supportActionBar?.title = workspace.name
+            (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        }
+    }
+
     fun onChannelClicked(channel: DataClasses.Channel) {
         // Instantiate the new fragment
         val messagesFragment = MessagesFragment()

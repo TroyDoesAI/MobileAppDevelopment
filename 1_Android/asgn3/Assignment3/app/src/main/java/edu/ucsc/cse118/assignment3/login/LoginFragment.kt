@@ -45,8 +45,8 @@ class LoginFragment : Fragment() {
 
         // TODO REMOVE THIS SECTION
         // Assign hardcoded login credentials
-//        emailInput.setText("traschul@ucsc.edu")
-//        passwordInput.setText("1815098")
+        emailInput.setText("traschul@ucsc.edu")
+        passwordInput.setText("1815098")
         // TODO REMOVE THIS SECTION
 
         // Disable the login button by default

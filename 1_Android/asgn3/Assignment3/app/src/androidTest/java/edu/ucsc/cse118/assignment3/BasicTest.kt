@@ -105,7 +105,7 @@ class BasicTest {
     typeTo(R.id.email, cruzid)
     typeTo(R.id.password, "wrong")
     clickOn("LOGIN")
-    waitForView(withText("Failed to login : HTTP 401"))
+    waitForView(withText("Failed to login : HTTP 401")) // TODO - Display this on bad login credentials
   }
   @Test
   fun name_in_header() {
