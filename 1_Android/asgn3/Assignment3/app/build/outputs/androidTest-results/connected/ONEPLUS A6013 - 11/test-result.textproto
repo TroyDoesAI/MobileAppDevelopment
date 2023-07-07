@@ -1,4 +1,4 @@
-# 2023-07-07T20:37:27.421Z:
+# 2023-07-07T20:54:52.117Z:
 test_suite_meta_data {
   scheduled_test_case_count: 16
 }
@@ -9,12 +9,12 @@ test_result {
     test_package: "edu.ucsc.cse118.assignment3"
     test_method: "login_button_enabled"
     start_time {
-      seconds: 1688762223
-      nanos: 856000000
+      seconds: 1688763222
+      nanos: 991000000
     }
     end_time {
-      seconds: 1688762226
-      nanos: 166000000
+      seconds: 1688763225
+      nanos: 253000000
     }
   }
   test_status: PASSED
@@ -61,12 +61,12 @@ test_result {
     test_package: "edu.ucsc.cse118.assignment3"
     test_method: "login_email_hint"
     start_time {
-      seconds: 1688762226
-      nanos: 188000000
+      seconds: 1688763225
+      nanos: 271000000
     }
     end_time {
-      seconds: 1688762226
-      nanos: 503000000
+      seconds: 1688763271
+      nanos: 193000000
     }
   }
   test_status: PASSED
@@ -113,12 +113,12 @@ test_result {
     test_package: "edu.ucsc.cse118.assignment3"
     test_method: "message_date"
     start_time {
-      seconds: 1688762226
-      nanos: 505000000
+      seconds: 1688763271
+      nanos: 195000000
     }
     end_time {
-      seconds: 1688762229
-      nanos: 91000000
+      seconds: 1688763273
+      nanos: 812000000
     }
   }
   test_status: PASSED
@@ -165,12 +165,12 @@ test_result {
     test_package: "edu.ucsc.cse118.assignment3"
     test_method: "message_title"
     start_time {
-      seconds: 1688762229
-      nanos: 95000000
+      seconds: 1688763273
+      nanos: 814000000
     }
     end_time {
-      seconds: 1688762231
-      nanos: 567000000
+      seconds: 1688763276
+      nanos: 155000000
     }
   }
   test_status: PASSED
@@ -217,12 +217,12 @@ test_result {
     test_package: "edu.ucsc.cse118.assignment3"
     test_method: "channel_counts"
     start_time {
-      seconds: 1688762231
-      nanos: 572000000
+      seconds: 1688763276
+      nanos: 157000000
     }
     end_time {
-      seconds: 1688762233
-      nanos: 595000000
+      seconds: 1688763278
+      nanos: 302000000
     }
   }
   test_status: PASSED
@@ -269,12 +269,12 @@ test_result {
     test_package: "edu.ucsc.cse118.assignment3"
     test_method: "login_button"
     start_time {
-      seconds: 1688762233
-      nanos: 598000000
+      seconds: 1688763278
+      nanos: 329000000
     }
     end_time {
-      seconds: 1688762233
-      nanos: 861000000
+      seconds: 1688763278
+      nanos: 618000000
     }
   }
   test_status: PASSED
@@ -321,12 +321,12 @@ test_result {
     test_package: "edu.ucsc.cse118.assignment3"
     test_method: "workspace_counts"
     start_time {
-      seconds: 1688762233
-      nanos: 891000000
+      seconds: 1688763278
+      nanos: 620000000
     }
     end_time {
-      seconds: 1688762235
-      nanos: 623000000
+      seconds: 1688763280
+      nanos: 428000000
     }
   }
   test_status: PASSED
@@ -373,12 +373,12 @@ test_result {
     test_package: "edu.ucsc.cse118.assignment3"
     test_method: "name_in_header"
     start_time {
-      seconds: 1688762235
-      nanos: 625000000
+      seconds: 1688763280
+      nanos: 430000000
     }
     end_time {
-      seconds: 1688762237
-      nanos: 401000000
+      seconds: 1688763282
+      nanos: 193000000
     }
   }
   test_status: PASSED
@@ -425,12 +425,11 @@ test_result {
     test_package: "edu.ucsc.cse118.assignment3"
     test_method: "workspaces"
     start_time {
-      seconds: 1688762237
-      nanos: 403000000
+      seconds: 1688763282
+      nanos: 195000000
     }
     end_time {
-      seconds: 1688762239
-      nanos: 218000000
+      seconds: 1688763284
     }
   }
   test_status: PASSED
@@ -477,12 +476,12 @@ test_result {
     test_package: "edu.ucsc.cse118.assignment3"
     test_method: "message_member"
     start_time {
-      seconds: 1688762239
-      nanos: 220000000
+      seconds: 1688763284
+      nanos: 1000000
     }
     end_time {
-      seconds: 1688762241
-      nanos: 529000000
+      seconds: 1688763286
+      nanos: 324000000
     }
   }
   test_status: PASSED
@@ -529,12 +528,12 @@ test_result {
     test_package: "edu.ucsc.cse118.assignment3"
     test_method: "login_short_email"
     start_time {
-      seconds: 1688762241
-      nanos: 532000000
+      seconds: 1688763286
+      nanos: 326000000
     }
     end_time {
-      seconds: 1688762242
-      nanos: 575000000
+      seconds: 1688763287
+      nanos: 360000000
     }
   }
   test_status: PASSED
@@ -581,12 +580,12 @@ test_result {
     test_package: "edu.ucsc.cse118.assignment3"
     test_method: "login_button_disabled"
     start_time {
-      seconds: 1688762242
-      nanos: 580000000
+      seconds: 1688763287
+      nanos: 387000000
     }
     end_time {
-      seconds: 1688762242
-      nanos: 900000000
+      seconds: 1688763287
+      nanos: 666000000
     }
   }
   test_status: PASSED
@@ -633,12 +632,12 @@ test_result {
     test_package: "edu.ucsc.cse118.assignment3"
     test_method: "login_short_password"
     start_time {
-      seconds: 1688762242
-      nanos: 901000000
+      seconds: 1688763287
+      nanos: 667000000
     }
     end_time {
-      seconds: 1688762244
-      nanos: 409000000
+      seconds: 1688763289
+      nanos: 63000000
     }
   }
   test_status: PASSED
@@ -685,12 +684,12 @@ test_result {
     test_package: "edu.ucsc.cse118.assignment3"
     test_method: "login_error"
     start_time {
-      seconds: 1688762244
-      nanos: 413000000
+      seconds: 1688763289
+      nanos: 94000000
     }
     end_time {
-      seconds: 1688762246
-      nanos: 138000000
+      seconds: 1688763290
+      nanos: 758000000
     }
   }
   test_status: PASSED
@@ -737,12 +736,12 @@ test_result {
     test_package: "edu.ucsc.cse118.assignment3"
     test_method: "login_title"
     start_time {
-      seconds: 1688762246
-      nanos: 144000000
+      seconds: 1688763290
+      nanos: 760000000
     }
     end_time {
-      seconds: 1688762246
-      nanos: 457000000
+      seconds: 1688763291
+      nanos: 98000000
     }
   }
   test_status: PASSED
@@ -789,12 +788,12 @@ test_result {
     test_package: "edu.ucsc.cse118.assignment3"
     test_method: "login_password_hint"
     start_time {
-      seconds: 1688762246
-      nanos: 459000000
+      seconds: 1688763291
+      nanos: 99000000
     }
     end_time {
-      seconds: 1688762246
-      nanos: 685000000
+      seconds: 1688763291
+      nanos: 380000000
     }
   }
   test_status: PASSED

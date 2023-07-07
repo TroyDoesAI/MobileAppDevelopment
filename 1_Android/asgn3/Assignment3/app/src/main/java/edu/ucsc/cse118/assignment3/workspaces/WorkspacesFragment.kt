@@ -32,7 +32,7 @@ class WorkspacesFragment : Fragment() {
         (requireActivity() as AppCompatActivity).supportActionBar?.title = member?.name
         (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        workspacesViewModel = ViewModelProvider(this).get(WorkspacesViewModel::class.java)
+        workspacesViewModel = ViewModelProvider(this)[WorkspacesViewModel::class.java]
 
         val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerview)
         recyclerView.layoutManager = LinearLayoutManager(context)
@@ -41,13 +41,11 @@ class WorkspacesFragment : Fragment() {
             workspaceAdapter = WorkspaceAdapter(workspaces, this::onWorkspaceClicked)
             recyclerView.adapter = workspaceAdapter
         }
-
         workspacesViewModel.fetchWorkspaces()
     }
 
     private fun onWorkspaceClicked(workspace: Workspace) {
         val channelsFragment = ChannelsFragment()
-
         val args = Bundle()
         val workspaceJson = workspace.toJson()
 
