@@ -11,9 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import edu.ucsc.cse118.assignment3.channels.ChannelsFragment
 import edu.ucsc.cse118.assignment3.R
 import edu.ucsc.cse118.assignment3.data.DataClasses.Workspace
-import edu.ucsc.cse118.assignment3.WorkspaceAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
-import edu.ucsc.cse118.assignment3.data.DataClasses
 import edu.ucsc.cse118.assignment3.model.SharedViewModel.Companion.member
 
 class WorkspacesFragment : Fragment() {

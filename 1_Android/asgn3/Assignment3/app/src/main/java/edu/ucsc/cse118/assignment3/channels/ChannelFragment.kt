@@ -1,6 +1,6 @@
 package edu.ucsc.cse118.assignment3.channels
 
-import ApiHandler
+import edu.ucsc.cse118.assignment3.ApiHandler
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,7 +9,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.LinearLayoutManager
-import edu.ucsc.cse118.assignment3.ChannelAdapter
 import edu.ucsc.cse118.assignment3.messages.MessagesFragment
 import edu.ucsc.cse118.assignment3.R
 import edu.ucsc.cse118.assignment3.data.DataClasses

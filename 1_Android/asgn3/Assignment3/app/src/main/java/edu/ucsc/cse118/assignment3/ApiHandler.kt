@@ -1,3 +1,5 @@
+package edu.ucsc.cse118.assignment3
+
 import edu.ucsc.cse118.assignment3.data.DataClasses.Channel
 import edu.ucsc.cse118.assignment3.data.DataClasses.Workspace
 import edu.ucsc.cse118.assignment3.data.DataClasses.Message
@@ -74,7 +76,6 @@ object ApiHandler {
         }
     }
 
-    //TODO EXperimental code to get name of user
     suspend fun getMembers(): List<Member> {
         return withContext(Dispatchers.IO) {
             val responsePair = makeHttpRequest("GET", "https://cse118.com/api/v2/member")

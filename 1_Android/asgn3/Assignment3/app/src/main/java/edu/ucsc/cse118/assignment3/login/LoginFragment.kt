@@ -45,8 +45,8 @@ class LoginFragment : Fragment() {
 
         // TODO REMOVE THIS SECTION
         // Assign hardcoded login credentials
-        emailInput.setText("traschul@ucsc.edu")
-        passwordInput.setText("1815098")
+//        emailInput.setText("traschul@ucsc.edu")
+//        passwordInput.setText("1815098")
         // TODO REMOVE THIS SECTION
 
         // Disable the login button by default
@@ -59,25 +59,24 @@ class LoginFragment : Fragment() {
             }
 
             override fun beforeTextChanged(
-                s: CharSequence?, start: Int, count: Int, after: Int) { /* NO-OP */ }
+                s: CharSequence?, start: Int, count: Int, after: Int) {}
 
             override fun onTextChanged(
-                s: CharSequence?, start: Int, before: Int, count: Int) { /* NO-OP */ }
+                s: CharSequence?, start: Int, before: Int, count: Int) {}
         }
 
         emailInput.addTextChangedListener(watcher)
         passwordInput.addTextChangedListener(watcher)
 
         buttonLogin.setOnClickListener {
-            val email = emailInput.text.toString()
-            val password = passwordInput.text.toString()
+            var email = emailInput.text.toString()
+            var password = passwordInput.text.toString()
 
             if (email.isNotBlank() && password.isNotBlank()) {
                 viewLifecycleOwner.lifecycleScope.launch {
                     sharedViewModel.loginUser(email, password)
                 }
             } else {
-                // Show error message
                 Toast.makeText(context, "Please fill out all fields", Toast.LENGTH_SHORT).show()
             }
         }
@@ -87,7 +86,9 @@ class LoginFragment : Fragment() {
                 if (isLoggedIn) {
                     mainActivity.navigateToWorkspaces()
                 } else {
-                    Toast.makeText(context, "Login failed", Toast.LENGTH_SHORT).show()
+                    // Show error message in the password input field
+                    passwordInput.text =
+                        Editable.Factory.getInstance().newEditable("Failed to login : HTTP 401")
                 }
             }
         })

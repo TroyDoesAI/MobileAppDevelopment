@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.LinearLayoutManager
-import edu.ucsc.cse118.assignment3.MessageAdapter
+import edu.ucsc.cse118.assignment3.ApiHandler
 import edu.ucsc.cse118.assignment3.messages.message.MessageFragment
 import edu.ucsc.cse118.assignment3.R
 import edu.ucsc.cse118.assignment3.data.DataClasses
@@ -39,7 +39,7 @@ class MessagesFragment : Fragment() {
             if (channelJson != null) {
                 channel = DataClasses.Channel.fromJson(channelJson) // Convert JSON string back to Channel object
                 if (channel != null) {
-                    // messages = ApiHandler.getMessages(channel!!.id) // Get the messages for the channel
+                    // messages = edu.ucsc.cse118.assignment3.ApiHandler.getMessages(channel!!.id) // Get the messages for the channel
                     val messages = ApiHandler.getMessages(channel!!.id) // Get the messages for the channel
                     val members = messages.map {
                         // Fetch member data for each message

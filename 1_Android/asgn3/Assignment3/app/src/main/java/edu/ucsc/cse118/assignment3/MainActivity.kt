@@ -21,7 +21,7 @@
 // How to add a back button to the action bar at the top : https://devofandroid.blogspot.com/2018/03/add-back-button-to-action-bar-android.html
 // How to go to the previous fragment by back button in action bar : https://stackoverflow.com/questions/62622943/how-to-go-to-the-previous-fragment-by-back-button-in-action-bar-kotlin
 // Google Search for syntax error messages
-
+// How to use CoroutineScope https://kotlinlang.org/api/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/-coroutine-scope/
 package edu.ucsc.cse118.assignment3
 
 import android.os.Bundle

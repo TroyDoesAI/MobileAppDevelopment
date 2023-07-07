@@ -1,10 +1,11 @@
-package edu.ucsc.cse118.assignment3
+package edu.ucsc.cse118.assignment3.workspaces
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import edu.ucsc.cse118.assignment3.R
 import edu.ucsc.cse118.assignment3.data.DataClasses.Workspace
 import kotlin.reflect.KFunction1
 
