@@ -41,9 +41,9 @@ class BasicTest {
   var activityScenarioRule = ActivityScenarioRule(MainActivity::class.java)
 
   // Change these three lines ONLY
-  private val cruzid = "<cruzid>@ucsc.edu"
-  private val name = "<Your Name>"
-  private val password = "<studentid>"
+  private val cruzid = "traschul@ucsc.edu"
+  private val name = "Troy Schultz"
+  private val password = "1815098"
 
   private fun login() {
     typeTo(R.id.email, cruzid)

@@ -1,0 +1,868 @@
+# 2023-07-07T15:58:41.583Z:
+test_suite_meta_data {
+  scheduled_test_case_count: 16
+}
+test_status: FAILED
+test_result {
+  test_case {
+    test_class: "BasicTest"
+    test_package: "edu.ucsc.cse118.assignment3"
+    test_method: "login_button_enabled"
+    start_time {
+      seconds: 1688745401
+      nanos: 319000000
+    }
+    end_time {
+      seconds: 1688745403
+      nanos: 611000000
+    }
+  }
+  test_status: PASSED
+  output_artifact {
+    label {
+      label: "logcat"
+      namespace: "android"
+    }
+    source_path {
+      path: "/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/logcat-edu.ucsc.cse118.assignment3.BasicTest-login_button_enabled.txt"
+    }
+  }
+  output_artifact {
+    label {
+      label: "device-info"
+      namespace: "android"
+    }
+    source_path {
+      path: "/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/device-info.pb"
+    }
+  }
+  output_artifact {
+    label {
+      label: "device-info.meminfo"
+      namespace: "android"
+    }
+    source_path {
+      path: "/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/meminfo"
+    }
+  }
+  output_artifact {
+    label {
+      label: "device-info.cpuinfo"
+      namespace: "android"
+    }
+    source_path {
+      path: "/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/cpuinfo"
+    }
+  }
+}
+test_result {
+  test_case {
+    test_class: "BasicTest"
+    test_package: "edu.ucsc.cse118.assignment3"
+    test_method: "login_email_hint"
+    start_time {
+      seconds: 1688745403
+      nanos: 629000000
+    }
+    end_time {
+      seconds: 1688745449
+      nanos: 537000000
+    }
+  }
+  test_status: PASSED
+  output_artifact {
+    label {
+      label: "logcat"
+      namespace: "android"
+    }
+    source_path {
+      path: "/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/logcat-edu.ucsc.cse118.assignment3.BasicTest-login_email_hint.txt"
+    }
+  }
+  output_artifact {
+    label {
+      label: "device-info"
+      namespace: "android"
+    }
+    source_path {
+      path: "/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/device-info.pb"
+    }
+  }
+  output_artifact {
+    label {
+      label: "device-info.meminfo"
+      namespace: "android"
+    }
+    source_path {
+      path: "/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/meminfo"
+    }
+  }
+  output_artifact {
+    label {
+      label: "device-info.cpuinfo"
+      namespace: "android"
+    }
+    source_path {
+      path: "/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/cpuinfo"
+    }
+  }
+}
+test_result {
+  test_case {
+    test_class: "BasicTest"
+    test_package: "edu.ucsc.cse118.assignment3"
+    test_method: "message_date"
+    start_time {
+      seconds: 1688745449
+      nanos: 542000000
+    }
+    end_time {
+      seconds: 1688745465
+      nanos: 337000000
+    }
+  }
+  test_status: FAILED
+  error {
+    error_message: "androidx.test.espresso.NoMatchingViewException: No views in hierarchy found matching: an instance of android.widget.TextView and view.getText() with or without transformation to match: is \"May 1, 2023, 12:18:48 PM\"\n\nView Hierarchy:\n+>DecorView{id=-1, visibility=VISIBLE, width=1080, height=2340, has-focus=false, has-focusable=true, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params={(0,0)(fillxfill) ty=BASE_APPLICATION wanim=0x10302fe\nfl=LAYOUT_IN_SCREEN LAYOUT_INSET_DECOR SPLIT_TOUCH HARDWARE_ACCELERATED DRAWS_SYSTEM_BAR_BACKGROUNDS\npfl=FORCE_DRAW_STATUS_BAR_BACKGROUND FIT_INSETS_CONTROLLED\nfitSides=}, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0, child-count=2}\n|\n+->LinearLayout{id=-1, visibility=VISIBLE, width=1080, height=2340, has-focus=false, has-focusable=true, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=android.widget.FrameLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0, child-count=2}\n|\n+-->ViewStub{id=16908726, res-name=action_mode_bar_stub, visibility=GONE, width=0, height=0, has-focus=false, has-focusable=false, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=true, is-selected=false, layout-params=android.widget.LinearLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0}\n|\n+-->FrameLayout{id=-1, visibility=VISIBLE, width=1080, height=2260, has-focus=false, has-focusable=true, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=android.widget.LinearLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=80.0, child-count=1}\n|\n+--->ActionBarOverlayLayout{id=2131230866, res-name=decor_content_parent, visibility=VISIBLE, width=1080, height=2260, has-focus=false, has-focusable=true, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=android.widget.FrameLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0, child-count=2}\n|\n+---->ContentFrameLayout{id=16908290, res-name=content, visibility=VISIBLE, width=1080, height=2113, has-focus=false, has-focusable=true, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=androidx.appcompat.widget.ActionBarOverlayLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=147.0, child-count=1}\n|\n+----->ConstraintLayout{id=-1, visibility=VISIBLE, width=1080, height=2113, has-focus=false, has-focusable=true, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=android.widget.FrameLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0, child-count=1}\n|\n+------>FragmentContainerView{id=2131230916, res-name=fragmentContainerView, visibility=VISIBLE, width=1080, height=2113, has-focus=false, has-focusable=true, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=androidx.constraintlayout.widget.ConstraintLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0, child-count=1}\n|\n+------->ConstraintLayout{id=-1, visibility=VISIBLE, width=1080, height=2113, has-focus=false, has-focusable=true, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=android.widget.FrameLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0, child-count=1}\n|\n+-------->RecyclerView{id=2131231066, res-name=recyclerview, visibility=VISIBLE, width=1080, height=2113, has-focus=false, has-focusable=true, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=true, is-layout-requested=false, is-selected=false, layout-params=androidx.constraintlayout.widget.ConstraintLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0, child-count=0}\n|\n+---->ActionBarContainer{id=2131230773, res-name=action_bar_container, visibility=VISIBLE, width=1080, height=147, has-focus=false, has-focusable=false, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=androidx.appcompat.widget.ActionBarOverlayLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0, child-count=2}\n|\n+----->Toolbar{id=2131230771, res-name=action_bar, visibility=VISIBLE, width=1080, height=147, has-focus=false, has-focusable=false, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=android.widget.FrameLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0, child-count=3}\n|\n+------>AppCompatTextView{id=-1, visibility=VISIBLE, width=245, height=66, has-focus=false, has-focusable=false, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=androidx.appcompat.widget.Toolbar$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=189.0, y=40.0, text=Messages, input-type=0, ime-target=false, has-links=false}\n|\n+------>ActionMenuView{id=-1, visibility=VISIBLE, width=0, height=147, has-focus=false, has-focusable=false, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=androidx.appcompat.widget.Toolbar$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=1080.0, y=0.0, child-count=0}\n|\n+------>AppCompatImageButton{id=-1, desc=Navigate up, visibility=VISIBLE, width=147, height=147, has-focus=false, has-focusable=false, has-window-focus=true, is-clickable=true, is-enabled=true, is-focused=false, is-focusable=true, is-layout-requested=false, is-selected=false, layout-params=androidx.appcompat.widget.Toolbar$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0}\n|\n+----->ActionBarContextView{id=2131230779, res-name=action_context_bar, visibility=GONE, width=0, height=0, has-focus=false, has-focusable=false, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=true, is-selected=false, layout-params=android.widget.FrameLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0, child-count=0}\n|\n+->View{id=16908335, res-name=statusBarBackground, visibility=VISIBLE, width=1080, height=80, has-focus=false, has-focusable=false, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=android.widget.FrameLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0}\nat androidx.test.espresso.NoMatchingViewException$Builder.build(NoMatchingViewException.java:5)\nat androidx.test.espresso.base.DefaultFailureHandler.lambda$getNoMatchingViewExceptionTruncater$0(DefaultFailureHandler.java:5)\nat androidx.test.espresso.base.DefaultFailureHandler$$ExternalSyntheticLambda1.truncateExceptionMessage(Unknown Source:2)\nat androidx.test.espresso.base.ViewHierarchyExceptionHandler.handleSafely(ViewHierarchyExceptionHandler.java:5)\nat androidx.test.espresso.base.ViewHierarchyExceptionHandler.handleSafely(ViewHierarchyExceptionHandler.java:1)\nat androidx.test.espresso.base.DefaultFailureHandler$TypedFailureHandler.handle(DefaultFailureHandler.java:4)\nat androidx.test.espresso.base.DefaultFailureHandler.handle(DefaultFailureHandler.java:5)\nat androidx.test.espresso.ViewInteraction.waitForAndHandleInteractionResults(ViewInteraction.java:8)\nat androidx.test.espresso.ViewInteraction.desugaredPerform(ViewInteraction.java:11)\nat androidx.test.espresso.ViewInteraction.perform(ViewInteraction.java:8)\nat edu.ucsc.cse118.assignment3.TestHelper.waitForView(TestHelper.kt:59)\nat edu.ucsc.cse118.assignment3.TestHelper.waitForView$default(TestHelper.kt:50)\nat edu.ucsc.cse118.assignment3.TestHelper.waitForText(TestHelper.kt:71)\nat edu.ucsc.cse118.assignment3.BasicTest.message_date(BasicTest.kt:148)"
+    error_type: "androidx.test.espresso.NoMatchingViewException"
+    stack_trace: "androidx.test.espresso.NoMatchingViewException: No views in hierarchy found matching: an instance of android.widget.TextView and view.getText() with or without transformation to match: is \"May 1, 2023, 12:18:48 PM\"\n\nView Hierarchy:\n+>DecorView{id=-1, visibility=VISIBLE, width=1080, height=2340, has-focus=false, has-focusable=true, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params={(0,0)(fillxfill) ty=BASE_APPLICATION wanim=0x10302fe\nfl=LAYOUT_IN_SCREEN LAYOUT_INSET_DECOR SPLIT_TOUCH HARDWARE_ACCELERATED DRAWS_SYSTEM_BAR_BACKGROUNDS\npfl=FORCE_DRAW_STATUS_BAR_BACKGROUND FIT_INSETS_CONTROLLED\nfitSides=}, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0, child-count=2}\n|\n+->LinearLayout{id=-1, visibility=VISIBLE, width=1080, height=2340, has-focus=false, has-focusable=true, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=android.widget.FrameLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0, child-count=2}\n|\n+-->ViewStub{id=16908726, res-name=action_mode_bar_stub, visibility=GONE, width=0, height=0, has-focus=false, has-focusable=false, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=true, is-selected=false, layout-params=android.widget.LinearLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0}\n|\n+-->FrameLayout{id=-1, visibility=VISIBLE, width=1080, height=2260, has-focus=false, has-focusable=true, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=android.widget.LinearLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=80.0, child-count=1}\n|\n+--->ActionBarOverlayLayout{id=2131230866, res-name=decor_content_parent, visibility=VISIBLE, width=1080, height=2260, has-focus=false, has-focusable=true, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=android.widget.FrameLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0, child-count=2}\n|\n+---->ContentFrameLayout{id=16908290, res-name=content, visibility=VISIBLE, width=1080, height=2113, has-focus=false, has-focusable=true, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=androidx.appcompat.widget.ActionBarOverlayLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=147.0, child-count=1}\n|\n+----->ConstraintLayout{id=-1, visibility=VISIBLE, width=1080, height=2113, has-focus=false, has-focusable=true, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=android.widget.FrameLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0, child-count=1}\n|\n+------>FragmentContainerView{id=2131230916, res-name=fragmentContainerView, visibility=VISIBLE, width=1080, height=2113, has-focus=false, has-focusable=true, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=androidx.constraintlayout.widget.ConstraintLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0, child-count=1}\n|\n+------->ConstraintLayout{id=-1, visibility=VISIBLE, width=1080, height=2113, has-focus=false, has-focusable=true, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=android.widget.FrameLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0, child-count=1}\n|\n+-------->RecyclerView{id=2131231066, res-name=recyclerview, visibility=VISIBLE, width=1080, height=2113, has-focus=false, has-focusable=true, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=true, is-layout-requested=false, is-selected=false, layout-params=androidx.constraintlayout.widget.ConstraintLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0, child-count=0}\n|\n+---->ActionBarContainer{id=2131230773, res-name=action_bar_container, visibility=VISIBLE, width=1080, height=147, has-focus=false, has-focusable=false, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=androidx.appcompat.widget.ActionBarOverlayLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0, child-count=2}\n|\n+----->Toolbar{id=2131230771, res-name=action_bar, visibility=VISIBLE, width=1080, height=147, has-focus=false, has-focusable=false, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=android.widget.FrameLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0, child-count=3}\n|\n+------>AppCompatTextView{id=-1, visibility=VISIBLE, width=245, height=66, has-focus=false, has-focusable=false, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=androidx.appcompat.widget.Toolbar$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=189.0, y=40.0, text=Messages, input-type=0, ime-target=false, has-links=false}\n|\n+------>ActionMenuView{id=-1, visibility=VISIBLE, width=0, height=147, has-focus=false, has-focusable=false, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=androidx.appcompat.widget.Toolbar$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=1080.0, y=0.0, child-count=0}\n|\n+------>AppCompatImageButton{id=-1, desc=Navigate up, visibility=VISIBLE, width=147, height=147, has-focus=false, has-focusable=false, has-window-focus=true, is-clickable=true, is-enabled=true, is-focused=false, is-focusable=true, is-layout-requested=false, is-selected=false, layout-params=androidx.appcompat.widget.Toolbar$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0}\n|\n+----->ActionBarContextView{id=2131230779, res-name=action_context_bar, visibility=GONE, width=0, height=0, has-focus=false, has-focusable=false, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=true, is-selected=false, layout-params=android.widget.FrameLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0, child-count=0}\n|\n+->View{id=16908335, res-name=statusBarBackground, visibility=VISIBLE, width=1080, height=80, has-focus=false, has-focusable=false, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=android.widget.FrameLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0}\nat androidx.test.espresso.NoMatchingViewException$Builder.build(NoMatchingViewException.java:5)\nat androidx.test.espresso.base.DefaultFailureHandler.lambda$getNoMatchingViewExceptionTruncater$0(DefaultFailureHandler.java:5)\nat androidx.test.espresso.base.DefaultFailureHandler$$ExternalSyntheticLambda1.truncateExceptionMessage(Unknown Source:2)\nat androidx.test.espresso.base.ViewHierarchyExceptionHandler.handleSafely(ViewHierarchyExceptionHandler.java:5)\nat androidx.test.espresso.base.ViewHierarchyExceptionHandler.handleSafely(ViewHierarchyExceptionHandler.java:1)\nat androidx.test.espresso.base.DefaultFailureHandler$TypedFailureHandler.handle(DefaultFailureHandler.java:4)\nat androidx.test.espresso.base.DefaultFailureHandler.handle(DefaultFailureHandler.java:5)\nat androidx.test.espresso.ViewInteraction.waitForAndHandleInteractionResults(ViewInteraction.java:8)\nat androidx.test.espresso.ViewInteraction.desugaredPerform(ViewInteraction.java:11)\nat androidx.test.espresso.ViewInteraction.perform(ViewInteraction.java:8)\nat edu.ucsc.cse118.assignment3.TestHelper.waitForView(TestHelper.kt:59)\nat edu.ucsc.cse118.assignment3.TestHelper.waitForView$default(TestHelper.kt:50)\nat edu.ucsc.cse118.assignment3.TestHelper.waitForText(TestHelper.kt:71)\nat edu.ucsc.cse118.assignment3.BasicTest.message_date(BasicTest.kt:148)"
+  }
+  output_artifact {
+    label {
+      label: "logcat"
+      namespace: "android"
+    }
+    source_path {
+      path: "/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/logcat-edu.ucsc.cse118.assignment3.BasicTest-message_date.txt"
+    }
+  }
+  output_artifact {
+    label {
+      label: "device-info"
+      namespace: "android"
+    }
+    source_path {
+      path: "/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/device-info.pb"
+    }
+  }
+  output_artifact {
+    label {
+      label: "device-info.meminfo"
+      namespace: "android"
+    }
+    source_path {
+      path: "/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/meminfo"
+    }
+  }
+  output_artifact {
+    label {
+      label: "device-info.cpuinfo"
+      namespace: "android"
+    }
+    source_path {
+      path: "/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/cpuinfo"
+    }
+  }
+}
+test_result {
+  test_case {
+    test_class: "BasicTest"
+    test_package: "edu.ucsc.cse118.assignment3"
+    test_method: "message_title"
+    start_time {
+      seconds: 1688745465
+      nanos: 343000000
+    }
+    end_time {
+      seconds: 1688745480
+      nanos: 226000000
+    }
+  }
+  test_status: FAILED
+  error {
+    error_message: "androidx.test.espresso.NoMatchingViewException: No views in hierarchy found matching: an instance of android.widget.TextView and view.getText() with or without transformation to match: is \"Hello, and welcome to my channel!\"\n\nView Hierarchy:\n+>DecorView{id=-1, visibility=VISIBLE, width=1080, height=2340, has-focus=false, has-focusable=true, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params={(0,0)(fillxfill) ty=BASE_APPLICATION wanim=0x10302fe\nfl=LAYOUT_IN_SCREEN LAYOUT_INSET_DECOR SPLIT_TOUCH HARDWARE_ACCELERATED DRAWS_SYSTEM_BAR_BACKGROUNDS\npfl=FORCE_DRAW_STATUS_BAR_BACKGROUND FIT_INSETS_CONTROLLED\nfitSides=}, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0, child-count=2}\n|\n+->LinearLayout{id=-1, visibility=VISIBLE, width=1080, height=2340, has-focus=false, has-focusable=true, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=android.widget.FrameLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0, child-count=2}\n|\n+-->ViewStub{id=16908726, res-name=action_mode_bar_stub, visibility=GONE, width=0, height=0, has-focus=false, has-focusable=false, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=true, is-selected=false, layout-params=android.widget.LinearLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0}\n|\n+-->FrameLayout{id=-1, visibility=VISIBLE, width=1080, height=2260, has-focus=false, has-focusable=true, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=android.widget.LinearLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=80.0, child-count=1}\n|\n+--->ActionBarOverlayLayout{id=2131230866, res-name=decor_content_parent, visibility=VISIBLE, width=1080, height=2260, has-focus=false, has-focusable=true, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=android.widget.FrameLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0, child-count=2}\n|\n+---->ContentFrameLayout{id=16908290, res-name=content, visibility=VISIBLE, width=1080, height=2113, has-focus=false, has-focusable=true, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=androidx.appcompat.widget.ActionBarOverlayLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=147.0, child-count=1}\n|\n+----->ConstraintLayout{id=-1, visibility=VISIBLE, width=1080, height=2113, has-focus=false, has-focusable=true, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=android.widget.FrameLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0, child-count=1}\n|\n+------>FragmentContainerView{id=2131230916, res-name=fragmentContainerView, visibility=VISIBLE, width=1080, height=2113, has-focus=false, has-focusable=true, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=androidx.constraintlayout.widget.ConstraintLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0, child-count=1}\n|\n+------->ConstraintLayout{id=-1, visibility=VISIBLE, width=1080, height=2113, has-focus=false, has-focusable=true, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=android.widget.FrameLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0, child-count=1}\n|\n+-------->RecyclerView{id=2131231066, res-name=recyclerview, visibility=VISIBLE, width=1080, height=2113, has-focus=false, has-focusable=true, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=true, is-layout-requested=false, is-selected=false, layout-params=androidx.constraintlayout.widget.ConstraintLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0, child-count=0}\n|\n+---->ActionBarContainer{id=2131230773, res-name=action_bar_container, visibility=VISIBLE, width=1080, height=147, has-focus=false, has-focusable=false, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=androidx.appcompat.widget.ActionBarOverlayLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0, child-count=2}\n|\n+----->Toolbar{id=2131230771, res-name=action_bar, visibility=VISIBLE, width=1080, height=147, has-focus=false, has-focusable=false, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=android.widget.FrameLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0, child-count=3}\n|\n+------>AppCompatTextView{id=-1, visibility=VISIBLE, width=245, height=66, has-focus=false, has-focusable=false, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=androidx.appcompat.widget.Toolbar$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=189.0, y=40.0, text=Messages, input-type=0, ime-target=false, has-links=false}\n|\n+------>ActionMenuView{id=-1, visibility=VISIBLE, width=0, height=147, has-focus=false, has-focusable=false, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=androidx.appcompat.widget.Toolbar$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=1080.0, y=0.0, child-count=0}\n|\n+------>AppCompatImageButton{id=-1, desc=Navigate up, visibility=VISIBLE, width=147, height=147, has-focus=false, has-focusable=false, has-window-focus=true, is-clickable=true, is-enabled=true, is-focused=false, is-focusable=true, is-layout-requested=false, is-selected=false, layout-params=androidx.appcompat.widget.Toolbar$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0}\n|\n+----->ActionBarContextView{id=2131230779, res-name=action_context_bar, visibility=GONE, width=0, height=0, has-focus=false, has-focusable=false, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=true, is-selected=false, layout-params=android.widget.FrameLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0, child-count=0}\n|\n+->View{id=16908335, res-name=statusBarBackground, visibility=VISIBLE, width=1080, height=80, has-focus=false, has-focusable=false, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=android.widget.FrameLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0}\nat androidx.test.espresso.NoMatchingViewException$Builder.build(NoMatchingViewException.java:5)\nat androidx.test.espresso.base.DefaultFailureHandler.lambda$getNoMatchingViewExceptionTruncater$0(DefaultFailureHandler.java:5)\nat androidx.test.espresso.base.DefaultFailureHandler$$ExternalSyntheticLambda1.truncateExceptionMessage(Unknown Source:2)\nat androidx.test.espresso.base.ViewHierarchyExceptionHandler.handleSafely(ViewHierarchyExceptionHandler.java:5)\nat androidx.test.espresso.base.ViewHierarchyExceptionHandler.handleSafely(ViewHierarchyExceptionHandler.java:1)\nat androidx.test.espresso.base.DefaultFailureHandler$TypedFailureHandler.handle(DefaultFailureHandler.java:4)\nat androidx.test.espresso.base.DefaultFailureHandler.handle(DefaultFailureHandler.java:5)\nat androidx.test.espresso.ViewInteraction.waitForAndHandleInteractionResults(ViewInteraction.java:8)\nat androidx.test.espresso.ViewInteraction.desugaredPerform(ViewInteraction.java:11)\nat androidx.test.espresso.ViewInteraction.perform(ViewInteraction.java:8)\nat edu.ucsc.cse118.assignment3.TestHelper.waitForView(TestHelper.kt:59)\nat edu.ucsc.cse118.assignment3.TestHelper.waitForView$default(TestHelper.kt:50)\nat edu.ucsc.cse118.assignment3.TestHelper.waitForText(TestHelper.kt:71)\nat edu.ucsc.cse118.assignment3.BasicTest.message_title(BasicTest.kt:143)"
+    error_type: "androidx.test.espresso.NoMatchingViewException"
+    stack_trace: "androidx.test.espresso.NoMatchingViewException: No views in hierarchy found matching: an instance of android.widget.TextView and view.getText() with or without transformation to match: is \"Hello, and welcome to my channel!\"\n\nView Hierarchy:\n+>DecorView{id=-1, visibility=VISIBLE, width=1080, height=2340, has-focus=false, has-focusable=true, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params={(0,0)(fillxfill) ty=BASE_APPLICATION wanim=0x10302fe\nfl=LAYOUT_IN_SCREEN LAYOUT_INSET_DECOR SPLIT_TOUCH HARDWARE_ACCELERATED DRAWS_SYSTEM_BAR_BACKGROUNDS\npfl=FORCE_DRAW_STATUS_BAR_BACKGROUND FIT_INSETS_CONTROLLED\nfitSides=}, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0, child-count=2}\n|\n+->LinearLayout{id=-1, visibility=VISIBLE, width=1080, height=2340, has-focus=false, has-focusable=true, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=android.widget.FrameLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0, child-count=2}\n|\n+-->ViewStub{id=16908726, res-name=action_mode_bar_stub, visibility=GONE, width=0, height=0, has-focus=false, has-focusable=false, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=true, is-selected=false, layout-params=android.widget.LinearLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0}\n|\n+-->FrameLayout{id=-1, visibility=VISIBLE, width=1080, height=2260, has-focus=false, has-focusable=true, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=android.widget.LinearLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=80.0, child-count=1}\n|\n+--->ActionBarOverlayLayout{id=2131230866, res-name=decor_content_parent, visibility=VISIBLE, width=1080, height=2260, has-focus=false, has-focusable=true, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=android.widget.FrameLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0, child-count=2}\n|\n+---->ContentFrameLayout{id=16908290, res-name=content, visibility=VISIBLE, width=1080, height=2113, has-focus=false, has-focusable=true, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=androidx.appcompat.widget.ActionBarOverlayLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=147.0, child-count=1}\n|\n+----->ConstraintLayout{id=-1, visibility=VISIBLE, width=1080, height=2113, has-focus=false, has-focusable=true, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=android.widget.FrameLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0, child-count=1}\n|\n+------>FragmentContainerView{id=2131230916, res-name=fragmentContainerView, visibility=VISIBLE, width=1080, height=2113, has-focus=false, has-focusable=true, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=androidx.constraintlayout.widget.ConstraintLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0, child-count=1}\n|\n+------->ConstraintLayout{id=-1, visibility=VISIBLE, width=1080, height=2113, has-focus=false, has-focusable=true, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=android.widget.FrameLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0, child-count=1}\n|\n+-------->RecyclerView{id=2131231066, res-name=recyclerview, visibility=VISIBLE, width=1080, height=2113, has-focus=false, has-focusable=true, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=true, is-layout-requested=false, is-selected=false, layout-params=androidx.constraintlayout.widget.ConstraintLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0, child-count=0}\n|\n+---->ActionBarContainer{id=2131230773, res-name=action_bar_container, visibility=VISIBLE, width=1080, height=147, has-focus=false, has-focusable=false, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=androidx.appcompat.widget.ActionBarOverlayLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0, child-count=2}\n|\n+----->Toolbar{id=2131230771, res-name=action_bar, visibility=VISIBLE, width=1080, height=147, has-focus=false, has-focusable=false, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=android.widget.FrameLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0, child-count=3}\n|\n+------>AppCompatTextView{id=-1, visibility=VISIBLE, width=245, height=66, has-focus=false, has-focusable=false, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=androidx.appcompat.widget.Toolbar$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=189.0, y=40.0, text=Messages, input-type=0, ime-target=false, has-links=false}\n|\n+------>ActionMenuView{id=-1, visibility=VISIBLE, width=0, height=147, has-focus=false, has-focusable=false, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=androidx.appcompat.widget.Toolbar$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=1080.0, y=0.0, child-count=0}\n|\n+------>AppCompatImageButton{id=-1, desc=Navigate up, visibility=VISIBLE, width=147, height=147, has-focus=false, has-focusable=false, has-window-focus=true, is-clickable=true, is-enabled=true, is-focused=false, is-focusable=true, is-layout-requested=false, is-selected=false, layout-params=androidx.appcompat.widget.Toolbar$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0}\n|\n+----->ActionBarContextView{id=2131230779, res-name=action_context_bar, visibility=GONE, width=0, height=0, has-focus=false, has-focusable=false, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=true, is-selected=false, layout-params=android.widget.FrameLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0, child-count=0}\n|\n+->View{id=16908335, res-name=statusBarBackground, visibility=VISIBLE, width=1080, height=80, has-focus=false, has-focusable=false, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=android.widget.FrameLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0}\nat androidx.test.espresso.NoMatchingViewException$Builder.build(NoMatchingViewException.java:5)\nat androidx.test.espresso.base.DefaultFailureHandler.lambda$getNoMatchingViewExceptionTruncater$0(DefaultFailureHandler.java:5)\nat androidx.test.espresso.base.DefaultFailureHandler$$ExternalSyntheticLambda1.truncateExceptionMessage(Unknown Source:2)\nat androidx.test.espresso.base.ViewHierarchyExceptionHandler.handleSafely(ViewHierarchyExceptionHandler.java:5)\nat androidx.test.espresso.base.ViewHierarchyExceptionHandler.handleSafely(ViewHierarchyExceptionHandler.java:1)\nat androidx.test.espresso.base.DefaultFailureHandler$TypedFailureHandler.handle(DefaultFailureHandler.java:4)\nat androidx.test.espresso.base.DefaultFailureHandler.handle(DefaultFailureHandler.java:5)\nat androidx.test.espresso.ViewInteraction.waitForAndHandleInteractionResults(ViewInteraction.java:8)\nat androidx.test.espresso.ViewInteraction.desugaredPerform(ViewInteraction.java:11)\nat androidx.test.espresso.ViewInteraction.perform(ViewInteraction.java:8)\nat edu.ucsc.cse118.assignment3.TestHelper.waitForView(TestHelper.kt:59)\nat edu.ucsc.cse118.assignment3.TestHelper.waitForView$default(TestHelper.kt:50)\nat edu.ucsc.cse118.assignment3.TestHelper.waitForText(TestHelper.kt:71)\nat edu.ucsc.cse118.assignment3.BasicTest.message_title(BasicTest.kt:143)"
+  }
+  output_artifact {
+    label {
+      label: "logcat"
+      namespace: "android"
+    }
+    source_path {
+      path: "/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/logcat-edu.ucsc.cse118.assignment3.BasicTest-message_title.txt"
+    }
+  }
+  output_artifact {
+    label {
+      label: "device-info"
+      namespace: "android"
+    }
+    source_path {
+      path: "/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/device-info.pb"
+    }
+  }
+  output_artifact {
+    label {
+      label: "device-info.meminfo"
+      namespace: "android"
+    }
+    source_path {
+      path: "/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/meminfo"
+    }
+  }
+  output_artifact {
+    label {
+      label: "device-info.cpuinfo"
+      namespace: "android"
+    }
+    source_path {
+      path: "/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/cpuinfo"
+    }
+  }
+}
+test_result {
+  test_case {
+    test_class: "BasicTest"
+    test_package: "edu.ucsc.cse118.assignment3"
+    test_method: "channel_counts"
+    start_time {
+      seconds: 1688745480
+      nanos: 235000000
+    }
+    end_time {
+      seconds: 1688745482
+      nanos: 239000000
+    }
+  }
+  test_status: PASSED
+  output_artifact {
+    label {
+      label: "logcat"
+      namespace: "android"
+    }
+    source_path {
+      path: "/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/logcat-edu.ucsc.cse118.assignment3.BasicTest-channel_counts.txt"
+    }
+  }
+  output_artifact {
+    label {
+      label: "device-info"
+      namespace: "android"
+    }
+    source_path {
+      path: "/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/device-info.pb"
+    }
+  }
+  output_artifact {
+    label {
+      label: "device-info.meminfo"
+      namespace: "android"
+    }
+    source_path {
+      path: "/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/meminfo"
+    }
+  }
+  output_artifact {
+    label {
+      label: "device-info.cpuinfo"
+      namespace: "android"
+    }
+    source_path {
+      path: "/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/cpuinfo"
+    }
+  }
+}
+test_result {
+  test_case {
+    test_class: "BasicTest"
+    test_package: "edu.ucsc.cse118.assignment3"
+    test_method: "login_button"
+    start_time {
+      seconds: 1688745482
+      nanos: 241000000
+    }
+    end_time {
+      seconds: 1688745482
+      nanos: 582000000
+    }
+  }
+  test_status: PASSED
+  output_artifact {
+    label {
+      label: "logcat"
+      namespace: "android"
+    }
+    source_path {
+      path: "/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/logcat-edu.ucsc.cse118.assignment3.BasicTest-login_button.txt"
+    }
+  }
+  output_artifact {
+    label {
+      label: "device-info"
+      namespace: "android"
+    }
+    source_path {
+      path: "/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/device-info.pb"
+    }
+  }
+  output_artifact {
+    label {
+      label: "device-info.meminfo"
+      namespace: "android"
+    }
+    source_path {
+      path: "/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/meminfo"
+    }
+  }
+  output_artifact {
+    label {
+      label: "device-info.cpuinfo"
+      namespace: "android"
+    }
+    source_path {
+      path: "/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/cpuinfo"
+    }
+  }
+}
+test_result {
+  test_case {
+    test_class: "BasicTest"
+    test_package: "edu.ucsc.cse118.assignment3"
+    test_method: "workspace_counts"
+    start_time {
+      seconds: 1688745482
+      nanos: 584000000
+    }
+    end_time {
+      seconds: 1688745484
+      nanos: 359000000
+    }
+  }
+  test_status: PASSED
+  output_artifact {
+    label {
+      label: "logcat"
+      namespace: "android"
+    }
+    source_path {
+      path: "/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/logcat-edu.ucsc.cse118.assignment3.BasicTest-workspace_counts.txt"
+    }
+  }
+  output_artifact {
+    label {
+      label: "device-info"
+      namespace: "android"
+    }
+    source_path {
+      path: "/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/device-info.pb"
+    }
+  }
+  output_artifact {
+    label {
+      label: "device-info.meminfo"
+      namespace: "android"
+    }
+    source_path {
+      path: "/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/meminfo"
+    }
+  }
+  output_artifact {
+    label {
+      label: "device-info.cpuinfo"
+      namespace: "android"
+    }
+    source_path {
+      path: "/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/cpuinfo"
+    }
+  }
+}
+test_result {
+  test_case {
+    test_class: "BasicTest"
+    test_package: "edu.ucsc.cse118.assignment3"
+    test_method: "name_in_header"
+    start_time {
+      seconds: 1688745484
+      nanos: 361000000
+    }
+    end_time {
+      seconds: 1688745486
+      nanos: 154000000
+    }
+  }
+  test_status: PASSED
+  output_artifact {
+    label {
+      label: "logcat"
+      namespace: "android"
+    }
+    source_path {
+      path: "/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/logcat-edu.ucsc.cse118.assignment3.BasicTest-name_in_header.txt"
+    }
+  }
+  output_artifact {
+    label {
+      label: "device-info"
+      namespace: "android"
+    }
+    source_path {
+      path: "/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/device-info.pb"
+    }
+  }
+  output_artifact {
+    label {
+      label: "device-info.meminfo"
+      namespace: "android"
+    }
+    source_path {
+      path: "/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/meminfo"
+    }
+  }
+  output_artifact {
+    label {
+      label: "device-info.cpuinfo"
+      namespace: "android"
+    }
+    source_path {
+      path: "/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/cpuinfo"
+    }
+  }
+}
+test_result {
+  test_case {
+    test_class: "BasicTest"
+    test_package: "edu.ucsc.cse118.assignment3"
+    test_method: "workspaces"
+    start_time {
+      seconds: 1688745486
+      nanos: 156000000
+    }
+    end_time {
+      seconds: 1688745487
+      nanos: 920000000
+    }
+  }
+  test_status: PASSED
+  output_artifact {
+    label {
+      label: "logcat"
+      namespace: "android"
+    }
+    source_path {
+      path: "/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/logcat-edu.ucsc.cse118.assignment3.BasicTest-workspaces.txt"
+    }
+  }
+  output_artifact {
+    label {
+      label: "device-info"
+      namespace: "android"
+    }
+    source_path {
+      path: "/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/device-info.pb"
+    }
+  }
+  output_artifact {
+    label {
+      label: "device-info.meminfo"
+      namespace: "android"
+    }
+    source_path {
+      path: "/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/meminfo"
+    }
+  }
+  output_artifact {
+    label {
+      label: "device-info.cpuinfo"
+      namespace: "android"
+    }
+    source_path {
+      path: "/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/cpuinfo"
+    }
+  }
+}
+test_result {
+  test_case {
+    test_class: "BasicTest"
+    test_package: "edu.ucsc.cse118.assignment3"
+    test_method: "message_member"
+    start_time {
+      seconds: 1688745487
+      nanos: 921000000
+    }
+    end_time {
+      seconds: 1688745502
+      nanos: 683000000
+    }
+  }
+  test_status: FAILED
+  error {
+    error_message: "androidx.test.espresso.NoMatchingViewException: No views in hierarchy found matching: an instance of android.widget.TextView and view.getText() with or without transformation to match: is \"William Shakespeare\"\n\nView Hierarchy:\n+>DecorView{id=-1, visibility=VISIBLE, width=1080, height=2340, has-focus=false, has-focusable=true, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params={(0,0)(fillxfill) ty=BASE_APPLICATION wanim=0x10302fe\nfl=LAYOUT_IN_SCREEN LAYOUT_INSET_DECOR SPLIT_TOUCH HARDWARE_ACCELERATED DRAWS_SYSTEM_BAR_BACKGROUNDS\npfl=FORCE_DRAW_STATUS_BAR_BACKGROUND FIT_INSETS_CONTROLLED\nfitSides=}, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0, child-count=2}\n|\n+->LinearLayout{id=-1, visibility=VISIBLE, width=1080, height=2340, has-focus=false, has-focusable=true, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=android.widget.FrameLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0, child-count=2}\n|\n+-->ViewStub{id=16908726, res-name=action_mode_bar_stub, visibility=GONE, width=0, height=0, has-focus=false, has-focusable=false, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=true, is-selected=false, layout-params=android.widget.LinearLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0}\n|\n+-->FrameLayout{id=-1, visibility=VISIBLE, width=1080, height=2260, has-focus=false, has-focusable=true, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=android.widget.LinearLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=80.0, child-count=1}\n|\n+--->ActionBarOverlayLayout{id=2131230866, res-name=decor_content_parent, visibility=VISIBLE, width=1080, height=2260, has-focus=false, has-focusable=true, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=android.widget.FrameLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0, child-count=2}\n|\n+---->ContentFrameLayout{id=16908290, res-name=content, visibility=VISIBLE, width=1080, height=2113, has-focus=false, has-focusable=true, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=androidx.appcompat.widget.ActionBarOverlayLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=147.0, child-count=1}\n|\n+----->ConstraintLayout{id=-1, visibility=VISIBLE, width=1080, height=2113, has-focus=false, has-focusable=true, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=android.widget.FrameLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0, child-count=1}\n|\n+------>FragmentContainerView{id=2131230916, res-name=fragmentContainerView, visibility=VISIBLE, width=1080, height=2113, has-focus=false, has-focusable=true, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=androidx.constraintlayout.widget.ConstraintLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0, child-count=1}\n|\n+------->ConstraintLayout{id=-1, visibility=VISIBLE, width=1080, height=2113, has-focus=false, has-focusable=true, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=android.widget.FrameLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0, child-count=1}\n|\n+-------->RecyclerView{id=2131231066, res-name=recyclerview, visibility=VISIBLE, width=1080, height=2113, has-focus=false, has-focusable=true, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=true, is-layout-requested=false, is-selected=false, layout-params=androidx.constraintlayout.widget.ConstraintLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0, child-count=0}\n|\n+---->ActionBarContainer{id=2131230773, res-name=action_bar_container, visibility=VISIBLE, width=1080, height=147, has-focus=false, has-focusable=false, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=androidx.appcompat.widget.ActionBarOverlayLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0, child-count=2}\n|\n+----->Toolbar{id=2131230771, res-name=action_bar, visibility=VISIBLE, width=1080, height=147, has-focus=false, has-focusable=false, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=android.widget.FrameLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0, child-count=3}\n|\n+------>AppCompatTextView{id=-1, visibility=VISIBLE, width=245, height=66, has-focus=false, has-focusable=false, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=androidx.appcompat.widget.Toolbar$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=189.0, y=40.0, text=Messages, input-type=0, ime-target=false, has-links=false}\n|\n+------>ActionMenuView{id=-1, visibility=VISIBLE, width=0, height=147, has-focus=false, has-focusable=false, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=androidx.appcompat.widget.Toolbar$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=1080.0, y=0.0, child-count=0}\n|\n+------>AppCompatImageButton{id=-1, desc=Navigate up, visibility=VISIBLE, width=147, height=147, has-focus=false, has-focusable=false, has-window-focus=true, is-clickable=true, is-enabled=true, is-focused=false, is-focusable=true, is-layout-requested=false, is-selected=false, layout-params=androidx.appcompat.widget.Toolbar$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0}\n|\n+----->ActionBarContextView{id=2131230779, res-name=action_context_bar, visibility=GONE, width=0, height=0, has-focus=false, has-focusable=false, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=true, is-selected=false, layout-params=android.widget.FrameLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0, child-count=0}\n|\n+->View{id=16908335, res-name=statusBarBackground, visibility=VISIBLE, width=1080, height=80, has-focus=false, has-focusable=false, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=android.widget.FrameLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0}\nat androidx.test.espresso.NoMatchingViewException$Builder.build(NoMatchingViewException.java:5)\nat androidx.test.espresso.base.DefaultFailureHandler.lambda$getNoMatchingViewExceptionTruncater$0(DefaultFailureHandler.java:5)\nat androidx.test.espresso.base.DefaultFailureHandler$$ExternalSyntheticLambda1.truncateExceptionMessage(Unknown Source:2)\nat androidx.test.espresso.base.ViewHierarchyExceptionHandler.handleSafely(ViewHierarchyExceptionHandler.java:5)\nat androidx.test.espresso.base.ViewHierarchyExceptionHandler.handleSafely(ViewHierarchyExceptionHandler.java:1)\nat androidx.test.espresso.base.DefaultFailureHandler$TypedFailureHandler.handle(DefaultFailureHandler.java:4)\nat androidx.test.espresso.base.DefaultFailureHandler.handle(DefaultFailureHandler.java:5)\nat androidx.test.espresso.ViewInteraction.waitForAndHandleInteractionResults(ViewInteraction.java:8)\nat androidx.test.espresso.ViewInteraction.desugaredPerform(ViewInteraction.java:11)\nat androidx.test.espresso.ViewInteraction.perform(ViewInteraction.java:8)\nat edu.ucsc.cse118.assignment3.TestHelper.waitForView(TestHelper.kt:59)\nat edu.ucsc.cse118.assignment3.TestHelper.waitForView$default(TestHelper.kt:50)\nat edu.ucsc.cse118.assignment3.TestHelper.waitForText(TestHelper.kt:71)\nat edu.ucsc.cse118.assignment3.BasicTest.message_member(BasicTest.kt:138)"
+    error_type: "androidx.test.espresso.NoMatchingViewException"
+    stack_trace: "androidx.test.espresso.NoMatchingViewException: No views in hierarchy found matching: an instance of android.widget.TextView and view.getText() with or without transformation to match: is \"William Shakespeare\"\n\nView Hierarchy:\n+>DecorView{id=-1, visibility=VISIBLE, width=1080, height=2340, has-focus=false, has-focusable=true, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params={(0,0)(fillxfill) ty=BASE_APPLICATION wanim=0x10302fe\nfl=LAYOUT_IN_SCREEN LAYOUT_INSET_DECOR SPLIT_TOUCH HARDWARE_ACCELERATED DRAWS_SYSTEM_BAR_BACKGROUNDS\npfl=FORCE_DRAW_STATUS_BAR_BACKGROUND FIT_INSETS_CONTROLLED\nfitSides=}, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0, child-count=2}\n|\n+->LinearLayout{id=-1, visibility=VISIBLE, width=1080, height=2340, has-focus=false, has-focusable=true, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=android.widget.FrameLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0, child-count=2}\n|\n+-->ViewStub{id=16908726, res-name=action_mode_bar_stub, visibility=GONE, width=0, height=0, has-focus=false, has-focusable=false, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=true, is-selected=false, layout-params=android.widget.LinearLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0}\n|\n+-->FrameLayout{id=-1, visibility=VISIBLE, width=1080, height=2260, has-focus=false, has-focusable=true, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=android.widget.LinearLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=80.0, child-count=1}\n|\n+--->ActionBarOverlayLayout{id=2131230866, res-name=decor_content_parent, visibility=VISIBLE, width=1080, height=2260, has-focus=false, has-focusable=true, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=android.widget.FrameLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0, child-count=2}\n|\n+---->ContentFrameLayout{id=16908290, res-name=content, visibility=VISIBLE, width=1080, height=2113, has-focus=false, has-focusable=true, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=androidx.appcompat.widget.ActionBarOverlayLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=147.0, child-count=1}\n|\n+----->ConstraintLayout{id=-1, visibility=VISIBLE, width=1080, height=2113, has-focus=false, has-focusable=true, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=android.widget.FrameLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0, child-count=1}\n|\n+------>FragmentContainerView{id=2131230916, res-name=fragmentContainerView, visibility=VISIBLE, width=1080, height=2113, has-focus=false, has-focusable=true, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=androidx.constraintlayout.widget.ConstraintLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0, child-count=1}\n|\n+------->ConstraintLayout{id=-1, visibility=VISIBLE, width=1080, height=2113, has-focus=false, has-focusable=true, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=android.widget.FrameLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0, child-count=1}\n|\n+-------->RecyclerView{id=2131231066, res-name=recyclerview, visibility=VISIBLE, width=1080, height=2113, has-focus=false, has-focusable=true, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=true, is-layout-requested=false, is-selected=false, layout-params=androidx.constraintlayout.widget.ConstraintLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0, child-count=0}\n|\n+---->ActionBarContainer{id=2131230773, res-name=action_bar_container, visibility=VISIBLE, width=1080, height=147, has-focus=false, has-focusable=false, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=androidx.appcompat.widget.ActionBarOverlayLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0, child-count=2}\n|\n+----->Toolbar{id=2131230771, res-name=action_bar, visibility=VISIBLE, width=1080, height=147, has-focus=false, has-focusable=false, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=android.widget.FrameLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0, child-count=3}\n|\n+------>AppCompatTextView{id=-1, visibility=VISIBLE, width=245, height=66, has-focus=false, has-focusable=false, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=androidx.appcompat.widget.Toolbar$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=189.0, y=40.0, text=Messages, input-type=0, ime-target=false, has-links=false}\n|\n+------>ActionMenuView{id=-1, visibility=VISIBLE, width=0, height=147, has-focus=false, has-focusable=false, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=androidx.appcompat.widget.Toolbar$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=1080.0, y=0.0, child-count=0}\n|\n+------>AppCompatImageButton{id=-1, desc=Navigate up, visibility=VISIBLE, width=147, height=147, has-focus=false, has-focusable=false, has-window-focus=true, is-clickable=true, is-enabled=true, is-focused=false, is-focusable=true, is-layout-requested=false, is-selected=false, layout-params=androidx.appcompat.widget.Toolbar$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0}\n|\n+----->ActionBarContextView{id=2131230779, res-name=action_context_bar, visibility=GONE, width=0, height=0, has-focus=false, has-focusable=false, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=true, is-selected=false, layout-params=android.widget.FrameLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0, child-count=0}\n|\n+->View{id=16908335, res-name=statusBarBackground, visibility=VISIBLE, width=1080, height=80, has-focus=false, has-focusable=false, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=android.widget.FrameLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0}\nat androidx.test.espresso.NoMatchingViewException$Builder.build(NoMatchingViewException.java:5)\nat androidx.test.espresso.base.DefaultFailureHandler.lambda$getNoMatchingViewExceptionTruncater$0(DefaultFailureHandler.java:5)\nat androidx.test.espresso.base.DefaultFailureHandler$$ExternalSyntheticLambda1.truncateExceptionMessage(Unknown Source:2)\nat androidx.test.espresso.base.ViewHierarchyExceptionHandler.handleSafely(ViewHierarchyExceptionHandler.java:5)\nat androidx.test.espresso.base.ViewHierarchyExceptionHandler.handleSafely(ViewHierarchyExceptionHandler.java:1)\nat androidx.test.espresso.base.DefaultFailureHandler$TypedFailureHandler.handle(DefaultFailureHandler.java:4)\nat androidx.test.espresso.base.DefaultFailureHandler.handle(DefaultFailureHandler.java:5)\nat androidx.test.espresso.ViewInteraction.waitForAndHandleInteractionResults(ViewInteraction.java:8)\nat androidx.test.espresso.ViewInteraction.desugaredPerform(ViewInteraction.java:11)\nat androidx.test.espresso.ViewInteraction.perform(ViewInteraction.java:8)\nat edu.ucsc.cse118.assignment3.TestHelper.waitForView(TestHelper.kt:59)\nat edu.ucsc.cse118.assignment3.TestHelper.waitForView$default(TestHelper.kt:50)\nat edu.ucsc.cse118.assignment3.TestHelper.waitForText(TestHelper.kt:71)\nat edu.ucsc.cse118.assignment3.BasicTest.message_member(BasicTest.kt:138)"
+  }
+  output_artifact {
+    label {
+      label: "logcat"
+      namespace: "android"
+    }
+    source_path {
+      path: "/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/logcat-edu.ucsc.cse118.assignment3.BasicTest-message_member.txt"
+    }
+  }
+  output_artifact {
+    label {
+      label: "device-info"
+      namespace: "android"
+    }
+    source_path {
+      path: "/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/device-info.pb"
+    }
+  }
+  output_artifact {
+    label {
+      label: "device-info.meminfo"
+      namespace: "android"
+    }
+    source_path {
+      path: "/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/meminfo"
+    }
+  }
+  output_artifact {
+    label {
+      label: "device-info.cpuinfo"
+      namespace: "android"
+    }
+    source_path {
+      path: "/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/cpuinfo"
+    }
+  }
+}
+test_result {
+  test_case {
+    test_class: "BasicTest"
+    test_package: "edu.ucsc.cse118.assignment3"
+    test_method: "login_short_email"
+    start_time {
+      seconds: 1688745502
+      nanos: 688000000
+    }
+    end_time {
+      seconds: 1688745503
+      nanos: 630000000
+    }
+  }
+  test_status: PASSED
+  output_artifact {
+    label {
+      label: "logcat"
+      namespace: "android"
+    }
+    source_path {
+      path: "/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/logcat-edu.ucsc.cse118.assignment3.BasicTest-login_short_email.txt"
+    }
+  }
+  output_artifact {
+    label {
+      label: "device-info"
+      namespace: "android"
+    }
+    source_path {
+      path: "/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/device-info.pb"
+    }
+  }
+  output_artifact {
+    label {
+      label: "device-info.meminfo"
+      namespace: "android"
+    }
+    source_path {
+      path: "/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/meminfo"
+    }
+  }
+  output_artifact {
+    label {
+      label: "device-info.cpuinfo"
+      namespace: "android"
+    }
+    source_path {
+      path: "/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/cpuinfo"
+    }
+  }
+}
+test_result {
+  test_case {
+    test_class: "BasicTest"
+    test_package: "edu.ucsc.cse118.assignment3"
+    test_method: "login_button_disabled"
+    start_time {
+      seconds: 1688745503
+      nanos: 631000000
+    }
+    end_time {
+      seconds: 1688745504
+      nanos: 2000000
+    }
+  }
+  test_status: PASSED
+  output_artifact {
+    label {
+      label: "logcat"
+      namespace: "android"
+    }
+    source_path {
+      path: "/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/logcat-edu.ucsc.cse118.assignment3.BasicTest-login_button_disabled.txt"
+    }
+  }
+  output_artifact {
+    label {
+      label: "device-info"
+      namespace: "android"
+    }
+    source_path {
+      path: "/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/device-info.pb"
+    }
+  }
+  output_artifact {
+    label {
+      label: "device-info.meminfo"
+      namespace: "android"
+    }
+    source_path {
+      path: "/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/meminfo"
+    }
+  }
+  output_artifact {
+    label {
+      label: "device-info.cpuinfo"
+      namespace: "android"
+    }
+    source_path {
+      path: "/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/cpuinfo"
+    }
+  }
+}
+test_result {
+  test_case {
+    test_class: "BasicTest"
+    test_package: "edu.ucsc.cse118.assignment3"
+    test_method: "login_short_password"
+    start_time {
+      seconds: 1688745504
+      nanos: 4000000
+    }
+    end_time {
+      seconds: 1688745505
+      nanos: 409000000
+    }
+  }
+  test_status: PASSED
+  output_artifact {
+    label {
+      label: "logcat"
+      namespace: "android"
+    }
+    source_path {
+      path: "/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/logcat-edu.ucsc.cse118.assignment3.BasicTest-login_short_password.txt"
+    }
+  }
+  output_artifact {
+    label {
+      label: "device-info"
+      namespace: "android"
+    }
+    source_path {
+      path: "/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/device-info.pb"
+    }
+  }
+  output_artifact {
+    label {
+      label: "device-info.meminfo"
+      namespace: "android"
+    }
+    source_path {
+      path: "/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/meminfo"
+    }
+  }
+  output_artifact {
+    label {
+      label: "device-info.cpuinfo"
+      namespace: "android"
+    }
+    source_path {
+      path: "/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/cpuinfo"
+    }
+  }
+}
+test_result {
+  test_case {
+    test_class: "BasicTest"
+    test_package: "edu.ucsc.cse118.assignment3"
+    test_method: "login_error"
+    start_time {
+      seconds: 1688745505
+      nanos: 411000000
+    }
+    end_time {
+      seconds: 1688745520
+      nanos: 92000000
+    }
+  }
+  test_status: FAILED
+  error {
+    error_message: "androidx.test.espresso.NoMatchingViewException: No views in hierarchy found matching: an instance of android.widget.TextView and view.getText() with or without transformation to match: is \"Failed to login : HTTP 401\"\n\nView Hierarchy:\n+>DecorView{id=-1, visibility=VISIBLE, width=1080, height=2340, has-focus=true, has-focusable=true, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params={(0,0)(fillxfill) ty=BASE_APPLICATION wanim=0x10302fe\nfl=LAYOUT_IN_SCREEN LAYOUT_INSET_DECOR SPLIT_TOUCH HARDWARE_ACCELERATED DRAWS_SYSTEM_BAR_BACKGROUNDS\npfl=FORCE_DRAW_STATUS_BAR_BACKGROUND FIT_INSETS_CONTROLLED\nfitSides=}, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0, child-count=2}\n|\n+->LinearLayout{id=-1, visibility=VISIBLE, width=1080, height=2340, has-focus=true, has-focusable=true, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=android.widget.FrameLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0, child-count=2}\n|\n+-->ViewStub{id=16908726, res-name=action_mode_bar_stub, visibility=GONE, width=0, height=0, has-focus=false, has-focusable=false, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=true, is-selected=false, layout-params=android.widget.LinearLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0}\n|\n+-->FrameLayout{id=-1, visibility=VISIBLE, width=1080, height=2260, has-focus=true, has-focusable=true, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=android.widget.LinearLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=80.0, child-count=1}\n|\n+--->ActionBarOverlayLayout{id=2131230866, res-name=decor_content_parent, visibility=VISIBLE, width=1080, height=2260, has-focus=true, has-focusable=true, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=android.widget.FrameLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0, child-count=2}\n|\n+---->ContentFrameLayout{id=16908290, res-name=content, visibility=VISIBLE, width=1080, height=2113, has-focus=true, has-focusable=true, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=androidx.appcompat.widget.ActionBarOverlayLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=147.0, child-count=1}\n|\n+----->ConstraintLayout{id=-1, visibility=VISIBLE, width=1080, height=2113, has-focus=true, has-focusable=true, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=android.widget.FrameLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0, child-count=1}\n|\n+------>FragmentContainerView{id=2131230916, res-name=fragmentContainerView, visibility=VISIBLE, width=1080, height=2113, has-focus=true, has-focusable=true, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=androidx.constraintlayout.widget.ConstraintLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0, child-count=1}\n|\n+------->ConstraintLayout{id=-1, visibility=VISIBLE, width=1080, height=2113, has-focus=true, has-focusable=true, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=android.widget.FrameLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0, child-count=4}\n|\n+-------->AppCompatImageView{id=2131230940, res-name=imageViewLogo, visibility=VISIBLE, width=648, height=437, has-focus=false, has-focusable=false, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=androidx.constraintlayout.widget.ConstraintLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=216.0, y=0.0}\n|\n+-------->AppCompatEditText{id=2131230898, res-name=email, visibility=VISIBLE, width=412, height=113, has-focus=false, has-focusable=true, has-window-focus=true, is-clickable=true, is-enabled=true, is-focused=false, is-focusable=true, is-layout-requested=false, is-selected=false, layout-params=androidx.constraintlayout.widget.ConstraintLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=true, editor-info=[inputType=0x20001 imeOptions=0x48000005 privateImeOptions=null actionLabel=null actionId=0 initialSelStart=17 initialSelEnd=17 initialCapsMode=0x0 hintText=Email label=null packageName=null autofillId=null fieldId=0 fieldName=null extras=Bundle[{android.support.text.emoji.emojiCompat_metadataVersion=9, android.support.text.emoji.emojiCompat_replaceAll=false}] hintLocales=null contentMimeTypes=null ], x=334.0, y=437.0, text=traschul@ucsc.edu, hint=Email, input-type=131073, ime-target=false, has-links=false}\n|\n+-------->AppCompatEditText{id=2131231052, res-name=password, visibility=VISIBLE, width=223, height=113, has-focus=true, has-focusable=true, has-window-focus=true, is-clickable=true, is-enabled=true, is-focused=true, is-focusable=true, is-layout-requested=false, is-selected=false, layout-params=androidx.constraintlayout.widget.ConstraintLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=true, editor-info=[inputType=0x20001 imeOptions=0x44000006 privateImeOptions=null actionLabel=null actionId=0 initialSelStart=5 initialSelEnd=5 initialCapsMode=0x0 hintText=Password label=null packageName=null autofillId=null fieldId=0 fieldName=null extras=Bundle[{android.support.text.emoji.emojiCompat_metadataVersion=9, android.support.text.emoji.emojiCompat_replaceAll=false}] hintLocales=null contentMimeTypes=null ], x=429.0, y=603.0, text=wrong, hint=Password, input-type=131073, ime-target=true, has-links=false}\n|\n+-------->MaterialButton{id=2131230961, res-name=login, visibility=VISIBLE, width=231, height=126, has-focus=false, has-focusable=true, has-window-focus=true, is-clickable=true, is-enabled=true, is-focused=false, is-focusable=true, is-layout-requested=false, is-selected=false, layout-params=androidx.constraintlayout.widget.ConstraintLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=425.0, y=769.0, text=Login, input-type=0, ime-target=false, has-links=false, is-checked=false}\n|\n+---->ActionBarContainer{id=2131230773, res-name=action_bar_container, visibility=VISIBLE, width=1080, height=147, has-focus=false, has-focusable=false, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=androidx.appcompat.widget.ActionBarOverlayLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0, child-count=2}\n|\n+----->Toolbar{id=2131230771, res-name=action_bar, visibility=VISIBLE, width=1080, height=147, has-focus=false, has-focusable=false, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=android.widget.FrameLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0, child-count=2}\n|\n+------>AppCompatTextView{id=-1, visibility=VISIBLE, width=521, height=66, has-focus=false, has-focusable=false, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=androidx.appcompat.widget.Toolbar$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=42.0, y=40.0, text=CSE118 Assignment 3, input-type=0, ime-target=false, has-links=false}\n|\n+------>ActionMenuView{id=-1, visibility=VISIBLE, width=0, height=147, has-focus=false, has-focusable=false, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=androidx.appcompat.widget.Toolbar$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=1080.0, y=0.0, child-count=0}\n|\n+----->ActionBarContextView{id=2131230779, res-name=action_context_bar, visibility=GONE, width=0, height=0, has-focus=false, has-focusable=false, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=true, is-selected=false, layout-params=android.widget.FrameLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0, child-count=0}\n|\n+->View{id=16908335, res-name=statusBarBackground, visibility=VISIBLE, width=1080, height=80, has-focus=false, has-focusable=false, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=android.widget.FrameLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0}\nat androidx.test.espresso.NoMatchingViewException$Builder.build(NoMatchingViewException.java:5)\nat androidx.test.espresso.base.DefaultFailureHandler.lambda$getNoMatchingViewExceptionTruncater$0(DefaultFailureHandler.java:5)\nat androidx.test.espresso.base.DefaultFailureHandler$$ExternalSyntheticLambda1.truncateExceptionMessage(Unknown Source:2)\nat androidx.test.espresso.base.ViewHierarchyExceptionHandler.handleSafely(ViewHierarchyExceptionHandler.java:5)\nat androidx.test.espresso.base.ViewHierarchyExceptionHandler.handleSafely(ViewHierarchyExceptionHandler.java:1)\nat androidx.test.espresso.base.DefaultFailureHandler$TypedFailureHandler.handle(DefaultFailureHandler.java:4)\nat androidx.test.espresso.base.DefaultFailureHandler.handle(DefaultFailureHandler.java:5)\nat androidx.test.espresso.ViewInteraction.waitForAndHandleInteractionResults(ViewInteraction.java:8)\nat androidx.test.espresso.ViewInteraction.desugaredPerform(ViewInteraction.java:11)\nat androidx.test.espresso.ViewInteraction.perform(ViewInteraction.java:8)\nat edu.ucsc.cse118.assignment3.TestHelper.waitForView(TestHelper.kt:59)\nat edu.ucsc.cse118.assignment3.TestHelper.waitForView$default(TestHelper.kt:50)\nat edu.ucsc.cse118.assignment3.BasicTest.login_error(BasicTest.kt:108)"
+    error_type: "androidx.test.espresso.NoMatchingViewException"
+    stack_trace: "androidx.test.espresso.NoMatchingViewException: No views in hierarchy found matching: an instance of android.widget.TextView and view.getText() with or without transformation to match: is \"Failed to login : HTTP 401\"\n\nView Hierarchy:\n+>DecorView{id=-1, visibility=VISIBLE, width=1080, height=2340, has-focus=true, has-focusable=true, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params={(0,0)(fillxfill) ty=BASE_APPLICATION wanim=0x10302fe\nfl=LAYOUT_IN_SCREEN LAYOUT_INSET_DECOR SPLIT_TOUCH HARDWARE_ACCELERATED DRAWS_SYSTEM_BAR_BACKGROUNDS\npfl=FORCE_DRAW_STATUS_BAR_BACKGROUND FIT_INSETS_CONTROLLED\nfitSides=}, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0, child-count=2}\n|\n+->LinearLayout{id=-1, visibility=VISIBLE, width=1080, height=2340, has-focus=true, has-focusable=true, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=android.widget.FrameLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0, child-count=2}\n|\n+-->ViewStub{id=16908726, res-name=action_mode_bar_stub, visibility=GONE, width=0, height=0, has-focus=false, has-focusable=false, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=true, is-selected=false, layout-params=android.widget.LinearLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0}\n|\n+-->FrameLayout{id=-1, visibility=VISIBLE, width=1080, height=2260, has-focus=true, has-focusable=true, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=android.widget.LinearLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=80.0, child-count=1}\n|\n+--->ActionBarOverlayLayout{id=2131230866, res-name=decor_content_parent, visibility=VISIBLE, width=1080, height=2260, has-focus=true, has-focusable=true, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=android.widget.FrameLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0, child-count=2}\n|\n+---->ContentFrameLayout{id=16908290, res-name=content, visibility=VISIBLE, width=1080, height=2113, has-focus=true, has-focusable=true, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=androidx.appcompat.widget.ActionBarOverlayLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=147.0, child-count=1}\n|\n+----->ConstraintLayout{id=-1, visibility=VISIBLE, width=1080, height=2113, has-focus=true, has-focusable=true, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=android.widget.FrameLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0, child-count=1}\n|\n+------>FragmentContainerView{id=2131230916, res-name=fragmentContainerView, visibility=VISIBLE, width=1080, height=2113, has-focus=true, has-focusable=true, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=androidx.constraintlayout.widget.ConstraintLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0, child-count=1}\n|\n+------->ConstraintLayout{id=-1, visibility=VISIBLE, width=1080, height=2113, has-focus=true, has-focusable=true, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=android.widget.FrameLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0, child-count=4}\n|\n+-------->AppCompatImageView{id=2131230940, res-name=imageViewLogo, visibility=VISIBLE, width=648, height=437, has-focus=false, has-focusable=false, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=androidx.constraintlayout.widget.ConstraintLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=216.0, y=0.0}\n|\n+-------->AppCompatEditText{id=2131230898, res-name=email, visibility=VISIBLE, width=412, height=113, has-focus=false, has-focusable=true, has-window-focus=true, is-clickable=true, is-enabled=true, is-focused=false, is-focusable=true, is-layout-requested=false, is-selected=false, layout-params=androidx.constraintlayout.widget.ConstraintLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=true, editor-info=[inputType=0x20001 imeOptions=0x48000005 privateImeOptions=null actionLabel=null actionId=0 initialSelStart=17 initialSelEnd=17 initialCapsMode=0x0 hintText=Email label=null packageName=null autofillId=null fieldId=0 fieldName=null extras=Bundle[{android.support.text.emoji.emojiCompat_metadataVersion=9, android.support.text.emoji.emojiCompat_replaceAll=false}] hintLocales=null contentMimeTypes=null ], x=334.0, y=437.0, text=traschul@ucsc.edu, hint=Email, input-type=131073, ime-target=false, has-links=false}\n|\n+-------->AppCompatEditText{id=2131231052, res-name=password, visibility=VISIBLE, width=223, height=113, has-focus=true, has-focusable=true, has-window-focus=true, is-clickable=true, is-enabled=true, is-focused=true, is-focusable=true, is-layout-requested=false, is-selected=false, layout-params=androidx.constraintlayout.widget.ConstraintLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=true, editor-info=[inputType=0x20001 imeOptions=0x44000006 privateImeOptions=null actionLabel=null actionId=0 initialSelStart=5 initialSelEnd=5 initialCapsMode=0x0 hintText=Password label=null packageName=null autofillId=null fieldId=0 fieldName=null extras=Bundle[{android.support.text.emoji.emojiCompat_metadataVersion=9, android.support.text.emoji.emojiCompat_replaceAll=false}] hintLocales=null contentMimeTypes=null ], x=429.0, y=603.0, text=wrong, hint=Password, input-type=131073, ime-target=true, has-links=false}\n|\n+-------->MaterialButton{id=2131230961, res-name=login, visibility=VISIBLE, width=231, height=126, has-focus=false, has-focusable=true, has-window-focus=true, is-clickable=true, is-enabled=true, is-focused=false, is-focusable=true, is-layout-requested=false, is-selected=false, layout-params=androidx.constraintlayout.widget.ConstraintLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=425.0, y=769.0, text=Login, input-type=0, ime-target=false, has-links=false, is-checked=false}\n|\n+---->ActionBarContainer{id=2131230773, res-name=action_bar_container, visibility=VISIBLE, width=1080, height=147, has-focus=false, has-focusable=false, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=androidx.appcompat.widget.ActionBarOverlayLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0, child-count=2}\n|\n+----->Toolbar{id=2131230771, res-name=action_bar, visibility=VISIBLE, width=1080, height=147, has-focus=false, has-focusable=false, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=android.widget.FrameLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0, child-count=2}\n|\n+------>AppCompatTextView{id=-1, visibility=VISIBLE, width=521, height=66, has-focus=false, has-focusable=false, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=androidx.appcompat.widget.Toolbar$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=42.0, y=40.0, text=CSE118 Assignment 3, input-type=0, ime-target=false, has-links=false}\n|\n+------>ActionMenuView{id=-1, visibility=VISIBLE, width=0, height=147, has-focus=false, has-focusable=false, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=androidx.appcompat.widget.Toolbar$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=1080.0, y=0.0, child-count=0}\n|\n+----->ActionBarContextView{id=2131230779, res-name=action_context_bar, visibility=GONE, width=0, height=0, has-focus=false, has-focusable=false, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=true, is-selected=false, layout-params=android.widget.FrameLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0, child-count=0}\n|\n+->View{id=16908335, res-name=statusBarBackground, visibility=VISIBLE, width=1080, height=80, has-focus=false, has-focusable=false, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=android.widget.FrameLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0}\nat androidx.test.espresso.NoMatchingViewException$Builder.build(NoMatchingViewException.java:5)\nat androidx.test.espresso.base.DefaultFailureHandler.lambda$getNoMatchingViewExceptionTruncater$0(DefaultFailureHandler.java:5)\nat androidx.test.espresso.base.DefaultFailureHandler$$ExternalSyntheticLambda1.truncateExceptionMessage(Unknown Source:2)\nat androidx.test.espresso.base.ViewHierarchyExceptionHandler.handleSafely(ViewHierarchyExceptionHandler.java:5)\nat androidx.test.espresso.base.ViewHierarchyExceptionHandler.handleSafely(ViewHierarchyExceptionHandler.java:1)\nat androidx.test.espresso.base.DefaultFailureHandler$TypedFailureHandler.handle(DefaultFailureHandler.java:4)\nat androidx.test.espresso.base.DefaultFailureHandler.handle(DefaultFailureHandler.java:5)\nat androidx.test.espresso.ViewInteraction.waitForAndHandleInteractionResults(ViewInteraction.java:8)\nat androidx.test.espresso.ViewInteraction.desugaredPerform(ViewInteraction.java:11)\nat androidx.test.espresso.ViewInteraction.perform(ViewInteraction.java:8)\nat edu.ucsc.cse118.assignment3.TestHelper.waitForView(TestHelper.kt:59)\nat edu.ucsc.cse118.assignment3.TestHelper.waitForView$default(TestHelper.kt:50)\nat edu.ucsc.cse118.assignment3.BasicTest.login_error(BasicTest.kt:108)"
+  }
+  output_artifact {
+    label {
+      label: "logcat"
+      namespace: "android"
+    }
+    source_path {
+      path: "/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/logcat-edu.ucsc.cse118.assignment3.BasicTest-login_error.txt"
+    }
+  }
+  output_artifact {
+    label {
+      label: "device-info"
+      namespace: "android"
+    }
+    source_path {
+      path: "/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/device-info.pb"
+    }
+  }
+  output_artifact {
+    label {
+      label: "device-info.meminfo"
+      namespace: "android"
+    }
+    source_path {
+      path: "/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/meminfo"
+    }
+  }
+  output_artifact {
+    label {
+      label: "device-info.cpuinfo"
+      namespace: "android"
+    }
+    source_path {
+      path: "/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/cpuinfo"
+    }
+  }
+}
+test_result {
+  test_case {
+    test_class: "BasicTest"
+    test_package: "edu.ucsc.cse118.assignment3"
+    test_method: "login_title"
+    start_time {
+      seconds: 1688745520
+      nanos: 95000000
+    }
+    end_time {
+      seconds: 1688745520
+      nanos: 381000000
+    }
+  }
+  test_status: PASSED
+  output_artifact {
+    label {
+      label: "logcat"
+      namespace: "android"
+    }
+    source_path {
+      path: "/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/logcat-edu.ucsc.cse118.assignment3.BasicTest-login_title.txt"
+    }
+  }
+  output_artifact {
+    label {
+      label: "device-info"
+      namespace: "android"
+    }
+    source_path {
+      path: "/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/device-info.pb"
+    }
+  }
+  output_artifact {
+    label {
+      label: "device-info.meminfo"
+      namespace: "android"
+    }
+    source_path {
+      path: "/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/meminfo"
+    }
+  }
+  output_artifact {
+    label {
+      label: "device-info.cpuinfo"
+      namespace: "android"
+    }
+    source_path {
+      path: "/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/cpuinfo"
+    }
+  }
+}
+test_result {
+  test_case {
+    test_class: "BasicTest"
+    test_package: "edu.ucsc.cse118.assignment3"
+    test_method: "login_password_hint"
+    start_time {
+      seconds: 1688745520
+      nanos: 382000000
+    }
+    end_time {
+      seconds: 1688745520
+      nanos: 770000000
+    }
+  }
+  test_status: PASSED
+  output_artifact {
+    label {
+      label: "logcat"
+      namespace: "android"
+    }
+    source_path {
+      path: "/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/logcat-edu.ucsc.cse118.assignment3.BasicTest-login_password_hint.txt"
+    }
+  }
+  output_artifact {
+    label {
+      label: "device-info"
+      namespace: "android"
+    }
+    source_path {
+      path: "/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/device-info.pb"
+    }
+  }
+  output_artifact {
+    label {
+      label: "device-info.meminfo"
+      namespace: "android"
+    }
+    source_path {
+      path: "/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/meminfo"
+    }
+  }
+  output_artifact {
+    label {
+      label: "device-info.cpuinfo"
+      namespace: "android"
+    }
+    source_path {
+      path: "/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/cpuinfo"
+    }
+  }
+}
+output_artifact {
+  label {
+    label: "test-results.log"
+    namespace: "com.google.testing.platform.runtime.android.driver.AndroidInstrumentationDriver"
+  }
+  source_path {
+    path: "/Users/jair/Desktop/MobileAppDevelopment/1_Android/asgn3/Assignment3/app/build/outputs/androidTest-results/connected/ONEPLUS A6013 - 11/testlog/test-results.log"
+  }
+  type: TEST_DATA
+  mime_type: "text/plain"
+}

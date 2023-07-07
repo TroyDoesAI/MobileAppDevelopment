@@ -7,9 +7,8 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.appcompat.app.AppCompatActivity
-//import com.google.gson.Gson
 import edu.ucsc.cse118.assignment3.R
-//import edu.ucsc.cse118.assignment3.data.Message
+import edu.ucsc.cse118.assignment3.data.DataClasses
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -27,16 +26,14 @@ class MessageFragment : Fragment() {
     // Called immediately after onCreateView() has returned a view
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         // Get the message JSON string from the arguments
-        /*
         val messageJson = arguments?.getString("message")
         if (messageJson != null) {
             // Convert JSON string back to Message object
-            val message: Message = Gson().fromJson(messageJson, Message::class.java)
+            val message: DataClasses.Message = DataClasses.Message.fromJson(messageJson)
 
             // Set the action bar title to the user's name
-            (activity as AppCompatActivity).supportActionBar?.title = message.user.name
+            (activity as AppCompatActivity).supportActionBar?.title = message.name
 
             // Find the date and content TextViews in the layout
             val dateTextView: TextView = view.findViewById(R.id.date)
@@ -51,7 +48,7 @@ class MessageFragment : Fragment() {
             dateTextView.text = formattedDate
             contentTextView.text = message.content
         }
-         */
+
     }
 
     // Called when the view hierarchy associated with the fragment is being removed
@@ -59,5 +56,6 @@ class MessageFragment : Fragment() {
         super.onDestroyView()
         // Show the "Up" button in the action bar
         (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
     }
 }

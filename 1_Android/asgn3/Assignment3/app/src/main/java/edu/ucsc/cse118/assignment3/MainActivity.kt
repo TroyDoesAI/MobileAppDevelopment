@@ -48,7 +48,7 @@ class MainActivity : AppCompatActivity() {
       replace(R.id.fragmentContainerView, LoginFragment::class.java, null)
       setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out) // Optional animation
     }
-    supportActionBar?.title = "CSE118 Assignment 2"
+    supportActionBar?.title = "CSE118 Assignment 3"
     supportActionBar?.setDisplayHomeAsUpEnabled(false)
   }
 

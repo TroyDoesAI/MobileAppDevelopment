@@ -13,6 +13,8 @@ import edu.ucsc.cse118.assignment3.R
 import edu.ucsc.cse118.assignment3.data.DataClasses.Workspace
 import edu.ucsc.cse118.assignment3.WorkspaceAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
+import edu.ucsc.cse118.assignment3.data.DataClasses
+import edu.ucsc.cse118.assignment3.model.SharedViewModel.Companion.member
 
 class WorkspacesFragment : Fragment() {
     private lateinit var workspaceAdapter: WorkspaceAdapter
@@ -29,7 +31,7 @@ class WorkspacesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        (requireActivity() as AppCompatActivity).supportActionBar?.title = "Workspaces"
+        (requireActivity() as AppCompatActivity).supportActionBar?.title = member?.name
         (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         workspacesViewModel = ViewModelProvider(this).get(WorkspacesViewModel::class.java)
@@ -37,10 +39,10 @@ class WorkspacesFragment : Fragment() {
         val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerview)
         recyclerView.layoutManager = LinearLayoutManager(context)
 
-        workspacesViewModel.workspacesLiveData.observe(viewLifecycleOwner, { workspaces ->
+        workspacesViewModel.workspacesLiveData.observe(viewLifecycleOwner) { workspaces ->
             workspaceAdapter = WorkspaceAdapter(workspaces, this::onWorkspaceClicked)
             recyclerView.adapter = workspaceAdapter
-        })
+        }
 
         workspacesViewModel.fetchWorkspaces()
     }
@@ -62,6 +64,6 @@ class WorkspacesFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        (requireActivity() as AppCompatActivity).supportActionBar?.title = "CSE118 Assignment 2"
+        (requireActivity() as AppCompatActivity).supportActionBar?.title = "CSE118 Assignment 3"
     }
 }

@@ -1,5 +1,6 @@
 import edu.ucsc.cse118.assignment3.data.DataClasses.Channel
 import edu.ucsc.cse118.assignment3.data.DataClasses.Workspace
+import edu.ucsc.cse118.assignment3.data.DataClasses.Message
 import edu.ucsc.cse118.assignment3.model.SharedViewModel.Companion.member
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -58,5 +59,17 @@ object ApiHandler {
         }
     }
 
-    // TODO suspend fun getMessages
+    suspend fun getMessages(channelId: String): List<Message> {
+        return withContext(Dispatchers.IO) {
+            val responsePair = makeHttpRequest("GET", "https://cse118.com/api/v2/channel/${channelId}/message")
+
+            if (responsePair.second == HttpURLConnection.HTTP_OK) {
+                val messages = Json.decodeFromString<List<Message>>(responsePair.first.toString())
+                messages
+            }
+            else {
+                throw Exception("Error response code: ${responsePair.second}")
+            }
+        }
+    }
 }

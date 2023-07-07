@@ -15,14 +15,6 @@ class DataClasses {
         companion object {
             fun fromJson(json: String): Workspace {
                 val jsonObject = JSONObject(json)
-                /*
-                val channelsJsonArray = jsonObject.getJSONArray("channels")
-
-                val channels = mutableListOf<Channel>()
-                for (i in 0 until channelsJsonArray.length()) {
-                    channels.add(Channel.fromJson(channelsJsonArray.getJSONObject(i).toString()))
-                }
-                 */
                 return Workspace(jsonObject.getString("name"), jsonObject.getString("id"), jsonObject.getInt("channels"))
             }
         }
@@ -32,13 +24,14 @@ class DataClasses {
             jsonObject.put("name", name)
             jsonObject.put("id", id)
             /*
-            val channelsJsonArray = JSONArray()
-            channels.forEach { channel ->
-                channelsJsonArray.put(JSONObject(channel.toJson()))
-            }
+            var channelString = "channel"
+            channelString = if (channels == 1)
+                "channel"
+            else
+                "channels"
 
-            jsonObject.put("channels", channelsJsonArray)
-            */
+            jsonObject.put(channelString, channels)
+             */
             jsonObject.put("channels", channels)
             return jsonObject.toString()
         }
@@ -53,13 +46,6 @@ class DataClasses {
         companion object {
             fun fromJson(json: String): Channel {
                 val jsonObject = JSONObject(json)
-                /*
-                val messagesJsonArray = jsonObject.getJSONArray("messages")
-                val messages = mutableListOf<Message>()
-                for (i in 0 until messagesJsonArray.length()) {
-                    messages.add(Message.fromJson(messagesJsonArray.getJSONObject(i).toString()))
-                }
-                 */
                 return Channel(jsonObject.getString("name"), jsonObject.getString("id"), jsonObject.getInt("messages"))
             }
         }
@@ -69,42 +55,30 @@ class DataClasses {
             jsonObject.put("name", name)
             jsonObject.put("id", id)
             jsonObject.put("messages", messages)
-            /*
-            val messagesJsonArray = JSONArray()
-            messages.forEach { message ->
-                messagesJsonArray.put(JSONObject(message.toJson()))
-            }
-
-            jsonObject.put("messages", messagesJsonArray)
-             */
-
             return jsonObject.toString()
         }
     }
 
     @Serializable
     data class Message(
-        val user: User,
+        val id: String,
+        val name: String,
         val date: String,
         val content: String
     ) {
         companion object {
             fun fromJson(json: String): Message {
                 val jsonObject = JSONObject(json)
-                return Message(
-                    User.fromJson(jsonObject.getJSONObject("user").toString()),
-                    jsonObject.getString("date"),
-                    jsonObject.getString("content")
-                )
+                return Message(jsonObject.getString("id"), jsonObject.getString("user"), jsonObject.getString("date"), jsonObject.getString("content"))
             }
         }
 
         fun toJson(): String {
             val jsonObject = JSONObject()
-            jsonObject.put("user", JSONObject(user.toJson()))
+            jsonObject.put("id", id)
+            jsonObject.put("name", name)
             jsonObject.put("date", date)
             jsonObject.put("content", content)
-
             return jsonObject.toString()
         }
     }
@@ -134,33 +108,3 @@ class DataClasses {
     }
 
 }
-
-
-//
-//@Serializable
-//data class Workspace(
-//    val name: String,
-//    val id: String,
-//    val owner: String = "",
-//    val channels: Int
-//)
-//
-//@Serializable
-//data class Channel(
-//    val name: String,
-//    val messages: List<Message>
-//)
-//
-//
-//@Serializable
-//data class Message(
-//    val user: User,
-//    val date: String,
-//    val content: String
-//)
-//
-//@Serializable
-//data class User(
-//    val name: String,
-//    val email: String
-//)

@@ -1,27 +1,21 @@
 package edu.ucsc.cse118.assignment3.channels
 
 import ApiHandler
-import ApiHandler.getChannels
 import android.os.Bundle
-import android.provider.ContactsContract.Data
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.lifecycleScope
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.LinearLayoutManager
 import edu.ucsc.cse118.assignment3.ChannelAdapter
 import edu.ucsc.cse118.assignment3.messages.MessagesFragment
 import edu.ucsc.cse118.assignment3.R
 import edu.ucsc.cse118.assignment3.data.DataClasses
-import edu.ucsc.cse118.assignment3.data.DataClasses.Workspace
-import edu.ucsc.cse118.assignment3.data.DataClasses.Channel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import org.json.JSONObject
 
 class ChannelsFragment : Fragment() {
     private lateinit var channelAdapter: ChannelAdapter
@@ -32,6 +26,13 @@ class ChannelsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        // Get the channel name
+        val workspaceJson = arguments?.getString("workspace")
+        if (workspaceJson != null) {
+            val workspace: DataClasses.Workspace = DataClasses.Workspace.fromJson(workspaceJson)
+            (requireActivity() as AppCompatActivity).supportActionBar?.title = workspace.name
+            (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        }
         // Inflate the layout for the ChannelsFragment
         return inflater.inflate(R.layout.fragment_channels, container, false)
     }
@@ -39,6 +40,7 @@ class ChannelsFragment : Fragment() {
     // Called immediately after onCreateView() has returned a view
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         coroutineScope.launch {
             var channels: List<DataClasses.Channel> = listOf()
             val workspaceJson = arguments?.getString("workspace")

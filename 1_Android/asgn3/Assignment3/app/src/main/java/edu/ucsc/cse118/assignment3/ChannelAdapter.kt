@@ -21,7 +21,12 @@ class ChannelAdapter(
         // Binds data to the views and sets the click listener
         fun bind(channel: Channel, clickListener: (Channel) -> Unit) {
             name.text = channel.name
-            messages.text = "${channel.messages} Messages"
+            var messageString = ""
+            messageString = if (channel.messages == 1)
+                "${channel.messages} Message"
+            else
+                "${channel.messages} Messages"
+            messages.text = messageString
 
             // Set the click listener to trigger the specified function when an item is clicked
             itemView.setOnClickListener {
