@@ -12,7 +12,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class MessageAdapter(
-    private val messageMembers: List<Pair<DataClasses.Message, DataClasses.Member>>,
+    private var messageMembers: MutableList<Pair<DataClasses.Message, DataClasses.Member>>, // Changed to MutableList
     private val onMessageClicked: (Pair<DataClasses.Message, DataClasses.Member>) -> Unit
 ) : RecyclerView.Adapter<MessageAdapter.MessageViewHolder>() {
 
@@ -65,6 +65,10 @@ class MessageAdapter(
     override fun onBindViewHolder(holder: MessageViewHolder, position: Int) {
         // Bind the message and member at the current position to the ViewHolder
         holder.bind(messageMembers[position], onMessageClicked)
+    }
+
+    fun getMessageMemberPair(position: Int): Pair<DataClasses.Message, DataClasses.Member> {
+        return messageMembers[position]
     }
 
     // Returns the total number of items in the data set
