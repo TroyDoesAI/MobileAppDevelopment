@@ -8,10 +8,13 @@ import androidx.fragment.app.Fragment
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import edu.ucsc.cse118.assignment3.ApiHandler
 import edu.ucsc.cse118.assignment3.messages.message.MessageFragment
 import edu.ucsc.cse118.assignment3.R
 import edu.ucsc.cse118.assignment3.data.DataClasses
+import edu.ucsc.cse118.assignment3.login.LoginFragment
+import edu.ucsc.cse118.assignment3.messages.message.CreateMessageFragment
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -53,6 +56,22 @@ class MessagesFragment : Fragment() {
                 }
             }
         }
+
+        // FAB icon on click listener
+        view.findViewById<FloatingActionButton>(R.id.fab).setOnClickListener { onFabClicked() }
+    }
+
+    private fun onFabClicked(){
+        //val createMessageFragment = CreateMessageFragment()
+        val createMsgFragment = CreateMessageFragment()
+        val args = Bundle()
+        args.putString("channel", arguments?.getString("channel"))
+        createMsgFragment.arguments = args
+
+        requireActivity().supportFragmentManager.beginTransaction()
+            .replace(R.id.fragmentContainerView, createMsgFragment)
+            .addToBackStack(null)
+            .commit()
     }
 
     private fun onMessageClicked(messageMemberPair: Pair<DataClasses.Message, DataClasses.Member>) {
