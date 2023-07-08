@@ -30,6 +30,8 @@ class CreateMessageFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(false)
+        // Set the action bar title to the user's name
+        (activity as AppCompatActivity).supportActionBar?.title = "New Message"
         editText = view.findViewById<EditText>(R.id.content)
         editText?.addTextChangedListener(object: TextWatcher {
             override fun afterTextChanged(s: Editable?) {
