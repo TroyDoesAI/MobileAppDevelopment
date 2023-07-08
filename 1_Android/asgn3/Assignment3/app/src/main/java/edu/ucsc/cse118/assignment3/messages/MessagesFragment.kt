@@ -17,18 +17,15 @@ import edu.ucsc.cse118.assignment3.messages.message.CreateMessageFragment
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-
-import android.graphics.Color
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.ItemTouchHelper.*
-import android.widget.Toast
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AlertDialog
 import android.content.DialogInterface
-import android.graphics.Canvas
-import android.graphics.drawable.ColorDrawable
 import kotlinx.coroutines.withContext
 
+// ItemTouchHelper ref: https://developer.android.com/reference/androidx/recyclerview/widget/ItemTouchHelper
+// SnackBar ref: https://stackoverflow.com/questions/51972083/kotlin-create-a-snackbar
 class MessagesFragment : Fragment() {
     private lateinit var messageAdapter: MessageAdapter
     private val uiScope = CoroutineScope(Dispatchers.Main)
@@ -70,18 +67,15 @@ class MessagesFragment : Fragment() {
                 }
             }
         }
-
         // FAB icon on click listener
         view.findViewById<FloatingActionButton>(R.id.fab).setOnClickListener { onFabClicked() }
     }
 
     private fun onFabClicked(){
-        //val createMessageFragment = CreateMessageFragment()
         val createMsgFragment = CreateMessageFragment()
         val args = Bundle()
         args.putString("channel", arguments?.getString("channel"))
         createMsgFragment.arguments = args
-
         requireActivity().supportFragmentManager.beginTransaction()
             .replace(R.id.fragmentContainerView, createMsgFragment)
             .addToBackStack(null)
@@ -119,28 +113,18 @@ class MessagesFragment : Fragment() {
                 val position = viewHolder.adapterPosition
 
                 AlertDialog.Builder(requireContext())
-                    .setTitle("Delete Message")
-                    .setMessage("Are you sure you want to delete this message?")
+                    .setTitle("Delete Message From " + messageAdapter.getMessageMemberPair(position).second.name + "?")
                     .setPositiveButton("Yes") { dialogInterface: DialogInterface, _: Int ->
                         val messageMemberPair = messageAdapter.getMessageMemberPair(position)
                         val messageId = messageMemberPair.first.id
 
                         // Perform deletion on a background thread
                         bgScope.launch {
-                            val success = ApiHandler.deleteMessage(messageId)
-                            withContext(Dispatchers.Main) {
-                                if (success) {
-                                    // Delete the message from the adapter on the main thread
-                                    messageAdapter.deleteMessage(position)
-                                    messageAdapter.notifyDataSetChanged() // Notify adapter of the data set change
-                                    Snackbar.make(recyclerView, "Message Deleted", Snackbar.LENGTH_SHORT).show()
-                                } else {
-                                    // Show snackbar without updating the adapter
-                                    Snackbar.make(recyclerView, "Failed to delete message", Snackbar.LENGTH_SHORT).show()
-                                }
+                            ApiHandler.deleteMessage(messageId)
+                            withContext(Dispatchers.IO) { // Delete the message
+                            Snackbar.make(recyclerView, "Message Deleted", Snackbar.LENGTH_SHORT).show()
                             }
                         }
-
                         dialogInterface.dismiss()
                     }
                     .setNegativeButton("No") { dialogInterface: DialogInterface, _: Int ->
@@ -151,7 +135,6 @@ class MessagesFragment : Fragment() {
                     .show()
             }
         }
-
         itemTouchHelper = ItemTouchHelper(swipeToDeleteCallback)
         itemTouchHelper?.attachToRecyclerView(recyclerView) // Attach to the RecyclerView
     }

@@ -18,7 +18,6 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import com.google.android.material.snackbar.Snackbar
 
-
 class CreateMessageFragment : Fragment() {
     private lateinit var editText: EditText
     override fun onCreateView(
@@ -71,7 +70,6 @@ class CreateMessageFragment : Fragment() {
             }
         }
     }
-
 
     private fun editTextListener() {
         view?.findViewById<Button>(R.id.addButton)?.isEnabled = editText.text.length >= 16

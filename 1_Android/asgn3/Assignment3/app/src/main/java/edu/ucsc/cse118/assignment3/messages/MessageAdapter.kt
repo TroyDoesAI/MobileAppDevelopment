@@ -71,16 +71,6 @@ class MessageAdapter(
         return messageMembers[position]
     }
 
-    // Function to remove a message from the list
-    fun deleteMessage(position: Int) {
-        messageMembers.removeAt(position)
-        notifyItemRemoved(position) // Notifies any registered observers that the item previously located at position has been removed from the data set.
-        notifyItemRangeChanged(position, itemCount - position) // Update the indices of the remaining items
-    }
-
-
-
-
     // Returns the total number of items in the data set
     override fun getItemCount(): Int {
         return messageMembers.size
