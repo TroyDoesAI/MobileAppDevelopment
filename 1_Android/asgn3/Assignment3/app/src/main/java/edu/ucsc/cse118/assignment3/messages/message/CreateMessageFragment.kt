@@ -13,15 +13,14 @@ import androidx.fragment.app.Fragment
 import edu.ucsc.cse118.assignment3.ApiHandler
 import edu.ucsc.cse118.assignment3.R
 import edu.ucsc.cse118.assignment3.data.DataClasses
-import edu.ucsc.cse118.assignment3.messages.MessageAdapter
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import com.google.android.material.snackbar.Snackbar
+
 
 class CreateMessageFragment : Fragment() {
     private lateinit var editText: EditText
-    private lateinit var messageAdapter: MessageAdapter
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -48,19 +47,25 @@ class CreateMessageFragment : Fragment() {
     }
 
     private fun onAddClicked() {
-
         GlobalScope.launch(Dispatchers.Main) {
             try {
                 val channelJson = arguments?.getString("channel") // Get the channel JSON string from the arguments
                 if (channelJson != null) {
-                    var channel = DataClasses.Channel.fromJson(channelJson)
-                    var enteredText = editText.text.toString()
+                    val channel = DataClasses.Channel.fromJson(channelJson)
+                    val enteredText = editText.text.toString()
                     val message = ApiHandler.addMessage(channel.id, enteredText)
-                    // clear the text and show snackbar
-                } else {
-                     // invalid input, noop
-                }
 
+                    // Clear the text in the EditText
+                    editText.text = null
+
+                    // Show a snackbar stating "Message Created"
+                    Snackbar.make(requireView(), "Message Created", Snackbar.LENGTH_SHORT).show()
+
+                    // Return to the previous screen (pop the current fragment)
+                    parentFragmentManager.popBackStack()
+                } else {
+                    // Invalid input, noop
+                }
             } catch (e: Exception) {
                 // Handle the error
             }
