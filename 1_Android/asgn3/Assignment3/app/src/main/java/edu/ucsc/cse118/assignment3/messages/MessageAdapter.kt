@@ -12,7 +12,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class MessageAdapter(
-    private val messageMembers: List<Pair<DataClasses.Message, DataClasses.Member>>,
+    private var messageMembers: MutableList<Pair<DataClasses.Message, DataClasses.Member>>, // Changed to MutableList
     private val onMessageClicked: (Pair<DataClasses.Message, DataClasses.Member>) -> Unit
 ) : RecyclerView.Adapter<MessageAdapter.MessageViewHolder>() {
 
@@ -66,6 +66,20 @@ class MessageAdapter(
         // Bind the message and member at the current position to the ViewHolder
         holder.bind(messageMembers[position], onMessageClicked)
     }
+
+    fun getMessageMemberPair(position: Int): Pair<DataClasses.Message, DataClasses.Member> {
+        return messageMembers[position]
+    }
+
+    // Function to remove a message from the list
+    fun deleteMessage(position: Int) {
+        messageMembers.removeAt(position)
+        notifyItemRemoved(position) // Notifies any registered observers that the item previously located at position has been removed from the data set.
+        notifyItemRangeChanged(position, itemCount - position) // Update the indices of the remaining items
+    }
+
+
+
 
     // Returns the total number of items in the data set
     override fun getItemCount(): Int {

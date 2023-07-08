@@ -98,4 +98,15 @@ object ApiHandler {
         val response = makeHttpPostRequest("https://cse118.com/api/v2/channel/${channelId}/message", jsonBody)
         Json.decodeFromString<Message>(response)
     }
+
+    suspend fun deleteMessage(messageId: String): Boolean = withContext(Dispatchers.IO) {
+        val url = URL("https://cse118.com/api/v2/message/$messageId")
+        val connection = url.openConnection() as HttpURLConnection
+        connection.requestMethod = "DELETE"
+        connection.setRequestProperty("Content-Type", "application/json; charset=UTF-8")
+        connection.setRequestProperty("Authorization", "Bearer ${member?.accessToken}")
+        val responseCode = connection.responseCode
+        connection.disconnect()
+        responseCode == HttpURLConnection.HTTP_NO_CONTENT
+    }
 }
