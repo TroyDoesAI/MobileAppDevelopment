@@ -1,43 +1,42 @@
 import SwiftUI
+import Combine
 
-// This is a SwiftUI View that contains both a postfix calculator and a calendar generator.
+// Main View
 struct Assignment4View: View {
-    // Two state properties for the expression to be evaluated and the result of the evaluation.
+    // Input string for postfix evaluation
     @State private var expression: String = ""
+    // The result string of the postfix evaluation
     @State private var result: String = ""
-
-    // The currently selected date and the calendar generator instance.
+    // The date to display in the calendar
     @State private var date: Date = Date()
+    // Helper to generate calendar arrays
     private var calendarGenerator = CalendarGenerator()
-    
-    // DateFormatter to format the date to be shown in the calendar section.
-    private var dateFormatter: DateFormatter = {
-        let df = DateFormatter()
-        df.dateFormat = "MMMM yyyy"
-        return df
+    // Combine subscriptions container
+    @State private var combineSubscriptions = Set<AnyCancellable>()
+
+    // Date formatter to display date
+    private var monthYearFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMMM yyyy"
+        return formatter
     }()
-    
-    // The body of the SwiftUI view.
+
     var body: some View {
-        // The content is stacked vertically in a VStack.
         VStack {
-            // Title for the Postfix Calculator section.
-            Text("Postfix Calculator")
-                .font(.title)
-                .padding(.bottom, 20)
-            
-            // TextField for the user to enter the expression to be evaluated.
+            // Postfix Calculator UI
+            HStack {
+                Image(systemName: "plus.slash.minus") // Postfix Calculator icon
+                Text("Postfix Calculator")
+            }
+            .font(.title)
+            .padding(.bottom, 20)
             TextField("Expression", text: $expression, onCommit: evaluateExpression)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding(.horizontal, 20)
-            
-            // TextField to display the result of the evaluation.
             TextField("Result", text: $result)
                 .disabled(true)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding(.horizontal, 20)
-            
-            // Evaluate and Clear buttons.
             HStack {
                 Button(action: evaluateExpression) {
                     Text("Evaluate")
@@ -55,18 +54,16 @@ struct Assignment4View: View {
                 }
             }
             .padding(.top, 20)
-            
-            // Title for the Calendar Generator section.
-            Text("Calendar Generator")
-                .font(.title)
-                .padding(.top, 20)
-            
-            // Displays the currently selected month and year.
-            Text(dateFormatter.string(from: date))
+            // Calendar Generator UI
+            HStack {
+                Image(systemName: "calendar") // Calendar Generator icon
+                Text("Calendar Generator")
+            }
+            .font(.title)
+            .padding(.top, 20)
+            Text(monthYearFormatter.string(from: date))
                 .font(.title2)
                 .padding(.bottom, 20)
-            
-            // Displays the calendar for the currently selected month.
             ForEach(generateCalendarArray(), id: \.self) { week in
                 HStack {
                     ForEach(week, id: \.self) { day in
@@ -75,8 +72,6 @@ struct Assignment4View: View {
                     }
                 }
             }
-            
-            // Previous, Today and Next buttons.
             HStack {
                 Button(action: previousMonth) {
                     Text("Previous")
@@ -101,14 +96,13 @@ struct Assignment4View: View {
                 }
             }
             .padding(.top, 20)
-            
-            // Spacer to push the content to the top of the screen.
             Spacer()
         }
         .padding()
+        .keyboardAdaptive(cancellables: $combineSubscriptions)
     }
     
-    // Function to evaluate the expression entered by the user.
+    // Function to evaluate postfix expression
     func evaluateExpression() {
         do {
             let calculator = PostfixCalculator()
@@ -119,33 +113,88 @@ struct Assignment4View: View {
         }
     }
 
-    // Function to clear the expression and result fields.
+    // Function to clear the input and result fields
     func clearFields() {
         expression = ""
         result = ""
     }
-    
-    // Function to generate the calendar for the currently selected month.
+
+    // Function to generate a 2D array representing the current calendar month
     func generateCalendarArray() -> [[Int]] {
         let components = Calendar.current.dateComponents([.year, .month], from: date)
         return calendarGenerator.generate(yearAndMonth: components)
     }
-    
-    // Functions to change the currently selected month.
+
+    // Function to go to the previous month in the calendar
     func previousMonth() {
         date = Calendar.current.date(byAdding: .month, value: -1, to: date) ?? date
     }
-    
+
+    // Function to go to the next month in the calendar
     func nextMonth() {
         date = Calendar.current.date(byAdding: .month, value: 1, to: date) ?? date
     }
-    
+
+    // Function to go to the current month in the calendar
     func currentMonth() {
         date = Date()
     }
 }
 
-// This is a preview of the SwiftUI view for use in the Xcode canvas.
+// ViewModifier to handle keyboard appearance and disappearance
+struct KeyboardAdaptive: ViewModifier {
+    @Binding var combineSubscriptions: Set<AnyCancellable>
+
+    @State private var bottomPadding: CGFloat = 0
+
+    func body(content: Content) -> some View {
+        GeometryReader { geometry in
+            content
+                .padding(.bottom, self.bottomPadding)
+                .onAppear {
+                    self.addObserver()
+                }
+                .onDisappear {
+                    self.removeObserver()
+                }
+        }
+    }
+
+    // Function to add observers for keyboard show/hide notifications
+    private func addObserver() {
+        NotificationCenter.default.publisher(for: UIResponder.keyboardWillShowNotification)
+            .sink { keyboard in
+                let keyboardScreenEndFrame = (keyboard.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
+                let keyboardViewEndFrame = UIApplication.shared.connectedScenes
+                    .filter({$0.activationState == .foregroundActive})
+                    .compactMap({$0 as? UIWindowScene})
+                    .first?.windows
+                    .filter({$0.isKeyWindow})
+                    .first?.convert(keyboardScreenEndFrame ?? CGRect.zero, from: nil)
+
+                bottomPadding = keyboardViewEndFrame?.height ?? 0
+            }
+            .store(in: &combineSubscriptions)
+
+        NotificationCenter.default.publisher(for: UIResponder.keyboardWillHideNotification)
+            .sink { _ in
+                bottomPadding = 0
+            }
+            .store(in: &combineSubscriptions)
+    }
+
+    // Function to remove all observers
+    private func removeObserver() {
+        combineSubscriptions.removeAll()
+    }
+}
+
+extension View {
+    func keyboardAdaptive(cancellables: Binding<Set<AnyCancellable>>) -> some View {
+        ModifiedContent(content: self, modifier: KeyboardAdaptive(combineSubscriptions: cancellables))
+    }
+}
+
 #if !TESTING
 struct Assignment4View_Previews: PreviewProvider {
     static var previews: some View {

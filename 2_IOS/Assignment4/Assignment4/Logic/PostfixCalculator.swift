@@ -6,13 +6,6 @@ extension String {
     }
 }
 
-enum PostfixCalculatorError: Error {
-    case missingOperand
-    case divisionByZero
-    case invalidOperator
-    case malformedExpression
-}
-
 class PostfixCalculator {
     // Parses a postfix expression and evaluates it to return the result.
     func parse(expression: String) throws -> Double {

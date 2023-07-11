@@ -90,4 +90,14 @@ final class PostfixCalculatorTests: XCTestCase {
     func testMultipleConsecutiveOperators() {
         XCTAssertThrowsError(try calculator.parse(expression: "1 2 + -"))
     }
+    
+    // Test for handling 0.0
+    func testHandlingZero() {
+        XCTAssertEqual(try calculator.parse(expression: "0.0"), 0.0)
+    }
+
+    // Test for handling -0.0
+    func testHandlingNegativeZero() {
+        XCTAssertEqual(try calculator.parse(expression: "1.0 1.0 -"), 0.0)
+    }
 }
