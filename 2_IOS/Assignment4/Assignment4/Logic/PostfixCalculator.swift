@@ -6,6 +6,13 @@ extension String {
     }
 }
 
+enum PostfixCalculatorError: Error {
+    case missingOperand
+    case divisionByZero
+    case invalidOperator
+    case malformedExpression
+}
+
 class PostfixCalculator {
     // Parses a postfix expression and evaluates it to return the result.
     func parse(expression: String) throws -> Double {
@@ -19,7 +26,7 @@ class PostfixCalculator {
                 guard operandStack.count >= 2 else {
                     throw PostfixCalculatorError.missingOperand
                 }
-                
+
                 let operand1 = operandStack.removeLast()
                 let operand2 = operandStack.removeLast()
                 let result: Double
@@ -35,7 +42,9 @@ class PostfixCalculator {
                 case "^": result = pow(operand2, operand1)
                 default: throw PostfixCalculatorError.invalidOperator
                 }
-                operandStack.append(result)
+
+                // Check if the result is -0.0 and if so, convert it to 0.0
+                operandStack.append(result == -0.0 ? 0.0 : result)
             }
         }
 
