@@ -9,6 +9,10 @@
 #######################################################################
 */
 
+// shorthand closure syntax Ref:https://www.hackingwithswift.com/quick-start/beginners/how-to-use-trailing-closures-and-shorthand-syntax
+// working with date components Ref:https://developer.apple.com/documentation/foundation/datecomponents
+// Layouts with Stacks Ref:https://developer.apple.com/documentation/swiftui/building-layouts-with-stack-views
+
 import SwiftUI
 
 // Utility for formatting Date objects into strings
@@ -21,18 +25,17 @@ struct DateFormatterUtil {
     
     static func relativeDateFormat(from date: Date) -> String {
         let calendar = Calendar.current
-        let interval = calendar.dateComponents([.day], from: date, to: Date())
-        if let days = interval.day {
-            switch days {
-            case 0:
-                return "Today"
-            case 1:
-                return "Yesterday"
-            default:
-                return "\(days) days"
-            }
+        let interval = calendar.dateComponents([.day, .hour, .minute, .second], from: date, to: Date())
+        if let day = interval.day, day > 0 {
+            return "\(day) days"
+        } else if let hour = interval.hour, hour > 0 {
+            return "\(hour) hours"
+        } else if let minute = interval.minute, minute > 0 {
+            return "\(minute) mins"
+        } else if let second = interval.second, second > 0 {
+            return "\(second) secs"
         } else {
-            return "Date calculation error"
+            return ""
         }
     }
 }
@@ -45,31 +48,31 @@ struct Assignment5View: View {
         NavigationView {
             List(dataStore.workspaces) { workspace in
                 NavigationLink(destination: ChannelListView(workspace: workspace)) {
-                    VStack(alignment: .leading) {
+                    VStack(alignment: .leading, spacing: 8) {
                         Text(workspace.name).bold()
-                        HStack {
+                        HStack(spacing: 8) {
                             Image(systemName: "folder")
-                            // TODO THIS MUST BE DISABLED TEXT FIELDS LATER not just Text
-                            Text(String((workspace.channels.count))) // channels")
+                            TextField("", text: .constant("\(workspace.channels.count)")).disabled(true)
+                            
                             Image(systemName: "person.3")
-                            Text((String(workspace.uniquePosters)))
+                            TextField("", text: .constant("\(workspace.uniquePosters)")).disabled(true)
+                            
                             Image(systemName: "clock")
                             if let mostRecentMessage = workspace.mostRecentMessage {
-                                Text(String((DateFormatterUtil.relativeDateFormat(from: mostRecentMessage))))
+                                TextField("", text: .constant(DateFormatterUtil.relativeDateFormat(from: mostRecentMessage))).disabled(true)
                             } else {
-                                Text("") //"No recent messages - leave blank")
+                                TextField("", text: .constant("")).disabled(true)
                             }
-                            
                         }
-//                        .accessibilityLabel(Text("Channels: \(workspace.channels.count)"))
+                        .font(.caption) // Font Size for the Horizontal Stack Section
                     }
                 }
+                .accessibilityIdentifier("count for \(workspace.name) members active in \(workspace.name) latest message in \(workspace.name)")
             }
             .navigationBarTitle("Workspaces")
         }
     }
 }
-
 
 // Modified to display the count of messages, unique posters, and recent message info
 struct ChannelListView: View {
@@ -78,36 +81,36 @@ struct ChannelListView: View {
     var body: some View {
         List(workspace.channels) { channel in
             NavigationLink(destination: MessageListView(channel: channel)) {
-                VStack(alignment: .leading) {
+                VStack(alignment: .leading, spacing: 8) {
                     Text(channel.name).bold()
                     
-                    HStack {
+                    HStack(spacing: 8) {
                         Image(systemName: "envelope")
-                        Text(String(channel.messages.count)) // Messages Count
+                        TextField("", text: .constant("\(channel.messages.count)")).disabled(true)
                         
                         Image(systemName: "person.3")
-                        Text(String((channel.uniquePosters))) // Unique Posters Count
+                        TextField("", text: .constant("\(channel.uniquePosters)")).disabled(true)
                         
                         Image(systemName: "clock")
                         if let mostRecentMessage = channel.mostRecentMessage {
-                            Text(String((DateFormatterUtil.relativeDateFormat(from: mostRecentMessage)))) // Latest Message count
+                            TextField("", text: .constant(DateFormatterUtil.relativeDateFormat(from: mostRecentMessage))).disabled(true)
                         } else {
-                            Text("") // No recent messages leave blank
+                            TextField("", text: .constant("")).disabled(true)
                         }
                     }
+                    .font(.caption) // Font Size for the Horizontal Stack Section
                 }
-                .accessibilityIdentifier("count for \(channel.name), latest message in \(channel.name)")
+                .accessibilityIdentifier("count for \(channel.name) members active in \(channel.name) latest message in \(channel.name)")
             }
         }
         .navigationBarTitle(workspace.name)
     }
 }
 
-
 // Messages sorted by date posted, most recent first
 struct MessageListView: View {
-    let channel: Channel
-    var sortedMessages: [Message] {
+    let channel: Channel // The channel that this view is showing the messages of
+    var sortedMessages: [Message] { // Sort the messages array based on the `posted` property in descending order
         channel.messages.sorted { $0.posted > $1.posted }
     }
 
