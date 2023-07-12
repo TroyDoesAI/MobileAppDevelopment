@@ -25,7 +25,7 @@ struct Assignment5View: View {
     var body: some View {
         NavigationView {
             List(dataStore.workspaces) { workspace in
-                NavigationLink(destination: ChannelListView(channels: workspace.channels, workspaceName: workspace.name)) {
+                NavigationLink(destination: ChannelListView(workspace: workspace)) {
                     Text(workspace.name)
                 }
             }
@@ -35,38 +35,33 @@ struct Assignment5View: View {
 }
 
 struct ChannelListView: View {
-    let channels: [Channel]
-    let workspaceName: String
+    let workspace: Workspace
 
     var body: some View {
-        List(channels) { channel in
-            NavigationLink(destination: MessageListView(messages: channel.messages, channelName: channel.name)) {
+        List(workspace.channels) { channel in
+            NavigationLink(destination: MessageListView(channel: channel)) {
                 Text(channel.name)
             }
         }
-        .navigationBarTitle(workspaceName)
+        .navigationBarTitle(workspace.name)
     }
 }
 
 struct MessageListView: View {
-    let messages: [Message]
-    let channelName: String
+    let channel: Channel
 
     var body: some View {
-        List(messages) { message in
+        List(channel.messages) { message in
             NavigationLink(destination: MessageDetailView(message: message)) {
                 VStack(alignment: .leading) {
                     Text(message.member.name).bold()
                     Text(message.content)
-                    HStack {
-                        Spacer()
-                        Text(DateFormatterUtil.formatDate(message.posted))
-                            .alignmentGuide(.trailing, computeValue: { d in d[.trailing] })
-                    }
+                    Text(DateFormatterUtil.formatDate(message.posted))
+                        .frame(maxWidth: .infinity, alignment: .trailing)
                 }
             }
         }
-        .navigationBarTitle(channelName)
+        .navigationBarTitle(channel.name)
     }
 }
 
@@ -76,11 +71,8 @@ struct MessageDetailView: View {
     var body: some View {
         VStack(alignment: .leading) {
             Text(message.content)
-            HStack {
-                Spacer()
-                Text(DateFormatterUtil.formatDate(message.posted))
-                    .alignmentGuide(.trailing, computeValue: { d in d[.trailing] })
-            }
+            Text(DateFormatterUtil.formatDate(message.posted))
+                .frame(maxWidth: .infinity, alignment: .trailing)
             Spacer()
         }
         .padding()
