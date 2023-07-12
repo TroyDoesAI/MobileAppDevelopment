@@ -7,18 +7,21 @@
 
 import Foundation
 
+// Represents a workspace, which contains multiple channels
 struct Workspace: Identifiable, Codable {
     let id: String
     let name: String
     let channels: [Channel]
 }
 
+// Represents a channel, which contains multiple messages
 struct Channel: Identifiable, Codable {
     let id: String
     let name: String
     let messages: [Message]
 }
 
+// Represents a message, which contains the content, posted date, and the member who posted
 struct Message: Identifiable, Codable {
     let id: String
     let content: String
@@ -26,18 +29,21 @@ struct Message: Identifiable, Codable {
     let member: Member
 }
 
+// Represents a member, who posts messages in channels
 struct Member: Identifiable, Codable {
     let id: String
     let name: String
 }
 
-class DataStore: ObservableObject {
+// ObservableObject that provides workspace data from a JSON file
+class WorkspaceProvider: ObservableObject {
     @Published var workspaces: [Workspace] = []
 
     init() {
         loadWorkspaces()
     }
 
+    // Loads workspace data from a JSON file
     func loadWorkspaces() {
         if let url = Bundle.main.url(forResource: "Workspaces", withExtension: "json") {
             do {

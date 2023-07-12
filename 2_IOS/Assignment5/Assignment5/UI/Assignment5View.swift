@@ -11,6 +11,7 @@
 
 import SwiftUI
 
+// Utility for formatting Date objects into strings
 struct DateFormatterUtil {
     static func formatDate(_ date: Date) -> String {
         let formatter = DateFormatter()
@@ -19,8 +20,9 @@ struct DateFormatterUtil {
     }
 }
 
-struct Assignment5View: View {
-    @EnvironmentObject var dataStore: DataStore
+// Main view displaying a list of workspaces
+struct Assignment5View: View { // List of WorkSpaces
+    @EnvironmentObject var dataStore: WorkspaceProvider
     
     var body: some View {
         NavigationView {
@@ -34,6 +36,7 @@ struct Assignment5View: View {
     }
 }
 
+// View displaying a list of channels within a selected workspace
 struct ChannelListView: View {
     let workspace: Workspace
 
@@ -47,6 +50,7 @@ struct ChannelListView: View {
     }
 }
 
+// View displaying a list of messages within a selected channel
 struct MessageListView: View {
     let channel: Channel
 
@@ -65,6 +69,7 @@ struct MessageListView: View {
     }
 }
 
+// View displaying the detail of a selected message
 struct MessageDetailView: View {
     let message: Message
 
@@ -80,10 +85,11 @@ struct MessageDetailView: View {
     }
 }
 
+// Preview provider for the main view (used in SwiftUI previews)
 #if !TESTING
 struct Assignment5View_Previews: PreviewProvider {
     static var previews: some View {
-        Assignment5View().environmentObject(DataStore())
+        Assignment5View().environmentObject(WorkspaceProvider())
     }
 }
 #endif

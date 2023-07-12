@@ -10,9 +10,11 @@
 */
 
 import SwiftUI
+
+// Main application entry point
 @main
 struct Assignment5App: App {
-    @StateObject private var dataStore = DataStore()
+    @StateObject private var dataStore = WorkspaceProvider()
 
     var body: some Scene {
         WindowGroup {
