@@ -46,18 +46,22 @@ struct Assignment5View: View {
             List(dataStore.workspaces) { workspace in
                 NavigationLink(destination: ChannelListView(workspace: workspace)) {
                     VStack(alignment: .leading) {
-                        Text(workspace.name)
+                        Text(workspace.name).bold()
                         HStack {
                             Image(systemName: "folder")
-                            Text("\(workspace.channels.count) channels")
+                            // TODO THIS MUST BE DISABLED TEXT FIELDS LATER not just Text
+                            Text(String((workspace.channels.count))) // channels")
+                            Image(systemName: "person.3")
+                            Text((String(workspace.uniquePosters)))
+                            Image(systemName: "clock")
+                            if let mostRecentMessage = workspace.mostRecentMessage {
+                                Text(String((DateFormatterUtil.relativeDateFormat(from: mostRecentMessage))))
+                            } else {
+                                Text("") //"No recent messages - leave blank")
+                            }
+                            
                         }
-                        .accessibilityLabel(Text("Channels: \(workspace.channels.count)"))
-                        Text("Unique Posters: \(workspace.uniquePosters)")
-                        if let mostRecentMessage = workspace.mostRecentMessage {
-                            Text("Latest Message: \(DateFormatterUtil.relativeDateFormat(from: mostRecentMessage))")
-                        } else {
-                            Text("No recent messages - remove later and leave blank")
-                        }
+//                        .accessibilityLabel(Text("Channels: \(workspace.channels.count)"))
                     }
                 }
             }
@@ -75,15 +79,22 @@ struct ChannelListView: View {
         List(workspace.channels) { channel in
             NavigationLink(destination: MessageListView(channel: channel)) {
                 VStack(alignment: .leading) {
-                    Text(channel.name)
-                    Text("Messages: \(channel.messages.count)")
-                    Text("Unique Posters: \(channel.uniquePosters)")
-                    if let mostRecentMessage = channel.mostRecentMessage {
-                        Text("Latest Message: \(DateFormatterUtil.relativeDateFormat(from: mostRecentMessage))")
-                    } else {
-                        Text("No recent messages - remove later and leave blank")
+                    Text(channel.name).bold()
+                    
+                    HStack {
+                        Image(systemName: "envelope")
+                        Text(String(channel.messages.count)) // Messages Count
+                        
+                        Image(systemName: "person.3")
+                        Text(String((channel.uniquePosters))) // Unique Posters Count
+                        
+                        Image(systemName: "clock")
+                        if let mostRecentMessage = channel.mostRecentMessage {
+                            Text(String((DateFormatterUtil.relativeDateFormat(from: mostRecentMessage)))) // Latest Message count
+                        } else {
+                            Text("") // No recent messages leave blank
+                        }
                     }
-                    Text("\(channel.messages.count)")
                 }
                 .accessibilityIdentifier("count for \(channel.name), latest message in \(channel.name)")
             }
