@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A182990C2A5E21F000392EF1 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = A182990B2A5E21F000392EF1 /* Model.swift */; };
 		FE3CA9F028FA05E4005B09B6 /* Assignment5App.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3CA9EF28FA05E4005B09B6 /* Assignment5App.swift */; };
 		FE3CA9F428FA05E4005B09B6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE3CA9F328FA05E4005B09B6 /* Assets.xcassets */; };
 		FE3CA9F728FA05E4005B09B6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE3CA9F628FA05E4005B09B6 /* Preview Assets.xcassets */; };
@@ -27,6 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A182990B2A5E21F000392EF1 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		FE3CA9EC28FA05E4005B09B6 /* Assignment5.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Assignment5.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE3CA9EF28FA05E4005B09B6 /* Assignment5App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assignment5App.swift; sourceTree = "<group>"; };
 		FE3CA9F328FA05E4005B09B6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -56,6 +58,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A182990D2A5E22E100392EF1 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A182990B2A5E21F000392EF1 /* Model.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		FE3CA9E328FA05E3005B09B6 = {
 			isa = PBXGroup;
 			children = (
@@ -77,6 +87,7 @@
 		FE3CA9EE28FA05E4005B09B6 /* Assignment5 */ = {
 			isa = PBXGroup;
 			children = (
+				A182990D2A5E22E100392EF1 /* Models */,
 				FEECF6E22905BAE6007AA2A9 /* Resources */,
 				FEECF6E72905C9BE007AA2A9 /* UI */,
 				FE3CA9EF28FA05E4005B09B6 /* Assignment5App.swift */,
@@ -221,6 +232,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A182990C2A5E21F000392EF1 /* Model.swift in Sources */,
 				FE3CA9F028FA05E4005B09B6 /* Assignment5App.swift in Sources */,
 				FEECF6E92905CA21007AA2A9 /* Assignment5View.swift in Sources */,
 			);

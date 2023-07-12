@@ -10,12 +10,14 @@
 */
 
 import SwiftUI
-
 @main
 struct Assignment5App: App {
+    @StateObject private var dataStore = DataStore()
+
     var body: some Scene {
         WindowGroup {
             Assignment5View()
+                .environmentObject(dataStore)
         }
     }
 }
