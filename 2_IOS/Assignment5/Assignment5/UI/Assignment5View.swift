@@ -21,7 +21,7 @@ struct DateFormatterUtil {
 }
 
 // Main view displaying a list of workspaces
-struct Assignment5View: View { // List of WorkSpaces
+struct Assignment5View: View {
     @EnvironmentObject var dataStore: WorkspaceProvider
     
     var body: some View {
