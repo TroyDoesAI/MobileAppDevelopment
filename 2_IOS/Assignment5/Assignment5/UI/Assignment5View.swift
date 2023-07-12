@@ -18,17 +18,47 @@ struct DateFormatterUtil {
         formatter.dateFormat = "MMM d, yyyy 'at' h:mm a"
         return formatter.string(from: date)
     }
+    
+    static func relativeDateFormat(from date: Date) -> String {
+        let calendar = Calendar.current
+        let interval = calendar.dateComponents([.day], from: date, to: Date())
+        if let days = interval.day {
+            switch days {
+            case 0:
+                return "Today"
+            case 1:
+                return "Yesterday"
+            default:
+                return "\(days) days"
+            }
+        } else {
+            return "Date calculation error"
+        }
+    }
 }
 
-// Main view displaying a list of workspaces
+// Modified to display the count of channels, unique posters, and recent message info
 struct Assignment5View: View {
     @EnvironmentObject var dataStore: WorkspaceProvider
-    
+
     var body: some View {
         NavigationView {
             List(dataStore.workspaces) { workspace in
                 NavigationLink(destination: ChannelListView(workspace: workspace)) {
-                    Text(workspace.name)
+                    VStack(alignment: .leading) {
+                        Text(workspace.name)
+                        HStack {
+                            Image(systemName: "folder")
+                            Text("\(workspace.channels.count) channels")
+                        }
+                        .accessibilityLabel(Text("Channels: \(workspace.channels.count)"))
+                        Text("Unique Posters: \(workspace.uniquePosters)")
+                        if let mostRecentMessage = workspace.mostRecentMessage {
+                            Text("Latest Message: \(DateFormatterUtil.relativeDateFormat(from: mostRecentMessage))")
+                        } else {
+                            Text("No recent messages - remove later and leave blank")
+                        }
+                    }
                 }
             }
             .navigationBarTitle("Workspaces")
@@ -36,26 +66,42 @@ struct Assignment5View: View {
     }
 }
 
-// View displaying a list of channels within a selected workspace
+
+// Modified to display the count of messages, unique posters, and recent message info
 struct ChannelListView: View {
     let workspace: Workspace
 
     var body: some View {
         List(workspace.channels) { channel in
             NavigationLink(destination: MessageListView(channel: channel)) {
-                Text(channel.name)
+                VStack(alignment: .leading) {
+                    Text(channel.name)
+                    Text("Messages: \(channel.messages.count)")
+                    Text("Unique Posters: \(channel.uniquePosters)")
+                    if let mostRecentMessage = channel.mostRecentMessage {
+                        Text("Latest Message: \(DateFormatterUtil.relativeDateFormat(from: mostRecentMessage))")
+                    } else {
+                        Text("No recent messages - remove later and leave blank")
+                    }
+                    Text("\(channel.messages.count)")
+                }
+                .accessibilityIdentifier("count for \(channel.name), latest message in \(channel.name)")
             }
         }
         .navigationBarTitle(workspace.name)
     }
 }
 
-// View displaying a list of messages within a selected channel
+
+// Messages sorted by date posted, most recent first
 struct MessageListView: View {
     let channel: Channel
+    var sortedMessages: [Message] {
+        channel.messages.sorted { $0.posted > $1.posted }
+    }
 
     var body: some View {
-        List(channel.messages) { message in
+        List(sortedMessages) { message in
             NavigationLink(destination: MessageDetailView(message: message)) {
                 VStack(alignment: .leading) {
                     Text(message.member.name).bold()
@@ -68,6 +114,7 @@ struct MessageListView: View {
         .navigationBarTitle(channel.name)
     }
 }
+
 
 // View displaying the detail of a selected message
 struct MessageDetailView: View {
