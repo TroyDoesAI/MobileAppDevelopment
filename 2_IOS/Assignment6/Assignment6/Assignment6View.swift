@@ -138,31 +138,40 @@ struct WorkspaceListView: View {
     @Binding var navigateToLogin: Bool
     
     var body: some View {
-        List(workspaceProvider.workspaces) { workspace in
-            NavigationLink(destination: ChannelListView(workspace: workspace)) {
-                VStack(alignment: .leading) {
-                    Text(workspace.name).font(.headline)
-                    Text("Unique Posters: \(workspace.uniquePosters)")
-                    if let date = workspace.mostRecentMessage {
-                        Text("Most Recent Message: \(date)")
-                    }
-                }
-            }
-        }
-        .navigationTitle("Workspaces")
-        .toolbar {
-            ToolbarItemGroup(placement: .navigationBarLeading) {
+        VStack {
+            HStack {
                 Button(action: {
                     viewModel.logout()
                     navigateToLogin = true
                 }) {
-                    Image(systemName: "arrow.left.square") // Change this to your preferred system icon
+                    Image(systemName: "rectangle.portrait.and.arrow.right")
                         .font(.title)
+                        .padding()
+                }
+                
+                Text("Workspaces")
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                    .padding()
+                
+                Spacer()
+            }
+            
+            List(workspaceProvider.workspaces) { workspace in
+                NavigationLink(destination: ChannelListView(workspace: workspace)) {
+                    VStack(alignment: .leading) {
+                        Text(workspace.name).font(.headline)
+                        Text("Unique Posters: \(workspace.uniquePosters)")
+                        if let date = workspace.mostRecentMessage {
+                            Text("Most Recent Message: \(date)")
+                        }
+                    }
                 }
             }
         }
     }
 }
+
 
 struct ChannelListView: View {
     let workspace: Workspace
