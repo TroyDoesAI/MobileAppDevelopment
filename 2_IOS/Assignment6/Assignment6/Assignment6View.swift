@@ -15,15 +15,24 @@ struct Assignment6View: View {
 
 struct LoginView: View {
     @ObservedObject var viewModel: LoginViewModel
-    
     var body: some View {
-        VStack {
-            TextField("Email", text: $viewModel.email)
-            SecureField("Password", text: $viewModel.password)
-            Button("Log In", action: viewModel.login)
-                .disabled(!viewModel.isValid)
+        ScrollView {
+            VStack {
+                Text("CSE118 Assignment 6")
+                Image("SlugLogo")
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: 150, height: 150)
+                        .clipped()
+                
+                TextField("Email", text: $viewModel.email)
+                SecureField("Password", text: $viewModel.password)
+                Button("Log In", action: viewModel.login)
+                    .disabled(!viewModel.isValid)
+                Spacer() // Pushes the VStack to the top
+            }
+            .padding()
         }
-        .padding()
     }
 }
 

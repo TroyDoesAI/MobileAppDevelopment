@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A10835102A631DE70093A38F /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = A108350F2A631DE70093A38F /* Model.swift */; };
 		FE5B95552A0C1ECE00A2315B /* JavaScriptISO8601DateDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5B95542A0C1ECE00A2315B /* JavaScriptISO8601DateDecoder.swift */; };
 		FEA761FE290CED1600B4035A /* Assignment6App.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA761FD290CED1600B4035A /* Assignment6App.swift */; };
 		FEA76202290CED1600B4035A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FEA76201290CED1600B4035A /* Assets.xcassets */; };
@@ -27,6 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A108350F2A631DE70093A38F /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		FE5B95542A0C1ECE00A2315B /* JavaScriptISO8601DateDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JavaScriptISO8601DateDecoder.swift; sourceTree = "<group>"; };
 		FEA761FA290CED1600B4035A /* Assignment6.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Assignment6.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FEA761FD290CED1600B4035A /* Assignment6App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assignment6App.swift; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 				FE5B95532A0C1EB100A2315B /* Util */,
 				FEA76233290D029A00B4035A /* Assignment6View.swift */,
 				FEA761FD290CED1600B4035A /* Assignment6App.swift */,
+				A108350F2A631DE70093A38F /* Model.swift */,
 				FEA76201290CED1600B4035A /* Assets.xcassets */,
 				FEA76203290CED1600B4035A /* Preview Content */,
 			);
@@ -222,6 +225,7 @@
 				FE5B95552A0C1ECE00A2315B /* JavaScriptISO8601DateDecoder.swift in Sources */,
 				FEA76234290D029A00B4035A /* Assignment6View.swift in Sources */,
 				FEA761FE290CED1600B4035A /* Assignment6App.swift in Sources */,
+				A10835102A631DE70093A38F /* Model.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
