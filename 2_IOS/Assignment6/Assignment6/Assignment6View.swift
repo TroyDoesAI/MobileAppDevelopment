@@ -2,33 +2,42 @@ import SwiftUI
 import Combine
 
 struct Assignment6View: View {
-    @StateObject private var viewModel = LoginViewModel()
-    
+    @EnvironmentObject var viewModel: LoginViewModel
+    @StateObject private var workspaceProvider = WorkspaceProvider()
+    @State private var navigateToLogin: Bool = false
+
     var body: some View {
-        if let user = viewModel.user {
-            WorkspaceListView(user: user)
-        } else {
-            LoginView(viewModel: viewModel)
+        NavigationView {
+            if viewModel.user != nil {
+                WorkspaceListView(workspaceProvider: workspaceProvider, navigateToLogin: $navigateToLogin)
+            } else {
+                LoginView()
+            }
+        }
+        .onAppear {
+            navigateToLogin = viewModel.user == nil
         }
     }
 }
 
 struct LoginView: View {
-    @ObservedObject var viewModel: LoginViewModel
+    @EnvironmentObject var viewModel: LoginViewModel
+    
     var body: some View {
         ScrollView {
             VStack {
                 Text("CSE118 Assignment 6")
                 Image("SlugLogo")
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: 150, height: 150)
-                        .clipped()
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: 150, height: 150)
+                    .clipped()
                 
                 TextField("Email", text: $viewModel.email)
                 SecureField("Password", text: $viewModel.password)
                 Button("Log In", action: viewModel.login)
                     .disabled(!viewModel.isValid)
+                
                 Spacer() // Pushes the VStack to the top
             }
             .padding()
@@ -95,13 +104,97 @@ class LoginViewModel: ObservableObject {
         }
         task.resume()
     }
+    
+    func logout() {
+        guard let url = URL(string: "https://cse118.com/api/v2/reset") else {
+            return
+        }
+
+        var request = URLRequest(url: url)
+        request.httpMethod = "PUT"
+        request.addValue("application/json", forHTTPHeaderField: "Accept")  // Adding Accept header
+        request.addValue("Bearer \(user?.accessToken ?? "")", forHTTPHeaderField: "Authorization")
+
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if let _ = error {
+                return
+            }
+
+            guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
+                return
+            }
+
+            DispatchQueue.main.async {
+                self.user = nil
+            }
+        }
+        task.resume()
+    }
 }
 
 struct WorkspaceListView: View {
-    let user: User
-
+    @EnvironmentObject var viewModel: LoginViewModel
+    @ObservedObject var workspaceProvider: WorkspaceProvider
+    @Binding var navigateToLogin: Bool
+    
     var body: some View {
-        Text("Welcome, \(user.name)")
+        List(workspaceProvider.workspaces) { workspace in
+            NavigationLink(destination: ChannelListView(workspace: workspace)) {
+                VStack(alignment: .leading) {
+                    Text(workspace.name).font(.headline)
+                    Text("Unique Posters: \(workspace.uniquePosters)")
+                    if let date = workspace.mostRecentMessage {
+                        Text("Most Recent Message: \(date)")
+                    }
+                }
+            }
+        }
+        .navigationTitle("Workspaces")
+        .toolbar {
+            ToolbarItemGroup(placement: .navigationBarLeading) {
+                Button(action: {
+                    viewModel.logout()
+                    navigateToLogin = true
+                }) {
+                    Image(systemName: "arrow.left.square") // Change this to your preferred system icon
+                        .font(.title)
+                }
+            }
+        }
+    }
+}
+
+struct ChannelListView: View {
+    let workspace: Workspace
+    
+    var body: some View {
+        List(workspace.channels) { channel in
+            NavigationLink(destination: MessageListView(channel: channel)) {
+                VStack(alignment: .leading) {
+                    Text(channel.name).font(.headline)
+                    Text("Unique Posters: \(channel.uniquePosters)")
+                    if let date = channel.mostRecentMessage {
+                        Text("Most Recent Message: \(date)")
+                    }
+                }
+            }
+        }
+        .navigationTitle(workspace.name)
+    }
+}
+
+struct MessageListView: View {
+    let channel: Channel
+    
+    var body: some View {
+        List(channel.messages) { message in
+            VStack(alignment: .leading) {
+                Text(message.content)
+                Text("Posted by: \(message.member.name)")
+                Text("Posted at: \(message.posted)")
+            }
+        }
+        .navigationTitle(channel.name)
     }
 }
 
@@ -113,10 +206,11 @@ struct User: Codable, Identifiable {
 }
 
 #if !TESTING
-struct MainView_Previews: PreviewProvider {
-  static var previews: some View {
-    Assignment6View()
-  }
+struct Assignment6View_Previews: PreviewProvider {
+    static var previews: some View {
+        Assignment6View()
+            .environmentObject(LoginViewModel())
+    }
 }
 #endif
 
