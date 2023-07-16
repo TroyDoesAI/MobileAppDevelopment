@@ -36,13 +36,19 @@ struct LoginView: View {
                     .clipped()
                 
                 TextField("Email", text: $viewModel.email)
+                    .accessibilityLabel("EMail") // Update to use accessibility label instead of identifier
+                
                 SecureField("Password", text: $viewModel.password)
+                    .accessibilityLabel("Password") // Update to use accessibility label instead of identifier
+                
                 Button("Log In", action: viewModel.login)
                     .disabled(!viewModel.isValid)
+                    .accessibilityLabel("Login") // Update to use accessibility label instead of identifier
                 
                 Spacer() // Pushes the VStack to the top
             }
             .padding()
+            .accessibilityIdentifier("LoginView") // Add accessibility identifier to the view
         }
     }
 }
@@ -148,7 +154,7 @@ struct WorkspaceListView: View {
     @ObservedObject var channelProvider: ChannelProvider
     @ObservedObject var messageProvider: MessageProvider
     @Binding var navigateToLogin: Bool
-    
+
     var body: some View {
         VStack {
             HStack {
@@ -160,15 +166,15 @@ struct WorkspaceListView: View {
                         .font(.title)
                         .padding()
                 }
-                
+
                 Text("Workspaces")
                     .font(.largeTitle)
                     .fontWeight(.bold)
                     .padding()
-                
+
                 Spacer()
             }
-            
+
             List(workspaceProvider.workspaces) { workspace in
                 NavigationLink(destination: ChannelListView(workspace: workspace, channelProvider: channelProvider, messageProvider: messageProvider).environmentObject(viewModel)) {
                     VStack(alignment: .leading) {
@@ -181,8 +187,14 @@ struct WorkspaceListView: View {
         }.onAppear {
             workspaceProvider.loadWorkspaces(withToken: viewModel.user?.accessToken ?? "")
         }
+        .navigationBarTitle("Workspaces", displayMode: .inline)
     }
 }
+
+
+
+
+
 
 struct ChannelListView: View {
     let workspace: Workspace
