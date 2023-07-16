@@ -36,19 +36,19 @@ struct LoginView: View {
                     .clipped()
                 
                 TextField("Email", text: $viewModel.email)
-                    .accessibilityLabel("EMail") // Update to use accessibility label instead of identifier
+                    .accessibilityLabel("EMail")
                 
                 SecureField("Password", text: $viewModel.password)
-                    .accessibilityLabel("Password") // Update to use accessibility label instead of identifier
+                    .accessibilityLabel("Password")
                 
                 Button("Log In", action: viewModel.login)
                     .disabled(!viewModel.isValid)
-                    .accessibilityLabel("Login") // Update to use accessibility label instead of identifier
+                    .accessibilityLabel("Login")
                 
                 Spacer() // Pushes the VStack to the top
             }
             .padding()
-            .accessibilityIdentifier("LoginView") // Add accessibility identifier to the view
+            .accessibilityIdentifier("LoginView")
         }
     }
 }
@@ -164,11 +164,8 @@ struct WorkspaceListView: View {
                         Button(action: {}, label: {
                             Text(workspace.name).font(.headline)
                         })
-                        .buttonStyle(PlainButtonStyle())
                         .accessibilityIdentifier("\(workspace.name) Workspace")
-
                         Spacer() // This will push the next Text to the right
-
                         Text("\(workspace.channels)").accessibilityIdentifier("Channels \(workspace.channels)")
                     }
                 }
@@ -194,7 +191,6 @@ struct WorkspaceListView: View {
         .accessibilityIdentifier("WorkspaceListView")
     }
 }
-
 
 struct ChannelListView: View {
     let workspace: Workspace
