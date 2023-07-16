@@ -195,10 +195,7 @@ struct ChannelListView: View {
             NavigationLink(destination: MessageListView(channel: channel, messageProvider: messageProvider).environmentObject(viewModel)) {
                 VStack(alignment: .leading) {
                     Text(channel.name).font(.headline)
-                    Text("Unique Posters: \(channel.uniquePosters)")
-                    if let date = channel.mostRecentMessage {
-                        Text("Most Recent Message: \(date)")
-                    }
+                    Text("Message Count: \(channel.messageCount)")
                 }
             }
         }
@@ -210,6 +207,7 @@ struct ChannelListView: View {
         }
     }
 }
+
 
 
 struct MessageListView: View {

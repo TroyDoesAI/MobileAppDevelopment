@@ -33,9 +33,12 @@ struct Workspace: Identifiable, Codable {
 struct Channel: Codable, Identifiable {
     let id: UUID
     let name: String
-    let uniquePosters: Int
-    let mostRecentMessage: Date?
-    let messages: [Message]
+    let messageCount: Int
+
+    enum CodingKeys: String, CodingKey {
+        case id, name
+        case messageCount = "messages"
+    }
 }
 
 // Represents a message, which contains the content, posted date, and the member who posted
@@ -104,6 +107,7 @@ class ChannelProvider: ObservableObject {
     @Published var channels = [Channel]()
     
     func loadChannels(workspaceId: UUID, withToken token: String) {
+        print("\n\nIn loadChannels: ")
         guard let url = URL(string: "\(baseUrl)/workspace/\(workspaceId)/channel") else {
             print("Invalid URL")
             return
@@ -112,6 +116,8 @@ class ChannelProvider: ObservableObject {
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        
+        print("Request: \(request)")
 
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let error = error {
@@ -128,6 +134,7 @@ class ChannelProvider: ObservableObject {
                 let decoder = JSONDecoder.javaScriptISO8601()
                 do {
                     let fetchedChannels = try decoder.decode([Channel].self, from: data)
+                    print("\n\n\nfetched Channels: \(fetchedChannels)")
                     DispatchQueue.main.async {
                         self.channels = fetchedChannels
                     }
