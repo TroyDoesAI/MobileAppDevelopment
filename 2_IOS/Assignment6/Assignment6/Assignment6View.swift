@@ -148,6 +148,44 @@ class LoginViewModel: ObservableObject {
     }
 }
 
+//struct WorkspaceListView: View {
+//    @EnvironmentObject var viewModel: LoginViewModel
+//    @ObservedObject var workspaceProvider: WorkspaceProvider
+//    @ObservedObject var channelProvider: ChannelProvider
+//    @ObservedObject var messageProvider: MessageProvider
+//    @Binding var navigateToLogin: Bool
+//
+//    var body: some View {
+//        VStack {
+//            HStack {
+//                Button(action: {
+//                    viewModel.logout()
+//                    navigateToLogin = true
+//                }) {
+//                    Image(systemName: "rectangle.portrait.and.arrow.right")
+//                        .font(.title)
+//                        .padding()
+//                }
+//
+//                Spacer()
+//            }
+//
+//            List(workspaceProvider.workspaces) { workspace in
+//                NavigationLink(destination: ChannelListView(workspace: workspace, channelProvider: channelProvider, messageProvider: messageProvider).environmentObject(viewModel)) {
+//                    VStack(alignment: .leading) {
+//                        Text(workspace.name).font(.headline)
+//                        Text("Owner: \(workspace.owner)")
+//                        Text("Channels: \(workspace.channels)")
+//                    }
+//                }
+//            }
+//        }.onAppear {
+//            workspaceProvider.loadWorkspaces(withToken: viewModel.user?.accessToken ?? "")
+//        }
+//        .navigationBarTitle("Workspaces", displayMode: .inline)
+//    }
+//}
+
 struct WorkspaceListView: View {
     @EnvironmentObject var viewModel: LoginViewModel
     @ObservedObject var workspaceProvider: WorkspaceProvider
@@ -157,24 +195,6 @@ struct WorkspaceListView: View {
 
     var body: some View {
         VStack {
-            HStack {
-                Button(action: {
-                    viewModel.logout()
-                    navigateToLogin = true
-                }) {
-                    Image(systemName: "rectangle.portrait.and.arrow.right")
-                        .font(.title)
-                        .padding()
-                }
-
-                Text("Workspaces")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
-                    .padding()
-
-                Spacer()
-            }
-
             List(workspaceProvider.workspaces) { workspace in
                 NavigationLink(destination: ChannelListView(workspace: workspace, channelProvider: channelProvider, messageProvider: messageProvider).environmentObject(viewModel)) {
                     VStack(alignment: .leading) {
@@ -188,6 +208,19 @@ struct WorkspaceListView: View {
             workspaceProvider.loadWorkspaces(withToken: viewModel.user?.accessToken ?? "")
         }
         .navigationBarTitle("Workspaces", displayMode: .inline)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button(action: {
+                    viewModel.logout()
+                    navigateToLogin = true
+                }) {
+                    Image(systemName: "rectangle.portrait.and.arrow.right")
+                        .font(.title)
+                        .padding()
+                        .accessibility(identifier: "Logout")
+                }
+            }
+        }
     }
 }
 
