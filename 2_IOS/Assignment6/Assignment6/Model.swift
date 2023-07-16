@@ -7,51 +7,45 @@
 
 import Foundation
 
+let baseUrl = "https://cse118.com/api/v2"
+
 // Represents a workspace, which contains multiple channels
 struct Workspace: Identifiable, Codable {
     let id: String
     let name: String
-    let channels: [Channel]
+    let owner: String
+    let channels: Int
     
-    // Computes the number of unique posters in all channels
-    var uniquePosters: Int {
-        let members = channels.flatMap { $0.messages.map { $0.member.id } }
-        let uniqueMembers = Set(members)
-        return uniqueMembers.count
-    }
-
-    // Computes the date of the most recent message across all channels
-    var mostRecentMessage: Date? {
-        channels.compactMap { $0.mostRecentMessage }.max()
-    }
+//    // Computes the number of unique posters in all channels
+//    var uniquePosters: Int {
+//        let members = channels.flatMap { $0.messages.map { $0.member.id } }
+//        let uniqueMembers = Set(members)
+//        return uniqueMembers.count
+//    }
+//
+//    // Computes the date of the most recent message across all channels
+//    var mostRecentMessage: Date? {
+//        channels.compactMap { $0.mostRecentMessage }.max()
+//    }
 }
 
 // Represents a channel, which contains multiple messages
-struct Channel: Identifiable, Codable {
-    let id: String
+struct Channel: Codable, Identifiable {
+    let id: UUID
     let name: String
+    let uniquePosters: Int
+    let mostRecentMessage: Date?
     let messages: [Message]
-    
-    // Computes the number of unique posters in the channel
-    var uniquePosters: Int {
-        let members = messages.map { $0.member.id }
-        let uniqueMembers = Set(members)
-        return uniqueMembers.count
-    }
-
-    // Computes the date of the most recent message in the channel
-    var mostRecentMessage: Date? {
-        messages.max { $0.posted < $1.posted }?.posted
-    }
 }
 
 // Represents a message, which contains the content, posted date, and the member who posted
-struct Message: Identifiable, Codable {
-    let id: String
+struct Message: Codable, Identifiable {
+    let id: UUID
     let content: String
     let posted: Date
     let member: Member
 }
+
 
 // Represents a member, who posts messages in channels
 struct Member: Identifiable, Codable {
@@ -61,25 +55,22 @@ struct Member: Identifiable, Codable {
 
 // ObservableObject that provides workspace data from a JSON file
 class WorkspaceProvider: ObservableObject {
-    @Published var workspaces: [Workspace] = []
-
-    // Base URL for your API
-    private let baseUrl = "https://cse118.com/api/v2"
-
-    init() {
-        loadWorkspaces()
-    }
-
-    // Fetches workspace data from API
-    func loadWorkspaces() {
-        guard let url = URL(string: "\(baseUrl)/workspaces") else {
+    @Published var workspaces = [Workspace]()
+    func loadWorkspaces(withToken token: String) {
+        print("\nIn WorkspaceProvider: loadWorkspaces()")
+        guard let url = URL(string: "https://cse118.com/api/v2/workspace") else {
             print("Invalid URL")
             return
         }
 
-        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        print("\nLoadWorkspaces -> Token \(token)\n")
+
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let error = error {
-                print("Error while fetching workspaces: \(error)")
+                print("Error making request for workspaces: \(error)")
                 return
             }
 
@@ -88,12 +79,22 @@ class WorkspaceProvider: ObservableObject {
                 return
             }
 
-            if let data = data,
-               let workspaces = try? JSONDecoder().decode([Workspace].self, from: data) {
-                DispatchQueue.main.async {
-                    self.workspaces = workspaces
+            print("Http Response Status Code: \(httpResponse.statusCode)")
+            
+            if let data = data {
+                let decoder = JSONDecoder.javaScriptISO8601()
+                do {
+                    let fetchedWorkspaces = try decoder.decode([Workspace].self, from: data)
+                    print(fetchedWorkspaces)
+                    DispatchQueue.main.async {
+                        self.workspaces = fetchedWorkspaces
+                    }
+                } catch {
+                    print("Failed to decode JSON: \(error)")
                 }
             }
+
+            
         }
         task.resume()
     }

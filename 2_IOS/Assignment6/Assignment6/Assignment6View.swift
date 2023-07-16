@@ -49,7 +49,15 @@ class LoginViewModel: ObservableObject {
     @Published var email = ""
     @Published var password = ""
     @Published var isValid = false
-    @Published var user: User?
+    @Published var user: User? {
+        didSet {
+            if let user = user {
+                print("User has been logged in with the id: \(user.id)")
+            } else {
+                print("User has been logged out")
+            }
+        }
+    }
     
     private var cancellableSet: Set<AnyCancellable> = []
     
@@ -158,39 +166,37 @@ struct WorkspaceListView: View {
             }
             
             List(workspaceProvider.workspaces) { workspace in
-                NavigationLink(destination: ChannelListView(workspace: workspace)) {
-                    VStack(alignment: .leading) {
-                        Text(workspace.name).font(.headline)
-                        Text("Unique Posters: \(workspace.uniquePosters)")
-                        if let date = workspace.mostRecentMessage {
-                            Text("Most Recent Message: \(date)")
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-
-
-struct ChannelListView: View {
-    let workspace: Workspace
-    
-    var body: some View {
-        List(workspace.channels) { channel in
-            NavigationLink(destination: MessageListView(channel: channel)) {
                 VStack(alignment: .leading) {
-                    Text(channel.name).font(.headline)
-                    Text("Unique Posters: \(channel.uniquePosters)")
-                    if let date = channel.mostRecentMessage {
-                        Text("Most Recent Message: \(date)")
-                    }
+                    Text(workspace.name).font(.headline)
+                    Text("Owner: \(workspace.owner)")
+                    Text("Channels: \(workspace.channels)")
                 }
             }
+        }.onAppear {
+            workspaceProvider.loadWorkspaces(withToken: viewModel.user?.accessToken ?? "")
         }
-        .navigationTitle(workspace.name)
     }
 }
+
+
+//struct ChannelListView: View {
+//    let workspace: Workspace
+//
+//    var body: some View {
+//        List(workspace.channels) { channel in
+//            NavigationLink(destination: MessageListView(channel: channel)) {
+//                VStack(alignment: .leading) {
+//                    Text(channel.name).font(.headline)
+//                    Text("Unique Posters: \(channel.uniquePosters)")
+//                    if let date = channel.mostRecentMessage {
+//                        Text("Most Recent Message: \(date)")
+//                    }
+//                }
+//            }
+//        }
+//        .navigationTitle(workspace.name)
+//    }
+//}
 
 struct MessageListView: View {
     let channel: Channel
