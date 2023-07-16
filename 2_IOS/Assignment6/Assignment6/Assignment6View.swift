@@ -228,11 +228,43 @@ struct ChannelListView: View {
     }
 }
 
+//struct MessageListView: View {
+//    let channel: Channel
+//    @ObservedObject var messageProvider: MessageProvider
+//    @EnvironmentObject var viewModel: LoginViewModel
+//    @EnvironmentObject var memberProvider: MemberProvider
+//
+//    var body: some View {
+//        List(messageProvider.messages, id: \.id) { message in
+//            VStack(alignment: .leading) {
+//                if let memberName = memberProvider.memberName(forID: message.member) {
+//                    Text("\(memberName)")
+//                } else {
+//                    Text("Posted by: Unknown")
+//                }
+//                Text(message.content).font(.headline)
+//                Text("\(message.posted)")
+//            }
+//        }
+//        .navigationTitle(channel.name)
+//        .onAppear {
+//            memberProvider.loadAllMembers(withToken: viewModel.user?.accessToken ?? "") // Load members
+//            messageProvider.loadMessages(channelId: channel.id, withToken: viewModel.user?.accessToken ?? "") // Load messages
+//        }
+//    }
+//}
+
 struct MessageListView: View {
     let channel: Channel
     @ObservedObject var messageProvider: MessageProvider
     @EnvironmentObject var viewModel: LoginViewModel
     @EnvironmentObject var memberProvider: MemberProvider
+
+    private let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMM d, yyyy 'at' h:mm a"
+        return formatter
+    }()
 
     var body: some View {
         List(messageProvider.messages, id: \.id) { message in
@@ -243,7 +275,7 @@ struct MessageListView: View {
                     Text("Posted by: Unknown")
                 }
                 Text(message.content).font(.headline)
-                Text("\(message.posted)")
+                Text(dateFormatter.string(from: message.posted))
             }
         }
         .navigationTitle(channel.name)
@@ -253,6 +285,7 @@ struct MessageListView: View {
         }
     }
 }
+
 
 struct User: Codable, Identifiable {
     let id: UUID
