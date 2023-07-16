@@ -66,6 +66,7 @@ class LoginViewModel: ObservableObject {
             }
         }
     }
+    @Published var selectedWorkspace: Workspace? = nil
     
     private var cancellableSet: Set<AnyCancellable> = []
     
@@ -159,14 +160,21 @@ struct WorkspaceListView: View {
         VStack {
             List(workspaceProvider.workspaces) { workspace in
                 NavigationLink(destination: ChannelListView(workspace: workspace, channelProvider: channelProvider, messageProvider: messageProvider).environmentObject(viewModel)) {
-                    VStack(alignment: .leading) {
-                        Text(workspace.name).font(.headline)
-                        Text("Owner: \(workspace.owner)")
-                        Text("Channels: \(workspace.channels)")
+                    HStack {
+                        Button(action: {}, label: {
+                            Text(workspace.name).font(.headline)
+                        })
+                        .buttonStyle(PlainButtonStyle())
+                        .accessibilityIdentifier("\(workspace.name) Workspace")
+
+                        Spacer() // This will push the next Text to the right
+
+                        Text("\(workspace.channels)").accessibilityIdentifier("Channels \(workspace.channels)")
                     }
                 }
             }
-        }.onAppear {
+        }
+        .onAppear {
             workspaceProvider.loadWorkspaces(withToken: viewModel.user?.accessToken ?? "")
         }
         .navigationBarTitle("Workspaces", displayMode: .inline)
@@ -183,8 +191,10 @@ struct WorkspaceListView: View {
                 }
             }
         }
+        .accessibilityIdentifier("WorkspaceListView")
     }
 }
+
 
 struct ChannelListView: View {
     let workspace: Workspace
