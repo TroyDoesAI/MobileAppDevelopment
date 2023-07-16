@@ -201,9 +201,21 @@ struct ChannelListView: View {
     var body: some View {
         List(channelProvider.channels) { channel in
             NavigationLink(destination: MessageListView(channel: channel, messageProvider: messageProvider).environmentObject(viewModel)) {
-                VStack(alignment: .leading) {
-                    Text(channel.name).font(.headline)
-                    Text("Message Count: \(channel.messageCount)")
+                HStack {
+                    
+                    Button(action: {}, label: {
+                        Text(channel.name).font(.headline)
+                    })
+                    .accessibilityIdentifier("\(channel.name) Channel")
+                    
+                    
+//                    Text(channel.name).font(.headline)
+                    
+                    
+                    
+                    Spacer() // This will push the next Text to the right
+                    Text("\(channel.messageCount)")
+                        .accessibilityIdentifier("Messages \(channel.name) ")
                 }
             }
         }
@@ -215,6 +227,31 @@ struct ChannelListView: View {
         }
     }
 }
+
+
+//struct ChannelListView: View {
+//    let workspace: Workspace
+//    @ObservedObject var channelProvider: ChannelProvider
+//    @ObservedObject var messageProvider: MessageProvider
+//    @EnvironmentObject var viewModel: LoginViewModel
+//
+//    var body: some View {
+//        List(channelProvider.channels) { channel in
+//            NavigationLink(destination: MessageListView(channel: channel, messageProvider: messageProvider).environmentObject(viewModel)) {
+//                VStack(alignment: .leading) {
+//                    Text(channel.name).font(.headline)
+//                    Text("\(channel.messageCount)")
+//                }
+//            }
+//        }
+//        .navigationTitle(workspace.name)
+//        .onAppear {
+//            if let workspaceId = UUID(uuidString: workspace.id) {
+//                channelProvider.loadChannels(workspaceId: workspaceId, withToken: viewModel.user?.accessToken ?? "")
+//            }
+//        }
+//    }
+//}
 
 struct MessageListView: View {
     let channel: Channel
