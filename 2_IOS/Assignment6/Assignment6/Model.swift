@@ -15,18 +15,6 @@ struct Workspace: Identifiable, Codable {
     let name: String
     let owner: String
     let channels: Int
-    
-//    // Computes the number of unique posters in all channels
-//    var uniquePosters: Int {
-//        let members = channels.flatMap { $0.messages.map { $0.member.id } }
-//        let uniqueMembers = Set(members)
-//        return uniqueMembers.count
-//    }
-//
-//    // Computes the date of the most recent message across all channels
-//    var mostRecentMessage: Date? {
-//        channels.compactMap { $0.mostRecentMessage }.max()
-//    }
 }
 
 // Represents a channel, which contains multiple messages
@@ -50,11 +38,56 @@ struct Message: Codable, Identifiable {
 }
 
 
+
 // Represents a member, who posts messages in channels
-struct Member: Identifiable, Codable {
-    let id: String
+struct Member: Codable, Identifiable {
+    let id: UUID
     let name: String
 }
+
+class MemberProvider: ObservableObject {
+    @Published var members = [UUID: Member]()
+
+    func loadAllMembers(withToken token: String) {
+        guard let url = URL(string: "\(baseUrl)/member") else {
+            print("Invalid URL")
+            return
+        }
+
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if let error = error {
+                print("Error fetching members: \(error)")
+                return
+            }
+
+            guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
+                print("Invalid response")
+                return
+            }
+
+            if let data = data {
+                let decoder = JSONDecoder.javaScriptISO8601()
+                do {
+                    let fetchedMembers = try decoder.decode([Member].self, from: data)
+                    DispatchQueue.main.async {
+                        self.members = Dictionary(uniqueKeysWithValues: fetchedMembers.map { ($0.id, $0) })
+                    }
+                } catch {
+                    print("Failed to decode members. Error: \(error)")
+                }
+            }
+        }
+        task.resume()
+    }
+}
+
+
+
+
 
 // ObservableObject that provides workspace data from a JSON file
 class WorkspaceProvider: ObservableObject {
@@ -186,8 +219,8 @@ class MessageProvider: ObservableObject {
         task.resume()
     }
 
-    // Note: For these two functions, you would need to change the request methods to POST and DELETE respectively,
-    // and modify the request bodies to include the information required by your API
+    // Note: For these two functions, need to change the request methods to POST and DELETE respectively,
+    // and modify the request bodies to include the information required by API
     func addMessage(content: String, member: Member, withToken token: String) {
         // Implement API calling code here.
     }
