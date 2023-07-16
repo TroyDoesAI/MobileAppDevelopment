@@ -30,12 +30,14 @@ struct Channel: Codable, Identifiable {
 }
 
 // Represents a message, which contains the content, posted date, and the member who posted
+
 struct Message: Codable, Identifiable {
     let id: UUID
     let content: String
     let posted: Date
-    let member: String
+    let member: UUID  // Update the type to UUID
 }
+
 
 
 
@@ -49,7 +51,7 @@ class MemberProvider: ObservableObject {
     @Published var members = [UUID: Member]()
 
     func loadAllMembers(withToken token: String) {
-        guard let url = URL(string: "\(baseUrl)/member") else {
+        guard let url = URL(string: "https://cse118.com/api/v2/member") else {
             print("Invalid URL")
             return
         }
@@ -70,8 +72,8 @@ class MemberProvider: ObservableObject {
             }
 
             if let data = data {
-                let decoder = JSONDecoder.javaScriptISO8601()
                 do {
+                    let decoder = JSONDecoder()
                     let fetchedMembers = try decoder.decode([Member].self, from: data)
                     DispatchQueue.main.async {
                         self.members = Dictionary(uniqueKeysWithValues: fetchedMembers.map { ($0.id, $0) })
@@ -83,6 +85,11 @@ class MemberProvider: ObservableObject {
         }
         task.resume()
     }
+    
+    func memberName(forID memberID: UUID) -> String? {
+            return members[memberID]?.name
+        }
+
 }
 
 

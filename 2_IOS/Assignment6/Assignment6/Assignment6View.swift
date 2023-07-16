@@ -6,12 +6,16 @@ struct Assignment6View: View {
     @StateObject private var workspaceProvider = WorkspaceProvider()
     @StateObject private var channelProvider = ChannelProvider()
     @StateObject private var messageProvider = MessageProvider()
-    @State private var navigateToLogin: Bool = false
+    @StateObject private var memberProvider = MemberProvider() // Add MemberProvider
+
+    @State private var navigateToLogin = false // Add navigateToLogin variable
 
     var body: some View {
         NavigationView {
             if viewModel.user != nil {
-                WorkspaceListView(workspaceProvider: workspaceProvider, channelProvider: channelProvider, messageProvider: messageProvider, navigateToLogin: $navigateToLogin)
+                WorkspaceListView(workspaceProvider: workspaceProvider, channelProvider: channelProvider, messageProvider: messageProvider, memberProvider: memberProvider, navigateToLogin: $navigateToLogin)
+                    .environmentObject(viewModel)
+                    .environmentObject(memberProvider) // Add memberProvider as an environment object
             } else {
                 LoginView()
             }
@@ -154,12 +158,13 @@ struct WorkspaceListView: View {
     @ObservedObject var workspaceProvider: WorkspaceProvider
     @ObservedObject var channelProvider: ChannelProvider
     @ObservedObject var messageProvider: MessageProvider
-    @Binding var navigateToLogin: Bool
+    @ObservedObject var memberProvider: MemberProvider
+    @Binding var navigateToLogin: Bool // Add navigateToLogin binding
 
     var body: some View {
         VStack {
             List(workspaceProvider.workspaces) { workspace in
-                NavigationLink(destination: ChannelListView(workspace: workspace, channelProvider: channelProvider, messageProvider: messageProvider).environmentObject(viewModel)) {
+                NavigationLink(destination: ChannelListView(workspace: workspace, channelProvider: channelProvider, messageProvider: messageProvider, memberProvider: memberProvider)) {
                     HStack {
                         Button(action: {}, label: {
                             Text(workspace.name).font(.headline)
@@ -197,10 +202,11 @@ struct ChannelListView: View {
     @ObservedObject var channelProvider: ChannelProvider
     @ObservedObject var messageProvider: MessageProvider
     @EnvironmentObject var viewModel: LoginViewModel
-
+    @ObservedObject var memberProvider: MemberProvider // Change to ObservedObject
+    
     var body: some View {
         List(channelProvider.channels) { channel in
-            NavigationLink(destination: MessageListView(channel: channel, messageProvider: messageProvider).environmentObject(viewModel)) {
+            NavigationLink(destination: MessageListView(channel: channel, messageProvider: messageProvider).environmentObject(viewModel).environmentObject(memberProvider)) {
                 HStack {
                     Button(action: {}, label: {
                         Text(channel.name).font(.headline).foregroundColor(Color.primary)
@@ -226,18 +232,24 @@ struct MessageListView: View {
     let channel: Channel
     @ObservedObject var messageProvider: MessageProvider
     @EnvironmentObject var viewModel: LoginViewModel
-    
+    @EnvironmentObject var memberProvider: MemberProvider
+
     var body: some View {
-        List(messageProvider.messages) { message in
+        List(messageProvider.messages, id: \.id) { message in
             VStack(alignment: .leading) {
-                Text("Posted by: \(message.member)") // This will show member's id, not name
+                if let memberName = memberProvider.memberName(forID: message.member) {
+                    Text("\(memberName)")
+                } else {
+                    Text("Posted by: Unknown")
+                }
                 Text(message.content).font(.headline)
-                Text("Posted at: \(message.posted)")
+                Text("\(message.posted)")
             }
         }
         .navigationTitle(channel.name)
         .onAppear {
-            messageProvider.loadMessages(channelId: channel.id, withToken: viewModel.user?.accessToken ?? "")
+            memberProvider.loadAllMembers(withToken: viewModel.user?.accessToken ?? "") // Load members
+            messageProvider.loadMessages(channelId: channel.id, withToken: viewModel.user?.accessToken ?? "") // Load messages
         }
     }
 }
@@ -257,3 +269,4 @@ struct Assignment6View_Previews: PreviewProvider {
     }
 }
 #endif
+
