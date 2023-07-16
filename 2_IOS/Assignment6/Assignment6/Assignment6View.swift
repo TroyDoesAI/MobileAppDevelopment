@@ -208,18 +208,16 @@ struct ChannelListView: View {
     }
 }
 
-
-
 struct MessageListView: View {
     let channel: Channel
     @ObservedObject var messageProvider: MessageProvider
     @EnvironmentObject var viewModel: LoginViewModel
-
+    
     var body: some View {
         List(messageProvider.messages) { message in
             VStack(alignment: .leading) {
-                Text(message.content)
-                Text("Posted by: \(message.member.name)")
+                Text("Posted by: \(message.member)") // This will show member's id, not name
+                Text(message.content).font(.headline)
                 Text("Posted at: \(message.posted)")
             }
         }
@@ -229,8 +227,6 @@ struct MessageListView: View {
         }
     }
 }
-
-
 
 struct User: Codable, Identifiable {
     let id: UUID

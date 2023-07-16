@@ -46,7 +46,7 @@ struct Message: Codable, Identifiable {
     let id: UUID
     let content: String
     let posted: Date
-    let member: Member
+    let member: String
 }
 
 
