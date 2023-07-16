@@ -4,12 +4,14 @@ import Combine
 struct Assignment6View: View {
     @EnvironmentObject var viewModel: LoginViewModel
     @StateObject private var workspaceProvider = WorkspaceProvider()
+    @StateObject private var channelProvider = ChannelProvider()
+    @StateObject private var messageProvider = MessageProvider()
     @State private var navigateToLogin: Bool = false
 
     var body: some View {
         NavigationView {
             if viewModel.user != nil {
-                WorkspaceListView(workspaceProvider: workspaceProvider, navigateToLogin: $navigateToLogin)
+                WorkspaceListView(workspaceProvider: workspaceProvider, channelProvider: channelProvider, messageProvider: messageProvider, navigateToLogin: $navigateToLogin)
             } else {
                 LoginView()
             }
@@ -143,6 +145,8 @@ class LoginViewModel: ObservableObject {
 struct WorkspaceListView: View {
     @EnvironmentObject var viewModel: LoginViewModel
     @ObservedObject var workspaceProvider: WorkspaceProvider
+    @ObservedObject var channelProvider: ChannelProvider
+    @ObservedObject var messageProvider: MessageProvider
     @Binding var navigateToLogin: Bool
     
     var body: some View {
@@ -166,10 +170,12 @@ struct WorkspaceListView: View {
             }
             
             List(workspaceProvider.workspaces) { workspace in
-                VStack(alignment: .leading) {
-                    Text(workspace.name).font(.headline)
-                    Text("Owner: \(workspace.owner)")
-                    Text("Channels: \(workspace.channels)")
+                NavigationLink(destination: ChannelListView(workspace: workspace, channelProvider: channelProvider, messageProvider: messageProvider).environmentObject(viewModel)) {
+                    VStack(alignment: .leading) {
+                        Text(workspace.name).font(.headline)
+                        Text("Owner: \(workspace.owner)")
+                        Text("Channels: \(workspace.channels)")
+                    }
                 }
             }
         }.onAppear {
@@ -178,31 +184,41 @@ struct WorkspaceListView: View {
     }
 }
 
+struct ChannelListView: View {
+    let workspace: Workspace
+    @ObservedObject var channelProvider: ChannelProvider
+    @ObservedObject var messageProvider: MessageProvider
+    @EnvironmentObject var viewModel: LoginViewModel
+    
+    var body: some View {
+        List(channelProvider.channels) { channel in
+            NavigationLink(destination: MessageListView(channel: channel, messageProvider: messageProvider).environmentObject(viewModel)) {
+                VStack(alignment: .leading) {
+                    Text(channel.name).font(.headline)
+                    Text("Unique Posters: \(channel.uniquePosters)")
+                    if let date = channel.mostRecentMessage {
+                        Text("Most Recent Message: \(date)")
+                    }
+                }
+            }
+        }
+        .navigationTitle(workspace.name)
+        .onAppear {
+            if let workspaceId = UUID(uuidString: workspace.id) {
+                channelProvider.loadChannels(workspaceId: workspaceId, withToken: viewModel.user?.accessToken ?? "")
+            }
+        }
+    }
+}
 
-//struct ChannelListView: View {
-//    let workspace: Workspace
-//
-//    var body: some View {
-//        List(workspace.channels) { channel in
-//            NavigationLink(destination: MessageListView(channel: channel)) {
-//                VStack(alignment: .leading) {
-//                    Text(channel.name).font(.headline)
-//                    Text("Unique Posters: \(channel.uniquePosters)")
-//                    if let date = channel.mostRecentMessage {
-//                        Text("Most Recent Message: \(date)")
-//                    }
-//                }
-//            }
-//        }
-//        .navigationTitle(workspace.name)
-//    }
-//}
 
 struct MessageListView: View {
     let channel: Channel
-    
+    @ObservedObject var messageProvider: MessageProvider
+    @EnvironmentObject var viewModel: LoginViewModel
+
     var body: some View {
-        List(channel.messages) { message in
+        List(messageProvider.messages) { message in
             VStack(alignment: .leading) {
                 Text(message.content)
                 Text("Posted by: \(message.member.name)")
@@ -210,8 +226,13 @@ struct MessageListView: View {
             }
         }
         .navigationTitle(channel.name)
+        .onAppear {
+            messageProvider.loadMessages(channelId: channel.id, withToken: viewModel.user?.accessToken ?? "")
+        }
     }
 }
+
+
 
 struct User: Codable, Identifiable {
     let id: UUID
@@ -228,4 +249,9 @@ struct Assignment6View_Previews: PreviewProvider {
     }
 }
 #endif
+
+
+
+
+
 
