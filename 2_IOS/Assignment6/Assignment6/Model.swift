@@ -9,7 +9,7 @@ import Foundation
 
 let baseUrl = "https://cse118.com/api/v2"
 
-// Represents a workspace, which contains multiple channels
+/// Represents a workspace, which contains multiple channels
 struct Workspace: Identifiable, Codable {
     let id: String
     let name: String
@@ -17,7 +17,7 @@ struct Workspace: Identifiable, Codable {
     let channels: Int
 }
 
-// Represents a channel, which contains multiple messages
+/// Represents a channel, which contains multiple messages
 struct Channel: Codable, Identifiable {
     let id: UUID
     let name: String
@@ -29,27 +29,25 @@ struct Channel: Codable, Identifiable {
     }
 }
 
-// Represents a message, which contains the content, posted date, and the member who posted
-
+/// Represents a message, which contains the content, posted date, and the member who posted
 struct Message: Codable, Identifiable {
     let id: UUID
     let content: String
     let posted: Date
-    let member: UUID  // Update the type to UUID
+    let member: UUID
 }
 
-
-
-
-// Represents a member, who posts messages in channels
+/// Represents a member, who posts messages in channels
 struct Member: Codable, Identifiable {
     let id: UUID
     let name: String
 }
 
+// ObservableObject that provides member data from API endpoint
 class MemberProvider: ObservableObject {
     @Published var members = [UUID: Member]()
-
+    
+    /// Loads all members using the provider token
     func loadAllMembers(withToken token: String) {
         guard let url = URL(string: "https://cse118.com/api/v2/member") else {
             print("Invalid URL")
@@ -86,15 +84,94 @@ class MemberProvider: ObservableObject {
         task.resume()
     }
     
+    /// Retrieves the name of the member with the given ID
     func memberName(forID memberID: UUID) -> String? {
             return members[memberID]?.name
         }
-
 }
 
-// ObservableObject that provides workspace data from a JSON file
+class LoginProvider: ObservableObject {
+    @Published var user: User? {
+        didSet {
+            if let user = user {
+                print("User has been logged in with the id: \(user.id)")
+            } else {
+                print("User has been logged out")
+            }
+        }
+    }
+    
+    /// Logs in the user with the provided email and password
+    func login(email: String, password: String) {
+        guard let url = URL(string: "\(baseUrl)/login") else {
+            return
+        }
+        
+        let lowercaseEmail = email.lowercased() // Transform email to lowercase
+        
+        let parameters = ["email": lowercaseEmail, "password": password]
+        guard let jsonData = try? JSONEncoder().encode(parameters) else {
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.httpBody = jsonData
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if let _ = error {
+                return
+            }
+            
+            guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
+                return
+            }
+            
+            if let data = data,
+               let user = try? JSONDecoder().decode(User.self, from: data) {
+                DispatchQueue.main.async {
+                    self.user = user
+                }
+            }
+        }
+        task.resume()
+    }
+    
+    /// Logs out the user
+    func logout() {
+        guard let url = URL(string: "\(baseUrl)/reset") else {
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "PUT"
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        request.addValue("Bearer \(user?.accessToken ?? "")", forHTTPHeaderField: "Authorization")
+        
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if let _ = error {
+                return
+            }
+            
+            guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
+                return
+            }
+            
+            DispatchQueue.main.async {
+                self.user = nil
+            }
+        }
+        task.resume()
+    }
+}
+
+// ObservableObject that provides workspace data from API endpoint in JSON format
 class WorkspaceProvider: ObservableObject {
     @Published var workspaces = [Workspace]()
+    
+    /// Loads workspaces using the provided token
     func loadWorkspaces(withToken token: String) {
         print("\nIn WorkspaceProvider: loadWorkspaces()")
         guard let url = URL(string: "https://cse118.com/api/v2/workspace") else {
@@ -132,16 +209,16 @@ class WorkspaceProvider: ObservableObject {
                     print("Failed to decode JSON: \(error)")
                 }
             }
-
-            
         }
         task.resume()
     }
 }
 
+// ObservableObject that provides channel data from API endpoint in JSON format
 class ChannelProvider: ObservableObject {
     @Published var channels = [Channel]()
     
+    /// Loads channels for the given workspace ID using the provided token
     func loadChannels(workspaceId: UUID, withToken token: String) {
         print("\n\nIn loadChannels: ")
         guard let url = URL(string: "\(baseUrl)/workspace/\(workspaceId)/channel") else {
@@ -186,6 +263,7 @@ class ChannelProvider: ObservableObject {
 class MessageProvider: ObservableObject {
     @Published var messages = [Message]()
     
+    /// Loads messages for the given channel ID using the provided token
     func loadMessages(channelId: UUID, withToken token: String) {
         guard let url = URL(string: "\(baseUrl)/channel/\(channelId)/message") else {
             print("Invalid URL")
@@ -222,13 +300,12 @@ class MessageProvider: ObservableObject {
         task.resume()
     }
 
+    /// Adds a message to the specified channel
     func addMessage(content: String, channel: Channel, member: Member, withToken token: String) {
         guard let url = URL(string: "\(baseUrl)/channel/\(channel.id.uuidString)/message") else {
             print("Invalid URL")
             return
         }
-
-        
 
         let messageContent = ["content": "\(content)"]
 
@@ -263,39 +340,29 @@ class MessageProvider: ObservableObject {
         task.resume()
     }
 
-
-
+    /// Deletes the message with the specified ID
     func deleteMessage(messageId: UUID, withToken token: String) {
-        // Your implementation here
+        guard let url = URL(string: "\(baseUrl)/message/\(messageId)") else {
+            print("Invalid URL")
+            return
+        }
+
+        var request = URLRequest(url: url)
+        request.httpMethod = "DELETE"
+        request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if let error = error {
+                print("Error deleting message: \(error)")
+                return
+            }
+
+            guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
+                print("Failed to delete message. Invalid response")
+                return
+            }
+            print("\n\nHTTP Response: \(String(describing: response))")
+        }
+        task.resume()
     }
 }
-
-
-
-
-//The login() function in the LoginViewModel class sends a POST request to the server to log in the user. If the login is successful and the server responds with a user object, the user property in the LoginViewModel is updated.
-//
-//The logout() function in the LoginViewModel class sends a PUT request to the server to log out the user. If the logout is successful and the server responds with a success status code, the user property in the LoginViewModel is set to nil.
-
-
-
-
-//My code includes the functionality to make a POST request to the API. Let me explain how it works:
-//
-//When the user presses the "Submit" button, the addMessage() function is triggered within the ComposeMessageView struct.
-//
-//This function, in turn, calls the addMessage(content:channel:member:withToken:) method from the MessageProvider class, passing in the necessary parameters.
-//
-//Within the MessageProvider class, the addMessage(content:channel:member:withToken:) function follows these steps:
-//
-//It first checks if a valid URL can be formed. If not, it exits the function early.
-//
-//Next, it attempts to encode the message content into JSON format. If this encoding process fails, it also returns early.
-//
-//Assuming both the URL formation and JSON encoding are successful, the function prepares a URLRequest with the URL, sets the HTTP method to "POST," adds the JSON-encoded message content to the HTTP body, and sets the appropriate HTTP headers.
-//
-//Finally, it creates a URLSession data task with the prepared request. This task is responsible for sending the request to the server when it is resumed using task.resume().
-//
-//If the request is successful, meaning the HTTP response code falls within the range of 200-299, the function logs the HTTP response and reloads the messages for the specified channel by calling the loadMessages(channelId:withToken:) method.
-//
-//In conclusion, the addMessage function in your ComposeMessageView is effectively making a POST request to the API. It utilizes the addMessage(content:channel:member:withToken:) function within the MessageProvider class. If any issues arise during the request or response process, appropriate error messages will be printed.

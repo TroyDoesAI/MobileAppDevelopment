@@ -6,16 +6,16 @@ struct Assignment6View: View {
     @StateObject private var workspaceProvider = WorkspaceProvider()
     @StateObject private var channelProvider = ChannelProvider()
     @StateObject private var messageProvider = MessageProvider()
-    @StateObject private var memberProvider = MemberProvider() // Add MemberProvider
-    
-    @State private var navigateToLogin = false // Add navigateToLogin variable
-    
+    @StateObject private var memberProvider = MemberProvider()
+
+    @State private var navigateToLogin = false
+
     var body: some View {
         NavigationView {
             if viewModel.user != nil {
                 WorkspaceListView(workspaceProvider: workspaceProvider, channelProvider: channelProvider, messageProvider: messageProvider, memberProvider: memberProvider, navigateToLogin: $navigateToLogin)
                     .environmentObject(viewModel)
-                    .environmentObject(memberProvider) // Add memberProvider as an environment object
+                    .environmentObject(memberProvider)
             } else {
                 LoginView()
             }
@@ -28,7 +28,7 @@ struct Assignment6View: View {
 
 struct LoginView: View {
     @EnvironmentObject var viewModel: LoginViewModel
-    
+
     var body: some View {
         ScrollView {
             VStack {
@@ -38,17 +38,17 @@ struct LoginView: View {
                     .aspectRatio(contentMode: .fill)
                     .frame(width: 150, height: 150)
                     .clipped()
-                
+
                 TextField("Email", text: $viewModel.email)
                     .accessibilityLabel("EMail")
-                
+
                 SecureField("Password", text: $viewModel.password)
                     .accessibilityLabel("Password")
-                
+
                 Button("Log In", action: viewModel.login)
                     .disabled(!viewModel.isValid)
                     .accessibilityLabel("Login")
-                
+
                 Spacer() // Pushes the VStack to the top
             }
             .padding()
@@ -71,16 +71,22 @@ class LoginViewModel: ObservableObject {
         }
     }
     @Published var selectedWorkspace: Workspace? = nil
-    
+
     private var cancellableSet: Set<AnyCancellable> = []
-    
+    @ObservedObject var loginProvider = LoginProvider() // Add LoginProvider as an ObservedObject
+
     init() {
         isFormValidPublisher
             .receive(on: RunLoop.main)
             .assign(to: \.isValid, on: self)
             .store(in: &cancellableSet)
+        
+        // observe the user in LoginProvider
+        loginProvider.$user
+            .assign(to: \.user, on: self)
+            .store(in: &cancellableSet)
     }
-    
+
     private var isFormValidPublisher: AnyPublisher<Bool, Never> {
         Publishers.CombineLatest($email, $password)
             .map { email, password in
@@ -88,68 +94,13 @@ class LoginViewModel: ObservableObject {
             }
             .eraseToAnyPublisher()
     }
-    
+
     func login() {
-        guard let url = URL(string: "https://cse118.com/api/v2/login") else {
-            return
-        }
-        
-        let lowercaseEmail = email.lowercased() // Transform email to lowercase
-        
-        let parameters = ["email": lowercaseEmail, "password": password]
-        guard let jsonData = try? JSONEncoder().encode(parameters) else {
-            return
-        }
-        
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.httpBody = jsonData
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue("application/json", forHTTPHeaderField: "Accept")  // Adding Accept header
-        
-        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-            if let _ = error {
-                return
-            }
-            
-            guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
-                return
-            }
-            
-            if let data = data,
-               let user = try? JSONDecoder().decode(User.self, from: data) {
-                DispatchQueue.main.async {
-                    self.user = user
-                }
-            }
-        }
-        task.resume()
+        loginProvider.login(email: email, password: password)
     }
-    
+
     func logout() {
-        guard let url = URL(string: "https://cse118.com/api/v2/reset") else {
-            return
-        }
-        
-        var request = URLRequest(url: url)
-        request.httpMethod = "PUT"
-        request.addValue("application/json", forHTTPHeaderField: "Accept")  // Adding Accept header
-        request.addValue("Bearer \(user?.accessToken ?? "")", forHTTPHeaderField: "Authorization")
-        
-        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-            if let _ = error {
-                return
-            }
-            
-            guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
-                return
-            }
-            
-            DispatchQueue.main.async {
-                self.user = nil
-            }
-        }
-        task.resume()
+        loginProvider.logout()
     }
 }
 
@@ -160,7 +111,7 @@ struct WorkspaceListView: View {
     @ObservedObject var messageProvider: MessageProvider
     @ObservedObject var memberProvider: MemberProvider
     @Binding var navigateToLogin: Bool // Add navigateToLogin binding
-    
+
     var body: some View {
         VStack {
             List(workspaceProvider.workspaces) { workspace in
@@ -202,7 +153,7 @@ struct ChannelListView: View {
     @ObservedObject var channelProvider: ChannelProvider
     @ObservedObject var messageProvider: MessageProvider
     @EnvironmentObject var viewModel: LoginViewModel
-    @ObservedObject var memberProvider: MemberProvider // Change to ObservedObject
+    @ObservedObject var memberProvider: MemberProvider
     
     var body: some View {
         List(channelProvider.channels) { channel in
@@ -260,8 +211,7 @@ struct MessageListView: View {
                                     label: {
                                         Image(systemName: "plus")
                                     }
-                                ).accessibilityIdentifier("New Message") // Add this line
-                            
+                                ).accessibilityIdentifier("New Message")
         )
         .onAppear {
             memberProvider.loadAllMembers(withToken: viewModel.user?.accessToken ?? "") // Load members
@@ -269,7 +219,6 @@ struct MessageListView: View {
         }
     }
 }
-
 
 struct ComposeMessageView: View {
     @Environment(\.presentationMode) var presentationMode
@@ -281,11 +230,9 @@ struct ComposeMessageView: View {
 
     var body: some View {
         VStack {
-            TextField("Message content", text: $messageContent)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
+            TextEditor(text: $messageContent)
+                .accessibilityIdentifier("Message")
                 .padding()
-                .accessibilityIdentifier("MessageContentTextField")
-            
             HStack {
                 Spacer()
                 
@@ -301,11 +248,9 @@ struct ComposeMessageView: View {
                     .disabled(messageContent.isEmpty)
                     .accessibilityIdentifier("OK")
                 }
-                
                 Spacer()
             }
             .padding(.horizontal)
-            
             Spacer()
         }
         .padding()
@@ -334,7 +279,7 @@ struct User: Codable, Identifiable {
     let name: String
     let role: String
     let accessToken: String
-    var selectedWorkspace: Workspace? // Add selectedWorkspace property
+    var selectedWorkspace: Workspace?
     
     // Function to convert User to Member
     func toMember() -> Member {
