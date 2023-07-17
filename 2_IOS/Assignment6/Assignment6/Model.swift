@@ -92,10 +92,6 @@ class MemberProvider: ObservableObject {
 
 }
 
-
-
-
-
 // ObservableObject that provides workspace data from a JSON file
 class WorkspaceProvider: ObservableObject {
     @Published var workspaces = [Workspace]()
@@ -228,9 +224,46 @@ class MessageProvider: ObservableObject {
 
     // Note: For these two functions, need to change the request methods to POST and DELETE respectively,
     // and modify the request bodies to include the information required by API
-    func addMessage(content: String, member: Member, withToken token: String) {
-        // Implement API calling code here.
-    }
+    func addMessage(content: String, member: User, withToken token: String) {
+        print("\n\nIn AddMessage()")
+            guard let channelId = member.selectedWorkspace?.id else {
+                print("Error: Channel ID not available")
+                return
+            }
+
+            guard let url = URL(string: "\(baseUrl)/channel/\(channelId)/message") else {
+                print("Invalid URL")
+                return
+            }
+
+            let message = Message(id: UUID(), content: content, posted: Date(), member: member.id)
+            guard let jsonData = try? JSONEncoder().encode(message) else {
+                print("Failed to encode message")
+                return
+            }
+
+            var request = URLRequest(url: url)
+            request.httpMethod = "POST"
+            request.httpBody = jsonData
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+
+            let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+                if let error = error {
+                    print("Error adding message: \(error)")
+                    return
+                }
+
+                guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
+                    print("Failed to add message. Invalid response")
+                    return
+                }
+
+                // Handle successful message addition if needed
+            }
+
+            task.resume()
+        }
 
     func deleteMessage(messageId: UUID, withToken token: String) {
         // Implement API calling code here.

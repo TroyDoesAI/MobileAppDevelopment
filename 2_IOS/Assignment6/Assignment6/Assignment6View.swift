@@ -234,6 +234,12 @@ struct ChannelListView: View {
 //    @EnvironmentObject var viewModel: LoginViewModel
 //    @EnvironmentObject var memberProvider: MemberProvider
 //
+//    private let dateFormatter: DateFormatter = {
+//        let formatter = DateFormatter()
+//        formatter.dateFormat = "MMM d, yyyy 'at' h:mm a"
+//        return formatter
+//    }()
+//
 //    var body: some View {
 //        List(messageProvider.messages, id: \.id) { message in
 //            VStack(alignment: .leading) {
@@ -243,7 +249,7 @@ struct ChannelListView: View {
 //                    Text("Posted by: Unknown")
 //                }
 //                Text(message.content).font(.headline)
-//                Text("\(message.posted)")
+//                Text(dateFormatter.string(from: message.posted))
 //            }
 //        }
 //        .navigationTitle(channel.name)
@@ -259,13 +265,9 @@ struct MessageListView: View {
     @ObservedObject var messageProvider: MessageProvider
     @EnvironmentObject var viewModel: LoginViewModel
     @EnvironmentObject var memberProvider: MemberProvider
-
-    private let dateFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "MMM d, yyyy 'at' h:mm a"
-        return formatter
-    }()
-
+    
+    @State private var newMessageContent = ""
+    
     var body: some View {
         List(messageProvider.messages, id: \.id) { message in
             VStack(alignment: .leading) {
@@ -275,14 +277,30 @@ struct MessageListView: View {
                     Text("Posted by: Unknown")
                 }
                 Text(message.content).font(.headline)
-                Text(dateFormatter.string(from: message.posted))
+                Text("\(message.posted)")
             }
         }
         .navigationTitle(channel.name)
+        .navigationBarItems(trailing: Button(action: {
+            addMessage()
+        }) {
+            Image(systemName: "plus")
+        })
         .onAppear {
             memberProvider.loadAllMembers(withToken: viewModel.user?.accessToken ?? "") // Load members
             messageProvider.loadMessages(channelId: channel.id, withToken: viewModel.user?.accessToken ?? "") // Load messages
         }
+    }
+    
+    func addMessage() {
+        guard !newMessageContent.isEmpty, let member = viewModel.user else {
+            return
+        }
+
+        messageProvider.addMessage(content: newMessageContent, member: member, withToken: member.accessToken)
+
+        // Clear the input field after adding the message
+        newMessageContent = ""
     }
 }
 
@@ -292,6 +310,7 @@ struct User: Codable, Identifiable {
     let name: String
     let role: String
     let accessToken: String
+    var selectedWorkspace: Workspace? // Add selectedWorkspace property
 }
 
 #if !TESTING
