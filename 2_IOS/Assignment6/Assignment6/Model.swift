@@ -222,50 +222,80 @@ class MessageProvider: ObservableObject {
         task.resume()
     }
 
-    // Note: For these two functions, need to change the request methods to POST and DELETE respectively,
-    // and modify the request bodies to include the information required by API
-    func addMessage(content: String, member: User, withToken token: String) {
-        print("\n\nIn AddMessage()")
-            guard let channelId = member.selectedWorkspace?.id else {
-                print("Error: Channel ID not available")
-                return
-            }
-
-            guard let url = URL(string: "\(baseUrl)/channel/\(channelId)/message") else {
-                print("Invalid URL")
-                return
-            }
-
-            let message = Message(id: UUID(), content: content, posted: Date(), member: member.id)
-            guard let jsonData = try? JSONEncoder().encode(message) else {
-                print("Failed to encode message")
-                return
-            }
-
-            var request = URLRequest(url: url)
-            request.httpMethod = "POST"
-            request.httpBody = jsonData
-            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-            request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
-
-            let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-                if let error = error {
-                    print("Error adding message: \(error)")
-                    return
-                }
-
-                guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
-                    print("Failed to add message. Invalid response")
-                    return
-                }
-
-                // Handle successful message addition if needed
-            }
-
-            task.resume()
+    func addMessage(content: String, channel: Channel, member: Member, withToken token: String) {
+        guard let url = URL(string: "\(baseUrl)/channel/\(channel.id.uuidString)/message") else {
+            print("Invalid URL")
+            return
         }
 
+        
+
+        let messageContent = ["content": "\(content)"]
+
+        guard let jsonData = try? JSONEncoder().encode(messageContent) else {
+            print("Failed to encode message content")
+            return
+        }
+
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.httpBody = jsonData
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if let error = error {
+                print("Error adding message: \(error)")
+                return
+            }
+
+            guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode)
+            else {
+                print("Failed to add message. Invalid response")
+                return
+            }
+
+            print("\n\nHTTP Response: \(String(describing: response))")
+
+            self.loadMessages(channelId: channel.id, withToken: token) // Reload messages after a successful addition
+        }
+
+        task.resume()
+    }
+
+
+
     func deleteMessage(messageId: UUID, withToken token: String) {
-        // Implement API calling code here.
+        // Your implementation here
     }
 }
+
+
+
+
+//The login() function in the LoginViewModel class sends a POST request to the server to log in the user. If the login is successful and the server responds with a user object, the user property in the LoginViewModel is updated.
+//
+//The logout() function in the LoginViewModel class sends a PUT request to the server to log out the user. If the logout is successful and the server responds with a success status code, the user property in the LoginViewModel is set to nil.
+
+
+
+
+//My code includes the functionality to make a POST request to the API. Let me explain how it works:
+//
+//When the user presses the "Submit" button, the addMessage() function is triggered within the ComposeMessageView struct.
+//
+//This function, in turn, calls the addMessage(content:channel:member:withToken:) method from the MessageProvider class, passing in the necessary parameters.
+//
+//Within the MessageProvider class, the addMessage(content:channel:member:withToken:) function follows these steps:
+//
+//It first checks if a valid URL can be formed. If not, it exits the function early.
+//
+//Next, it attempts to encode the message content into JSON format. If this encoding process fails, it also returns early.
+//
+//Assuming both the URL formation and JSON encoding are successful, the function prepares a URLRequest with the URL, sets the HTTP method to "POST," adds the JSON-encoded message content to the HTTP body, and sets the appropriate HTTP headers.
+//
+//Finally, it creates a URLSession data task with the prepared request. This task is responsible for sending the request to the server when it is resumed using task.resume().
+//
+//If the request is successful, meaning the HTTP response code falls within the range of 200-299, the function logs the HTTP response and reloads the messages for the specified channel by calling the loadMessages(channelId:withToken:) method.
+//
+//In conclusion, the addMessage function in your ComposeMessageView is effectively making a POST request to the API. It utilizes the addMessage(content:channel:member:withToken:) function within the MessageProvider class. If any issues arise during the request or response process, appropriate error messages will be printed.

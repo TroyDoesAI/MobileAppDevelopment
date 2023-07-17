@@ -7,9 +7,9 @@ struct Assignment6View: View {
     @StateObject private var channelProvider = ChannelProvider()
     @StateObject private var messageProvider = MessageProvider()
     @StateObject private var memberProvider = MemberProvider() // Add MemberProvider
-
+    
     @State private var navigateToLogin = false // Add navigateToLogin variable
-
+    
     var body: some View {
         NavigationView {
             if viewModel.user != nil {
@@ -100,13 +100,13 @@ class LoginViewModel: ObservableObject {
         guard let jsonData = try? JSONEncoder().encode(parameters) else {
             return
         }
-
+        
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.httpBody = jsonData
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")  // Adding Accept header
-
+        
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let _ = error {
                 return
@@ -130,21 +130,21 @@ class LoginViewModel: ObservableObject {
         guard let url = URL(string: "https://cse118.com/api/v2/reset") else {
             return
         }
-
+        
         var request = URLRequest(url: url)
         request.httpMethod = "PUT"
         request.addValue("application/json", forHTTPHeaderField: "Accept")  // Adding Accept header
         request.addValue("Bearer \(user?.accessToken ?? "")", forHTTPHeaderField: "Authorization")
-
+        
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let _ = error {
                 return
             }
-
+            
             guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
                 return
             }
-
+            
             DispatchQueue.main.async {
                 self.user = nil
             }
@@ -160,7 +160,7 @@ struct WorkspaceListView: View {
     @ObservedObject var messageProvider: MessageProvider
     @ObservedObject var memberProvider: MemberProvider
     @Binding var navigateToLogin: Bool // Add navigateToLogin binding
-
+    
     var body: some View {
         VStack {
             List(workspaceProvider.workspaces) { workspace in
@@ -212,7 +212,7 @@ struct ChannelListView: View {
                         Text(channel.name).font(.headline).foregroundColor(Color.primary)
                     })
                     .accessibilityIdentifier("\(channel.name) Channel")
-
+                    
                     Spacer() // This will push the next Text to the right
                     Text("\(channel.messageCount)")
                         .accessibilityIdentifier("Messages \(channel.name) ")
@@ -233,12 +233,8 @@ struct ChannelListView: View {
 //    @ObservedObject var messageProvider: MessageProvider
 //    @EnvironmentObject var viewModel: LoginViewModel
 //    @EnvironmentObject var memberProvider: MemberProvider
-//
-//    private let dateFormatter: DateFormatter = {
-//        let formatter = DateFormatter()
-//        formatter.dateFormat = "MMM d, yyyy 'at' h:mm a"
-//        return formatter
-//    }()
+//    @State private var isNewMessageViewPresented = false
+//    @State private var newMessageContent = ""
 //
 //    var body: some View {
 //        List(messageProvider.messages, id: \.id) { message in
@@ -249,16 +245,34 @@ struct ChannelListView: View {
 //                    Text("Posted by: Unknown")
 //                }
 //                Text(message.content).font(.headline)
-//                Text(dateFormatter.string(from: message.posted))
+//                Text("\(message.posted)")
 //            }
 //        }
 //        .navigationTitle(channel.name)
+//        .navigationBarItems(trailing: Button(action: {
+//            addMessage()
+//        }) {
+//            Image(systemName: "plus")
+//        })
 //        .onAppear {
 //            memberProvider.loadAllMembers(withToken: viewModel.user?.accessToken ?? "") // Load members
 //            messageProvider.loadMessages(channelId: channel.id, withToken: viewModel.user?.accessToken ?? "") // Load messages
 //        }
 //    }
+//
+//    func addMessage() {
+//        print("In Add Message")
+//        guard !newMessageContent.isEmpty, let member = viewModel.user else {
+//            return
+//        }
+//
+//        messageProvider.addMessage(content: newMessageContent, member: member, withToken: viewModel.user?.accessToken ?? "")
+//
+//        // Clear the input field after adding the message
+//        newMessageContent = ""
+//    }
 //}
+
 
 struct MessageListView: View {
     let channel: Channel
@@ -266,7 +280,11 @@ struct MessageListView: View {
     @EnvironmentObject var viewModel: LoginViewModel
     @EnvironmentObject var memberProvider: MemberProvider
     
-    @State private var newMessageContent = ""
+    private let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMM d, yyyy 'at' h:mm a"
+        return formatter
+    }()
     
     var body: some View {
         List(messageProvider.messages, id: \.id) { message in
@@ -277,32 +295,79 @@ struct MessageListView: View {
                     Text("Posted by: Unknown")
                 }
                 Text(message.content).font(.headline)
-                Text("\(message.posted)")
+                Text(dateFormatter.string(from: message.posted))
             }
         }
         .navigationTitle(channel.name)
-        .navigationBarItems(trailing: Button(action: {
-            addMessage()
-        }) {
-            Image(systemName: "plus")
-        })
+        .navigationBarItems(trailing:
+                                NavigationLink(
+                                destination: ComposeMessageView(messageProvider: messageProvider, channel: channel)
+                                    .environmentObject(viewModel),
+                                    label: {
+                                        Image(systemName: "plus")
+                                    }
+                                ).accessibilityIdentifier("New Message") // Add this line
+                            
+        )
         .onAppear {
             memberProvider.loadAllMembers(withToken: viewModel.user?.accessToken ?? "") // Load members
             messageProvider.loadMessages(channelId: channel.id, withToken: viewModel.user?.accessToken ?? "") // Load messages
         }
     }
+}
+
+
+struct ComposeMessageView: View {
+    @Environment(\.presentationMode) var presentationMode
+    @EnvironmentObject var viewModel: LoginViewModel
+    @ObservedObject var messageProvider: MessageProvider
+    var channel: Channel
     
-    func addMessage() {
-        guard !newMessageContent.isEmpty, let member = viewModel.user else {
+    @State private var messageContent = ""
+    
+    var body: some View {
+        VStack {
+            Text("New Message")
+                .font(.largeTitle)
+            TextField("Message content", text: $messageContent)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .padding()
+            HStack {
+                Button(action: cancel) {
+                    Text("Cancel")
+                }
+                Spacer()
+                Button(action: addMessage) {
+                    Text("OK")
+                }
+                .disabled(messageContent.isEmpty)
+            }
+            .padding(.horizontal)
+            Spacer()
+        }
+        .padding()
+    }
+    
+    private func cancel() {
+        presentationMode.wrappedValue.dismiss()
+    }
+    
+    private func addMessage() {
+        guard !messageContent.isEmpty, let user = viewModel.user else {
             return
         }
-
-        messageProvider.addMessage(content: newMessageContent, member: member, withToken: member.accessToken)
-
+        
+        let member = user.toMember() // Convert User to Member
+        messageProvider.addMessage(content: messageContent, channel: channel, member: member, withToken: viewModel.user?.accessToken ?? "")
         // Clear the input field after adding the message
-        newMessageContent = ""
+        messageContent = ""
+        presentationMode.wrappedValue.dismiss()
     }
 }
+
+
+
+
 
 
 struct User: Codable, Identifiable {
@@ -311,6 +376,11 @@ struct User: Codable, Identifiable {
     let role: String
     let accessToken: String
     var selectedWorkspace: Workspace? // Add selectedWorkspace property
+    
+    // Function to convert User to Member
+    func toMember() -> Member {
+        return Member(id: self.id, name: self.name)
+    }
 }
 
 #if !TESTING
