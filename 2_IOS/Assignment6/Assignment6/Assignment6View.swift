@@ -228,52 +228,6 @@ struct ChannelListView: View {
     }
 }
 
-//struct MessageListView: View {
-//    let channel: Channel
-//    @ObservedObject var messageProvider: MessageProvider
-//    @EnvironmentObject var viewModel: LoginViewModel
-//    @EnvironmentObject var memberProvider: MemberProvider
-//    @State private var isNewMessageViewPresented = false
-//    @State private var newMessageContent = ""
-//
-//    var body: some View {
-//        List(messageProvider.messages, id: \.id) { message in
-//            VStack(alignment: .leading) {
-//                if let memberName = memberProvider.memberName(forID: message.member) {
-//                    Text("\(memberName)")
-//                } else {
-//                    Text("Posted by: Unknown")
-//                }
-//                Text(message.content).font(.headline)
-//                Text("\(message.posted)")
-//            }
-//        }
-//        .navigationTitle(channel.name)
-//        .navigationBarItems(trailing: Button(action: {
-//            addMessage()
-//        }) {
-//            Image(systemName: "plus")
-//        })
-//        .onAppear {
-//            memberProvider.loadAllMembers(withToken: viewModel.user?.accessToken ?? "") // Load members
-//            messageProvider.loadMessages(channelId: channel.id, withToken: viewModel.user?.accessToken ?? "") // Load messages
-//        }
-//    }
-//
-//    func addMessage() {
-//        print("In Add Message")
-//        guard !newMessageContent.isEmpty, let member = viewModel.user else {
-//            return
-//        }
-//
-//        messageProvider.addMessage(content: newMessageContent, member: member, withToken: viewModel.user?.accessToken ?? "")
-//
-//        // Clear the input field after adding the message
-//        newMessageContent = ""
-//    }
-//}
-
-
 struct MessageListView: View {
     let channel: Channel
     @ObservedObject var messageProvider: MessageProvider
@@ -322,41 +276,51 @@ struct ComposeMessageView: View {
     @EnvironmentObject var viewModel: LoginViewModel
     @ObservedObject var messageProvider: MessageProvider
     var channel: Channel
-    
+
     @State private var messageContent = ""
-    
+
     var body: some View {
         VStack {
-            Text("New Message")
-                .font(.largeTitle)
             TextField("Message content", text: $messageContent)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding()
+                .accessibilityIdentifier("MessageContentTextField")
+            
             HStack {
-                Button(action: cancel) {
-                    Text("Cancel")
-                }
                 Spacer()
-                Button(action: addMessage) {
-                    Text("OK")
+                
+                HStack {
+                    Button(action: cancel) {
+                        Text("Cancel")
+                    }
+                    .accessibilityIdentifier("Cancel")
+                    
+                    Button(action: addMessage) {
+                        Text("OK")
+                    }
+                    .disabled(messageContent.isEmpty)
+                    .accessibilityIdentifier("OK")
                 }
-                .disabled(messageContent.isEmpty)
+                
+                Spacer()
             }
             .padding(.horizontal)
+            
             Spacer()
         }
         .padding()
+        .navigationBarTitle("New Message", displayMode: .inline)
     }
-    
+
     private func cancel() {
         presentationMode.wrappedValue.dismiss()
     }
-    
+
     private func addMessage() {
         guard !messageContent.isEmpty, let user = viewModel.user else {
             return
         }
-        
+
         let member = user.toMember() // Convert User to Member
         messageProvider.addMessage(content: messageContent, channel: channel, member: member, withToken: viewModel.user?.accessToken ?? "")
         // Clear the input field after adding the message
@@ -364,11 +328,6 @@ struct ComposeMessageView: View {
         presentationMode.wrappedValue.dismiss()
     }
 }
-
-
-
-
-
 
 struct User: Codable, Identifiable {
     let id: UUID
