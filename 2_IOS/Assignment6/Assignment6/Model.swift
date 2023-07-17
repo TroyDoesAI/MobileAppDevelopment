@@ -339,9 +339,9 @@ class MessageProvider: ObservableObject {
 
         task.resume()
     }
-
+    
     /// Deletes the message with the specified ID
-    func deleteMessage(messageId: UUID, withToken token: String) {
+    func deleteMessage(messageId: UUID, withToken token: String, completion: @escaping (Result<Void, Error>) -> Void) {
         guard let url = URL(string: "\(baseUrl)/message/\(messageId)") else {
             print("Invalid URL")
             return
@@ -354,6 +354,7 @@ class MessageProvider: ObservableObject {
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let error = error {
                 print("Error deleting message: \(error)")
+                completion(.failure(error))
                 return
             }
 
@@ -362,7 +363,9 @@ class MessageProvider: ObservableObject {
                 return
             }
             print("\n\nHTTP Response: \(String(describing: response))")
+            completion(.success(()))
         }
         task.resume()
     }
+
 }

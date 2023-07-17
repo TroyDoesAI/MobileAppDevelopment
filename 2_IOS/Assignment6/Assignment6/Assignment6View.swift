@@ -154,7 +154,7 @@ struct ChannelListView: View {
     @ObservedObject var messageProvider: MessageProvider
     @EnvironmentObject var viewModel: LoginViewModel
     @ObservedObject var memberProvider: MemberProvider
-    
+
     var body: some View {
         List(channelProvider.channels) { channel in
             NavigationLink(destination: MessageListView(channel: channel, messageProvider: messageProvider).environmentObject(viewModel).environmentObject(memberProvider)) {
@@ -163,7 +163,7 @@ struct ChannelListView: View {
                         Text(channel.name).font(.headline).foregroundColor(Color.primary)
                     })
                     .accessibilityIdentifier("\(channel.name) Channel")
-                    
+
                     Spacer() // This will push the next Text to the right
                     Text("\(channel.messageCount)")
                         .accessibilityIdentifier("Messages \(channel.name) ")
@@ -184,41 +184,61 @@ struct MessageListView: View {
     @ObservedObject var messageProvider: MessageProvider
     @EnvironmentObject var viewModel: LoginViewModel
     @EnvironmentObject var memberProvider: MemberProvider
-    
+
     private let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "MMM d, yyyy 'at' h:mm a"
         return formatter
     }()
-    
+
     var body: some View {
-        List(messageProvider.messages, id: \.id) { message in
-            VStack(alignment: .leading) {
-                if let memberName = memberProvider.memberName(forID: message.member) {
-                    Text("\(memberName)")
-                } else {
-                    Text("Posted by: Unknown")
+            List {
+                ForEach(messageProvider.messages, id: \.id) { message in
+                    VStack(alignment: .leading) {
+                        if let memberName = memberProvider.memberName(forID: message.member) {
+                            Text("\(memberName)")
+                        } else {
+                            Text("Posted by: Unknown")
+                        }
+                        Text(message.content).font(.headline)
+                        Text(dateFormatter.string(from: message.posted))
+                    }
                 }
-                Text(message.content).font(.headline)
-                Text(dateFormatter.string(from: message.posted))
+                .onDelete(perform: delete)
+            }
+            .navigationTitle(channel.name)
+            .navigationBarItems(trailing:
+                NavigationLink(
+                    destination: ComposeMessageView(messageProvider: messageProvider, channel: channel)
+                        .environmentObject(viewModel),
+                    label: {
+                        Image(systemName: "plus")
+                    }
+                ).accessibilityIdentifier("New Message")
+            )
+            .onAppear {
+                memberProvider.loadAllMembers(withToken: viewModel.user?.accessToken ?? "") // Load members
+                messageProvider.loadMessages(channelId: channel.id, withToken: viewModel.user?.accessToken ?? "") // Load messages
             }
         }
-        .navigationTitle(channel.name)
-        .navigationBarItems(trailing:
-                                NavigationLink(
-                                destination: ComposeMessageView(messageProvider: messageProvider, channel: channel)
-                                    .environmentObject(viewModel),
-                                    label: {
-                                        Image(systemName: "plus")
-                                    }
-                                ).accessibilityIdentifier("New Message")
-        )
-        .onAppear {
-            memberProvider.loadAllMembers(withToken: viewModel.user?.accessToken ?? "") // Load members
-            messageProvider.loadMessages(channelId: channel.id, withToken: viewModel.user?.accessToken ?? "") // Load messages
+
+        private func delete(at offsets: IndexSet) {
+            print("Deleting at offsets: \(offsets)")
+            for index in offsets {
+                let message = messageProvider.messages[index]
+                messageProvider.deleteMessage(messageId: message.id, withToken: viewModel.user?.accessToken ?? "") { result in
+                    switch result {
+                    case .success:
+                        DispatchQueue.main.async {
+                            self.messageProvider.messages.remove(at: index)
+                        }
+                    case .failure(let error):
+                        print("Failed to delete message: \(error)")
+                    }
+                }
+            }
         }
     }
-}
 
 struct ComposeMessageView: View {
     @Environment(\.presentationMode) var presentationMode
@@ -295,4 +315,3 @@ struct Assignment6View_Previews: PreviewProvider {
     }
 }
 #endif
-
