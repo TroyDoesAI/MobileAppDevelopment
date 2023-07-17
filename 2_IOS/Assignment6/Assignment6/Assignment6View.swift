@@ -190,55 +190,53 @@ struct MessageListView: View {
         formatter.dateFormat = "MMM d, yyyy 'at' h:mm a"
         return formatter
     }()
-
     var body: some View {
-            List {
-                ForEach(messageProvider.messages, id: \.id) { message in
-                    VStack(alignment: .leading) {
-                        if let memberName = memberProvider.memberName(forID: message.member) {
-                            Text("\(memberName)")
-                        } else {
-                            Text("Posted by: Unknown")
-                        }
-                        Text(message.content).font(.headline)
-                        Text(dateFormatter.string(from: message.posted))
+        List {
+            ForEach(messageProvider.messages, id: \.id) { message in
+                VStack(alignment: .leading) {
+                    if let memberName = memberProvider.memberName(forID: message.member) {
+                        Text("\(memberName)")
+                    } else {
+                        Text("Posted by: Unknown")
                     }
+                    Text(message.content).font(.headline)
+                    Text(dateFormatter.string(from: message.posted))
                 }
-                .onDelete(perform: delete)
             }
-            .navigationTitle(channel.name)
-            .navigationBarItems(trailing:
-                NavigationLink(
-                    destination: ComposeMessageView(messageProvider: messageProvider, channel: channel)
-                        .environmentObject(viewModel),
-                    label: {
-                        Image(systemName: "plus")
-                    }
-                ).accessibilityIdentifier("New Message")
-            )
-            .onAppear {
-                memberProvider.loadAllMembers(withToken: viewModel.user?.accessToken ?? "") // Load members
-                messageProvider.loadMessages(channelId: channel.id, withToken: viewModel.user?.accessToken ?? "") // Load messages
-            }
+            .onDelete(perform: delete)
         }
-
-        private func delete(at offsets: IndexSet) {
-            print("Deleting at offsets: \(offsets)")
-            for index in offsets {
-                let message = messageProvider.messages[index]
-                messageProvider.deleteMessage(messageId: message.id, withToken: viewModel.user?.accessToken ?? "") { result in
-                    switch result {
-                    case .success:
-                        DispatchQueue.main.async {
-                            self.messageProvider.messages.remove(at: index)
-                        }
-                    case .failure(let error):
-                        print("Failed to delete message: \(error)")
+        .navigationTitle(channel.name)
+        .navigationBarItems(trailing:
+                                NavigationLink(
+                                    destination: ComposeMessageView(messageProvider: messageProvider, channel: channel)
+                                        .environmentObject(viewModel),
+                                    label: {
+                                        Image(systemName: "plus")
+                                    }
+                                ).accessibilityIdentifier("New Message")
+        )
+        .onAppear {
+            memberProvider.loadAllMembers(withToken: viewModel.user?.accessToken ?? "") // Load members
+            messageProvider.loadMessages(channelId: channel.id, withToken: viewModel.user?.accessToken ?? "") // Load messages
+        }
+    }
+    private func delete(at offsets: IndexSet) {
+        print("Deleting at offsets: \(offsets)")
+        for index in offsets {
+            let message = messageProvider.messages[index]
+            messageProvider.deleteMessage(messageId: message.id, withToken: viewModel.user?.accessToken ?? "") { result in
+                switch result {
+                case .success:
+                    DispatchQueue.main.async {
+                        self.messageProvider.messages.remove(at: index)
                     }
+                case .failure(let error):
+                    print("Failed to delete message: \(error)")
                 }
             }
         }
     }
+}
 
 struct ComposeMessageView: View {
     @Environment(\.presentationMode) var presentationMode
