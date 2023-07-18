@@ -46,9 +46,11 @@ struct Member: Codable, Identifiable {
     let name: String
 }
 
-// ObservableObject that provides member data from API endpoint
+//// ObservableObject that provides member data from API endpoint
 class MemberProvider: ObservableObject {
-    @Published var members = [UUID: Member]()
+    @Published private(set) var members = [UUID: Member]()
+    
+    private let membersQueue = DispatchQueue(label: "com.assignment6.membersQueue")
     
     /// Loads all members using the provider token
     func loadAllMembers(withToken token: String) {
@@ -76,8 +78,11 @@ class MemberProvider: ObservableObject {
                 do {
                     let decoder = JSONDecoder()
                     let fetchedMembers = try decoder.decode([Member].self, from: data)
-                    DispatchQueue.main.async {
-                        self.members = Dictionary(uniqueKeysWithValues: fetchedMembers.map { ($0.id, $0) })
+                    self.membersQueue.async {
+                        let membersDict = Dictionary(uniqueKeysWithValues: fetchedMembers.map { ($0.id, $0) })
+                        DispatchQueue.main.async {
+                            self.members = membersDict
+                        }
                     }
                 } catch {
                     print("Failed to decode members. Error: \(error)")
@@ -89,9 +94,14 @@ class MemberProvider: ObservableObject {
     
     /// Retrieves the name of the member with the given ID
     func memberName(forID memberID: UUID) -> String? {
-            return members[memberID]?.name
+        var memberName: String? = nil
+        membersQueue.sync {
+            memberName = members[memberID]?.name
         }
+        return memberName
+    }
 }
+
 
 class LoginProvider: ObservableObject {
     @Published var user: User? {
