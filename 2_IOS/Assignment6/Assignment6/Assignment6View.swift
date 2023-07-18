@@ -129,6 +129,7 @@ struct WorkspaceListView: View {
         }
         .onAppear {
             workspaceProvider.loadWorkspaces(withToken: viewModel.user?.accessToken ?? "")
+        
         }
         .navigationBarTitle("Workspaces", displayMode: .inline)
         .toolbar {

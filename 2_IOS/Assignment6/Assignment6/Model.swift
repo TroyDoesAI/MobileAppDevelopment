@@ -68,6 +68,7 @@ class MemberProvider: ObservableObject {
                 print("Error fetching members: \(error)")
                 return
             }
+            else{} // TODO
 
             guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
                 print("Invalid response")
@@ -88,6 +89,7 @@ class MemberProvider: ObservableObject {
                     print("Failed to decode members. Error: \(error)")
                 }
             }
+            else{} // TODO
         }
         task.resume()
     }
@@ -137,6 +139,7 @@ class LoginProvider: ObservableObject {
             if let _ = error {
                 return
             }
+            else {} // TODO
             
             guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
                 return
@@ -148,6 +151,7 @@ class LoginProvider: ObservableObject {
                     self.user = user
                 }
             }
+            else {} // TODO
         }
         task.resume()
     }
@@ -167,6 +171,7 @@ class LoginProvider: ObservableObject {
             if let _ = error {
                 return
             }
+            else {}
             
             guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
                 return
@@ -200,6 +205,7 @@ class WorkspaceProvider: ObservableObject {
                 print("Error making request for workspaces: \(error)")
                 return
             }
+            else {} // TODO
 
             guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
                 print("Invalid response")
@@ -218,6 +224,7 @@ class WorkspaceProvider: ObservableObject {
                     print("Failed to decode JSON: \(error)")
                 }
             }
+            else {} // TODO
         }
         task.resume()
     }
@@ -243,6 +250,7 @@ class ChannelProvider: ObservableObject {
                 print("Error making request for channels: \(error)")
                 return
             }
+            else {} // TODO
 
             guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
                 print("Invalid response")
@@ -260,6 +268,7 @@ class ChannelProvider: ObservableObject {
                     print("Failed to decode JSON: \(error)")
                 }
             }
+            else {} // TODO
         }
         task.resume()
     }
@@ -284,6 +293,7 @@ class MessageProvider: ObservableObject {
                 print("Error making request for messages: \(error)")
                 return
             }
+            else {} // TODO
 
             guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
                 print("Invalid response")
@@ -301,6 +311,7 @@ class MessageProvider: ObservableObject {
                     print("Failed to decode JSON: \(error)")
                 }
             }
+            else {} // TODO
         }
         task.resume()
     }
@@ -330,6 +341,7 @@ class MessageProvider: ObservableObject {
                 print("Error adding message: \(error)")
                 return
             }
+            else {} // TODO
 
             guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode)
             else {

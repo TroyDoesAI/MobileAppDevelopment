@@ -14,7 +14,41 @@
 import XCTest
 
 final class AdvancedUITests: XCTestCase {
-  
+    // Change these to your UCSC email, student number and name
+    static private var email = "traschul@ucsc.edu"
+    static private var passwd = "1815098"
+
+    private var app: XCUIApplication!
+
+    override func setUpWithError() throws {
+      try super.setUpWithError()
+      continueAfterFailure = false
+      app = XCUIApplication()
+      app.launchEnvironment = ["animations": "0"]
+      app.launch()
+    }
+    
+    private func waitFor(_ element : XCUIElement, timeout: Double = 5.0) -> XCUIElement {
+      let expectation = expectation(
+        for: NSPredicate(format: "exists == true"),
+        evaluatedWith: element,
+        handler: .none
+      )
+      let _ = XCTWaiter.wait(for: [expectation], timeout: timeout)
+      return element
+    }
+    
+    // If you have problems logging in, switch to the slower version below
+    private func login(_ email: String = email, _ passwd: String = passwd) {
+      let field = app.textFields["EMail"]
+      field.tap()
+      field.typeText(email)
+      let password = app.secureTextFields["Password"]
+      password.tap()
+      password.typeText(passwd)
+      app.buttons["Login"].tap()
+    }
+    
   // Each comment block defines a test you need to write, but you can write others
   
   /*
