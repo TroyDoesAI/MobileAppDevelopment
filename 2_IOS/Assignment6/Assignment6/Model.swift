@@ -46,7 +46,7 @@ struct Member: Codable, Identifiable {
     let name: String
 }
 
-//// ObservableObject that provides member data from API endpoint
+/// ObservableObject that provides member data from API endpoint
 class MemberProvider: ObservableObject {
     @Published private(set) var members = [UUID: Member]()
     
