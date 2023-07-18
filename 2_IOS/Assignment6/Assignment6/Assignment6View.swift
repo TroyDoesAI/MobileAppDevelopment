@@ -162,7 +162,7 @@ struct ChannelListView: View {
         .navigationTitle(workspace.name)
         .onAppear {
             if let workspaceId = UUID(uuidString: workspace.id) {
-                channelProvider.loadChannels(workspaceId: workspaceId, withToken: viewModel.user?.accessToken ?? "")
+                channelProvider.loadChannels(workspaceId: workspaceId, withToken: viewModel.user!.accessToken)
             }
         }
     }
@@ -214,13 +214,13 @@ struct MessageListView: View {
                                 ).accessibilityIdentifier("New Message")
         )
         .onAppear {
-            memberProvider.loadAllMembers(withToken: viewModel.user?.accessToken ?? "") // Load members
-            messageProvider.loadMessages(channelId: channel.id, withToken: viewModel.user?.accessToken ?? "") // Load messages
+            memberProvider.loadAllMembers(withToken: viewModel.user!.accessToken) // Load members
+            messageProvider.loadMessages(channelId: channel.id, withToken: viewModel.user!.accessToken) // Load messages
         }
     }
 
     private func deleteMessage(_ message: Message) {
-        messageProvider.deleteMessage(messageId: message.id, withToken: viewModel.user?.accessToken ?? "") { result in
+        messageProvider.deleteMessage(messageId: message.id, withToken: viewModel.user!.accessToken) { result in
             switch result {
             case .success:
                 DispatchQueue.main.async {
@@ -280,7 +280,7 @@ struct ComposeMessageView: View {
         }
 
         let member = user.toMember() // Convert User to Member
-        messageProvider.addMessage(content: messageContent, channel: channel, member: member, withToken: viewModel.user?.accessToken ?? "")
+        messageProvider.addMessage(content: messageContent, channel: channel, member: member, withToken: viewModel.user!.accessToken)
         // Clear the input field after adding the message
         messageContent = ""
         presentationMode.wrappedValue.dismiss()
