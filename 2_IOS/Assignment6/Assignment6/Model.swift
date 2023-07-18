@@ -52,10 +52,8 @@ class MemberProvider: ObservableObject {
     
     private let membersQueue = DispatchQueue(label: "com.assignment6.membersQueue")
     
-    /// Loads all members using the provider token
     func loadAllMembers(withToken token: String) {
         guard let url = URL(string: "https://cse118.com/api/v2/member") else {
-            print("Invalid URL")
             return
         }
 
@@ -64,14 +62,11 @@ class MemberProvider: ObservableObject {
         request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
 
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-            if let error = error {
-                print("Error fetching members: \(error)")
+            if let _ = error {
                 return
             }
-            else{} // TODO
-
+            
             guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
-                print("Invalid response")
                 return
             }
 
@@ -85,16 +80,12 @@ class MemberProvider: ObservableObject {
                             self.members = membersDict
                         }
                     }
-                } catch {
-                    print("Failed to decode members. Error: \(error)")
-                }
+                } catch {}
             }
-            else{} // TODO
         }
         task.resume()
     }
     
-    /// Retrieves the name of the member with the given ID
     func memberName(forID memberID: UUID) -> String? {
         var memberName: String? = nil
         membersQueue.sync {
@@ -106,23 +97,14 @@ class MemberProvider: ObservableObject {
 
 
 class LoginProvider: ObservableObject {
-    @Published var user: User? {
-        didSet {
-            if let user = user {
-                print("User has been logged in with the id: \(user.id)")
-            } else {
-                print("User has been logged out")
-            }
-        }
-    }
+    @Published var user: User?
     
-    /// Logs in the user with the provided email and password
     func login(email: String, password: String) {
         guard let url = URL(string: "\(baseUrl)/login") else {
             return
         }
         
-        let lowercaseEmail = email.lowercased() // Transform email to lowercase
+        let lowercaseEmail = email.lowercased()
         
         let parameters = ["email": lowercaseEmail, "password": password]
         guard let jsonData = try? JSONEncoder().encode(parameters) else {
@@ -139,7 +121,6 @@ class LoginProvider: ObservableObject {
             if let _ = error {
                 return
             }
-            else {} // TODO
             
             guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
                 return
@@ -151,12 +132,10 @@ class LoginProvider: ObservableObject {
                     self.user = user
                 }
             }
-            else {} // TODO
         }
         task.resume()
     }
     
-    /// Logs out the user
     func logout() {
         guard let url = URL(string: "\(baseUrl)/reset") else {
             return
@@ -171,7 +150,6 @@ class LoginProvider: ObservableObject {
             if let _ = error {
                 return
             }
-            else {}
             
             guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
                 return
@@ -189,10 +167,8 @@ class LoginProvider: ObservableObject {
 class WorkspaceProvider: ObservableObject {
     @Published var workspaces = [Workspace]()
     
-    /// Loads workspaces using the provided token
     func loadWorkspaces(withToken token: String) {
         guard let url = URL(string: "https://cse118.com/api/v2/workspace") else {
-            print("Invalid URL")
             return
         }
 
@@ -201,14 +177,11 @@ class WorkspaceProvider: ObservableObject {
         request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
 
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-            if let error = error {
-                print("Error making request for workspaces: \(error)")
+            if let _ = error {
                 return
             }
-            else {} // TODO
-
+            
             guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
-                print("Invalid response")
                 return
             }
             
@@ -216,15 +189,11 @@ class WorkspaceProvider: ObservableObject {
                 let decoder = JSONDecoder.javaScriptISO8601()
                 do {
                     let fetchedWorkspaces = try decoder.decode([Workspace].self, from: data)
-                    print(fetchedWorkspaces)
                     DispatchQueue.main.async {
                         self.workspaces = fetchedWorkspaces
                     }
-                } catch {
-                    print("Failed to decode JSON: \(error)")
-                }
+                } catch {}
             }
-            else {} // TODO
         }
         task.resume()
     }
