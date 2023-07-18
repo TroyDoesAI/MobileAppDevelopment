@@ -271,7 +271,6 @@ class MessageProvider: ObservableObject {
     
     func deleteMessage(messageId: UUID, withToken token: String, completion: @escaping (Result<Void, Error>) -> Void) {
         guard let url = URL(string: "\(baseUrl)/message/\(messageId)") else {
-            print("Invalid URL")
             return
         }
 
@@ -281,27 +280,22 @@ class MessageProvider: ObservableObject {
 
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let error = error {
-                print("Error deleting message: \(error)")
                 completion(.failure(error))
                 return
             }
 
             guard let httpResponse = response as? HTTPURLResponse else {
-                print("Failed to delete message. Invalid response")
                 return
             }
 
             if httpResponse.statusCode == 403 {
-                print("User is not authorized to delete this message")
                 completion(.failure(ServerError.unauthorized))
                 return
             }
 
-            if !(200...299).contains(httpResponse.statusCode) {
-                print("Failed to delete message")
-                return
+            if (200...299).contains(httpResponse.statusCode) {
+                completion(.success(()))
             }
-            completion(.success(()))
         }
         task.resume()
     }
