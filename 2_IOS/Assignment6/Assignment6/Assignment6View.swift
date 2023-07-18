@@ -8,20 +8,17 @@ struct Assignment6View: View {
     @StateObject private var messageProvider = MessageProvider()
     @StateObject private var memberProvider = MemberProvider()
 
-    @State private var navigateToLogin = false
-
     var body: some View {
         NavigationView {
-            if viewModel.user != nil {
-                WorkspaceListView(workspaceProvider: workspaceProvider, channelProvider: channelProvider, messageProvider: messageProvider, memberProvider: memberProvider, navigateToLogin: $navigateToLogin)
-                    .environmentObject(viewModel)
-                    .environmentObject(memberProvider)
-            } else {
-                LoginView()
+            Group {
+                if viewModel.user != nil {
+                    WorkspaceListView(workspaceProvider: workspaceProvider, channelProvider: channelProvider, messageProvider: messageProvider, memberProvider: memberProvider)
+                        .environmentObject(viewModel)
+                        .environmentObject(memberProvider)
+                } else {
+                    LoginView()
+                }
             }
-        }
-        .onAppear {
-            navigateToLogin = viewModel.user == nil
         }
     }
 }
@@ -61,15 +58,7 @@ class LoginViewModel: ObservableObject {
     @Published var email = ""
     @Published var password = ""
     @Published var isValid = false
-    @Published var user: User? {
-        didSet {
-            if let user = user {
-                print("User has been logged in with the id: \(user.id)")
-            } else {
-                print("User has been logged out")
-            }
-        }
-    }
+    @Published var user: User?
     @Published var selectedWorkspace: Workspace? = nil
 
     private var cancellableSet: Set<AnyCancellable> = []
@@ -101,6 +90,7 @@ class LoginViewModel: ObservableObject {
 
     func logout() {
         loginProvider.logout()
+        user = nil
     }
 }
 
@@ -110,7 +100,6 @@ struct WorkspaceListView: View {
     @ObservedObject var channelProvider: ChannelProvider
     @ObservedObject var messageProvider: MessageProvider
     @ObservedObject var memberProvider: MemberProvider
-    @Binding var navigateToLogin: Bool // Add navigateToLogin binding
 
     var body: some View {
         VStack {
@@ -128,7 +117,7 @@ struct WorkspaceListView: View {
             }
         }
         .onAppear {
-            workspaceProvider.loadWorkspaces(withToken: viewModel.user?.accessToken ?? "")
+            workspaceProvider.loadWorkspaces(withToken: viewModel.user!.accessToken)
         
         }
         .navigationBarTitle("Workspaces", displayMode: .inline)
@@ -136,7 +125,6 @@ struct WorkspaceListView: View {
             ToolbarItem(placement: .navigationBarLeading) {
                 Button(action: {
                     viewModel.logout()
-                    navigateToLogin = true
                 }) {
                     Image(systemName: "rectangle.portrait.and.arrow.right")
                         .font(.title)
@@ -312,11 +300,11 @@ struct User: Codable, Identifiable {
     }
 }
 
-#if !TESTING
-struct Assignment6View_Previews: PreviewProvider {
-    static var previews: some View {
-        Assignment6View()
-            .environmentObject(LoginViewModel())
-    }
-}
-#endif
+//#if !TESTING
+//struct Assignment6View_Previews: PreviewProvider {
+//    static var previews: some View {
+//        Assignment6View()
+//            .environmentObject(LoginViewModel())
+//    }
+//}
+//#endif
