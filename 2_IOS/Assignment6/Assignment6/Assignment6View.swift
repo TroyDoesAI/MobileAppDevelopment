@@ -190,6 +190,7 @@ struct MessageListView: View {
         formatter.dateFormat = "MMM d, yyyy 'at' h:mm a"
         return formatter
     }()
+    
     var body: some View {
         List {
             ForEach(messageProvider.messages, id: \.id) { message in
@@ -202,8 +203,16 @@ struct MessageListView: View {
                     Text(message.content).font(.headline)
                     Text(dateFormatter.string(from: message.posted))
                 }
+                .swipeActions(edge: .trailing, allowsFullSwipe: false) {
+                    if message.member == viewModel.user?.id {
+                        Button(role: .destructive) {
+                            deleteMessage(message)
+                        } label: {
+                            Label("Delete", systemImage: "trash")
+                        }
+                    }
+                }
             }
-            .onDelete(perform: delete)
         }
         .navigationTitle(channel.name)
         .navigationBarItems(trailing:
@@ -220,19 +229,16 @@ struct MessageListView: View {
             messageProvider.loadMessages(channelId: channel.id, withToken: viewModel.user?.accessToken ?? "") // Load messages
         }
     }
-    private func delete(at offsets: IndexSet) {
-        print("Deleting at offsets: \(offsets)")
-        for index in offsets {
-            let message = messageProvider.messages[index]
-            messageProvider.deleteMessage(messageId: message.id, withToken: viewModel.user?.accessToken ?? "") { result in
-                switch result {
-                case .success:
-                    DispatchQueue.main.async {
-                        self.messageProvider.messages.remove(at: index)
-                    }
-                case .failure(let error):
-                    print("Failed to delete message: \(error)")
+
+    private func deleteMessage(_ message: Message) {
+        messageProvider.deleteMessage(messageId: message.id, withToken: viewModel.user?.accessToken ?? "") { result in
+            switch result {
+            case .success:
+                DispatchQueue.main.async {
+                    messageProvider.messages.removeAll(where: { $0.id == message.id })
                 }
+            case .failure(let error):
+                print("Failed to delete message: \(error)")
             }
         }
     }

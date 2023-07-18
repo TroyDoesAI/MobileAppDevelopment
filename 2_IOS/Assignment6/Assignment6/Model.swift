@@ -9,6 +9,9 @@ import Foundation
 
 let baseUrl = "https://cse118.com/api/v2"
 
+enum ServerError: Error {
+    case unauthorized
+}
 /// Represents a workspace, which contains multiple channels
 struct Workspace: Identifiable, Codable {
     let id: String
@@ -173,7 +176,6 @@ class WorkspaceProvider: ObservableObject {
     
     /// Loads workspaces using the provided token
     func loadWorkspaces(withToken token: String) {
-        print("\nIn WorkspaceProvider: loadWorkspaces()")
         guard let url = URL(string: "https://cse118.com/api/v2/workspace") else {
             print("Invalid URL")
             return
@@ -182,7 +184,6 @@ class WorkspaceProvider: ObservableObject {
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
-        print("\nLoadWorkspaces -> Token \(token)\n")
 
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let error = error {
@@ -194,8 +195,6 @@ class WorkspaceProvider: ObservableObject {
                 print("Invalid response")
                 return
             }
-
-            print("Http Response Status Code: \(httpResponse.statusCode)")
             
             if let data = data {
                 let decoder = JSONDecoder.javaScriptISO8601()
@@ -220,7 +219,6 @@ class ChannelProvider: ObservableObject {
     
     /// Loads channels for the given workspace ID using the provided token
     func loadChannels(workspaceId: UUID, withToken token: String) {
-        print("\n\nIn loadChannels: ")
         guard let url = URL(string: "\(baseUrl)/workspace/\(workspaceId)/channel") else {
             print("Invalid URL")
             return
@@ -230,8 +228,6 @@ class ChannelProvider: ObservableObject {
         request.httpMethod = "GET"
         request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         
-        print("Request: \(request)")
-
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let error = error {
                 print("Error making request for channels: \(error)")
@@ -247,7 +243,6 @@ class ChannelProvider: ObservableObject {
                 let decoder = JSONDecoder.javaScriptISO8601()
                 do {
                     let fetchedChannels = try decoder.decode([Channel].self, from: data)
-                    print("\n\n\nfetched Channels: \(fetchedChannels)")
                     DispatchQueue.main.async {
                         self.channels = fetchedChannels
                     }
@@ -331,16 +326,11 @@ class MessageProvider: ObservableObject {
                 print("Failed to add message. Invalid response")
                 return
             }
-
-            print("\n\nHTTP Response: \(String(describing: response))")
-
             self.loadMessages(channelId: channel.id, withToken: token) // Reload messages after a successful addition
         }
-
         task.resume()
     }
     
-    /// Deletes the message with the specified ID
     func deleteMessage(messageId: UUID, withToken token: String, completion: @escaping (Result<Void, Error>) -> Void) {
         guard let url = URL(string: "\(baseUrl)/message/\(messageId)") else {
             print("Invalid URL")
@@ -358,14 +348,23 @@ class MessageProvider: ObservableObject {
                 return
             }
 
-            guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
+            guard let httpResponse = response as? HTTPURLResponse else {
                 print("Failed to delete message. Invalid response")
                 return
             }
-            print("\n\nHTTP Response: \(String(describing: response))")
+
+            if httpResponse.statusCode == 403 {
+                print("User is not authorized to delete this message")
+                completion(.failure(ServerError.unauthorized))
+                return
+            }
+
+            if !(200...299).contains(httpResponse.statusCode) {
+                print("Failed to delete message")
+                return
+            }
             completion(.success(()))
         }
         task.resume()
     }
-
 }
