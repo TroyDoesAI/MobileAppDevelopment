@@ -49,11 +49,10 @@ struct Member: Codable, Identifiable {
 /// ObservableObject that provides member data from API endpoint
 class MemberProvider: ObservableObject {
     @Published private(set) var members = [UUID: Member]()
-    
     private let membersQueue = DispatchQueue(label: "com.assignment6.membersQueue")
-    
+
     func loadAllMembers(withToken token: String) {
-        guard let url = URL(string: "https://cse118.com/api/v2/member") else {
+        guard let url = URL(string: "\(baseUrl)/member") else {
             return
         }
 
@@ -62,18 +61,9 @@ class MemberProvider: ObservableObject {
         request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
 
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-            if let _ = error {
-                return
-            }
-            
-            guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
-                return
-            }
-
             if let data = data {
                 do {
-                    let decoder = JSONDecoder()
-                    let fetchedMembers = try decoder.decode([Member].self, from: data)
+                    let fetchedMembers = try JSONDecoder().decode([Member].self, from: data)
                     self.membersQueue.async {
                         let membersDict = Dictionary(uniqueKeysWithValues: fetchedMembers.map { ($0.id, $0) })
                         DispatchQueue.main.async {
@@ -105,7 +95,6 @@ class LoginProvider: ObservableObject {
         }
         
         let lowercaseEmail = email.lowercased()
-        
         let parameters = ["email": lowercaseEmail, "password": password]
         guard let jsonData = try? JSONEncoder().encode(parameters) else {
             return
@@ -118,14 +107,6 @@ class LoginProvider: ObservableObject {
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-            if let _ = error {
-                return
-            }
-            
-            guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
-                return
-            }
-            
             if let data = data,
                let user = try? JSONDecoder().decode(User.self, from: data) {
                 DispatchQueue.main.async {
@@ -147,14 +128,6 @@ class LoginProvider: ObservableObject {
         request.addValue("Bearer \(user?.accessToken ?? "")", forHTTPHeaderField: "Authorization")
         
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-            if let _ = error {
-                return
-            }
-            
-            guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
-                return
-            }
-            
             DispatchQueue.main.async {
                 self.user = nil
             }
@@ -168,7 +141,7 @@ class WorkspaceProvider: ObservableObject {
     @Published var workspaces = [Workspace]()
     
     func loadWorkspaces(withToken token: String) {
-        guard let url = URL(string: "https://cse118.com/api/v2/workspace") else {
+        guard let url = URL(string: "\(baseUrl)/workspace") else {
             return
         }
 
@@ -177,18 +150,9 @@ class WorkspaceProvider: ObservableObject {
         request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
 
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-            if let _ = error {
-                return
-            }
-            
-            guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
-                return
-            }
-            
             if let data = data {
-                let decoder = JSONDecoder.javaScriptISO8601()
                 do {
-                    let fetchedWorkspaces = try decoder.decode([Workspace].self, from: data)
+                    let fetchedWorkspaces = try JSONDecoder().decode([Workspace].self, from: data)
                     DispatchQueue.main.async {
                         self.workspaces = fetchedWorkspaces
                     }
@@ -203,10 +167,8 @@ class WorkspaceProvider: ObservableObject {
 class ChannelProvider: ObservableObject {
     @Published var channels = [Channel]()
     
-    /// Loads channels for the given workspace ID using the provided token
     func loadChannels(workspaceId: UUID, withToken token: String) {
         guard let url = URL(string: "\(baseUrl)/workspace/\(workspaceId)/channel") else {
-            print("Invalid URL")
             return
         }
 
@@ -215,29 +177,14 @@ class ChannelProvider: ObservableObject {
         request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-            if let error = error {
-                print("Error making request for channels: \(error)")
-                return
-            }
-            else {} // TODO
-
-            guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
-                print("Invalid response")
-                return
-            }
-
             if let data = data {
-                let decoder = JSONDecoder.javaScriptISO8601()
                 do {
-                    let fetchedChannels = try decoder.decode([Channel].self, from: data)
+                    let fetchedChannels = try JSONDecoder().decode([Channel].self, from: data)
                     DispatchQueue.main.async {
                         self.channels = fetchedChannels
                     }
-                } catch {
-                    print("Failed to decode JSON: \(error)")
-                }
+                } catch {}
             }
-            else {} // TODO
         }
         task.resume()
     }
