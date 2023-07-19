@@ -226,12 +226,12 @@ struct MessageListView: View {
         )
         .onAppear {
             memberProvider.loadAllMembers(withToken: viewModel.user!.accessToken) // Load members
-            messageProvider.loadMessages(channelId: channel.id, withToken: viewModel.user!.accessToken) // Modified here
+            messageProvider.loadMessages(channelId: channel.id, withToken: viewModel.user!.accessToken)
         }
     }
 
     private func deleteMessage(_ message: Message) {
-        messageProvider.deleteMessage(messageId: message.id, withToken: viewModel.user!.accessToken) // Modified here
+        messageProvider.deleteMessage(messageId: message.id, withToken: viewModel.user!.accessToken)
         DispatchQueue.main.async {
             messageProvider.messages.removeAll(where: { $0.id == message.id })
         }
@@ -283,14 +283,7 @@ struct ComposeMessageView: View {
         // Ensure the user exists
         if let user = viewModel.user {
             let member = user.toMember()
-                
-            // Ensure the message content isn't just whitespace
-            let trimmedContent = messageContent.trimmingCharacters(in: .whitespaces)
-            if trimmedContent.isEmpty {
-                return
-            }
-
-            messageProvider.addMessage(content: trimmedContent, channel: channel, member: member, withToken: user.accessToken) // Modified here
+            messageProvider.addMessage(content: messageContent, channel: channel, member: member, withToken: user.accessToken) // Modified here
             DispatchQueue.main.async {
                 messageContent = ""
                 presentationMode.wrappedValue.dismiss()

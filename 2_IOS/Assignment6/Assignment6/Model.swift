@@ -86,39 +86,49 @@ class MemberProvider: ObservableObject {
 
 class LoginProvider: ObservableObject {
     @Published var user: User?
-    
+
     func login(email: String, password: String) {
         let url = URL(string: "\(baseUrl)/login")!
-        
+
         let lowercaseEmail = email.lowercased()
         let parameters = ["email": lowercaseEmail, "password": password]
         let jsonData = try! JSONEncoder().encode(parameters)
-        
+
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.httpBody = jsonData
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
-        
-        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-            if let data = data,
-               let user = try? JSONDecoder().decode(User.self, from: data) {
-                DispatchQueue.main.async {
-                    self.user = user
-                }
+
+        let task = URLSession.shared.dataTask(with: request) { [weak self] (data, response, error) in
+            if let data = data {
+                self?.handleLoginResponse(data: data)
             }
         }
         task.resume()
     }
     
+    // Moved the decoding logic to a static function as a workaround
+    func handleLoginResponse(data: Data) {
+        if let user = Self.decodeUser(from: data) {
+            DispatchQueue.main.async {
+                self.user = user
+            }
+        }
+    }
+
+    static func decodeUser(from data: Data) -> User? {
+        return try? JSONDecoder().decode(User.self, from: data)
+    }
+
     func logout() {
         let url = URL(string: "\(baseUrl)/reset")!
-        
+
         var request = URLRequest(url: url)
         request.httpMethod = "PUT"
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         request.addValue("Bearer \(user?.accessToken ?? "")", forHTTPHeaderField: "Authorization")
-        
+
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             DispatchQueue.main.async {
                 self.user = nil
@@ -139,19 +149,27 @@ class WorkspaceProvider: ObservableObject {
         request.httpMethod = "GET"
         request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
 
-        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+        let task = URLSession.shared.dataTask(with: request) { [weak self] (data, response, error) in
             if let data = data {
-                do {
-                    let fetchedWorkspaces = try JSONDecoder().decode([Workspace].self, from: data)
-                    DispatchQueue.main.async {
-                        self.workspaces = fetchedWorkspaces
-                    }
-                } catch {}
+                self?.handleWorkspaceResponse(data: data)
             }
         }
         task.resume()
     }
+
+    func handleWorkspaceResponse(data: Data) {
+        if let fetchedWorkspaces = Self.decodeWorkspaces(from: data) {
+            DispatchQueue.main.async {
+                self.workspaces = fetchedWorkspaces
+            }
+        }
+    }
+
+    static func decodeWorkspaces(from data: Data) -> [Workspace]? {
+        return try? JSONDecoder().decode([Workspace].self, from: data)
+    }
 }
+
 
 // ObservableObject that provides channel data from API endpoint in JSON format
 class ChannelProvider: ObservableObject {
@@ -164,41 +182,56 @@ class ChannelProvider: ObservableObject {
         request.httpMethod = "GET"
         request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         
-        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+        let task = URLSession.shared.dataTask(with: request) { [weak self] (data, response, error) in
             if let data = data {
-                do {
-                    let fetchedChannels = try JSONDecoder().decode([Channel].self, from: data)
-                    DispatchQueue.main.async {
-                        self.channels = fetchedChannels
-                    }
-                } catch {}
+                self?.handleChannelResponse(data: data)
             }
         }
         task.resume()
+    }
+
+    func handleChannelResponse(data: Data) {
+        if let fetchedChannels = Self.decodeChannels(from: data) {
+            DispatchQueue.main.async {
+                self.channels = fetchedChannels
+            }
+        }
+    }
+
+    static func decodeChannels(from data: Data) -> [Channel]? {
+        return try? JSONDecoder().decode([Channel].self, from: data)
     }
 }
 
 class MessageProvider: ObservableObject {
     @Published var messages = [Message]()
     
-    /// Loads messages for the given channel ID using the provided token
     func loadMessages(channelId: UUID, withToken token: String) {
         let url = URL(string: "\(baseUrl)/channel/\(channelId)/message")!
+        
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
 
-        let task = URLSession.shared.dataTask(with: request) { (data, _, _) in
+        let task = URLSession.shared.dataTask(with: request) { [weak self] (data, _, _) in
             if let data = data {
-                let decoder = JSONDecoder.javaScriptISO8601()
-                if let fetchedMessages = try? decoder.decode([Message].self, from: data) {
-                    DispatchQueue.main.async {
-                        self.messages = fetchedMessages
-                    }
-                }
+                self?.handleMessageResponse(data: data)
             }
         }
         task.resume()
+    }
+
+    func handleMessageResponse(data: Data) {
+        let decoder = JSONDecoder.javaScriptISO8601()
+        if let fetchedMessages = Self.decodeMessages(decoder: decoder, from: data) {
+            DispatchQueue.main.async {
+                self.messages = fetchedMessages
+            }
+        }
+    }
+
+    static func decodeMessages(decoder: JSONDecoder, from data: Data) -> [Message]? {
+        return try? decoder.decode([Message].self, from: data)
     }
 
     /// Adds a message to the specified channel
@@ -232,4 +265,3 @@ class MessageProvider: ObservableObject {
         task.resume()
     }
 }
-
