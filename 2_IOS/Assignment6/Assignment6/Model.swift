@@ -52,9 +52,8 @@ class MemberProvider: ObservableObject {
     private let membersQueue = DispatchQueue(label: "com.assignment6.membersQueue")
 
     func loadAllMembers(withToken token: String) {
-        guard let url = URL(string: "\(baseUrl)/member") else {
-            return
-        }
+        // Force-unwrapping the URL
+        let url = URL(string: "\(baseUrl)/member")!
 
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
@@ -72,7 +71,6 @@ class MemberProvider: ObservableObject {
                     }
                 } catch {}
             }
-            else {} // Do nothing
         }
         task.resume()
     }
@@ -86,20 +84,15 @@ class MemberProvider: ObservableObject {
     }
 }
 
-
 class LoginProvider: ObservableObject {
     @Published var user: User?
     
     func login(email: String, password: String) {
-        guard let url = URL(string: "\(baseUrl)/login") else {
-            return
-        }
+        let url = URL(string: "\(baseUrl)/login")!
         
         let lowercaseEmail = email.lowercased()
         let parameters = ["email": lowercaseEmail, "password": password]
-        guard let jsonData = try? JSONEncoder().encode(parameters) else {
-            return
-        }
+        let jsonData = try! JSONEncoder().encode(parameters)
         
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
@@ -114,15 +107,12 @@ class LoginProvider: ObservableObject {
                     self.user = user
                 }
             }
-            else {} // Do nothing on bad login
         }
         task.resume()
     }
     
     func logout() {
-        guard let url = URL(string: "\(baseUrl)/reset") else {
-            return
-        }
+        let url = URL(string: "\(baseUrl)/reset")!
         
         var request = URLRequest(url: url)
         request.httpMethod = "PUT"
@@ -143,10 +133,8 @@ class WorkspaceProvider: ObservableObject {
     @Published var workspaces = [Workspace]()
     
     func loadWorkspaces(withToken token: String) {
-        guard let url = URL(string: "\(baseUrl)/workspace") else {
-            return
-        }
-
+        let url = URL(string: "\(baseUrl)/workspace")!
+        
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
@@ -160,7 +148,6 @@ class WorkspaceProvider: ObservableObject {
                     }
                 } catch {}
             }
-            else {} // Do nothing on failed to load
         }
         task.resume()
     }
@@ -171,10 +158,8 @@ class ChannelProvider: ObservableObject {
     @Published var channels = [Channel]()
     
     func loadChannels(workspaceId: UUID, withToken token: String) {
-        guard let url = URL(string: "\(baseUrl)/workspace/\(workspaceId)/channel") else {
-            return
-        }
-
+        let url = URL(string: "\(baseUrl)/workspace/\(workspaceId)/channel")!
+        
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
@@ -188,7 +173,6 @@ class ChannelProvider: ObservableObject {
                     }
                 } catch {}
             }
-            else {} // Do nothing on failed to load
         }
         task.resume()
     }
@@ -199,24 +183,22 @@ class MessageProvider: ObservableObject {
     
     /// Loads messages for the given channel ID using the provided token
     func loadMessages(channelId: UUID, withToken token: String, completion: @escaping (Result<Void, Error>) -> Void) {
-        guard let url = URL(string: "\(baseUrl)/channel/\(channelId)/message") else {
-            completion(.failure(ServerError.unauthorized)) // replace this error as you needed
-            return
-        }
-
+        // Force unwrapping the URL creation
+        let url = URL(string: "\(baseUrl)/channel/\(channelId)/message")!
+        
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
 
+        // URLSession data task remains the same as in the original code
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let error = error {
                 completion(.failure(error))
                 return
             }
-            else {} // Do nothing on fail
 
             guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
-                completion(.failure(ServerError.unauthorized)) // replace this error as you needed
+                completion(.failure(ServerError.unauthorized))
                 return
             }
 
@@ -232,7 +214,7 @@ class MessageProvider: ObservableObject {
                     completion(.failure(error))
                 }
             } else {
-                completion(.failure(ServerError.unauthorized)) // replace this error as you needed
+                completion(.failure(ServerError.unauthorized))
             }
         }
         task.resume()
@@ -240,33 +222,28 @@ class MessageProvider: ObservableObject {
 
     /// Adds a message to the specified channel
     func addMessage(content: String, channel: Channel, member: Member, withToken token: String, completion: @escaping (Result<Void, Error>) -> Void) {
-        guard let url = URL(string: "\(baseUrl)/channel/\(channel.id.uuidString)/message") else {
-            completion(.failure(ServerError.unauthorized)) // replace this error as you needed
-            return
-        }
-
+        // Force unwrapping the URL creation
+        let url = URL(string: "\(baseUrl)/channel/\(channel.id.uuidString)/message")!
+        
         let messageContent = ["content": "\(content)"]
-
-        guard let jsonData = try? JSONEncoder().encode(messageContent) else {
-            completion(.failure(ServerError.unauthorized)) // replace this error as you needed
-            return
-        }
-
+        // Force unwrapping the JSON encoding
+        let jsonData = try! JSONEncoder().encode(messageContent)
+        
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.httpBody = jsonData
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
 
+        // URLSession data task remains the same as in the original code
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let error = error {
                 completion(.failure(error))
                 return
             }
-            else {} // Do nothing on failure
 
             guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
-                completion(.failure(ServerError.unauthorized)) // replace this error as you needed
+                completion(.failure(ServerError.unauthorized))
                 return
             }
 
@@ -282,22 +259,21 @@ class MessageProvider: ObservableObject {
         task.resume()
     }
 
-    
+    /// Deletes a message by ID using the provided token
     func deleteMessage(messageId: UUID, withToken token: String, completion: @escaping (Result<Void, Error>) -> Void) {
-        guard let url = URL(string: "\(baseUrl)/message/\(messageId)") else {
-            return
-        }
-
+        // Force unwrapping the URL creation
+        let url = URL(string: "\(baseUrl)/message/\(messageId)")!
+        
         var request = URLRequest(url: url)
         request.httpMethod = "DELETE"
         request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
 
+        // URLSession data task remains the same as in the original code
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let error = error {
                 completion(.failure(error))
                 return
             }
-            else {} // Do nothing on failure
 
             guard let httpResponse = response as? HTTPURLResponse else {
                 return
@@ -307,12 +283,10 @@ class MessageProvider: ObservableObject {
                 completion(.failure(ServerError.unauthorized))
                 return
             }
-            else {} // Do nothing I guess
 
             if (200...299).contains(httpResponse.statusCode) {
                 completion(.success(()))
             }
-            else {} // Do nothing 
         }
         task.resume()
     }

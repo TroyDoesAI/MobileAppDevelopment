@@ -165,7 +165,6 @@ struct ChannelListView: View {
             if let workspaceId = UUID(uuidString: workspace.id) {
                 channelProvider.loadChannels(workspaceId: workspaceId, withToken: viewModel.user!.accessToken)
             }
-            else {} // Do nothing
         }
     }
 }
@@ -186,11 +185,7 @@ struct MessageListView: View {
         List {
             ForEach(messageProvider.messages, id: \.id) { message in
                 VStack(alignment: .leading) {
-                    if let memberName = memberProvider.memberName(forID: message.member) {
-                        Text("\(memberName)")
-                    } else {
-                        Text("Posted by: Unknown")
-                    }
+                    Text(memberProvider.memberName(forID: message.member) ?? "")
                     Text(message.content).font(.headline)
                     Text(dateFormatter.string(from: message.posted))
                 }
@@ -202,7 +197,6 @@ struct MessageListView: View {
                             Label("Delete", systemImage: "trash")
                         }
                     }
-                    else {} // Do Nothing
                 }
             }
         }
@@ -235,13 +229,10 @@ struct MessageListView: View {
                 DispatchQueue.main.async {
                     messageProvider.messages.removeAll(where: { $0.id == message.id })
                 }
-            } else if case .failure(let error) = result {
-                print("Failed to delete message: \(error)")
             }
         }
     }
 }
-
 
 struct ComposeMessageView: View {
     @Environment(\.presentationMode) var presentationMode
@@ -285,20 +276,26 @@ struct ComposeMessageView: View {
     }
 
     private func addMessage() {
-        guard !messageContent.trimmingCharacters(in: .whitespaces).isEmpty, let user = viewModel.user else {
-            return
-        }
+        // Ensure the user exists
+        if let user = viewModel.user {
+            let member = user.toMember()
+            
+            // Ensure the message content isn't just whitespace
+            let trimmedContent = messageContent.trimmingCharacters(in: .whitespaces)
+            if trimmedContent.isEmpty {
+                return
+            }
 
-        let member = user.toMember()
-        messageProvider.addMessage(content: messageContent.trimmingCharacters(in: .whitespaces), channel: channel, member: member, withToken: user.accessToken) { result in
-            switch result {
-            case .success:
-                DispatchQueue.main.async {
-                    messageContent = ""
-                    presentationMode.wrappedValue.dismiss()
+            messageProvider.addMessage(content: trimmedContent, channel: channel, member: member, withToken: user.accessToken) { result in
+                switch result {
+                case .success:
+                    DispatchQueue.main.async {
+                        messageContent = ""
+                        presentationMode.wrappedValue.dismiss()
+                    }
+                case .failure(let error):
+                    print("Failed to add message: \(error)")
                 }
-            case .failure(let error):
-                print("Failed to add message: \(error)")
             }
         }
     }
