@@ -244,7 +244,13 @@ struct ComposeMessageView: View {
     @ObservedObject var messageProvider: MessageProvider
     var channel: Channel
 
-    @State private var messageContent = ""
+    @State private var messageContent: String
+    
+    init(messageProvider: MessageProvider, channel: Channel) {
+            self.messageProvider = messageProvider
+            self.channel = channel
+            _messageContent = State(initialValue: "")
+        }
 
     var body: some View {
         VStack {
@@ -304,12 +310,3 @@ struct User: Codable, Identifiable {
         return Member(id: self.id, name: self.name)
     }
 }
-
-//#if !TESTING
-//struct Assignment6View_Previews: PreviewProvider {
-//    static var previews: some View {
-//        Assignment6View()
-//            .environmentObject(LoginViewModel())
-//    }
-//}
-//#endif
