@@ -117,8 +117,9 @@ struct WorkspaceListView: View {
             }
         }
         .onAppear {
-            workspaceProvider.loadWorkspaces(withToken: viewModel.user!.accessToken)
-        
+            if let userToken = viewModel.user?.accessToken {
+                workspaceProvider.loadWorkspaces(withToken: userToken)
+            }
         }
         .navigationBarTitle("Workspaces", displayMode: .inline)
         .toolbar {
@@ -164,6 +165,7 @@ struct ChannelListView: View {
             if let workspaceId = UUID(uuidString: workspace.id) {
                 channelProvider.loadChannels(workspaceId: workspaceId, withToken: viewModel.user!.accessToken)
             }
+            else {} // Do nothing
         }
     }
 }
@@ -200,6 +202,7 @@ struct MessageListView: View {
                             Label("Delete", systemImage: "trash")
                         }
                     }
+                    else {} // Do Nothing
                 }
             }
         }
@@ -215,23 +218,30 @@ struct MessageListView: View {
         )
         .onAppear {
             memberProvider.loadAllMembers(withToken: viewModel.user!.accessToken) // Load members
-            messageProvider.loadMessages(channelId: channel.id, withToken: viewModel.user!.accessToken) // Load messages
+            messageProvider.loadMessages(channelId: channel.id, withToken: viewModel.user!.accessToken) { result in
+                switch result {
+                case .success:
+                    print("Messages successfully loaded")
+                case .failure(let error):
+                    print("Failed to load messages: \(error)")
+                }
+            }
         }
     }
 
     private func deleteMessage(_ message: Message) {
         messageProvider.deleteMessage(messageId: message.id, withToken: viewModel.user!.accessToken) { result in
-            switch result {
-            case .success:
+            if case .success(_) = result {
                 DispatchQueue.main.async {
                     messageProvider.messages.removeAll(where: { $0.id == message.id })
                 }
-            case .failure(let error):
+            } else if case .failure(let error) = result {
                 print("Failed to delete message: \(error)")
             }
         }
     }
 }
+
 
 struct ComposeMessageView: View {
     @Environment(\.presentationMode) var presentationMode
@@ -275,15 +285,22 @@ struct ComposeMessageView: View {
     }
 
     private func addMessage() {
-        guard !messageContent.isEmpty, let user = viewModel.user else {
+        guard !messageContent.trimmingCharacters(in: .whitespaces).isEmpty, let user = viewModel.user else {
             return
         }
 
-        let member = user.toMember() // Convert User to Member
-        messageProvider.addMessage(content: messageContent, channel: channel, member: member, withToken: viewModel.user!.accessToken)
-        // Clear the input field after adding the message
-        messageContent = ""
-        presentationMode.wrappedValue.dismiss()
+        let member = user.toMember()
+        messageProvider.addMessage(content: messageContent.trimmingCharacters(in: .whitespaces), channel: channel, member: member, withToken: user.accessToken) { result in
+            switch result {
+            case .success:
+                DispatchQueue.main.async {
+                    messageContent = ""
+                    presentationMode.wrappedValue.dismiss()
+                }
+            case .failure(let error):
+                print("Failed to add message: \(error)")
+            }
+        }
     }
 }
 

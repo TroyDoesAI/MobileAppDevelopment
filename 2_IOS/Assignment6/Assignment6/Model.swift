@@ -194,9 +194,9 @@ class MessageProvider: ObservableObject {
     @Published var messages = [Message]()
     
     /// Loads messages for the given channel ID using the provided token
-    func loadMessages(channelId: UUID, withToken token: String) {
+    func loadMessages(channelId: UUID, withToken token: String, completion: @escaping (Result<Void, Error>) -> Void) {
         guard let url = URL(string: "\(baseUrl)/channel/\(channelId)/message") else {
-            print("Invalid URL")
+            completion(.failure(ServerError.unauthorized)) // replace this error as you needed
             return
         }
 
@@ -206,13 +206,12 @@ class MessageProvider: ObservableObject {
 
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let error = error {
-                print("Error making request for messages: \(error)")
+                completion(.failure(error))
                 return
             }
-            else {} // TODO
 
             guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
-                print("Invalid response")
+                completion(.failure(ServerError.unauthorized)) // replace this error as you needed
                 return
             }
 
@@ -222,27 +221,29 @@ class MessageProvider: ObservableObject {
                     let fetchedMessages = try decoder.decode([Message].self, from: data)
                     DispatchQueue.main.async {
                         self.messages = fetchedMessages
+                        completion(.success(()))
                     }
                 } catch {
-                    print("Failed to decode JSON: \(error)")
+                    completion(.failure(error))
                 }
+            } else {
+                completion(.failure(ServerError.unauthorized)) // replace this error as you needed
             }
-            else {} // TODO
         }
         task.resume()
     }
 
     /// Adds a message to the specified channel
-    func addMessage(content: String, channel: Channel, member: Member, withToken token: String) {
+    func addMessage(content: String, channel: Channel, member: Member, withToken token: String, completion: @escaping (Result<Void, Error>) -> Void) {
         guard let url = URL(string: "\(baseUrl)/channel/\(channel.id.uuidString)/message") else {
-            print("Invalid URL")
+            completion(.failure(ServerError.unauthorized)) // replace this error as you needed
             return
         }
 
         let messageContent = ["content": "\(content)"]
 
         guard let jsonData = try? JSONEncoder().encode(messageContent) else {
-            print("Failed to encode message content")
+            completion(.failure(ServerError.unauthorized)) // replace this error as you needed
             return
         }
 
@@ -254,20 +255,27 @@ class MessageProvider: ObservableObject {
 
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let error = error {
-                print("Error adding message: \(error)")
+                completion(.failure(error))
                 return
             }
-            else {} // TODO
 
-            guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode)
-            else {
-                print("Failed to add message. Invalid response")
+            guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
+                completion(.failure(ServerError.unauthorized)) // replace this error as you needed
                 return
             }
-            self.loadMessages(channelId: channel.id, withToken: token) // Reload messages after a successful addition
+
+            self.loadMessages(channelId: channel.id, withToken: token) { result in
+                switch result {
+                    case .success:
+                        completion(.success(()))
+                    case .failure(let error):
+                        completion(.failure(error))
+                }
+            }
         }
         task.resume()
     }
+
     
     func deleteMessage(messageId: UUID, withToken token: String, completion: @escaping (Result<Void, Error>) -> Void) {
         guard let url = URL(string: "\(baseUrl)/message/\(messageId)") else {
