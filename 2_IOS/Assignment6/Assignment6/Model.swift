@@ -122,20 +122,26 @@ class LoginProvider: ObservableObject {
     }
 
     func logout() {
-        let url = URL(string: "\(baseUrl)/reset")!
+        resetUser() // Synchronous operation
 
+        let url = URL(string: "\(baseUrl)/reset")!
         var request = URLRequest(url: url)
         request.httpMethod = "PUT"
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         request.addValue("Bearer \(user?.accessToken ?? "")", forHTTPHeaderField: "Authorization")
 
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-            DispatchQueue.main.async {
-                self.user = nil
-            }
+            // Handle network response, if needed
         }
         task.resume()
     }
+
+    private func resetUser() {
+        DispatchQueue.main.async {
+            self.user = nil
+        }
+    }
+
 }
 
 // ObservableObject that provides workspace data from API endpoint in JSON format

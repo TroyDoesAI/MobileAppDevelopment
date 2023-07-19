@@ -114,22 +114,35 @@ struct WorkspaceListView: View {
 
     var body: some View {
         VStack {
-            // Display each workspace as a navigation link
-            List(workspaceProvider.workspaces) { workspace in
-                NavigationLink(destination: ChannelListView(workspace: workspace, channelProvider: channelProvider, messageProvider: messageProvider, memberProvider: memberProvider)) {
-                    HStack {
-                        // Print statement for button without actions as advised
-                        Button(action: { print("Workspace button tapped") }, label: {
-                            Text(workspace.name).font(.headline)
-                        })
-
-                        .accessibilityIdentifier("\(workspace.name) Workspace")
-                        Spacer() // This will push the next Text to the right
-                        Text("\(workspace.channels)").accessibilityIdentifier("Channels \(workspace.channels)")
-                    }
-                }
+                List(workspaceProvider.workspaces) { workspace in
+                        NavigationLink {
+                            ChannelListView(workspace: workspace, channelProvider: channelProvider, messageProvider: messageProvider, memberProvider: memberProvider)
+                        } label: {
+                            Text("\(workspace.name)")
+                            Text("\(workspace.channels)")
+                        }
+                        .accessibilityLabel("\(workspace.name)")
             }
         }
+        
+//
+//        VStack {
+//            // Display each workspace as a navigation link
+//            List(workspaceProvider.workspaces) { workspace in
+//                NavigationLink(destination: ChannelListView(workspace: workspace, channelProvider: channelProvider, messageProvider: messageProvider, memberProvider: memberProvider)) {
+//                    HStack {
+//                        // Print statement for button without actions as advised
+//                        Button(action: { print("Workspace button tapped") }, label: {
+//                            Text(workspace.name).font(.headline)
+//                        })
+//
+//                        .accessibilityIdentifier("\(workspace.name) Workspace")
+//                        Spacer() // This will push the next Text to the right
+//                        Text("\(workspace.channels)").accessibilityIdentifier("Channels \(workspace.channels)")
+//                    }
+//                }
+//            }
+//        }
         .onAppear {
             if let userToken = viewModel.user?.accessToken {
                 workspaceProvider.loadWorkspaces(withToken: userToken)
@@ -244,13 +257,7 @@ struct ComposeMessageView: View {
     @ObservedObject var messageProvider: MessageProvider
     var channel: Channel
 
-    @State private var messageContent: String
-    
-    init(messageProvider: MessageProvider, channel: Channel) {
-            self.messageProvider = messageProvider
-            self.channel = channel
-            _messageContent = State(initialValue: "")
-        }
+    @State private var messageContent = ""
 
     var body: some View {
         VStack {
@@ -310,3 +317,13 @@ struct User: Codable, Identifiable {
         return Member(id: self.id, name: self.name)
     }
 }
+
+//#if !TESTING
+//struct Assignment6View_Previews: PreviewProvider {
+//    static var previews: some View {
+//        Assignment6View()
+//            .environmentObject(LoginViewModel())
+//    }
+//}
+//#endif
+
