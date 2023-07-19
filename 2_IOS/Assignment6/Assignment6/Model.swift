@@ -182,51 +182,29 @@ class MessageProvider: ObservableObject {
     @Published var messages = [Message]()
     
     /// Loads messages for the given channel ID using the provided token
-    func loadMessages(channelId: UUID, withToken token: String, completion: @escaping (Result<Void, Error>) -> Void) {
-        // Force unwrapping the URL creation
+    func loadMessages(channelId: UUID, withToken token: String) {
         let url = URL(string: "\(baseUrl)/channel/\(channelId)/message")!
-        
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
 
-        // URLSession data task remains the same as in the original code
-        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-            if let error = error {
-                completion(.failure(error))
-                return
-            }
-
-            guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
-                completion(.failure(ServerError.unauthorized))
-                return
-            }
-
+        let task = URLSession.shared.dataTask(with: request) { (data, _, _) in
             if let data = data {
                 let decoder = JSONDecoder.javaScriptISO8601()
-                do {
-                    let fetchedMessages = try decoder.decode([Message].self, from: data)
+                if let fetchedMessages = try? decoder.decode([Message].self, from: data) {
                     DispatchQueue.main.async {
                         self.messages = fetchedMessages
-                        completion(.success(()))
                     }
-                } catch {
-                    completion(.failure(error))
                 }
-            } else {
-                completion(.failure(ServerError.unauthorized))
             }
         }
         task.resume()
     }
 
     /// Adds a message to the specified channel
-    func addMessage(content: String, channel: Channel, member: Member, withToken token: String, completion: @escaping (Result<Void, Error>) -> Void) {
-        // Force unwrapping the URL creation
+    func addMessage(content: String, channel: Channel, member: Member, withToken token: String) {
         let url = URL(string: "\(baseUrl)/channel/\(channel.id.uuidString)/message")!
-        
         let messageContent = ["content": "\(content)"]
-        // Force unwrapping the JSON encoding
         let jsonData = try! JSONEncoder().encode(messageContent)
         
         var request = URLRequest(url: url)
@@ -235,59 +213,23 @@ class MessageProvider: ObservableObject {
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
 
-        // URLSession data task remains the same as in the original code
-        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-            if let error = error {
-                completion(.failure(error))
-                return
-            }
-
-            guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
-                completion(.failure(ServerError.unauthorized))
-                return
-            }
-
-            self.loadMessages(channelId: channel.id, withToken: token) { result in
-                switch result {
-                    case .success:
-                        completion(.success(()))
-                    case .failure(let error):
-                        completion(.failure(error))
-                }
-            }
+        let task = URLSession.shared.dataTask(with: request) { (_, _, _) in
+            self.loadMessages(channelId: channel.id, withToken: token)
         }
         task.resume()
     }
 
     /// Deletes a message by ID using the provided token
-    func deleteMessage(messageId: UUID, withToken token: String, completion: @escaping (Result<Void, Error>) -> Void) {
-        // Force unwrapping the URL creation
+    func deleteMessage(messageId: UUID, withToken token: String) {
         let url = URL(string: "\(baseUrl)/message/\(messageId)")!
-        
         var request = URLRequest(url: url)
         request.httpMethod = "DELETE"
         request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
 
-        // URLSession data task remains the same as in the original code
-        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-            if let error = error {
-                completion(.failure(error))
-                return
-            }
-
-            guard let httpResponse = response as? HTTPURLResponse else {
-                return
-            }
-
-            if httpResponse.statusCode == 403 {
-                completion(.failure(ServerError.unauthorized))
-                return
-            }
-
-            if (200...299).contains(httpResponse.statusCode) {
-                completion(.success(()))
-            }
+        let task = URLSession.shared.dataTask(with: request) { (_, _, _) in
+            // No action taken after deleting
         }
         task.resume()
     }
 }
+

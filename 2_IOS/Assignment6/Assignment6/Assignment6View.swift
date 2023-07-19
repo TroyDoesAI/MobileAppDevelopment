@@ -1,6 +1,8 @@
 import SwiftUI
 import Combine
 
+// Main view that conditionally renders either the workspace list or the login view
+// based on the authentication status of the user.
 struct Assignment6View: View {
     @EnvironmentObject var viewModel: LoginViewModel
     @StateObject private var workspaceProvider = WorkspaceProvider()
@@ -11,6 +13,7 @@ struct Assignment6View: View {
     var body: some View {
         NavigationView {
             Group {
+                // Display WorkspaceListView if user is authenticated, else show LoginView
                 if viewModel.user != nil {
                     WorkspaceListView(workspaceProvider: workspaceProvider, channelProvider: channelProvider, messageProvider: messageProvider, memberProvider: memberProvider)
                         .environmentObject(viewModel)
@@ -23,6 +26,7 @@ struct Assignment6View: View {
     }
 }
 
+// View to handle user login
 struct LoginView: View {
     @EnvironmentObject var viewModel: LoginViewModel
 
@@ -36,12 +40,14 @@ struct LoginView: View {
                     .frame(width: 150, height: 150)
                     .clipped()
 
+                // Input fields for email and password
                 TextField("Email", text: $viewModel.email)
                     .accessibilityLabel("EMail")
 
                 SecureField("Password", text: $viewModel.password)
                     .accessibilityLabel("Password")
 
+                // Login button which triggers the login function
                 Button("Log In", action: viewModel.login)
                     .disabled(!viewModel.isValid)
                     .accessibilityLabel("Login")
@@ -54,6 +60,7 @@ struct LoginView: View {
     }
 }
 
+// ViewModel for handling login functionality and user's session
 class LoginViewModel: ObservableObject {
     @Published var email = ""
     @Published var password = ""
@@ -70,12 +77,13 @@ class LoginViewModel: ObservableObject {
             .assign(to: \.isValid, on: self)
             .store(in: &cancellableSet)
         
-        // observe the user in LoginProvider
+        // Observe changes in the user from LoginProvider and update our local user property accordingly
         loginProvider.$user
             .assign(to: \.user, on: self)
             .store(in: &cancellableSet)
     }
 
+    // Publisher to check if the form is valid i.e. email and password aren't empty
     private var isFormValidPublisher: AnyPublisher<Bool, Never> {
         Publishers.CombineLatest($email, $password)
             .map { email, password in
@@ -84,16 +92,19 @@ class LoginViewModel: ObservableObject {
             .eraseToAnyPublisher()
     }
 
+    // Function to log the user in using the login provider
     func login() {
         loginProvider.login(email: email, password: password)
     }
 
+    // Function to log the user out
     func logout() {
         loginProvider.logout()
         user = nil
     }
 }
 
+// View that displays a list of workspaces to the user
 struct WorkspaceListView: View {
     @EnvironmentObject var viewModel: LoginViewModel
     @ObservedObject var workspaceProvider: WorkspaceProvider
@@ -103,12 +114,15 @@ struct WorkspaceListView: View {
 
     var body: some View {
         VStack {
+            // Display each workspace as a navigation link
             List(workspaceProvider.workspaces) { workspace in
                 NavigationLink(destination: ChannelListView(workspace: workspace, channelProvider: channelProvider, messageProvider: messageProvider, memberProvider: memberProvider)) {
                     HStack {
-                        Button(action: {}, label: {
+                        // Print statement for button without actions as advised
+                        Button(action: { print("Workspace button tapped") }, label: {
                             Text(workspace.name).font(.headline)
                         })
+
                         .accessibilityIdentifier("\(workspace.name) Workspace")
                         Spacer() // This will push the next Text to the right
                         Text("\(workspace.channels)").accessibilityIdentifier("Channels \(workspace.channels)")
@@ -212,24 +226,14 @@ struct MessageListView: View {
         )
         .onAppear {
             memberProvider.loadAllMembers(withToken: viewModel.user!.accessToken) // Load members
-            messageProvider.loadMessages(channelId: channel.id, withToken: viewModel.user!.accessToken) { result in
-                switch result {
-                case .success:
-                    print("Messages successfully loaded")
-                case .failure(let error):
-                    print("Failed to load messages: \(error)")
-                }
-            }
+            messageProvider.loadMessages(channelId: channel.id, withToken: viewModel.user!.accessToken) // Modified here
         }
     }
 
     private func deleteMessage(_ message: Message) {
-        messageProvider.deleteMessage(messageId: message.id, withToken: viewModel.user!.accessToken) { result in
-            if case .success(_) = result {
-                DispatchQueue.main.async {
-                    messageProvider.messages.removeAll(where: { $0.id == message.id })
-                }
-            }
+        messageProvider.deleteMessage(messageId: message.id, withToken: viewModel.user!.accessToken) // Modified here
+        DispatchQueue.main.async {
+            messageProvider.messages.removeAll(where: { $0.id == message.id })
         }
     }
 }
@@ -279,23 +283,17 @@ struct ComposeMessageView: View {
         // Ensure the user exists
         if let user = viewModel.user {
             let member = user.toMember()
-            
+                
             // Ensure the message content isn't just whitespace
             let trimmedContent = messageContent.trimmingCharacters(in: .whitespaces)
             if trimmedContent.isEmpty {
                 return
             }
 
-            messageProvider.addMessage(content: trimmedContent, channel: channel, member: member, withToken: user.accessToken) { result in
-                switch result {
-                case .success:
-                    DispatchQueue.main.async {
-                        messageContent = ""
-                        presentationMode.wrappedValue.dismiss()
-                    }
-                case .failure(let error):
-                    print("Failed to add message: \(error)")
-                }
+            messageProvider.addMessage(content: trimmedContent, channel: channel, member: member, withToken: user.accessToken) // Modified here
+            DispatchQueue.main.async {
+                messageContent = ""
+                presentationMode.wrappedValue.dismiss()
             }
         }
     }
