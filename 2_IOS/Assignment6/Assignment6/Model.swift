@@ -72,6 +72,7 @@ class MemberProvider: ObservableObject {
                     }
                 } catch {}
             }
+            else {} // Do nothing
         }
         task.resume()
     }
@@ -113,6 +114,7 @@ class LoginProvider: ObservableObject {
                     self.user = user
                 }
             }
+            else {} // Do nothing on bad login
         }
         task.resume()
     }
@@ -158,6 +160,7 @@ class WorkspaceProvider: ObservableObject {
                     }
                 } catch {}
             }
+            else {} // Do nothing on failed to load
         }
         task.resume()
     }
@@ -185,6 +188,7 @@ class ChannelProvider: ObservableObject {
                     }
                 } catch {}
             }
+            else {} // Do nothing on failed to load
         }
         task.resume()
     }
@@ -209,6 +213,7 @@ class MessageProvider: ObservableObject {
                 completion(.failure(error))
                 return
             }
+            else {} // Do nothing on fail
 
             guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
                 completion(.failure(ServerError.unauthorized)) // replace this error as you needed
@@ -258,6 +263,7 @@ class MessageProvider: ObservableObject {
                 completion(.failure(error))
                 return
             }
+            else {} // Do nothing on failure
 
             guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
                 completion(.failure(ServerError.unauthorized)) // replace this error as you needed
@@ -291,6 +297,7 @@ class MessageProvider: ObservableObject {
                 completion(.failure(error))
                 return
             }
+            else {} // Do nothing on failure
 
             guard let httpResponse = response as? HTTPURLResponse else {
                 return
@@ -300,10 +307,12 @@ class MessageProvider: ObservableObject {
                 completion(.failure(ServerError.unauthorized))
                 return
             }
+            else {} // Do nothing I guess
 
             if (200...299).contains(httpResponse.statusCode) {
                 completion(.success(()))
             }
+            else {} // Do nothing 
         }
         task.resume()
     }
