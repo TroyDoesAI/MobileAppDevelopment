@@ -40,49 +40,49 @@ const PostfixCalculatorView = () => {
 
   // Rendering the main component UI
   return (
-    <View style={styles.container}>
-      // Header section containing the calculator's title
-      <View style={styles.header}>
-        <Text style={styles.title}>Postfix Calculator</Text>
-      </View>
+      <View style={styles.container}>
+        {/* Header section containing the calculator's title */}
+        <View style={styles.header}>
+          <Text style={styles.title}>Postfix Calculator</Text>
+        </View>
 
-      // Input field for users to type in their postfix expression
-      <TextInput
-        style={styles.input}
-        value={expression}
-        onChangeText={setExpression} // Function to update the expression state variable
-        placeholder="Expression"
-        accessibilityLabel="expression"  // Label for testing purposes
-      />
-
-      // Display field for the calculated result (or error message)
-      <TextInput
-        style={styles.input}
-        value={result}
-        editable={false} // This input field is read-only
-        placeholder="Result"
-        accessibilityLabel="result" // Label for testing purposes
-      />
-
-      // Container for buttons
-      <View style={styles.buttonContainer}>
-        // "Evaluate" button to trigger the expression evaluation
-        <Button
-            title="evaluate"
-            onPress={evaluateExpression}
-            color="#007AFF"
-            accessibilityLabel="evaluate" // Label for testing purposes
+        {/* Input field for users to type in their postfix expression */}
+        <TextInput
+          style={styles.input}
+          value={expression}
+          onChangeText={setExpression} // Function to update the expression state variable
+          placeholder="Expression"
+          accessibilityLabel="expression"  // Label for testing purposes
         />
-        // "Clear" button to reset both expression and result fields
-        <Button
-            title="clear"
-            onPress={clearFields}
-            color="#FF3B30"
-            accessibilityLabel="clear" // Label for testing purposes
+
+        {/* Display field for the calculated result (or error message) */}
+        <TextInput
+          style={styles.input}
+          value={result}
+          editable={false} // This input field is read-only
+          placeholder="Result"
+          accessibilityLabel="result" // Label for testing purposes
         />
+
+        {/* Container for buttons */}
+        <View style={styles.buttonContainer}>
+          {/* "Evaluate" button to trigger the expression evaluation */}
+          <Button
+              title="evaluate"
+              onPress={evaluateExpression}
+              color="#007AFF"
+              accessibilityLabel="evaluate" // Label for testing purposes
+          />
+          {/* "Clear" button to reset both expression and result fields */}
+          <Button
+              title="clear"
+              onPress={clearFields}
+              color="#FF3B30"
+              accessibilityLabel="clear" // Label for testing purposes
+          />
+        </View>
       </View>
-    </View>
-  );
+    );
 };
 
 // Styling for the components using React Native's StyleSheet
