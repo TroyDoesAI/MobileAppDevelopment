@@ -9,7 +9,7 @@ struct Assignment6View: View {
     @StateObject private var channelProvider = ChannelProvider()
     @StateObject private var messageProvider = MessageProvider()
     @StateObject private var memberProvider = MemberProvider()
-
+    
     var body: some View {
         NavigationView {
             Group {
@@ -29,7 +29,7 @@ struct Assignment6View: View {
 // View to handle user login
 struct LoginView: View {
     @EnvironmentObject var viewModel: LoginViewModel
-
+    
     var body: some View {
         ScrollView {
             VStack {
@@ -39,19 +39,19 @@ struct LoginView: View {
                     .aspectRatio(contentMode: .fill)
                     .frame(width: 150, height: 150)
                     .clipped()
-
+                
                 // Input fields for email and password
                 TextField("Email", text: $viewModel.email)
                     .accessibilityLabel("EMail")
-
+                
                 SecureField("Password", text: $viewModel.password)
                     .accessibilityLabel("Password")
-
+                
                 // Login button which triggers the login function
                 Button("Log In", action: viewModel.login)
                     .disabled(!viewModel.isValid)
                     .accessibilityLabel("Login")
-
+                
                 Spacer() // Pushes the VStack to the top
             }
             .padding()
@@ -67,10 +67,10 @@ class LoginViewModel: ObservableObject {
     @Published var isValid = false
     @Published var user: User?
     @Published var selectedWorkspace: Workspace? = nil
-
+    
     private var cancellableSet: Set<AnyCancellable> = []
     @ObservedObject var loginProvider = LoginProvider() // Add LoginProvider as an ObservedObject
-
+    
     init() {
         isFormValidPublisher
             .receive(on: RunLoop.main)
@@ -82,7 +82,7 @@ class LoginViewModel: ObservableObject {
             .assign(to: \.user, on: self)
             .store(in: &cancellableSet)
     }
-
+    
     // Publisher to check if the form is valid i.e. email and password aren't empty
     private var isFormValidPublisher: AnyPublisher<Bool, Never> {
         Publishers.CombineLatest($email, $password)
@@ -91,12 +91,12 @@ class LoginViewModel: ObservableObject {
             }
             .eraseToAnyPublisher()
     }
-
+    
     // Function to log the user in using the login provider
     func login() {
         loginProvider.login(email: email, password: password)
     }
-
+    
     // Function to log the user out
     func logout() {
         loginProvider.logout()
@@ -111,18 +111,19 @@ struct WorkspaceListView: View {
     @ObservedObject var channelProvider: ChannelProvider
     @ObservedObject var messageProvider: MessageProvider
     @ObservedObject var memberProvider: MemberProvider
-
+    
     var body: some View {
-        VStack {
-                List(workspaceProvider.workspaces) { workspace in
-                        NavigationLink {
-                            ChannelListView(workspace: workspace, channelProvider: channelProvider, messageProvider: messageProvider, memberProvider: memberProvider)
-                        } label: {
-                            Text("\(workspace.name)")
-                            Text("\(workspace.channels)")
-                        }
-                        .accessibilityLabel("\(workspace.name)")
+        List(workspaceProvider.workspaces) { workspace in
+            NavigationLink {
+                ChannelListView(workspace: workspace, channelProvider: channelProvider, messageProvider: messageProvider, memberProvider: memberProvider)
+            } label: {
+                HStack {
+                    Text("\(workspace.name)")
+                    Spacer()
+                    Text("\(workspace.channels)")
+                }
             }
+            .accessibilityLabel("\(workspace.name)")
         }
         .onAppear {
             if let userToken = viewModel.user?.accessToken {
@@ -152,21 +153,21 @@ struct ChannelListView: View {
     @ObservedObject var messageProvider: MessageProvider
     @EnvironmentObject var viewModel: LoginViewModel
     @ObservedObject var memberProvider: MemberProvider
-
+    
     var body: some View {
         List(channelProvider.channels) { channel in
-            NavigationLink(destination: MessageListView(channel: channel, messageProvider: messageProvider).environmentObject(viewModel).environmentObject(memberProvider)) {
+            NavigationLink {
+                MessageListView(channel: channel, messageProvider: messageProvider)
+                    .environmentObject(viewModel)
+                    .environmentObject(memberProvider)
+            } label: {
                 HStack {
-                    Button(action: {}, label: {
-                        Text(channel.name).font(.headline).foregroundColor(Color.primary)
-                    })
-                    .accessibilityIdentifier("\(channel.name) Channel")
-
-                    Spacer() // This will push the next Text to the right
+                    Text(channel.name).font(.headline).foregroundColor(Color.primary)
+                    Spacer()
                     Text("\(channel.messageCount)")
-                        .accessibilityIdentifier("Messages \(channel.name) ")
                 }
             }
+            .accessibilityIdentifier("\(channel.name)")
         }
         .navigationTitle(workspace.name)
         .onAppear {
@@ -182,18 +183,18 @@ struct MessageListView: View {
     @ObservedObject var messageProvider: MessageProvider
     @EnvironmentObject var viewModel: LoginViewModel
     @EnvironmentObject var memberProvider: MemberProvider
-
-    private let dateFormatter: DateFormatter = {
+    
+    var dateFormatter: DateFormatter {
         let formatter = DateFormatter()
         formatter.dateFormat = "MMM d, yyyy 'at' h:mm a"
         return formatter
-    }()
+    }
     
     var body: some View {
         List {
             ForEach(messageProvider.messages, id: \.id) { message in
                 VStack(alignment: .leading) {
-                    Text(memberProvider.memberName(forID: message.member)!)
+                    Text(memberProvider.memberName(forID: message.member) ?? " ")
                     Text(message.content).font(.headline)
                     Text(dateFormatter.string(from: message.posted))
                 }
@@ -223,7 +224,7 @@ struct MessageListView: View {
             messageProvider.loadMessages(channelId: channel.id, withToken: viewModel.user!.accessToken)
         }
     }
-
+    
     private func deleteMessage(_ message: Message) {
         messageProvider.deleteMessage(messageId: message.id, withToken: viewModel.user!.accessToken)
         DispatchQueue.main.async {
@@ -238,8 +239,8 @@ struct ComposeMessageView: View {
     @ObservedObject var messageProvider: MessageProvider
     var channel: Channel
     
-    @State private var messageContent: String = ""
-
+    @State var messageContent : String = ""
+    
     var body: some View {
         VStack {
             TextEditor(text: $messageContent)
@@ -268,11 +269,11 @@ struct ComposeMessageView: View {
         .padding()
         .navigationBarTitle("New Message", displayMode: .inline)
     }
-
+    
     private func cancel() {
         presentationMode.wrappedValue.dismiss()
     }
-
+    
     private func addMessage() {
         // Ensure the user exists
         if let user = viewModel.user {
@@ -307,5 +308,6 @@ struct User: Codable, Identifiable {
 //    }
 //}
 //#endif
+
 
 
