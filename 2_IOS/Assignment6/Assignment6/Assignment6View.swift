@@ -124,25 +124,6 @@ struct WorkspaceListView: View {
                         .accessibilityLabel("\(workspace.name)")
             }
         }
-        
-//
-//        VStack {
-//            // Display each workspace as a navigation link
-//            List(workspaceProvider.workspaces) { workspace in
-//                NavigationLink(destination: ChannelListView(workspace: workspace, channelProvider: channelProvider, messageProvider: messageProvider, memberProvider: memberProvider)) {
-//                    HStack {
-//                        // Print statement for button without actions as advised
-//                        Button(action: { print("Workspace button tapped") }, label: {
-//                            Text(workspace.name).font(.headline)
-//                        })
-//
-//                        .accessibilityIdentifier("\(workspace.name) Workspace")
-//                        Spacer() // This will push the next Text to the right
-//                        Text("\(workspace.channels)").accessibilityIdentifier("Channels \(workspace.channels)")
-//                    }
-//                }
-//            }
-//        }
         .onAppear {
             if let userToken = viewModel.user?.accessToken {
                 workspaceProvider.loadWorkspaces(withToken: userToken)
@@ -326,4 +307,19 @@ struct User: Codable, Identifiable {
 //    }
 //}
 //#endif
+
+#if DEBUG
+func testLogoutCoverage() {
+    let loginProvider = LoginProvider()
+    
+    // Simulate the user being logged in
+    loginProvider.user = User(id: UUID(), name: "John Doe", role: "User", accessToken: "token")
+    
+    // Perform the logout action
+    loginProvider.logout()
+    
+    // Add any necessary assertions or expectations related to the closure execution
+}
+#endif
+
 
