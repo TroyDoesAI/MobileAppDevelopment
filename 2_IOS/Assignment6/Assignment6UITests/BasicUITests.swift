@@ -14,8 +14,8 @@ import XCTest
 final class BasicUITests: XCTestCase {
   
   // Change these to your UCSC email, student number and name
-  static private var email = "traschul@ucsc.edu"
-  static private var passwd = "1815098"
+  static private var email = "will@cse118.com"
+  static private var passwd = "will"
 
   private var app: XCUIApplication!
 
