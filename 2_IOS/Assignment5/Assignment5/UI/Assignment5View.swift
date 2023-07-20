@@ -9,6 +9,10 @@
 #######################################################################
 */
 
+// shorthand closure syntax Ref:https://www.hackingwithswift.com/quick-start/beginners/how-to-use-trailing-closures-and-shorthand-syntax
+// working with date components Ref:https://developer.apple.com/documentation/foundation/datecomponents
+// Layouts with Stacks Ref:https://developer.apple.com/documentation/swiftui/building-layouts-with-stack-views
+
 import SwiftUI
 
 // Utility for formatting Date objects into strings
@@ -18,44 +22,100 @@ struct DateFormatterUtil {
         formatter.dateFormat = "MMM d, yyyy 'at' h:mm a"
         return formatter.string(from: date)
     }
+    
+    static func relativeDateFormat(from date: Date) -> String {
+        let calendar = Calendar.current
+        let interval = calendar.dateComponents([.day, .hour, .minute, .second], from: date, to: Date())
+        if let day = interval.day, day > 0 {
+            return "\(day) days"
+        } else if let hour = interval.hour, hour > 0 {
+            return "\(hour) hours"
+        } else if let minute = interval.minute, minute > 0 {
+            return "\(minute) mins"
+        } else if let second = interval.second, second > 0 {
+            return "\(second) secs"
+        } else {
+            return ""
+        }
+    }
 }
 
-// Main view displaying a list of workspaces
+// Modified to display the count of channels, unique posters, and recent message info
 struct Assignment5View: View {
     @EnvironmentObject var dataStore: WorkspaceProvider
-    
+
     var body: some View {
         NavigationView {
             List(dataStore.workspaces) { workspace in
                 NavigationLink(destination: ChannelListView(workspace: workspace)) {
-                    Text(workspace.name)
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text(workspace.name).bold()
+                        HStack(spacing: 8) {
+                            Image(systemName: "folder")
+                            TextField("", text: .constant("\(workspace.channels.count)")).disabled(true)
+                            
+                            Image(systemName: "person.3")
+                            TextField("", text: .constant("\(workspace.uniquePosters)")).disabled(true)
+                            
+                            Image(systemName: "clock")
+                            if let mostRecentMessage = workspace.mostRecentMessage {
+                                TextField("", text: .constant(DateFormatterUtil.relativeDateFormat(from: mostRecentMessage))).disabled(true)
+                            } else {
+                                TextField("", text: .constant("")).disabled(true)
+                            }
+                        }
+                        .font(.caption) // Font Size for the Horizontal Stack Section
+                    }
                 }
+                .accessibilityIdentifier("count for \(workspace.name) members active in \(workspace.name) latest message in \(workspace.name)")
             }
             .navigationBarTitle("Workspaces")
         }
     }
 }
 
-// View displaying a list of channels within a selected workspace
+// Modified to display the count of messages, unique posters, and recent message info
 struct ChannelListView: View {
     let workspace: Workspace
 
     var body: some View {
         List(workspace.channels) { channel in
             NavigationLink(destination: MessageListView(channel: channel)) {
-                Text(channel.name)
+                VStack(alignment: .leading, spacing: 8) {
+                    Text(channel.name).bold()
+                    
+                    HStack(spacing: 8) {
+                        Image(systemName: "envelope")
+                        TextField("", text: .constant("\(channel.messages.count)")).disabled(true)
+                        
+                        Image(systemName: "person.3")
+                        TextField("", text: .constant("\(channel.uniquePosters)")).disabled(true)
+                        
+                        Image(systemName: "clock")
+                        if let mostRecentMessage = channel.mostRecentMessage {
+                            TextField("", text: .constant(DateFormatterUtil.relativeDateFormat(from: mostRecentMessage))).disabled(true)
+                        } else {
+                            TextField("", text: .constant("")).disabled(true)
+                        }
+                    }
+                    .font(.caption) // Font Size for the Horizontal Stack Section
+                }
+                .accessibilityIdentifier("count for \(channel.name) members active in \(channel.name) latest message in \(channel.name)")
             }
         }
         .navigationBarTitle(workspace.name)
     }
 }
 
-// View displaying a list of messages within a selected channel
+// Messages sorted by date posted, most recent first
 struct MessageListView: View {
-    let channel: Channel
+    let channel: Channel // The channel that this view is showing the messages of
+    var sortedMessages: [Message] { // Sort the messages array based on the `posted` property in descending order
+        channel.messages.sorted { $0.posted > $1.posted }
+    }
 
     var body: some View {
-        List(channel.messages) { message in
+        List(sortedMessages) { message in
             NavigationLink(destination: MessageDetailView(message: message)) {
                 VStack(alignment: .leading) {
                     Text(message.member.name).bold()
@@ -68,6 +128,7 @@ struct MessageListView: View {
         .navigationBarTitle(channel.name)
     }
 }
+
 
 // View displaying the detail of a selected message
 struct MessageDetailView: View {
