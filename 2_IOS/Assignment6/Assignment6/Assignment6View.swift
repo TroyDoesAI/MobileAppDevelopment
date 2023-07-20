@@ -193,7 +193,7 @@ struct MessageListView: View {
         List {
             ForEach(messageProvider.messages, id: \.id) { message in
                 VStack(alignment: .leading) {
-                    Text(memberProvider.memberName(forID: message.member) ?? "")
+                    Text(memberProvider.memberName(forID: message.member)!)
                     Text(message.content).font(.headline)
                     Text(dateFormatter.string(from: message.posted))
                 }
@@ -237,8 +237,8 @@ struct ComposeMessageView: View {
     @EnvironmentObject var viewModel: LoginViewModel
     @ObservedObject var messageProvider: MessageProvider
     var channel: Channel
-
-    @State private var messageContent = ""
+    
+    @State private var messageContent: String = ""
 
     var body: some View {
         VStack {

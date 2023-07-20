@@ -54,25 +54,32 @@ class MemberProvider: ObservableObject {
     func loadAllMembers(withToken token: String) {
         // Force-unwrapping the URL
         let url = URL(string: "\(baseUrl)/member")!
-
+        
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
-
-        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+        
+        let task = URLSession.shared.dataTask(with: request) { [weak self] (data, response, error) in
             if let data = data {
-                do {
-                    let fetchedMembers = try JSONDecoder().decode([Member].self, from: data)
-                    self.membersQueue.async {
-                        let membersDict = Dictionary(uniqueKeysWithValues: fetchedMembers.map { ($0.id, $0) })
-                        DispatchQueue.main.async {
-                            self.members = membersDict
-                        }
-                    }
-                } catch {}
+                self?.handleMembersResponse(data: data)
             }
         }
         task.resume()
+    }
+    
+    func handleMembersResponse(data: Data) {
+        if let fetchedMembers = Self.decodeMembers(from: data) {
+            self.membersQueue.async {
+                let membersDict = Dictionary(uniqueKeysWithValues: fetchedMembers.map { ($0.id, $0) })
+                DispatchQueue.main.async {
+                    self.members = membersDict
+                }
+            }
+        }
+    }
+    
+    static func decodeMembers(from data: Data) -> [Member]? {
+        return try? JSONDecoder().decode([Member].self, from: data)
     }
     
     func memberName(forID memberID: UUID) -> String? {
@@ -116,7 +123,7 @@ class LoginProvider: ObservableObject {
             }
         }
     }
-
+    
     static func decodeUser(from data: Data) -> User? {
         return try? JSONDecoder().decode(User.self, from: data)
     }
@@ -128,7 +135,7 @@ class LoginProvider: ObservableObject {
         var request = URLRequest(url: url)
         request.httpMethod = "PUT"
         request.addValue("application/json", forHTTPHeaderField: "Accept")
-        request.addValue("Bearer \(user?.accessToken ?? "")", forHTTPHeaderField: "Authorization")
+        request.addValue("Bearer \(user!.accessToken)", forHTTPHeaderField: "Authorization")
 
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             // Handle network response, if needed
@@ -271,3 +278,4 @@ class MessageProvider: ObservableObject {
         task.resume()
     }
 }
+
