@@ -194,7 +194,7 @@ struct MessageListView: View {
         List {
             ForEach(messageProvider.messages, id: \.id) { message in
                 VStack(alignment: .leading) {
-                    Text(memberProvider.memberName(forID: message.member) ?? " ")
+                    Text(memberProvider.memberName(forID: message.member) ?? "")
                     Text(message.content).font(.headline)
                     Text(dateFormatter.string(from: message.posted))
                 }
