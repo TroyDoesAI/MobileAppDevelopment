@@ -308,18 +308,4 @@ struct User: Codable, Identifiable {
 //}
 //#endif
 
-#if DEBUG
-func testLogoutCoverage() {
-    let loginProvider = LoginProvider()
-    
-    // Simulate the user being logged in
-    loginProvider.user = User(id: UUID(), name: "John Doe", role: "User", accessToken: "token")
-    
-    // Perform the logout action
-    loginProvider.logout()
-    
-    // Add any necessary assertions or expectations related to the closure execution
-}
-#endif
-
 
