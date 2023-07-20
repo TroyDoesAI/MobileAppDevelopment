@@ -33,8 +33,8 @@ const PostfixCalculatorView = () => {
     try {
       const evaluation = PostfixCalculator.evaluate(expression);
       setResult(String(evaluation));
-    } catch (error) {
-      setResult(`Error: ${error.message}`);
+    } catch (e) {
+      setResult(e);  // Set the error message directly without transforming it
     }
   };
 
@@ -52,17 +52,17 @@ const PostfixCalculatorView = () => {
         style={styles.input}
         value={expression}
         onChangeText={setExpression}
-        placeholder="Expression"
+        placeholder="expression"
       />
       <TextInput
         style={styles.input}
         value={result}
         editable={false}
-        placeholder="Result"
+        placeholder="result"
       />
       <View style={styles.buttonContainer}>
-        <Button title="Evaluate" onPress={evaluateExpression} color="#007AFF" />
-        <Button title="Clear" onPress={clearFields} color="#FF3B30" />
+        <Button title="evaluate" onPress={evaluateExpression} color="#007AFF" />
+        <Button title="clear" onPress={clearFields} color="#FF3B30" />
       </View>
     </View>
   );

@@ -5,17 +5,6 @@
  * the express written permission of the copyright holder.
  */
 
-//export default class {
-//  /**
-//   * @param {String} expression Postfix expression
-//   * @return {Number} result of evaluating expression
-//   * @throws
-//   */
-//  static evaluate(expression) {
-//    throw "Not implemented"
-//  }
-//}
-
 export default class PostfixCalculator {
   /**
    * Parses a postfix expression and evaluates it to return the result.
@@ -65,11 +54,6 @@ export default class PostfixCalculator {
         operandStack.push(result);
       }
     }
-
-//    if (operandStack.length !== 1) {
-//      throw new Error("Invalid Expression");
-//    }
-
     return operandStack.pop();
   }
 
