@@ -15,7 +15,7 @@ export default class CalendarGenerator {
     const prevMonthLastDay = new Date(date.getFullYear(), month, 0);
     const prevMonthDays = prevMonthLastDay.getDate();
 
-    //let prevMonthDay = prevMonthDays - (firstDayOfMonth.getDay() || 7) + 1; // adjust for Sunday as start of the week
+    // adjust for Sunday as start of the week
     let days = [7, 1, 2, 3, 4, 5, 6];
     let prevMonthDay = prevMonthDays - days[firstDayOfMonth.getDay()] + 1;
 
