@@ -27,8 +27,7 @@ const PostfixCalculatorView = () => {
       // If successful, set the result to the evaluated value
       setResult(String(evaluation));
     } catch (error) {
-      // If there's an error in evaluation, display the error message
-      setResult(`Error: ${error.message}`);
+      setResult(`${error.message}`);
     }
   };
 
@@ -51,18 +50,19 @@ const PostfixCalculatorView = () => {
           style={styles.input}
           value={expression}
           onChangeText={setExpression} // Function to update the expression state variable
-          placeholder="Expression"
+          placeholder="expression"
           accessibilityLabel="expression"  // Label for testing purposes
         />
 
         {/* Display field for the calculated result (or error message) */}
-        <TextInput
-          style={styles.input}
-          value={result}
-          editable={false} // This input field is read-only
-          placeholder="Result"
-          accessibilityLabel="result" // Label for testing purposes
-        />
+        <Text
+        style={styles.input}
+        placeholder="Result"
+        accessibilityLabel="result"
+        selectTextOnFocus={false}
+      >
+        {result}
+      </Text>
 
         {/* Container for buttons */}
         <View style={styles.buttonContainer}>
@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     flexDirection: 'row', // Layout buttons in a row
-    justifyContent: 'space-between', // Distribute buttons evenly
+    justifyContent: 'center', // Center buttons
     marginTop: 20, // Margin at the top
   },
 });

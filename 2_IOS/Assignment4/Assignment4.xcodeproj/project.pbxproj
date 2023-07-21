@@ -14,7 +14,6 @@
 		FE3CAA0128FA05E4005B09B6 /* PostfixCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3CAA0028FA05E4005B09B6 /* PostfixCalculatorTests.swift */; };
 		FE3CAA0B28FA05E4005B09B6 /* PostfixCalculatorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3CAA0A28FA05E4005B09B6 /* PostfixCalculatorUITests.swift */; };
 		FE3CAA1A28FA064F005B09B6 /* PostfixCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3CAA1928FA064F005B09B6 /* PostfixCalculator.swift */; };
-		FE3CAA1E28FA0DE3005B09B6 /* PostfixCalculatorError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3CAA1D28FA0DE3005B09B6 /* PostfixCalculatorError.swift */; };
 		FE3CAA2428FB621D005B09B6 /* CalendarGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3CAA2328FB621D005B09B6 /* CalendarGenerator.swift */; };
 		FE3CAA2828FB680E005B09B6 /* CalendarGeneratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3CAA2728FB680E005B09B6 /* CalendarGeneratorTests.swift */; };
 		FE3CAA2A28FB789C005B09B6 /* CalendarGeneratorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3CAA2928FB789C005B09B6 /* CalendarGeneratorUITests.swift */; };
@@ -48,7 +47,6 @@
 		FE3CAA0628FA05E4005B09B6 /* Assignment4UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Assignment4UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE3CAA0A28FA05E4005B09B6 /* PostfixCalculatorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostfixCalculatorUITests.swift; sourceTree = "<group>"; };
 		FE3CAA1928FA064F005B09B6 /* PostfixCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostfixCalculator.swift; sourceTree = "<group>"; };
-		FE3CAA1D28FA0DE3005B09B6 /* PostfixCalculatorError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostfixCalculatorError.swift; sourceTree = "<group>"; };
 		FE3CAA2328FB621D005B09B6 /* CalendarGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarGenerator.swift; sourceTree = "<group>"; };
 		FE3CAA2728FB680E005B09B6 /* CalendarGeneratorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarGeneratorTests.swift; sourceTree = "<group>"; };
 		FE3CAA2928FB789C005B09B6 /* CalendarGeneratorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarGeneratorUITests.swift; sourceTree = "<group>"; };
@@ -150,7 +148,6 @@
 			children = (
 				FE3CAA2328FB621D005B09B6 /* CalendarGenerator.swift */,
 				FE3CAA1928FA064F005B09B6 /* PostfixCalculator.swift */,
-				FE3CAA1D28FA0DE3005B09B6 /* PostfixCalculatorError.swift */,
 			);
 			path = Logic;
 			sourceTree = "<group>";
@@ -285,7 +282,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FE3CAA1E28FA0DE3005B09B6 /* PostfixCalculatorError.swift in Sources */,
 				FE3CAA2428FB621D005B09B6 /* CalendarGenerator.swift in Sources */,
 				FE3CA9F228FA05E4005B09B6 /* Assignment4View.swift in Sources */,
 				FE3CA9F028FA05E4005B09B6 /* Assignment4App.swift in Sources */,
