@@ -1,5 +1,3 @@
-
-
 import CalendarGenerator from '../../src/Logic/CalendarGenerator';
 
 const testMonth = (dateStr, expected) => {
@@ -7,7 +5,6 @@ const testMonth = (dateStr, expected) => {
   
   console.log(`Generated Calendar for ${dateStr}:`);
   console.log(JSON.stringify(result, null, 2)); // this will pretty-print the array
-
   expect(result).toEqual(expected);
 };
 
