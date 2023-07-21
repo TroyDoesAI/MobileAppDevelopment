@@ -129,7 +129,19 @@
 <a name='L64'></a><a href='#L64'>64</a>
 <a name='L65'></a><a href='#L65'>65</a>
 <a name='L66'></a><a href='#L66'>66</a>
-<a name='L67'></a><a href='#L67'>67</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a>
+<a name='L76'></a><a href='#L76'>76</a>
+<a name='L77'></a><a href='#L77'>77</a>
+<a name='L78'></a><a href='#L78'>78</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -142,18 +154,24 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">21x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">21x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">21x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">21x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">64x</span>
 <span class="cline-any cline-yes">41x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">23x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">20x</span>
 <span class="cline-any cline-yes">20x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">20x</span>
@@ -167,6 +185,7 @@
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -176,7 +195,9 @@
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">17x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -187,12 +208,13 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">13x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">64x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">64x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/*
@@ -202,65 +224,76 @@
  * the express written permission of the copyright holder.
  */
 &nbsp;
-// Defining the PostfixCalculator class
+// PostfixCalculator class: It evaluates mathematical expressions given in postfix notation.
 export default class PostfixCalculator {
-&nbsp;
+  // This function evaluates a postfix mathematical expression.
   static evaluate(expression) {
+    // Split the input expression into tokens (operands and operators) and filter out any empty strings.
     const expressionTokens = expression.split(' ').filter(Boolean);
 &nbsp;
+    // Initialize a stack to hold the operands during evaluation.
     const operandStack = [];
 &nbsp;
+    // Iterate over each token in the expression.
     for (const token of expressionTokens) {
+      // If the token is a numeric value (operand), push it onto the stack.
       if (this.isNumeric(token)) {
         operandStack.push(parseFloat(token));
       } else {
+        // If there are less than two operands on the stack, the expression is invalid.
         if (operandStack.length &lt; 2) {
-          throw new Error("Invalid Expression");
+          throw new Error('Invalid Expression');
         }
 &nbsp;
+        // Pop two operands from the stack. The second operand popped will be the left operand.
         const operand1 = operandStack.pop();
         const operand2 = operandStack.pop();
         let result;
 &nbsp;
+        // Determine the operator and perform the corresponding arithmetic operation.
         switch (token) {
-          case "+":
+          case '+':
             result = operand2 + operand1;
             break;
-          case "-":
+          case '-':
             result = operand2 - operand1;
             break;
-          case "*":
+          case '*':
             result = operand2 * operand1;
             break;
-          case "/":
+          case '/':
+            // Ensure we're not dividing by zero.
             if (operand1 === 0) {
-              return Infinity;
+              return Infinity; // Return Infinity for division by zero.
             }
             result = operand2 / operand1;
             break;
-          case "^":
-            result = Math.pow(operand2, operand1);
+          case '^':
+            result = Math.pow(operand2, operand1); // Raise operand2 to the power of operand1.
             break;
           default:
-            throw new Error("Unknown Operator");
+            // If the token is not a recognized operator, throw an error.
+            throw new Error('Unknown Operator');
         }
+        // Push the result of the operation back onto the stack.
         operandStack.push(result);
       }
     }
 &nbsp;
-    // If there's more than one number left in the stack, it's a malformed expression.
+    // If the final stack contains more than one number, the expression wasn't fully evaluated, indicating it's malformed.
     if (operandStack.length !== 1) {
-      throw new Error("Malformed Expression");
+      throw new Error('Malformed Expression');
     }
 &nbsp;
+    // Pop the final result from the stack and return it.
     return operandStack.pop();
   }
 &nbsp;
+  // Utility function to check if a string represents a numeric value.
   static isNumeric(str) {
     return !isNaN(parseFloat(str)) &amp;&amp; isFinite(str);
   }
 }
-&nbsp;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -268,7 +301,7 @@ export default class PostfixCalculator {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-07-21T20:42:44.172Z
+                at 2023-07-21T22:00:43.112Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>
