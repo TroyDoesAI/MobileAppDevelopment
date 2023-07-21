@@ -5,29 +5,9 @@
  * the express written permission of the copyright holder.
  */
 
-// import React from 'react';
-// import { View } from 'react-native';
-
-// import CalendarGenerator from '../Logic/CalendarGenerator';
-
-// const CalendarGeneratorView = () => {
-//   return (
-//     <View>
-//       {/* Your JSX goes here */}
-//     </View>
-//   );
-// };
-
-// export default CalendarGeneratorView;
-
-
-
-
 import React, { useState } from 'react';
 import { View, Text, Button, StyleSheet, FlatList } from 'react-native';
-
 import CalendarGenerator from '../Logic/CalendarGenerator';
-
 
 // CalendarGeneratorView.js
 const CalendarGeneratorView = () => {
@@ -54,8 +34,6 @@ const CalendarGeneratorView = () => {
       const now = new Date();
       setDate(new Date(now.getFullYear(), now.getMonth(), 1));
   };
-  
-
     return (
         <View style={styles.container}>
             <Text style={styles.dateText}>{monthYearFormat(date)}</Text>
@@ -106,4 +84,3 @@ const styles = StyleSheet.create({
 });
 
 export default CalendarGeneratorView;
-
