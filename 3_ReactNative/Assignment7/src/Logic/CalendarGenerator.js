@@ -6,13 +6,6 @@
  */
 
 export default class {
-  /**
-   * @param {Date} date
-   * @return {[[Number]]} 6x7 array of integers
-   */
-  // static generate(date) {
-  //   throw "Not implemented"
-  // }
   static generate(date) {
     const firstDayOfMonth = startOfMonth(date);
     const daysInMonth = getDaysInMonth(date);
