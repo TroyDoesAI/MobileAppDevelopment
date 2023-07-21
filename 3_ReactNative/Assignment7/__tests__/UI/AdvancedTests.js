@@ -16,28 +16,52 @@ it('Renders', async () => {
 });
 
 describe('CalendarGeneratorView interactions', () => {
+  const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  
+  const getCurrentMonth = (queryByText) => {
+    return monthNames.find(month => queryByText(`${month} 2023`));
+  };
+
   it('Changes to the next Month when the Next button is pressed', () => {
     const { getByText, queryByText } = render(<CalendarGeneratorView />);
 
-    const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-
-    // Identify the currently displayed month
-    let currentMonth = monthNames.find(month => queryByText(`${month} 2023`));
-
+    let currentMonth = getCurrentMonth(queryByText);
     expect(currentMonth).toBeTruthy();
 
-    // Determine the next month
-    const nextMonthIndex = (monthNames.indexOf(currentMonth) + 1) % 12; // Use modulo to wrap around to January
+    const nextMonthIndex = (monthNames.indexOf(currentMonth) + 1) % 12;
     const nextMonthName = monthNames[nextMonthIndex];
 
-    // Find the "Next" button and tap it
     const nextButton = getByText('Next');
     fireEvent.press(nextButton);
 
-    // Verify the next month is displayed
     expect(queryByText(`${nextMonthName} 2023`)).toBeTruthy();
-
-    // Optionally, ensure previous month is no longer visible
     expect(queryByText(`${currentMonth} 2023`)).toBeFalsy();
+  });
+
+  it('Changes to the previous Month when the Previous button is pressed', () => {
+    const { getByText, queryByText } = render(<CalendarGeneratorView />);
+
+    let currentMonth = getCurrentMonth(queryByText);
+    expect(currentMonth).toBeTruthy();
+
+    const prevMonthIndex = (monthNames.indexOf(currentMonth) - 1 + 12) % 12; // Adding 12 to avoid negative numbers
+    const prevMonthName = monthNames[prevMonthIndex];
+
+    const prevButton = getByText('Previous');
+    fireEvent.press(prevButton);
+
+    expect(queryByText(`${prevMonthName} 2023`)).toBeTruthy();
+    expect(queryByText(`${currentMonth} 2023`)).toBeFalsy();
+  });
+
+  it('Changes to the current real-world Month when the Today button is pressed', () => {
+    const { getByText, queryByText } = render(<CalendarGeneratorView />);
+
+    const realCurrentMonth = monthNames[new Date().getMonth()];
+
+    const todayButton = getByText('Today');
+    fireEvent.press(todayButton);
+
+    expect(queryByText(`${realCurrentMonth} 2023`)).toBeTruthy(); // If the real-world date is within 2023
   });
 });
