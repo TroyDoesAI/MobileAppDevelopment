@@ -50,6 +50,12 @@ export default class PostfixCalculator {
         operandStack.push(result);
       }
     }
+
+    // If there's more than one number left in the stack, it's a malformed expression.
+    if (operandStack.length !== 1) {
+      throw new Error("Malformed Expression");
+    }
+
     return operandStack.pop();
   }
 
