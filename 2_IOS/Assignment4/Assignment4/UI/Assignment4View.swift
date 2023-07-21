@@ -1,5 +1,4 @@
 import SwiftUI
-import Combine
 
 // Main View
 struct Assignment4View: View {
@@ -11,8 +10,6 @@ struct Assignment4View: View {
     @State private var date: Date = Date()
     // Helper to generate calendar arrays
     private var calendarGenerator = CalendarGenerator()
-    // Combine subscriptions container
-    @State private var combineSubscriptions = Set<AnyCancellable>()
 
     // Date formatter to display date
     private var monthYearFormatter: DateFormatter = {
@@ -67,7 +64,7 @@ struct Assignment4View: View {
             ForEach(generateCalendarArray(), id: \.self) { week in
                 HStack {
                     ForEach(week, id: \.self) { day in
-                        Text(day > 0 ? "\(day)" : "")
+                        Text("\(day)")
                             .frame(width: 30, height: 30, alignment: .center)
                     }
                 }
@@ -99,7 +96,6 @@ struct Assignment4View: View {
             Spacer()
         }
         .padding()
-        .keyboardAdaptive(cancellables: $combineSubscriptions)
     }
     
     // Function to evaluate postfix expression
@@ -127,71 +123,17 @@ struct Assignment4View: View {
 
     // Function to go to the previous month in the calendar
     func previousMonth() {
-        date = Calendar.current.date(byAdding: .month, value: -1, to: date) ?? date
+        date = Calendar.current.date(byAdding: .month, value: -1, to: date)!
     }
 
     // Function to go to the next month in the calendar
     func nextMonth() {
-        date = Calendar.current.date(byAdding: .month, value: 1, to: date) ?? date
+        date = Calendar.current.date(byAdding: .month, value: 1, to: date)!
     }
 
     // Function to go to the current month in the calendar
     func currentMonth() {
         date = Date()
-    }
-}
-
-// ViewModifier to handle keyboard appearance and disappearance
-struct KeyboardAdaptive: ViewModifier {
-    @Binding var combineSubscriptions: Set<AnyCancellable>
-
-    @State private var bottomPadding: CGFloat = 0
-
-    func body(content: Content) -> some View {
-        GeometryReader { geometry in
-            content
-                .padding(.bottom, self.bottomPadding)
-                .onAppear {
-                    self.addObserver()
-                }
-                .onDisappear {
-                    self.removeObserver()
-                }
-        }
-    }
-
-    // Function to add observers for keyboard show/hide notifications
-    private func addObserver() {
-        NotificationCenter.default.publisher(for: UIResponder.keyboardWillShowNotification)
-            .sink { keyboard in
-                let keyboardScreenEndFrame = (keyboard.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
-                let keyboardViewEndFrame = UIApplication.shared.connectedScenes
-                    .filter({$0.activationState == .foregroundActive})
-                    .compactMap({$0 as? UIWindowScene})
-                    .first?.windows
-                    .filter({$0.isKeyWindow})
-                    .first?.convert(keyboardScreenEndFrame ?? CGRect.zero, from: nil)
-
-                bottomPadding = keyboardViewEndFrame?.height ?? 0
-            }
-            .store(in: &combineSubscriptions)
-
-        NotificationCenter.default.publisher(for: UIResponder.keyboardWillHideNotification)
-            .sink { _ in
-                bottomPadding = 0
-            }
-            .store(in: &combineSubscriptions)
-    }
-
-    // Function to remove all observers
-    private func removeObserver() {
-        combineSubscriptions.removeAll()
-    }
-}
-
-extension View {
-    func keyboardAdaptive(cancellables: Binding<Set<AnyCancellable>>) -> some View {
-        ModifiedContent(content: self, modifier: KeyboardAdaptive(combineSubscriptions: cancellables))
     }
 }
 
@@ -202,4 +144,3 @@ struct Assignment4View_Previews: PreviewProvider {
     }
 }
 #endif
-
