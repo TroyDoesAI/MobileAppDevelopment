@@ -1,22 +1,10 @@
 import Foundation
 
 struct StringError: Error {
-    enum ErrorType {
-        case missingOperand
-        case divisionByZero
-        case invalidOperator
-        case malformedExpression
-    }
+    var errorDescription: String
     
-    let type: ErrorType
-    
-    var localizedDescription: String {
-        switch type {
-        case .missingOperand: return "Error: missingOperand"
-        case .divisionByZero: return "Error: divisionByZero"
-        case .invalidOperator: return "Error: invalidOperator"
-        case .malformedExpression: return "Error: malformedExpression"
-        }
+    init(_ description: String) {
+        self.errorDescription = description
     }
 }
 
@@ -29,7 +17,7 @@ extension String {
 class PostfixCalculator {
     // Parses a postfix expression and evaluates it to return the result.
     func parse(expression: String) throws -> Double {
-        let expressionTokens = expression.split(separator: " ").map { String($0) }.filter { !$0.isEmpty }
+        let expressionTokens = expression.split(separator: " ").map { String($0) }
         var operandStack = [Double]()
 
         for token in expressionTokens {
@@ -37,7 +25,7 @@ class PostfixCalculator {
                 operandStack.append(Double(token)!)
             } else {
                 guard operandStack.count >= 2 else {
-                    throw StringError(type: .missingOperand)
+                    throw StringError("Missing operand")
                 }
 
                 let operand1 = operandStack.removeLast()
@@ -49,11 +37,11 @@ class PostfixCalculator {
                 case "*": result = operand2 * operand1
                 case "/":
                     guard operand1 != 0 else {
-                        throw StringError(type: .divisionByZero)
+                        throw StringError("Division by zero")
                     }
                     result = operand2 / operand1
                 case "^": result = pow(operand2, operand1)
-                default: throw StringError(type: .invalidOperator)
+                default: throw StringError("Invalid operator")
                 }
 
                 // Check if the result is -0.0 and if so, convert it to 0.0
@@ -61,11 +49,9 @@ class PostfixCalculator {
             }
         }
 
-        // If there's more than one number left in the stack, it's a malformed expression.
         guard operandStack.count == 1 else {
-            throw StringError(type: .malformedExpression)
+            throw StringError("Malformed expression")
         }
-        
         return operandStack.popLast()!
     }
 }
