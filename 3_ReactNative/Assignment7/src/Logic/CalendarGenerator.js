@@ -12,23 +12,20 @@ export default class CalendarGenerator {
    * Each row in the array represents a week, and each cell in that row represents a day of the week.
    * If the month doesn't start on a Sunday or doesn't end on a Saturday,
    * the days from the previous or next month are used to fill in the gaps.
-   *
-   * @param {Date} date - Any date within the month you want to generate a calendar for.
-   * @returns {number[][]} A 2D array representing the calendar month, with 6 rows (weeks) and 7 columns (days).
    */
-  static generate(date) {
+  static generate(inputDate) {
     // Get the current month from the date (0-based, so January is 0, February is 1, etc.)
-    const month = date.getMonth() + 1; // Adjust to 1-based month numbering
+    const month = inputDate.getMonth() + 1; // Adjust to 1-based month numbering
 
     // Determine the first and last day of the given month.
-    const firstDayOfMonth = new Date(date.getFullYear(), month, 1);
-    const lastDayOfMonth = new Date(date.getFullYear(), month + 1, 0);
+    const firstDayOfMonth = new Date(inputDate.getFullYear(), month, 1);
+    const lastDayOfMonth = new Date(inputDate.getFullYear(), month + 1, 0);
 
     // Calculate the number of days in the current month.
     const daysInMonth = lastDayOfMonth.getDate();
 
-    // Determine the last day of the previous month.
-    const prevMonthLastDay = new Date(date.getFullYear(), month, 0);
+    // Determine the last day of the previous month.ßß
+    const prevMonthLastDay = new Date(inputDate.getFullYear(), month, 0);
     const prevMonthDays = prevMonthLastDay.getDate();
 
     // Adjust for Sunday as the start of the week.

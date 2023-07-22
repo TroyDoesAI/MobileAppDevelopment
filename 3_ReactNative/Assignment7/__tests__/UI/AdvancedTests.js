@@ -6,7 +6,7 @@
  */
 
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react-native';
+import {render, fireEvent} from '@testing-library/react-native';
 import CalendarGeneratorView from '../../src/UI/CalendarGeneratorView';
 
 import App from '../../App';
@@ -16,13 +16,26 @@ it('Renders', async () => {
 });
 
 describe('CalendarGeneratorView Button Interactions', () => {
-  const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-  const getCurrentMonth = (queryByText) => {
+  const monthNames = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+  ];
+  const getCurrentMonth = queryByText => {
     return monthNames.find(month => queryByText(`${month} 2023`));
   };
 
   it('Changes to the next Month when the Next button is pressed', () => {
-    const { getByText, queryByText } = render(<CalendarGeneratorView />);
+    const {getByText, queryByText} = render(<CalendarGeneratorView />);
     let currentMonth = getCurrentMonth(queryByText);
     expect(currentMonth).toBeTruthy();
     const nextMonthIndex = (monthNames.indexOf(currentMonth) + 1) % 12;
@@ -34,7 +47,7 @@ describe('CalendarGeneratorView Button Interactions', () => {
   });
 
   it('Changes to the previous Month when the Previous button is pressed', () => {
-    const { getByText, queryByText } = render(<CalendarGeneratorView />);
+    const {getByText, queryByText} = render(<CalendarGeneratorView />);
     let currentMonth = getCurrentMonth(queryByText);
     expect(currentMonth).toBeTruthy();
     const prevMonthIndex = (monthNames.indexOf(currentMonth) - 1 + 12) % 12; // Adding 12 to avoid negative numbers
@@ -46,7 +59,7 @@ describe('CalendarGeneratorView Button Interactions', () => {
   });
 
   it('Changes to the current Month when the Today button is pressed', () => {
-    const { getByText, queryByText } = render(<CalendarGeneratorView />);
+    const {getByText, queryByText} = render(<CalendarGeneratorView />);
     const realCurrentMonth = monthNames[new Date().getMonth()];
     const todayButton = getByText('Today');
     fireEvent.press(todayButton);

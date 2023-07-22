@@ -10,7 +10,7 @@
  * **************************************************************************/
 
 import React from 'react';
-import { SafeAreaView, StyleSheet, Text } from 'react-native';
+import {SafeAreaView, StyleSheet} from 'react-native';
 
 import PostfixCalculatorView from './src/UI/PostfixCalculatorView';
 import CalendarGeneratorView from './src/UI/CalendarGeneratorView';
@@ -18,7 +18,6 @@ import CalendarGeneratorView from './src/UI/CalendarGeneratorView';
 const App = () => {
   return (
     <SafeAreaView style={styles.root}>
-      <Text>CSE118 Assignment 7</Text>
       <PostfixCalculatorView />
       <CalendarGeneratorView />
     </SafeAreaView>

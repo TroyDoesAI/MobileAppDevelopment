@@ -10,7 +10,7 @@
  * **************************************************************************/
 
 import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react-native';
+import {render, screen, fireEvent} from '@testing-library/react-native';
 
 import PostfixCalculatorView from '../../src/UI/PostfixCalculatorView';
 

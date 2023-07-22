@@ -6,15 +6,14 @@
  */
 
 // Importing necessary React functions and React Native components
-import React, { useState } from 'react';
-import { View, TextInput, Text, Button, StyleSheet } from 'react-native';
+import React, {useState} from 'react';
+import {View, TextInput, Text, Button, StyleSheet} from 'react-native';
 
 // Importing the PostfixCalculator logic for evaluating expressions
 import PostfixCalculator from '../Logic/PostfixCalculator';
 
 // Defining the main PostfixCalculatorView component
 const PostfixCalculatorView = () => {
-
   // Creating state variables for the expression input and its result
   const [expression, setExpression] = useState('');
   const [result, setResult] = useState('');
@@ -39,50 +38,43 @@ const PostfixCalculatorView = () => {
 
   // Rendering the main component UI
   return (
-      <View style={styles.container}>
-        {/* Header section containing the calculator's title */}
-        <View style={styles.header}>
-          <Text style={styles.title}>Postfix Calculator</Text>
-        </View>
+    <View style={styles.container}>
+      <View style={styles.header}>
+        <Text style={styles.title}>Postfix Calculator</Text>
+      </View>
 
-        {/* Input field for users to type in their postfix expression */}
-        <TextInput
-          style={styles.input}
-          value={expression}
-          onChangeText={setExpression} // Function to update the expression state variable
-          placeholder="expression"
-          accessibilityLabel="expression"  // Label for testing purposes
-        />
+      <TextInput
+        style={styles.input}
+        value={expression}
+        onChangeText={setExpression} // Function to update the expression state variable
+        placeholder="expression"
+        accessibilityLabel="expression"
+      />
 
-        {/* Display field for the calculated result (or error message) */}
-        <Text
+      <Text
         style={styles.input}
         placeholder="Result"
         accessibilityLabel="result"
-        selectTextOnFocus={false}
-      >
+        selectTextOnFocus={false}>
         {result}
       </Text>
 
-        {/* Container for buttons */}
-        <View style={styles.buttonContainer}>
-          {/* "Evaluate" button to trigger the expression evaluation */}
-          <Button
-              title="evaluate"
-              onPress={evaluateExpression}
-              color="#007AFF"
-              accessibilityLabel="evaluate" // Label for testing purposes
-          />
-          {/* "Clear" button to reset both expression and result fields */}
-          <Button
-              title="clear"
-              onPress={clearFields}
-              color="#FF3B30"
-              accessibilityLabel="clear" // Label for testing purposes
-          />
-        </View>
+      <View style={styles.buttonContainer}>
+        <Button
+          title="evaluate"
+          onPress={evaluateExpression}
+          color="#007AFF"
+          accessibilityLabel="evaluate"
+        />
+        <Button
+          title="clear"
+          onPress={clearFields}
+          color="#FF3B30"
+          accessibilityLabel="clear"
+        />
       </View>
-    );
+    </View>
+  );
 };
 
 // Styling for the components using React Native's StyleSheet

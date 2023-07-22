@@ -16,7 +16,7 @@ const CalendarGeneratorView = () => {
   const [date, setDate] = useState(new Date());
 
   // Function to format the date into a string of 'Month Year'.
-  const monthYearFormat = date => {
+  const monthYearFormat = inputDate => {
     const monthNames = [
       'January',
       'February',

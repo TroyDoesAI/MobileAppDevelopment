@@ -6,7 +6,7 @@
  */
 
 import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react-native';
+import {render, screen, fireEvent} from '@testing-library/react-native';
 
 import PostfixCalculatorView from '../../src/UI/PostfixCalculatorView';
 import CalendarGenerator from '../../src/Logic/CalendarGenerator';
@@ -67,14 +67,10 @@ it('Evaluates complex expressions', async () => {
 // Calender Tests : Logic
 const testMonth = (dateStr, expected) => {
   const result = CalendarGenerator.generate(new Date(dateStr));
-  // Debug Console Logs
-  // console.log(`Generated Calendar for ${dateStr}:`);
-  // console.log(JSON.stringify(result, null, 2)); // this will pretty-print the array
   expect(result).toEqual(expected);
 };
 
 describe('CalendarGenerator', () => {
-
   // Example Calender From The Assignment Document
   test('Calendar for May 2023', () => {
     const expected = [
@@ -122,7 +118,7 @@ describe('CalendarGenerator', () => {
       [10, 11, 12, 13, 14, 15, 16],
       [17, 18, 19, 20, 21, 22, 23],
       [24, 25, 26, 27, 28, 29, 30],
-      [31, 1, 2, 3, 4, 5, 6]
+      [31, 1, 2, 3, 4, 5, 6],
     ];
     testMonth('2023-12-01', expected);
   });
@@ -135,7 +131,7 @@ describe('CalendarGenerator', () => {
       [15, 16, 17, 18, 19, 20, 21],
       [22, 23, 24, 25, 26, 27, 28],
       [29, 30, 31, 1, 2, 3, 4],
-      [5, 6, 7, 8, 9, 10, 11]
+      [5, 6, 7, 8, 9, 10, 11],
     ];
     testMonth('2024-12-01', expected);
   });
