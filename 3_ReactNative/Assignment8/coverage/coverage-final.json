@@ -1,0 +1,1388 @@
+{
+  "/Users/jair/Desktop/MobileAppDevelopment/3_ReactNative/Assignment8/App.js": {
+    "path": "/Users/jair/Desktop/MobileAppDevelopment/3_ReactNative/Assignment8/App.js",
+    "statementMap": {
+      "0": {
+        "start": {"line": 25, "column": 14},
+        "end": {"line": 25, "column": 36}
+      },
+      "1": {
+        "start": {"line": 27, "column": 12},
+        "end": {"line": 55, "column": 1}
+      },
+      "2": {
+        "start": {"line": 28, "column": 2},
+        "end": {"line": 54, "column": 4}
+      },
+      "3": {
+        "start": {"line": 39, "column": 39},
+        "end": {"line": 39, "column": 72}
+      },
+      "4": {
+        "start": {"line": 44, "column": 39},
+        "end": {"line": 47, "column": 17}
+      }
+    },
+    "fnMap": {
+      "0": {
+        "name": "(anonymous_0)",
+        "decl": {
+          "start": {"line": 27, "column": 12},
+          "end": {"line": 27, "column": 13}
+        },
+        "loc": {
+          "start": {"line": 27, "column": 18},
+          "end": {"line": 55, "column": 1}
+        },
+        "line": 27
+      },
+      "1": {
+        "name": "(anonymous_1)",
+        "decl": {
+          "start": {"line": 39, "column": 25},
+          "end": {"line": 39, "column": 26}
+        },
+        "loc": {
+          "start": {"line": 39, "column": 39},
+          "end": {"line": 39, "column": 72}
+        },
+        "line": 39
+      },
+      "2": {
+        "name": "(anonymous_2)",
+        "decl": {
+          "start": {"line": 44, "column": 25},
+          "end": {"line": 44, "column": 26}
+        },
+        "loc": {
+          "start": {"line": 44, "column": 39},
+          "end": {"line": 47, "column": 17}
+        },
+        "line": 44
+      }
+    },
+    "branchMap": {},
+    "s": {"0": 1, "1": 1, "2": 7, "3": 10, "4": 2},
+    "f": {"0": 7, "1": 10, "2": 2},
+    "b": {},
+    "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    "hash": "21c8b0b482c63aa8ea1777d0f6fb94da79d8bb40"
+  },
+  "/Users/jair/Desktop/MobileAppDevelopment/3_ReactNative/Assignment8/src/Model/ChannelViewModel.js": {
+    "path": "/Users/jair/Desktop/MobileAppDevelopment/3_ReactNative/Assignment8/src/Model/ChannelViewModel.js",
+    "statementMap": {
+      "0": {
+        "start": {"line": 4, "column": 30},
+        "end": {"line": 4, "column": 51}
+      },
+      "1": {
+        "start": {"line": 6, "column": 31},
+        "end": {"line": 19, "column": 1}
+      },
+      "2": {
+        "start": {"line": 7, "column": 34},
+        "end": {"line": 7, "column": 52}
+      },
+      "3": {
+        "start": {"line": 9, "column": 35},
+        "end": {"line": 12, "column": 3}
+      },
+      "4": {
+        "start": {"line": 10, "column": 28},
+        "end": {"line": 10, "column": 73}
+      },
+      "5": {
+        "start": {"line": 11, "column": 4},
+        "end": {"line": 11, "column": 33}
+      },
+      "6": {
+        "start": {"line": 14, "column": 2},
+        "end": {"line": 18, "column": 4}
+      }
+    },
+    "fnMap": {
+      "0": {
+        "name": "(anonymous_0)",
+        "decl": {
+          "start": {"line": 6, "column": 31},
+          "end": {"line": 6, "column": 32}
+        },
+        "loc": {
+          "start": {"line": 6, "column": 40},
+          "end": {"line": 19, "column": 1}
+        },
+        "line": 6
+      },
+      "1": {
+        "name": "(anonymous_1)",
+        "decl": {
+          "start": {"line": 9, "column": 35},
+          "end": {"line": 9, "column": 36}
+        },
+        "loc": {
+          "start": {"line": 9, "column": 56},
+          "end": {"line": 12, "column": 3}
+        },
+        "line": 9
+      }
+    },
+    "branchMap": {},
+    "s": {"0": 1, "1": 1, "2": 13, "3": 13, "4": 6, "5": 6, "6": 13},
+    "f": {"0": 13, "1": 6},
+    "b": {},
+    "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    "hash": "35abdc2ae449f0ed28ba097f55690d130da4a2af"
+  },
+  "/Users/jair/Desktop/MobileAppDevelopment/3_ReactNative/Assignment8/src/Model/DataUtil.js": {
+    "path": "/Users/jair/Desktop/MobileAppDevelopment/3_ReactNative/Assignment8/src/Model/DataUtil.js",
+    "statementMap": {
+      "0": {
+        "start": {"line": 3, "column": 26},
+        "end": {"line": 13, "column": 1}
+      },
+      "1": {
+        "start": {"line": 4, "column": 18},
+        "end": {"line": 11, "column": 3}
+      },
+      "2": {
+        "start": {"line": 12, "column": 2},
+        "end": {"line": 12, "column": 63}
+      },
+      "3": {
+        "start": {"line": 15, "column": 34},
+        "end": {"line": 27, "column": 1}
+      },
+      "4": {
+        "start": {"line": 16, "column": 14},
+        "end": {"line": 16, "column": 24}
+      },
+      "5": {
+        "start": {"line": 17, "column": 17},
+        "end": {"line": 17, "column": 41}
+      },
+      "6": {
+        "start": {"line": 18, "column": 19},
+        "end": {"line": 18, "column": 44}
+      },
+      "7": {
+        "start": {"line": 19, "column": 19},
+        "end": {"line": 19, "column": 44}
+      },
+      "8": {
+        "start": {"line": 20, "column": 18},
+        "end": {"line": 20, "column": 43}
+      },
+      "9": {
+        "start": {"line": 21, "column": 19},
+        "end": {"line": 21, "column": 43}
+      },
+      "10": {
+        "start": {"line": 23, "column": 2},
+        "end": {"line": 23, "column": 46}
+      },
+      "11": {
+        "start": {"line": 23, "column": 20},
+        "end": {"line": 23, "column": 46}
+      },
+      "12": {
+        "start": {"line": 24, "column": 2},
+        "end": {"line": 24, "column": 45}
+      },
+      "13": {
+        "start": {"line": 24, "column": 19},
+        "end": {"line": 24, "column": 45}
+      },
+      "14": {
+        "start": {"line": 25, "column": 2},
+        "end": {"line": 25, "column": 46}
+      },
+      "15": {
+        "start": {"line": 25, "column": 20},
+        "end": {"line": 25, "column": 46}
+      },
+      "16": {
+        "start": {"line": 26, "column": 2},
+        "end": {"line": 26, "column": 28}
+      }
+    },
+    "fnMap": {
+      "0": {
+        "name": "(anonymous_0)",
+        "decl": {
+          "start": {"line": 3, "column": 26},
+          "end": {"line": 3, "column": 27}
+        },
+        "loc": {
+          "start": {"line": 3, "column": 34},
+          "end": {"line": 13, "column": 1}
+        },
+        "line": 3
+      },
+      "1": {
+        "name": "(anonymous_1)",
+        "decl": {
+          "start": {"line": 15, "column": 34},
+          "end": {"line": 15, "column": 35}
+        },
+        "loc": {
+          "start": {"line": 15, "column": 46},
+          "end": {"line": 27, "column": 1}
+        },
+        "line": 15
+      }
+    },
+    "branchMap": {
+      "0": {
+        "loc": {
+          "start": {"line": 23, "column": 2},
+          "end": {"line": 23, "column": 46}
+        },
+        "type": "if",
+        "locations": [
+          {
+            "start": {"line": 23, "column": 2},
+            "end": {"line": 23, "column": 46}
+          },
+          {"start": {}, "end": {}}
+        ],
+        "line": 23
+      },
+      "1": {
+        "loc": {
+          "start": {"line": 24, "column": 2},
+          "end": {"line": 24, "column": 45}
+        },
+        "type": "if",
+        "locations": [
+          {
+            "start": {"line": 24, "column": 2},
+            "end": {"line": 24, "column": 45}
+          },
+          {"start": {}, "end": {}}
+        ],
+        "line": 24
+      },
+      "2": {
+        "loc": {
+          "start": {"line": 25, "column": 2},
+          "end": {"line": 25, "column": 46}
+        },
+        "type": "if",
+        "locations": [
+          {
+            "start": {"line": 25, "column": 2},
+            "end": {"line": 25, "column": 46}
+          },
+          {"start": {}, "end": {}}
+        ],
+        "line": 25
+      }
+    },
+    "s": {
+      "0": 1,
+      "1": 42,
+      "2": 42,
+      "3": 1,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0,
+      "8": 0,
+      "9": 0,
+      "10": 0,
+      "11": 0,
+      "12": 0,
+      "13": 0,
+      "14": 0,
+      "15": 0,
+      "16": 0
+    },
+    "f": {"0": 42, "1": 0},
+    "b": {"0": [0, 0], "1": [0, 0], "2": [0, 0]},
+    "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    "hash": "431dae0b18cc2fbc322370c3fd04aa66d693c0eb"
+  },
+  "/Users/jair/Desktop/MobileAppDevelopment/3_ReactNative/Assignment8/src/Model/MessageViewModel.js": {
+    "path": "/Users/jair/Desktop/MobileAppDevelopment/3_ReactNative/Assignment8/src/Model/MessageViewModel.js",
+    "statementMap": {
+      "0": {
+        "start": {"line": 5, "column": 30},
+        "end": {"line": 5, "column": 45}
+      },
+      "1": {
+        "start": {"line": 7, "column": 31},
+        "end": {"line": 15, "column": 1}
+      },
+      "2": {
+        "start": {"line": 8, "column": 34},
+        "end": {"line": 8, "column": 46}
+      },
+      "3": {
+        "start": {"line": 10, "column": 2},
+        "end": {"line": 14, "column": 4}
+      }
+    },
+    "fnMap": {
+      "0": {
+        "name": "(anonymous_0)",
+        "decl": {
+          "start": {"line": 7, "column": 31},
+          "end": {"line": 7, "column": 32}
+        },
+        "loc": {
+          "start": {"line": 7, "column": 47},
+          "end": {"line": 15, "column": 1}
+        },
+        "line": 7
+      }
+    },
+    "branchMap": {},
+    "s": {"0": 1, "1": 1, "2": 11, "3": 11},
+    "f": {"0": 11},
+    "b": {},
+    "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    "hash": "0695473bda3e7a5b0da8b36f6cb65953e0b0d9cb"
+  },
+  "/Users/jair/Desktop/MobileAppDevelopment/3_ReactNative/Assignment8/src/Model/WorkspaceViewModel.js": {
+    "path": "/Users/jair/Desktop/MobileAppDevelopment/3_ReactNative/Assignment8/src/Model/WorkspaceViewModel.js",
+    "statementMap": {
+      "0": {
+        "start": {"line": 4, "column": 32},
+        "end": {"line": 4, "column": 53}
+      },
+      "1": {
+        "start": {"line": 6, "column": 33},
+        "end": {"line": 23, "column": 1}
+      },
+      "2": {
+        "start": {"line": 7, "column": 38},
+        "end": {"line": 7, "column": 56}
+      },
+      "3": {
+        "start": {"line": 8, "column": 36},
+        "end": {"line": 8, "column": 52}
+      },
+      "4": {
+        "start": {"line": 10, "column": 2},
+        "end": {"line": 16, "column": 9}
+      },
+      "5": {
+        "start": {"line": 11, "column": 22},
+        "end": {"line": 14, "column": 5}
+      },
+      "6": {
+        "start": {"line": 12, "column": 17},
+        "end": {"line": 12, "column": 39}
+      },
+      "7": {
+        "start": {"line": 13, "column": 6},
+        "end": {"line": 13, "column": 24}
+      },
+      "8": {
+        "start": {"line": 15, "column": 4},
+        "end": {"line": 15, "column": 16}
+      },
+      "9": {
+        "start": {"line": 18, "column": 2},
+        "end": {"line": 22, "column": 4}
+      }
+    },
+    "fnMap": {
+      "0": {
+        "name": "(anonymous_0)",
+        "decl": {
+          "start": {"line": 6, "column": 33},
+          "end": {"line": 6, "column": 34}
+        },
+        "loc": {
+          "start": {"line": 6, "column": 42},
+          "end": {"line": 23, "column": 1}
+        },
+        "line": 6
+      },
+      "1": {
+        "name": "(anonymous_1)",
+        "decl": {
+          "start": {"line": 10, "column": 18},
+          "end": {"line": 10, "column": 19}
+        },
+        "loc": {
+          "start": {"line": 10, "column": 24},
+          "end": {"line": 16, "column": 3}
+        },
+        "line": 10
+      },
+      "2": {
+        "name": "(anonymous_2)",
+        "decl": {
+          "start": {"line": 11, "column": 22},
+          "end": {"line": 11, "column": 23}
+        },
+        "loc": {
+          "start": {"line": 11, "column": 34},
+          "end": {"line": 14, "column": 5}
+        },
+        "line": 11
+      }
+    },
+    "branchMap": {},
+    "s": {
+      "0": 1,
+      "1": 1,
+      "2": 14,
+      "3": 14,
+      "4": 14,
+      "5": 7,
+      "6": 7,
+      "7": 7,
+      "8": 7,
+      "9": 14
+    },
+    "f": {"0": 14, "1": 7, "2": 7},
+    "b": {},
+    "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    "hash": "f5013e04be209970c0e65445824a6be7192de036"
+  },
+  "/Users/jair/Desktop/MobileAppDevelopment/3_ReactNative/Assignment8/src/Repo/ChannelRepo.js": {
+    "path": "/Users/jair/Desktop/MobileAppDevelopment/3_ReactNative/Assignment8/src/Repo/ChannelRepo.js",
+    "statementMap": {
+      "0": {
+        "start": {"line": 7, "column": 23},
+        "end": {"line": 7, "column": 62}
+      },
+      "1": {
+        "start": {"line": 18, "column": 42},
+        "end": {"line": 29, "column": 1}
+      },
+      "2": {
+        "start": {"line": 19, "column": 2},
+        "end": {"line": 28, "column": 3}
+      },
+      "3": {
+        "start": {"line": 21, "column": 22},
+        "end": {"line": 21, "column": 70}
+      },
+      "4": {
+        "start": {"line": 21, "column": 48},
+        "end": {"line": 21, "column": 69}
+      },
+      "5": {
+        "start": {"line": 25, "column": 4},
+        "end": {"line": 25, "column": 47}
+      },
+      "6": {
+        "start": {"line": 27, "column": 4},
+        "end": {"line": 27, "column": 54}
+      }
+    },
+    "fnMap": {
+      "0": {
+        "name": "(anonymous_0)",
+        "decl": {
+          "start": {"line": 18, "column": 42},
+          "end": {"line": 18, "column": 43}
+        },
+        "loc": {
+          "start": {"line": 18, "column": 63},
+          "end": {"line": 29, "column": 1}
+        },
+        "line": 18
+      },
+      "1": {
+        "name": "(anonymous_1)",
+        "decl": {
+          "start": {"line": 21, "column": 42},
+          "end": {"line": 21, "column": 43}
+        },
+        "loc": {
+          "start": {"line": 21, "column": 48},
+          "end": {"line": 21, "column": 69}
+        },
+        "line": 21
+      }
+    },
+    "branchMap": {
+      "0": {
+        "loc": {
+          "start": {"line": 25, "column": 11},
+          "end": {"line": 25, "column": 46}
+        },
+        "type": "cond-expr",
+        "locations": [
+          {
+            "start": {"line": 25, "column": 23},
+            "end": {"line": 25, "column": 41}
+          },
+          {
+            "start": {"line": 25, "column": 44},
+            "end": {"line": 25, "column": 46}
+          }
+        ],
+        "line": 25
+      }
+    },
+    "s": {"0": 1, "1": 1, "2": 6, "3": 6, "4": 12, "5": 6, "6": 0},
+    "f": {"0": 6, "1": 12},
+    "b": {"0": [6, 0]},
+    "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    "hash": "b76f2f33b80d2cf75f3d0a8ebd309f8a02374c48"
+  },
+  "/Users/jair/Desktop/MobileAppDevelopment/3_ReactNative/Assignment8/src/Repo/MessageRepo.js": {
+    "path": "/Users/jair/Desktop/MobileAppDevelopment/3_ReactNative/Assignment8/src/Repo/MessageRepo.js",
+    "statementMap": {
+      "0": {
+        "start": {"line": 7, "column": 23},
+        "end": {"line": 7, "column": 62}
+      },
+      "1": {
+        "start": {"line": 17, "column": 40},
+        "end": {"line": 31, "column": 1}
+      },
+      "2": {
+        "start": {"line": 18, "column": 2},
+        "end": {"line": 30, "column": 3}
+      },
+      "3": {
+        "start": {"line": 21, "column": 20},
+        "end": {"line": 23, "column": 48}
+      },
+      "4": {
+        "start": {"line": 22, "column": 28},
+        "end": {"line": 22, "column": 46}
+      },
+      "5": {
+        "start": {"line": 23, "column": 23},
+        "end": {"line": 23, "column": 47}
+      },
+      "6": {
+        "start": {"line": 27, "column": 4},
+        "end": {"line": 27, "column": 43}
+      },
+      "7": {
+        "start": {"line": 29, "column": 4},
+        "end": {"line": 29, "column": 54}
+      }
+    },
+    "fnMap": {
+      "0": {
+        "name": "(anonymous_0)",
+        "decl": {
+          "start": {"line": 17, "column": 40},
+          "end": {"line": 17, "column": 41}
+        },
+        "loc": {
+          "start": {"line": 17, "column": 59},
+          "end": {"line": 31, "column": 1}
+        },
+        "line": 17
+      },
+      "1": {
+        "name": "(anonymous_1)",
+        "decl": {
+          "start": {"line": 22, "column": 15},
+          "end": {"line": 22, "column": 16}
+        },
+        "loc": {
+          "start": {"line": 22, "column": 28},
+          "end": {"line": 22, "column": 46}
+        },
+        "line": 22
+      },
+      "2": {
+        "name": "(anonymous_2)",
+        "decl": {
+          "start": {"line": 23, "column": 12},
+          "end": {"line": 23, "column": 13}
+        },
+        "loc": {
+          "start": {"line": 23, "column": 23},
+          "end": {"line": 23, "column": 47}
+        },
+        "line": 23
+      }
+    },
+    "branchMap": {
+      "0": {
+        "loc": {
+          "start": {"line": 27, "column": 11},
+          "end": {"line": 27, "column": 42}
+        },
+        "type": "cond-expr",
+        "locations": [
+          {
+            "start": {"line": 27, "column": 21},
+            "end": {"line": 27, "column": 37}
+          },
+          {
+            "start": {"line": 27, "column": 40},
+            "end": {"line": 27, "column": 42}
+          }
+        ],
+        "line": 27
+      }
+    },
+    "s": {"0": 1, "1": 1, "2": 4, "3": 4, "4": 80, "5": 32, "6": 4, "7": 0},
+    "f": {"0": 4, "1": 80, "2": 32},
+    "b": {"0": [4, 0]},
+    "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    "hash": "793e6afb0ce2424fa16d1500d2b47e916c970c73"
+  },
+  "/Users/jair/Desktop/MobileAppDevelopment/3_ReactNative/Assignment8/src/Repo/WorkspaceRepo.js": {
+    "path": "/Users/jair/Desktop/MobileAppDevelopment/3_ReactNative/Assignment8/src/Repo/WorkspaceRepo.js",
+    "statementMap": {
+      "0": {
+        "start": {"line": 6, "column": 23},
+        "end": {"line": 6, "column": 62}
+      },
+      "1": {
+        "start": {"line": 14, "column": 30},
+        "end": {"line": 21, "column": 1}
+      },
+      "2": {
+        "start": {"line": 15, "column": 2},
+        "end": {"line": 20, "column": 3}
+      },
+      "3": {
+        "start": {"line": 17, "column": 4},
+        "end": {"line": 17, "column": 26}
+      },
+      "4": {
+        "start": {"line": 19, "column": 4},
+        "end": {"line": 19, "column": 54}
+      }
+    },
+    "fnMap": {
+      "0": {
+        "name": "(anonymous_0)",
+        "decl": {
+          "start": {"line": 14, "column": 30},
+          "end": {"line": 14, "column": 31}
+        },
+        "loc": {
+          "start": {"line": 14, "column": 42},
+          "end": {"line": 21, "column": 1}
+        },
+        "line": 14
+      }
+    },
+    "branchMap": {},
+    "s": {"0": 1, "1": 1, "2": 7, "3": 7, "4": 0},
+    "f": {"0": 7},
+    "b": {},
+    "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    "hash": "82cfc023f0e90818346ad3dbb4ef9401e693ee12"
+  },
+  "/Users/jair/Desktop/MobileAppDevelopment/3_ReactNative/Assignment8/src/UI/ChannelList.js": {
+    "path": "/Users/jair/Desktop/MobileAppDevelopment/3_ReactNative/Assignment8/src/UI/ChannelList.js",
+    "statementMap": {
+      "0": {
+        "start": {"line": 10, "column": 20},
+        "end": {"line": 47, "column": 1}
+      },
+      "1": {
+        "start": {"line": 11, "column": 26},
+        "end": {"line": 11, "column": 38}
+      },
+      "2": {
+        "start": {"line": 12, "column": 21},
+        "end": {"line": 12, "column": 53}
+      },
+      "3": {
+        "start": {"line": 14, "column": 2},
+        "end": {"line": 32, "column": 34}
+      },
+      "4": {
+        "start": {"line": 15, "column": 4},
+        "end": {"line": 31, "column": 7}
+      },
+      "5": {
+        "start": {"line": 17, "column": 8},
+        "end": {"line": 19, "column": 15}
+      },
+      "6": {
+        "start": {"line": 22, "column": 8},
+        "end": {"line": 27, "column": 27}
+      },
+      "7": {
+        "start": {"line": 23, "column": 25},
+        "end": {"line": 23, "column": 44}
+      },
+      "8": {
+        "start": {"line": 34, "column": 2},
+        "end": {"line": 46, "column": 4}
+      },
+      "9": {
+        "start": {"line": 37, "column": 28},
+        "end": {"line": 37, "column": 46}
+      },
+      "10": {
+        "start": {"line": 39, "column": 8},
+        "end": {"line": 43, "column": 10}
+      },
+      "11": {
+        "start": {"line": 49, "column": 15},
+        "end": {"line": 64, "column": 2}
+      }
+    },
+    "fnMap": {
+      "0": {
+        "name": "(anonymous_0)",
+        "decl": {
+          "start": {"line": 10, "column": 20},
+          "end": {"line": 10, "column": 21}
+        },
+        "loc": {
+          "start": {"line": 10, "column": 45},
+          "end": {"line": 47, "column": 1}
+        },
+        "line": 10
+      },
+      "1": {
+        "name": "(anonymous_1)",
+        "decl": {
+          "start": {"line": 14, "column": 18},
+          "end": {"line": 14, "column": 19}
+        },
+        "loc": {
+          "start": {"line": 14, "column": 24},
+          "end": {"line": 32, "column": 3}
+        },
+        "line": 14
+      },
+      "2": {
+        "name": "(anonymous_2)",
+        "decl": {
+          "start": {"line": 16, "column": 19},
+          "end": {"line": 16, "column": 20}
+        },
+        "loc": {
+          "start": {"line": 17, "column": 8},
+          "end": {"line": 19, "column": 15}
+        },
+        "line": 17
+      },
+      "3": {
+        "name": "(anonymous_3)",
+        "decl": {
+          "start": {"line": 21, "column": 18},
+          "end": {"line": 21, "column": 19}
+        },
+        "loc": {
+          "start": {"line": 22, "column": 8},
+          "end": {"line": 27, "column": 27}
+        },
+        "line": 22
+      },
+      "4": {
+        "name": "(anonymous_4)",
+        "decl": {
+          "start": {"line": 23, "column": 19},
+          "end": {"line": 23, "column": 20}
+        },
+        "loc": {
+          "start": {"line": 23, "column": 25},
+          "end": {"line": 23, "column": 44}
+        },
+        "line": 23
+      },
+      "5": {
+        "name": "(anonymous_5)",
+        "decl": {
+          "start": {"line": 37, "column": 20},
+          "end": {"line": 37, "column": 21}
+        },
+        "loc": {
+          "start": {"line": 37, "column": 28},
+          "end": {"line": 37, "column": 46}
+        },
+        "line": 37
+      },
+      "6": {
+        "name": "(anonymous_6)",
+        "decl": {
+          "start": {"line": 38, "column": 18},
+          "end": {"line": 38, "column": 19}
+        },
+        "loc": {
+          "start": {"line": 39, "column": 8},
+          "end": {"line": 43, "column": 10}
+        },
+        "line": 39
+      }
+    },
+    "branchMap": {},
+    "s": {
+      "0": 1,
+      "1": 6,
+      "2": 6,
+      "3": 6,
+      "4": 6,
+      "5": 27,
+      "6": 27,
+      "7": 0,
+      "8": 6,
+      "9": 18,
+      "10": 12,
+      "11": 1
+    },
+    "f": {"0": 6, "1": 6, "2": 27, "3": 27, "4": 0, "5": 18, "6": 12},
+    "b": {},
+    "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    "hash": "0860d1fece65097438a1ba48f6c8d19e7b9e87b4"
+  },
+  "/Users/jair/Desktop/MobileAppDevelopment/3_ReactNative/Assignment8/src/UI/ChannelListItem.js": {
+    "path": "/Users/jair/Desktop/MobileAppDevelopment/3_ReactNative/Assignment8/src/UI/ChannelListItem.js",
+    "statementMap": {
+      "0": {
+        "start": {"line": 5, "column": 15},
+        "end": {"line": 16, "column": 2}
+      },
+      "1": {
+        "start": {"line": 18, "column": 24},
+        "end": {"line": 38, "column": 1}
+      },
+      "2": {
+        "start": {"line": 19, "column": 22},
+        "end": {"line": 30, "column": 3}
+      },
+      "3": {
+        "start": {"line": 25, "column": 4},
+        "end": {"line": 29, "column": 7}
+      },
+      "4": {
+        "start": {"line": 31, "column": 2},
+        "end": {"line": 37, "column": 4}
+      }
+    },
+    "fnMap": {
+      "0": {
+        "name": "(anonymous_0)",
+        "decl": {
+          "start": {"line": 18, "column": 24},
+          "end": {"line": 18, "column": 25}
+        },
+        "loc": {
+          "start": {"line": 18, "column": 66},
+          "end": {"line": 38, "column": 1}
+        },
+        "line": 18
+      },
+      "1": {
+        "name": "(anonymous_1)",
+        "decl": {
+          "start": {"line": 19, "column": 22},
+          "end": {"line": 19, "column": 23}
+        },
+        "loc": {
+          "start": {"line": 19, "column": 28},
+          "end": {"line": 30, "column": 3}
+        },
+        "line": 19
+      }
+    },
+    "branchMap": {},
+    "s": {"0": 1, "1": 1, "2": 12, "3": 4, "4": 12},
+    "f": {"0": 12, "1": 4},
+    "b": {},
+    "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    "hash": "a284978e763ae5ef92b8e28a4a1577c007bd2b90"
+  },
+  "/Users/jair/Desktop/MobileAppDevelopment/3_ReactNative/Assignment8/src/UI/MessageDetail.js": {
+    "path": "/Users/jair/Desktop/MobileAppDevelopment/3_ReactNative/Assignment8/src/UI/MessageDetail.js",
+    "statementMap": {
+      "0": {
+        "start": {"line": 9, "column": 22},
+        "end": {"line": 20, "column": 1}
+      },
+      "1": {
+        "start": {"line": 10, "column": 33},
+        "end": {"line": 10, "column": 45}
+      },
+      "2": {
+        "start": {"line": 11, "column": 24},
+        "end": {"line": 11, "column": 50}
+      },
+      "3": {
+        "start": {"line": 14, "column": 2},
+        "end": {"line": 19, "column": 4}
+      },
+      "4": {
+        "start": {"line": 23, "column": 15},
+        "end": {"line": 32, "column": 2}
+      }
+    },
+    "fnMap": {
+      "0": {
+        "name": "(anonymous_0)",
+        "decl": {
+          "start": {"line": 9, "column": 22},
+          "end": {"line": 9, "column": 23}
+        },
+        "loc": {
+          "start": {"line": 9, "column": 35},
+          "end": {"line": 20, "column": 1}
+        },
+        "line": 9
+      }
+    },
+    "branchMap": {},
+    "s": {"0": 1, "1": 2, "2": 2, "3": 2, "4": 1},
+    "f": {"0": 2},
+    "b": {},
+    "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    "hash": "c8f21fed13c5b01e9b235a2a3e2469ec6f8cdb1a"
+  },
+  "/Users/jair/Desktop/MobileAppDevelopment/3_ReactNative/Assignment8/src/UI/MessageList.js": {
+    "path": "/Users/jair/Desktop/MobileAppDevelopment/3_ReactNative/Assignment8/src/UI/MessageList.js",
+    "statementMap": {
+      "0": {
+        "start": {"line": 8, "column": 20},
+        "end": {"line": 63, "column": 1}
+      },
+      "1": {
+        "start": {"line": 9, "column": 34},
+        "end": {"line": 9, "column": 60}
+      },
+      "2": {
+        "start": {"line": 12, "column": 50},
+        "end": {"line": 12, "column": 62}
+      },
+      "3": {
+        "start": {"line": 15, "column": 2},
+        "end": {"line": 28, "column": 21}
+      },
+      "4": {
+        "start": {"line": 16, "column": 36},
+        "end": {"line": 23, "column": 5}
+      },
+      "5": {
+        "start": {"line": 17, "column": 6},
+        "end": {"line": 22, "column": 7}
+      },
+      "6": {
+        "start": {"line": 18, "column": 32},
+        "end": {"line": 18, "column": 73}
+      },
+      "7": {
+        "start": {"line": 19, "column": 8},
+        "end": {"line": 19, "column": 37}
+      },
+      "8": {
+        "start": {"line": 21, "column": 8},
+        "end": {"line": 21, "column": 57}
+      },
+      "9": {
+        "start": {"line": 25, "column": 4},
+        "end": {"line": 27, "column": 5}
+      },
+      "10": {
+        "start": {"line": 26, "column": 6},
+        "end": {"line": 26, "column": 54}
+      },
+      "11": {
+        "start": {"line": 30, "column": 2},
+        "end": {"line": 48, "column": 47}
+      },
+      "12": {
+        "start": {"line": 31, "column": 4},
+        "end": {"line": 47, "column": 7}
+      },
+      "13": {
+        "start": {"line": 33, "column": 8},
+        "end": {"line": 35, "column": 15}
+      },
+      "14": {
+        "start": {"line": 38, "column": 8},
+        "end": {"line": 43, "column": 27}
+      },
+      "15": {
+        "start": {"line": 39, "column": 25},
+        "end": {"line": 39, "column": 44}
+      },
+      "16": {
+        "start": {"line": 50, "column": 2},
+        "end": {"line": 62, "column": 4}
+      },
+      "17": {
+        "start": {"line": 53, "column": 28},
+        "end": {"line": 53, "column": 46}
+      },
+      "18": {
+        "start": {"line": 55, "column": 8},
+        "end": {"line": 59, "column": 10}
+      },
+      "19": {
+        "start": {"line": 65, "column": 15},
+        "end": {"line": 79, "column": 2}
+      }
+    },
+    "fnMap": {
+      "0": {
+        "name": "(anonymous_0)",
+        "decl": {
+          "start": {"line": 8, "column": 20},
+          "end": {"line": 8, "column": 21}
+        },
+        "loc": {
+          "start": {"line": 8, "column": 45},
+          "end": {"line": 63, "column": 1}
+        },
+        "line": 8
+      },
+      "1": {
+        "name": "(anonymous_1)",
+        "decl": {
+          "start": {"line": 15, "column": 12},
+          "end": {"line": 15, "column": 13}
+        },
+        "loc": {
+          "start": {"line": 15, "column": 18},
+          "end": {"line": 28, "column": 3}
+        },
+        "line": 15
+      },
+      "2": {
+        "name": "(anonymous_2)",
+        "decl": {
+          "start": {"line": 16, "column": 36},
+          "end": {"line": 16, "column": 37}
+        },
+        "loc": {
+          "start": {"line": 16, "column": 55},
+          "end": {"line": 23, "column": 5}
+        },
+        "line": 16
+      },
+      "3": {
+        "name": "(anonymous_3)",
+        "decl": {
+          "start": {"line": 30, "column": 18},
+          "end": {"line": 30, "column": 19}
+        },
+        "loc": {
+          "start": {"line": 30, "column": 24},
+          "end": {"line": 48, "column": 3}
+        },
+        "line": 30
+      },
+      "4": {
+        "name": "(anonymous_4)",
+        "decl": {
+          "start": {"line": 32, "column": 19},
+          "end": {"line": 32, "column": 20}
+        },
+        "loc": {
+          "start": {"line": 33, "column": 8},
+          "end": {"line": 35, "column": 15}
+        },
+        "line": 33
+      },
+      "5": {
+        "name": "(anonymous_5)",
+        "decl": {
+          "start": {"line": 37, "column": 18},
+          "end": {"line": 37, "column": 19}
+        },
+        "loc": {
+          "start": {"line": 38, "column": 8},
+          "end": {"line": 43, "column": 27}
+        },
+        "line": 38
+      },
+      "6": {
+        "name": "(anonymous_6)",
+        "decl": {
+          "start": {"line": 39, "column": 19},
+          "end": {"line": 39, "column": 20}
+        },
+        "loc": {
+          "start": {"line": 39, "column": 25},
+          "end": {"line": 39, "column": 44}
+        },
+        "line": 39
+      },
+      "7": {
+        "name": "(anonymous_7)",
+        "decl": {
+          "start": {"line": 53, "column": 20},
+          "end": {"line": 53, "column": 21}
+        },
+        "loc": {
+          "start": {"line": 53, "column": 28},
+          "end": {"line": 53, "column": 46}
+        },
+        "line": 53
+      },
+      "8": {
+        "name": "(anonymous_8)",
+        "decl": {
+          "start": {"line": 54, "column": 18},
+          "end": {"line": 54, "column": 19}
+        },
+        "loc": {
+          "start": {"line": 55, "column": 8},
+          "end": {"line": 59, "column": 10}
+        },
+        "line": 55
+      }
+    },
+    "branchMap": {
+      "0": {
+        "loc": {
+          "start": {"line": 25, "column": 4},
+          "end": {"line": 27, "column": 5}
+        },
+        "type": "if",
+        "locations": [
+          {
+            "start": {"line": 25, "column": 4},
+            "end": {"line": 27, "column": 5}
+          },
+          {"start": {}, "end": {}}
+        ],
+        "line": 25
+      },
+      "1": {
+        "loc": {
+          "start": {"line": 25, "column": 8},
+          "end": {"line": 25, "column": 46}
+        },
+        "type": "binary-expr",
+        "locations": [
+          {
+            "start": {"line": 25, "column": 8},
+            "end": {"line": 25, "column": 20}
+          },
+          {
+            "start": {"line": 25, "column": 24},
+            "end": {"line": 25, "column": 46}
+          }
+        ],
+        "line": 25
+      }
+    },
+    "s": {
+      "0": 1,
+      "1": 8,
+      "2": 8,
+      "3": 8,
+      "4": 4,
+      "5": 4,
+      "6": 4,
+      "7": 4,
+      "8": 0,
+      "9": 4,
+      "10": 4,
+      "11": 8,
+      "12": 4,
+      "13": 16,
+      "14": 16,
+      "15": 0,
+      "16": 8,
+      "17": 24,
+      "18": 20,
+      "19": 1
+    },
+    "f": {
+      "0": 8,
+      "1": 4,
+      "2": 4,
+      "3": 4,
+      "4": 16,
+      "5": 16,
+      "6": 0,
+      "7": 24,
+      "8": 20
+    },
+    "b": {"0": [4, 0], "1": [4, 4]},
+    "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    "hash": "49c75bb9935a0889a86a2d031815acc602c17a19"
+  },
+  "/Users/jair/Desktop/MobileAppDevelopment/3_ReactNative/Assignment8/src/UI/MessageListItem.js": {
+    "path": "/Users/jair/Desktop/MobileAppDevelopment/3_ReactNative/Assignment8/src/UI/MessageListItem.js",
+    "statementMap": {
+      "0": {
+        "start": {"line": 9, "column": 24},
+        "end": {"line": 35, "column": 1}
+      },
+      "1": {
+        "start": {"line": 11, "column": 22},
+        "end": {"line": 13, "column": 3}
+      },
+      "2": {
+        "start": {"line": 12, "column": 4},
+        "end": {"line": 12, "column": 61}
+      },
+      "3": {
+        "start": {"line": 16, "column": 2},
+        "end": {"line": 34, "column": 4}
+      },
+      "4": {
+        "start": {"line": 38, "column": 15},
+        "end": {"line": 58, "column": 2}
+      }
+    },
+    "fnMap": {
+      "0": {
+        "name": "(anonymous_0)",
+        "decl": {
+          "start": {"line": 9, "column": 24},
+          "end": {"line": 9, "column": 25}
+        },
+        "loc": {
+          "start": {"line": 9, "column": 51},
+          "end": {"line": 35, "column": 1}
+        },
+        "line": 9
+      },
+      "1": {
+        "name": "(anonymous_1)",
+        "decl": {
+          "start": {"line": 11, "column": 22},
+          "end": {"line": 11, "column": 23}
+        },
+        "loc": {
+          "start": {"line": 11, "column": 28},
+          "end": {"line": 13, "column": 3}
+        },
+        "line": 11
+      }
+    },
+    "branchMap": {},
+    "s": {"0": 1, "1": 20, "2": 2, "3": 20, "4": 1},
+    "f": {"0": 20, "1": 2},
+    "b": {},
+    "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    "hash": "47ab109594f7fdd43803efb1de4ee07955ee1b0b"
+  },
+  "/Users/jair/Desktop/MobileAppDevelopment/3_ReactNative/Assignment8/src/UI/WorkspaceList.js": {
+    "path": "/Users/jair/Desktop/MobileAppDevelopment/3_ReactNative/Assignment8/src/UI/WorkspaceList.js",
+    "statementMap": {
+      "0": {
+        "start": {"line": 6, "column": 22},
+        "end": {"line": 18, "column": 1}
+      },
+      "1": {
+        "start": {"line": 7, "column": 23},
+        "end": {"line": 7, "column": 51}
+      },
+      "2": {
+        "start": {"line": 9, "column": 2},
+        "end": {"line": 17, "column": 4}
+      },
+      "3": {
+        "start": {"line": 12, "column": 28},
+        "end": {"line": 12, "column": 35}
+      },
+      "4": {
+        "start": {"line": 14, "column": 8},
+        "end": {"line": 14, "column": 70}
+      }
+    },
+    "fnMap": {
+      "0": {
+        "name": "(anonymous_0)",
+        "decl": {
+          "start": {"line": 6, "column": 22},
+          "end": {"line": 6, "column": 23}
+        },
+        "loc": {
+          "start": {"line": 6, "column": 40},
+          "end": {"line": 18, "column": 1}
+        },
+        "line": 6
+      },
+      "1": {
+        "name": "(anonymous_1)",
+        "decl": {
+          "start": {"line": 12, "column": 20},
+          "end": {"line": 12, "column": 21}
+        },
+        "loc": {
+          "start": {"line": 12, "column": 28},
+          "end": {"line": 12, "column": 35}
+        },
+        "line": 12
+      },
+      "2": {
+        "name": "(anonymous_2)",
+        "decl": {
+          "start": {"line": 13, "column": 18},
+          "end": {"line": 13, "column": 19}
+        },
+        "loc": {
+          "start": {"line": 14, "column": 8},
+          "end": {"line": 14, "column": 70}
+        },
+        "line": 14
+      }
+    },
+    "branchMap": {},
+    "s": {"0": 1, "1": 14, "2": 14, "3": 91, "4": 70},
+    "f": {"0": 14, "1": 91, "2": 70},
+    "b": {},
+    "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    "hash": "4358a91c10b08ed860bf7360b5c8c211cf601287"
+  },
+  "/Users/jair/Desktop/MobileAppDevelopment/3_ReactNative/Assignment8/src/UI/WorkspaceListItem.js": {
+    "path": "/Users/jair/Desktop/MobileAppDevelopment/3_ReactNative/Assignment8/src/UI/WorkspaceListItem.js",
+    "statementMap": {
+      "0": {
+        "start": {"line": 9, "column": 15},
+        "end": {"line": 20, "column": 2}
+      },
+      "1": {
+        "start": {"line": 22, "column": 26},
+        "end": {"line": 39, "column": 1}
+      },
+      "2": {
+        "start": {"line": 23, "column": 37},
+        "end": {"line": 23, "column": 69}
+      },
+      "3": {
+        "start": {"line": 25, "column": 2},
+        "end": {"line": 38, "column": 4}
+      },
+      "4": {
+        "start": {"line": 28, "column": 8},
+        "end": {"line": 28, "column": 53}
+      },
+      "5": {
+        "start": {"line": 29, "column": 8},
+        "end": {"line": 31, "column": 11}
+      }
+    },
+    "fnMap": {
+      "0": {
+        "name": "(anonymous_0)",
+        "decl": {
+          "start": {"line": 22, "column": 26},
+          "end": {"line": 22, "column": 27}
+        },
+        "loc": {
+          "start": {"line": 22, "column": 55},
+          "end": {"line": 39, "column": 1}
+        },
+        "line": 22
+      },
+      "1": {
+        "name": "(anonymous_1)",
+        "decl": {
+          "start": {"line": 27, "column": 15},
+          "end": {"line": 27, "column": 16}
+        },
+        "loc": {
+          "start": {"line": 27, "column": 27},
+          "end": {"line": 32, "column": 7}
+        },
+        "line": 27
+      }
+    },
+    "branchMap": {},
+    "s": {"0": 1, "1": 1, "2": 130, "3": 130, "4": 6, "5": 6},
+    "f": {"0": 130, "1": 6},
+    "b": {},
+    "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    "hash": "9a3fc546900e2455f8991e0d028e881fc02c2fe1"
+  }
+}
