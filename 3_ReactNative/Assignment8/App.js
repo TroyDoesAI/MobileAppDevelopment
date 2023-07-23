@@ -13,32 +13,35 @@ import { WorkspaceProvider } from './src/Model/WorkspaceViewModel';  // Import t
 import ChannelList from './src/UI/ChannelList';
 import MessageList from './src/UI/MessageList';
 import MessageDetail from './src/UI/MessageDetail';
+import { ChannelProvider } from './src/Model/ChannelViewModel';  // Import the ChannelProvider
 
 const Stack = createStackNavigator();
 
 const App = () => {
     return (
         <WorkspaceProvider> 
-            <NavigationContainer>
-                <Stack.Navigator>
-                    <Stack.Screen 
-                        name="Workspaces" 
-                        component={WorkspaceList} 
-                    />
-                    <Stack.Screen 
-                        name="Channels" 
-                        component={ChannelList} 
-                    />
-                    <Stack.Screen 
-                        name="Messages" 
-                        component={MessageList} 
-                    />
-                    <Stack.Screen 
-                        name="MessageDetail" 
-                        component={MessageDetail} 
-                    />
-                </Stack.Navigator>
-            </NavigationContainer>
+            <ChannelProvider>
+                <NavigationContainer>
+                    <Stack.Navigator>
+                        <Stack.Screen 
+                            name="Workspaces" 
+                            component={WorkspaceList} 
+                        />
+                        <Stack.Screen 
+                            name="Channels" 
+                            component={ChannelList} 
+                        />
+                        <Stack.Screen 
+                            name="Messages" 
+                            component={MessageList} 
+                        />
+                        <Stack.Screen 
+                            name="MessageDetail" 
+                            component={MessageDetail} 
+                        />
+                    </Stack.Navigator>
+                </NavigationContainer>
+            </ChannelProvider>
         </WorkspaceProvider>
     );
 };
