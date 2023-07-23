@@ -6,11 +6,26 @@
  */
 
 import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import WorkspaceList from './src/UI/WorkspaceList';
+import { WorkspaceProvider } from './src/Model/WorkspaceViewModel';  // Import the WorkspaceProvider
 
-import DeleteMe from './src/UI/DeleteMe';
+const Stack = createStackNavigator();
 
 const App = () => {
-  return <DeleteMe />;
+    return (
+        <WorkspaceProvider> 
+            <NavigationContainer>
+                <Stack.Navigator>
+                    <Stack.Screen 
+                        name="Workspaces" 
+                        component={WorkspaceList} 
+                    />
+                </Stack.Navigator>
+            </NavigationContainer>
+        </WorkspaceProvider>
+    );
 };
-
 export default App;
+

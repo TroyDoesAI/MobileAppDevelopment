@@ -13,3 +13,47 @@ const DeleteMe = () => {
 };
 
 export default DeleteMe;
+
+
+// import React from 'react';
+// import { NavigationContainer } from '@react-navigation/native';
+// import { createStackNavigator } from '@react-navigation/stack';
+
+// import WorkspaceList from './src/UI/WorkspaceList';
+// // TODO import ChannelList from './src/UI/ChannelList';
+// // TODO import MessageList from './src/UI/MessageList';
+// import WorkspaceViewModel from './src/Model/WorkspaceViewModel'
+
+// const Stack = createStackNavigator();
+
+// const App = () => {
+//     return (
+//         <WorkspaceViewModel>
+//             <NavigationContainer>
+//                 <Stack.Navigator>
+//                     <Stack.Screen 
+//                         name="Workspaces" 
+//                         component={WorkspaceList} 
+//                     />
+//                     {/* <Stack.Screen
+//                         name="Channels"
+//                         component={ChannelList}
+//                         options={({ route }) => ({
+//                             title: route.params.title,
+//                             headerBackTitle: 'Workspaces'
+//                         })}
+//                     />
+//                     <Stack.Screen
+//                         name="Messages"
+//                         component={MessageList}
+//                         options={({ route }) => ({
+//                             title: route.params.title,
+//                             headerBackTitle: 'Channels'
+//                         })}
+//                     /> */}
+//                 </Stack.Navigator>
+//             </NavigationContainer>
+//         </WorkspaceViewModel>
+//     );
+// };
+// export default App;
