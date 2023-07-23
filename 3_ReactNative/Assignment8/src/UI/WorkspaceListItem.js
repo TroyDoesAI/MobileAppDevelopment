@@ -1,15 +1,10 @@
 // WorkspaceListItem.js
 
 import React from 'react';
-import {
-  TouchableWithoutFeedback,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import {TouchableWithoutFeedback, StyleSheet, Text, View} from 'react-native';
 
-import { WorkspaceContext } from '../Model/WorkspaceViewModel';
-import { ChannelContext } from '../Model/ChannelViewModel';
+import {WorkspaceContext} from '../Model/WorkspaceViewModel';
+import {ChannelContext} from '../Model/ChannelViewModel';
 
 const styles = StyleSheet.create({
   container: {
@@ -24,8 +19,8 @@ const styles = StyleSheet.create({
   },
 });
 
-const WorkspaceListItem = ({ workspace, navigation }) => {
-  const { loadChannelsForWorkspace } = React.useContext(ChannelContext);
+const WorkspaceListItem = ({workspace, navigation}) => {
+  const {loadChannelsForWorkspace} = React.useContext(ChannelContext);
 
   return (
     <TouchableWithoutFeedback
@@ -35,8 +30,7 @@ const WorkspaceListItem = ({ workspace, navigation }) => {
           workspaceName: workspace.name,
         });
       }}
-      accessibilityLabel={workspace.name}
-    >
+      accessibilityLabel={workspace.name}>
       <View style={styles.container}>
         <Text style={styles.item}>{workspace.name}</Text>
       </View>
