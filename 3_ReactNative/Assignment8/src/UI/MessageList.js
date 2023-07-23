@@ -1,40 +1,38 @@
-// ChannelList.js
-
 import React, { useLayoutEffect } from 'react';
 import { FlatList, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import ChannelListItem from '../Cards/ChannelListItem';
+import MessageListItem from './MessageListItem';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-const ChannelList = ({ navigation, route }) => {
-    const { channels, workspaceName } = route.params;
+const MessageList = ({ route, navigation }) => {
+    const { messages, channelName, workspaceName } = route.params; // Assuming you'll pass both channelName and workspaceName as params
 
     useLayoutEffect(() => {
         navigation.setOptions({
             headerTitle: () => (
                 <Text numberOfLines={1} ellipsizeMode="tail" style={styles.title}>
-                    {workspaceName}
+                    {channelName}
                 </Text>
             ),
             headerLeft: () => (
                 <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
                     <Icon name="chevron-left" size={25} color="blue" />
-                    <Text style={styles.backText}>Workspaces</Text>
+                    <Text style={styles.backText}>{workspaceName}</Text>
                 </TouchableOpacity>
             ),
             headerTitleAlign: 'center',
             headerBackTitleVisible: false,
         });
-    }, [navigation, workspaceName]);
+    }, [navigation, channelName, workspaceName]);
 
     return (
         <FlatList
-            data={channels}
+            data={messages}
             keyExtractor={(item) => item.id.toString()}
             renderItem={({ item }) => (
-                <ChannelListItem
-                    channel={item}
+                <MessageListItem 
+                    message={item} 
                     navigation={navigation}
-                    workspaceName={workspaceName}  // Pass the workspace name to ChannelListItem
+                    channelName={channelName}
                 />
             )}
         />
@@ -43,9 +41,7 @@ const ChannelList = ({ navigation, route }) => {
 
 const styles = StyleSheet.create({
     title: {
-        fontSize: 10,
-        fontWeight: 'bold',
-
+        fontSize: 16,
     },
     backButton: {
         flexDirection: 'row',
@@ -53,10 +49,10 @@ const styles = StyleSheet.create({
         marginLeft: 10
     },
     backText: {
-        fontSize: 10,
+        fontSize: 14,
         marginLeft: 5, 
         color: 'blue'
     }
 });
 
-export default ChannelList;
+export default MessageList;

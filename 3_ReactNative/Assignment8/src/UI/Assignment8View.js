@@ -14,7 +14,6 @@ const Assignment8View = ({ navigation }) => {
     const [workspaces, setWorkspaces] = useState([]);
 
     useEffect(() => {
-        // Use the imported data directly without the fetch
         setWorkspaces(workspacesData);
     }, []);
 

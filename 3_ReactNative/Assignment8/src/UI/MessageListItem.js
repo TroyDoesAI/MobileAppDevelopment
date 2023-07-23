@@ -1,10 +1,9 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
-import { navigateToMessageDetail } from '../../Navigation/NavHelper';
 
 const MessageListItem = ({ message, navigation }) => {
     const handlePress = () => {
-        navigateToMessageDetail(navigation, message);
+        navigation.navigate('MessageDetail', { message: message });
     };
 
     return (
