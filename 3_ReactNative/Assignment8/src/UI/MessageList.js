@@ -1,10 +1,32 @@
-import React, { useLayoutEffect } from 'react';
+import React, { useLayoutEffect, useContext, useEffect } from 'react';
 import { FlatList, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import MessageListItem from './MessageListItem';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import { MessageContext } from '../Model/MessageViewModel';
+import { GET_MESSAGES_FOR_CHANNEL } from '../Repo/MessageRepo';
+
 
 const MessageList = ({ route, navigation }) => {
-    const { messages, channelName, workspaceName } = route.params; // Assuming you'll pass both channelName and workspaceName as params
+    const { messages, setMessages } = useContext(MessageContext);
+    
+    // Deconstruct values from the route params
+    const { channelId, channelName, workspaceName } = route.params;
+
+    // UseEffect to fetch messages when channelId changes
+    useEffect(() => {
+        const fetchMessagesForChannel = async (channelId) => {
+            try {
+                const fetchedMessages = await GET_MESSAGES_FOR_CHANNEL(channelId);
+                setMessages(fetchedMessages);
+            } catch (error) {
+                console.error("Error fetching messages:", error);
+            }
+        }
+    
+        if (route.params && route.params.channelId) {
+            fetchMessagesForChannel(route.params.channelId);
+        }
+    }, [route.params]);
 
     useLayoutEffect(() => {
         navigation.setOptions({

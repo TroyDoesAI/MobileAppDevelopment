@@ -1,3 +1,4 @@
+// MessageListItem.js
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 
@@ -36,5 +37,4 @@ const styles = StyleSheet.create({
         fontSize: 18,
     },
 });
-
 export default MessageListItem;
