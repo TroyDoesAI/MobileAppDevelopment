@@ -23,27 +23,27 @@
         </h1>
         <div class="clearfix">
           <div class="fl pad1y space-right2">
-            <span class="strong">23.52% </span>
+            <span class="strong">100% </span>
             <span class="quiet">Statements</span>
-            <span class="fraction">4/17</span>
+            <span class="fraction">6/6</span>
           </div>
 
           <div class="fl pad1y space-right2">
-            <span class="strong">0% </span>
+            <span class="strong">100% </span>
             <span class="quiet">Branches</span>
-            <span class="fraction">0/6</span>
+            <span class="fraction">0/0</span>
           </div>
 
           <div class="fl pad1y space-right2">
-            <span class="strong">50% </span>
+            <span class="strong">100% </span>
             <span class="quiet">Functions</span>
-            <span class="fraction">1/2</span>
+            <span class="fraction">1/1</span>
           </div>
 
           <div class="fl pad1y space-right2">
-            <span class="strong">28.57% </span>
+            <span class="strong">100% </span>
             <span class="quiet">Lines</span>
-            <span class="fraction">4/14</span>
+            <span class="fraction">6/6</span>
           </div>
         </div>
         <p class="quiet">
@@ -57,7 +57,7 @@
           </div>
         </template>
       </div>
-      <div class="status-line low"></div>
+      <div class="status-line high"></div>
       <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -86,10 +86,33 @@
 <a name='L25'></a><a href='#L25'>25</a>
 <a name='L26'></a><a href='#L26'>26</a>
 <a name='L27'></a><a href='#L27'>27</a>
-<a name='L28'></a><a href='#L28'>28</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a>
+<a name='L36'></a><a href='#L36'>36</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">42x</span>
+<span class="cline-any cline-yes">22x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">22x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">22x</span>
+<span class="cline-any cline-yes">22x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">22x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -97,49 +120,50 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">42x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">// DataUtils.js
 // Date formatting utility
 export const formatDate = date =&gt; {
-  const options = {
+  const dateOptions = {
     year: 'numeric',
     month: 'short',
     day: 'numeric',
+  };
+  
+  const timeOptions = {
     hour: '2-digit',
     minute: '2-digit',
     hour12: true,
   };
-  return new Date(date).toLocaleDateString(undefined, options);
+&nbsp;
+  const formattedDate = new Date(date).toLocaleDateString(undefined, dateOptions);
+  const formattedTime = new Date(date).toLocaleTimeString(undefined, timeOptions);
+&nbsp;
+  return `${formattedDate} at ${formattedTime}`;
 };
 &nbsp;
-export const relativeDateFormat = <span class="fstat-no" title="function not covered" >fr</span>omDate =&gt; {
-  const now = <span class="cstat-no" title="statement not covered" >new Date();</span>
-  const diffMs = <span class="cstat-no" title="statement not covered" >now - new Date(fromDate);</span>
-  const diffSecs = <span class="cstat-no" title="statement not covered" >Math.floor(diffMs / 1000);</span>
-  const diffMins = <span class="cstat-no" title="statement not covered" >Math.floor(diffSecs / 60);</span>
-  const diffHrs = <span class="cstat-no" title="statement not covered" >Math.floor(diffMins / 60);</span>
-  const diffDays = <span class="cstat-no" title="statement not covered" >Math.floor(diffHrs / 24);</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  if (diffDays &gt; 0) <span class="cstat-no" title="statement not covered" >return `${diffDays} days`;</span></span>
-<span class="cstat-no" title="statement not covered" >  if (diffHrs &gt; 0) <span class="cstat-no" title="statement not covered" >return `${diffHrs} hours`;</span></span>
-<span class="cstat-no" title="statement not covered" >  if (diffMins &gt; 0) <span class="cstat-no" title="statement not covered" >return `${diffMins} mins`;</span></span>
-<span class="cstat-no" title="statement not covered" >  return `${diffSecs} secs`;</span>
-};
+// export const relativeDateFormat = fromDate =&gt; {
+//   const now = new Date();
+//   const diffMs = now - new Date(fromDate);
+//   const diffSecs = Math.floor(diffMs / 1000);
+//   const diffMins = Math.floor(diffSecs / 60);
+//   const diffHrs = Math.floor(diffMins / 60);
+//   const diffDays = Math.floor(diffHrs / 24);
+&nbsp;
+//   if (diffDays &gt; 0) return `${diffDays} days`;
+//   if (diffHrs &gt; 0) return `${diffHrs} hours`;
+//   if (diffMins &gt; 0) return `${diffMins} mins`;
+//   return `${diffSecs} secs`;
+// };
 &nbsp;</pre></td></tr></table></pre>
 
       <div class="push"></div>
@@ -154,7 +178,7 @@ export const relativeDateFormat = <span class="fstat-no" title="function not cov
         rel="noopener noreferrer"
         >istanbul</a
       >
-      at 2023-07-23T23:09:08.911Z
+      at 2023-07-23T23:33:50.536Z
     </div>
     <script src="../../../prettify.js"></script>
     <script>

@@ -58,6 +58,7 @@ const MessageList = ({route, navigation}) => {
           channelName={channelName}
         />
       )}
+      initialNumToRender={20} // Ensure the first 20 items are rendered initially
     />
   );
 };

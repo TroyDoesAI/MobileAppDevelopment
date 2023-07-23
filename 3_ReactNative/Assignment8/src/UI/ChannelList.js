@@ -42,6 +42,7 @@ const ChannelList = ({navigation, route}) => {
           workspaceName={workspaceName} // Pass the workspace name to ChannelListItem
         />
       )}
+      initialNumToRender={20} // Ensure the first 20 items are rendered initially
     />
   );
 };

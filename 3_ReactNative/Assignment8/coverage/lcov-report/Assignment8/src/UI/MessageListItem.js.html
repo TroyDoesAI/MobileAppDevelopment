@@ -115,14 +115,7 @@
 <a name='L52'></a><a href='#L52'>52</a>
 <a name='L53'></a><a href='#L53'>53</a>
 <a name='L54'></a><a href='#L54'>54</a>
-<a name='L55'></a><a href='#L55'>55</a>
-<a name='L56'></a><a href='#L56'>56</a>
-<a name='L57'></a><a href='#L57'>57</a>
-<a name='L58'></a><a href='#L58'>58</a>
-<a name='L59'></a><a href='#L59'>59</a>
-<a name='L60'></a><a href='#L60'>60</a>
-<a name='L61'></a><a href='#L61'>61</a>
-<a name='L62'></a><a href='#L62'>62</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L55'></a><a href='#L55'>55</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -131,12 +124,10 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">20x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">20x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -155,12 +146,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -192,26 +178,20 @@ import {formatDate} from '../Model/DataUtil'; // Import the formatDate function
 &nbsp;
 // Define the MessageListItem component
 const MessageListItem = ({message, navigation}) =&gt; {
-  // Define a function to handle when a message is clicked
   const handlePress = () =&gt; {
     navigation.navigate('MessageDetail', {message: message});
   };
 &nbsp;
-  // Return the rendered component
   return (
     &lt;TouchableOpacity onPress={handlePress}&gt;
       &lt;View style={styles.container}&gt;
-        &lt;Text
-          style={styles.posterName}
-          accessibilityLabel={message.member.name}&gt;
+        &lt;Text style={styles.posterName}&gt;
           {message.member.name}
         &lt;/Text&gt;
-        &lt;Text style={styles.item} accessibilityLabel={message.content}&gt;
+        &lt;Text style={styles.item}&gt;
           {message.content}
         &lt;/Text&gt;
-        &lt;Text
-          style={styles.date}
-          accessibilityLabel={formatDate(message.posted)}&gt;
+        &lt;Text style={styles.date}&gt;
           {formatDate(message.posted)}
         &lt;/Text&gt;
       &lt;/View&gt;
@@ -238,7 +218,6 @@ const styles = StyleSheet.create({
   date: {
     paddingLeft: 10,
     fontSize: 14,
-    color: '#888', // Make the date text a bit more muted
   },
 });
 &nbsp;
@@ -258,7 +237,7 @@ export default MessageListItem;
         rel="noopener noreferrer"
         >istanbul</a
       >
-      at 2023-07-23T23:09:08.911Z
+      at 2023-07-23T23:33:50.536Z
     </div>
     <script src="../../../prettify.js"></script>
     <script>

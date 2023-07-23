@@ -7,28 +7,16 @@ import {formatDate} from '../Model/DataUtil'; // Import the formatDate function
 
 // Define the MessageListItem component
 const MessageListItem = ({message, navigation}) => {
-  // Define a function to handle when a message is clicked
   const handlePress = () => {
     navigation.navigate('MessageDetail', {message: message});
   };
 
-  // Return the rendered component
   return (
     <TouchableOpacity onPress={handlePress}>
       <View style={styles.container}>
-        <Text
-          style={styles.posterName}
-          accessibilityLabel={message.member.name}>
-          {message.member.name}
-        </Text>
-        <Text style={styles.item} accessibilityLabel={message.content}>
-          {message.content}
-        </Text>
-        <Text
-          style={styles.date}
-          accessibilityLabel={formatDate(message.posted)}>
-          {formatDate(message.posted)}
-        </Text>
+        <Text style={styles.posterName}>{message.member.name}</Text>
+        <Text style={styles.item}>{message.content}</Text>
+        <Text style={styles.date}>{formatDate(message.posted)}</Text>
       </View>
     </TouchableOpacity>
   );
@@ -53,7 +41,6 @@ const styles = StyleSheet.create({
   date: {
     paddingLeft: 10,
     fontSize: 14,
-    color: '#888', // Make the date text a bit more muted
   },
 });
 

@@ -13,6 +13,7 @@ const WorkspaceList = ({navigation}) => {
       renderItem={({item}) => (
         <WorkspaceListItem workspace={item} navigation={navigation} />
       )}
+      initialNumToRender={20} // Ensure the first 20 items are rendered initially
     />
   );
 };

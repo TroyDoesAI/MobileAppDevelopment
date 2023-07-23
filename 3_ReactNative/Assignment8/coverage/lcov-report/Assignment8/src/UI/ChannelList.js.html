@@ -125,7 +125,8 @@
 <a name='L64'></a><a href='#L64'>64</a>
 <a name='L65'></a><a href='#L65'>65</a>
 <a name='L66'></a><a href='#L66'>66</a>
-<a name='L67'></a><a href='#L67'>67</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -164,6 +165,7 @@
 <span class="cline-any cline-yes">18x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -235,6 +237,7 @@ const ChannelList = ({navigation, route}) =&gt; {
           workspaceName={workspaceName} // Pass the workspace name to ChannelListItem
         /&gt;
       )}
+      initialNumToRender={20}  // Ensure the first 20 items are rendered initially
     /&gt;
   );
 };
@@ -271,7 +274,7 @@ export default ChannelList;
         rel="noopener noreferrer"
         >istanbul</a
       >
-      at 2023-07-23T23:09:08.911Z
+      at 2023-07-23T23:33:50.536Z
     </div>
     <script src="../../../prettify.js"></script>
     <script>
