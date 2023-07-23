@@ -8,7 +8,7 @@ import {
   View,
 } from 'react-native';
 
-import { WorkspaceContext } from '../Model/WorkspaceViewModel';
+import { WorkspaceContext } from '../../Model/WorkspaceViewModel';
 
 const styles = StyleSheet.create({
   container: {

@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { navigateToMessages } from '../../Navigation/NavHelper';
 
 const styles = StyleSheet.create({
     container: {
@@ -14,13 +15,9 @@ const styles = StyleSheet.create({
     },
 });
 
-const ChannelListItem = ({ channel, navigation, workspaceName }) => {
+const ChannelListItem = ({ channel, navigation }) => {
     const handlePress = () => {
-        navigation.navigate('Messages', {  // Assuming 'Messages' is the correct route name for MessageList
-            messages: channel.messages,   // Assuming each channel has a "messages" array
-            channelName: channel.name,
-            workspaceName: workspaceName
-        });
+        navigateToMessages(navigation, channel);
     };
 
     return (

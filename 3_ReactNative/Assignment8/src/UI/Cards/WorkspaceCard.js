@@ -1,9 +1,8 @@
 import React from 'react';
 import { TouchableWithoutFeedback, StyleSheet, Text, View } from 'react-native';
-import { WorkspaceContext } from '../Model/WorkspaceViewModel';
+import { WorkspaceContext } from '../../Model/WorkspaceViewModel';
 
 const styles = StyleSheet.create({
-    // TODO : Add styles to the card
 });
 
 const WorkspaceCard = ({ workspace, navigation }) => {

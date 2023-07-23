@@ -7,8 +7,8 @@
 
 import React, { useState, useEffect } from 'react';
 import { FlatList } from 'react-native';
-import WorkspaceListItem from './WorkspaceListItem';
-import workspacesData from '../Resources/Workspaces.json';
+import WorkspaceListItem from '../Cards/WorkspaceListItem';
+import workspacesData from '../../Resources/Workspaces.json';
 
 const WorkspaceList = ({ navigation }) => {
     const [workspaces, setWorkspaces] = useState([]);
