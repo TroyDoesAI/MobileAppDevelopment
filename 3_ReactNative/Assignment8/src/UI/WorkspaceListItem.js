@@ -19,7 +19,6 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     fontSize: 18,
   },
-  // Add more styles as necessary
 });
 
 const WorkspaceListItem = ({ workspace, navigation }) => {
@@ -30,7 +29,9 @@ const WorkspaceListItem = ({ workspace, navigation }) => {
       onPress={() => {
         setWorkspace(workspace);
         navigation.navigate('Channels', { channels: workspace.channels });
-      }}>
+      }}
+      accessibilityLabel={workspace.name}  // <-- Add this line
+    >
       <View style={styles.container}>
         <Text style={styles.item}>{workspace.name}</Text>
       </View>

@@ -12,6 +12,7 @@ import WorkspaceList from './src/UI/WorkspaceList';
 import { WorkspaceProvider } from './src/Model/WorkspaceViewModel';  // Import the WorkspaceProvider
 import ChannelList from './src/UI/ChannelList';
 import MessageList from './src/UI/MessageList';
+import MessageDetail from './src/UI/MessageDetail';
 
 const Stack = createStackNavigator();
 
@@ -31,6 +32,10 @@ const App = () => {
                     <Stack.Screen 
                         name="Messages" 
                         component={MessageList} 
+                    />
+                    <Stack.Screen 
+                        name="MessageDetail" 
+                        component={MessageDetail} 
                     />
                 </Stack.Navigator>
             </NavigationContainer>

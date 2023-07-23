@@ -1,16 +1,18 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import MessageDetail from './MessageDetail';
 
-const ChannelListItem = ({ channel, navigation }) => {
-
+const MessageListItem = ({ message, navigation }) => {
     const handlePress = () => {
-        navigation.push('Messages', { messages: channel.messages });
+        navigation.navigate('MessageDetail', { message: message });
     };
 
     return (
-        <TouchableOpacity onPress={handlePress} accessibilityLabel={channel.name}>
+        <TouchableOpacity onPress={handlePress}>
             <View style={styles.container}>
-                <Text style={styles.item}>{channel.name}</Text>
+                <Text style={styles.item} accessibilityLabel={message.content}>
+                    {message.content}
+                </Text>
             </View>
         </TouchableOpacity>
     );
@@ -29,4 +31,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default ChannelListItem;
+export default MessageListItem;
