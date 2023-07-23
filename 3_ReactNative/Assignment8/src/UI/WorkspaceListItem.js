@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 
 import { WorkspaceContext } from '../Model/WorkspaceViewModel';
+import { ChannelContext } from '../Model/ChannelViewModel';
 
 const styles = StyleSheet.create({
   container: {
@@ -24,14 +25,13 @@ const styles = StyleSheet.create({
 });
 
 const WorkspaceListItem = ({ workspace, navigation }) => {
-  const { setWorkspace } = React.useContext(WorkspaceContext);
+  const { loadChannelsForWorkspace } = React.useContext(ChannelContext);
 
   return (
     <TouchableWithoutFeedback
-      onPress={() => {
-        setWorkspace(workspace);
+      onPress={async () => {
+        await loadChannelsForWorkspace(workspace.id);
         navigation.navigate('Channels', {
-          channels: workspace.channels,
           workspaceName: workspace.name,
         });
       }}
