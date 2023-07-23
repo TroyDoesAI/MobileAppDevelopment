@@ -1,21 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 
-const ChannelListItem = ({ channel, navigation }) => {
-
-    const handlePress = () => {
-        navigation.push('Messages', { messages: channel.messages });
-    };
-
-    return (
-        <TouchableOpacity onPress={handlePress} accessibilityLabel={channel.name}>
-            <View style={styles.container}>
-                <Text style={styles.item}>{channel.name}</Text>
-            </View>
-        </TouchableOpacity>
-    );
-};
-
 const styles = StyleSheet.create({
     container: {
         flexDirection: 'row',
@@ -28,5 +13,23 @@ const styles = StyleSheet.create({
         fontSize: 18,
     },
 });
+
+const ChannelListItem = ({ channel, navigation, workspaceName }) => {
+    const handlePress = () => {
+        navigation.navigate('Messages', {  // Assuming 'Messages' is the correct route name for MessageList
+            messages: channel.messages,   // Assuming each channel has a "messages" array
+            channelName: channel.name,
+            workspaceName: workspaceName
+        });
+    };
+
+    return (
+        <TouchableOpacity onPress={handlePress}>
+            <View style={styles.container}>
+                <Text style={styles.item}>{channel.name}</Text>
+            </View>
+        </TouchableOpacity>
+    );
+};
 
 export default ChannelListItem;

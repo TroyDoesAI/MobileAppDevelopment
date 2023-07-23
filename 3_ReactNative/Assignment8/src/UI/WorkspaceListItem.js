@@ -1,3 +1,5 @@
+// WorkspaceListItem.js
+
 import React from 'react';
 import {
   TouchableWithoutFeedback,
@@ -28,9 +30,12 @@ const WorkspaceListItem = ({ workspace, navigation }) => {
     <TouchableWithoutFeedback
       onPress={() => {
         setWorkspace(workspace);
-        navigation.navigate('Channels', { channels: workspace.channels });
+        navigation.navigate('Channels', {
+          channels: workspace.channels,
+          workspaceName: workspace.name,
+        });
       }}
-      accessibilityLabel={workspace.name}  // <-- Add this line
+      accessibilityLabel={workspace.name}
     >
       <View style={styles.container}>
         <Text style={styles.item}>{workspace.name}</Text>

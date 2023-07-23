@@ -1,6 +1,5 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
-import MessageDetail from './MessageDetail';
 
 const MessageListItem = ({ message, navigation }) => {
     const handlePress = () => {
