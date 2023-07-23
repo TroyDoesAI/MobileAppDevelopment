@@ -33,12 +33,17 @@ const App = () => {
             <Stack.Navigator>
               <Stack.Screen name="Workspaces" component={WorkspaceList} />
               <Stack.Screen name="Channels" component={ChannelList} />
-              <Stack.Screen name="Messages" component={MessageList} />
+              <Stack.Screen
+                name="Messages"
+                component={MessageList}
+                options={({route}) => ({title: route.params.channelName})} // Dynamically set the title
+              />
               <Stack.Screen
                 name="MessageDetail"
                 component={MessageDetail}
                 options={({route}) => ({
                   title: route.params.message.member.name,
+                  headerBackTitle: route.params.channelName, // Set back button's title
                 })}
               />
             </Stack.Navigator>

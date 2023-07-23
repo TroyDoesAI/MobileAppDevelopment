@@ -1,13 +1,29 @@
+// MessageDetail.js
+
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 
 const MessageDetail = ({route}) => {
-  const {message} = route.params;
+  const {message, channelName} = route.params;
+  const postedDate = new Date(message.posted);
+  const options = {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+  };
+
+  const dateFormatted = `${postedDate.toLocaleString(
+    'en-US',
+    options,
+  )} at ${postedDate.toLocaleTimeString(['en-US'], {
+    hour: 'numeric',
+    minute: 'numeric',
+  })}`;
 
   return (
     <View style={styles.container}>
       <Text style={styles.item}>{message.content}</Text>
-      {/* TODO Add any other details you want to display */}
+      <Text style={styles.item}>{dateFormatted}</Text>
     </View>
   );
 };
