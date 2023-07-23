@@ -29,10 +29,9 @@ const WorkspaceListItem = ({ workspace, navigation }) => {
     <TouchableWithoutFeedback
       onPress={() => {
         setWorkspace(workspace);
-        navigation.navigate('ChannelListView', { title: workspace.name });
+        navigation.navigate('Channels', { channels: workspace.channels });
       }}>
       <View style={styles.container}>
-        {/* You can add an icon or image related to workspace next to its name if you have one */}
         <Text style={styles.item}>{workspace.name}</Text>
       </View>
     </TouchableWithoutFeedback>

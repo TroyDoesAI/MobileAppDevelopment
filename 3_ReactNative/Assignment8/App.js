@@ -10,6 +10,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import WorkspaceList from './src/UI/WorkspaceList';
 import { WorkspaceProvider } from './src/Model/WorkspaceViewModel';  // Import the WorkspaceProvider
+import ChannelList from './src/UI/ChannelList';
+import MessageList from './src/UI/MessageList';
 
 const Stack = createStackNavigator();
 
@@ -21,6 +23,14 @@ const App = () => {
                     <Stack.Screen 
                         name="Workspaces" 
                         component={WorkspaceList} 
+                    />
+                    <Stack.Screen 
+                        name="Channels" 
+                        component={ChannelList} 
+                    />
+                    <Stack.Screen 
+                        name="Messages" 
+                        component={MessageList} 
                     />
                 </Stack.Navigator>
             </NavigationContainer>
