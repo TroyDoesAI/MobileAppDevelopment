@@ -1,25 +1,16 @@
 // MessageDetail.js
 
+// Import necessary libraries and components
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
+import {formatDate} from '../Model/DataUtil'; // Import the formatDate function
 
+// Define the MessageDetail component
 const MessageDetail = ({route}) => {
   const {message, channelName} = route.params;
-  const postedDate = new Date(message.posted);
-  const options = {
-    year: 'numeric',
-    month: 'short',
-    day: 'numeric',
-  };
+  const dateFormatted = formatDate(message.posted);
 
-  const dateFormatted = `${postedDate.toLocaleString(
-    'en-US',
-    options,
-  )} at ${postedDate.toLocaleTimeString(['en-US'], {
-    hour: 'numeric',
-    minute: 'numeric',
-  })}`;
-
+  // Return the rendered component
   return (
     <View style={styles.container}>
       <Text style={styles.item}>{message.content}</Text>
@@ -28,6 +19,7 @@ const MessageDetail = ({route}) => {
   );
 };
 
+// Define the styles for the component
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -39,4 +31,5 @@ const styles = StyleSheet.create({
   },
 });
 
+// Export the component
 export default MessageDetail;
