@@ -6,9 +6,9 @@
  */
 
 import React, { useState, useEffect } from 'react';
-import { ScrollView } from 'react-native';
+import { FlatList } from 'react-native';
 import WorkspaceListItem from './WorkspaceListItem';
-import workspacesData from '../Resources/Workspaces.json';  // Import the JSON directly
+import workspacesData from '../Resources/Workspaces.json';
 
 const WorkspaceList = ({ navigation }) => {
     const [workspaces, setWorkspaces] = useState([]);
@@ -18,16 +18,18 @@ const WorkspaceList = ({ navigation }) => {
     }, []);
 
     return (
-        <ScrollView>
-            {workspaces.map(workspace => (
-                <WorkspaceListItem 
-                    key={workspace.id} 
-                    workspace={workspace} 
-                    navigation={navigation} 
+        <FlatList
+            data={workspaces}
+            keyExtractor={(item) => item.id} // Use the 'id' property of each item as the key
+            renderItem={({ item }) => (
+                <WorkspaceListItem
+                    workspace={item}
+                    navigation={navigation}
                 />
-            ))}
-        </ScrollView>
+            )}
+        />
     );
 };
 
 export default WorkspaceList;
+
