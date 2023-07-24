@@ -1,7 +1,7 @@
 import React from 'react';
 import {TouchableWithoutFeedback, StyleSheet, Text, View} from 'react-native';
 import {ChannelContext} from '../Model/ChannelViewModel';
-import { formatElapsedTime } from '../Utils/ElapsedTimeFormatter'; // Ensure this utility function is available
+import {formatElapsedTime} from '../Utils/ElapsedTimeFormatter'; // Ensure this utility function is available
 
 const styles = StyleSheet.create({
   container: {
@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     fontSize: 14,
     color: 'grey',
-  }
+  },
 });
 
 const WorkspaceListItem = ({workspace, navigation}) => {
@@ -28,7 +28,9 @@ const WorkspaceListItem = ({workspace, navigation}) => {
 
   const numberOfChannels = workspace.channels.length;
   const uniquePosters = workspace.uniquePosters;
-  const mostRecentMessageTime = formatElapsedTime(new Date(workspace.mostRecentMessage));
+  const mostRecentMessageTime = formatElapsedTime(
+    new Date(workspace.mostRecentMessage),
+  );
 
   return (
     <TouchableWithoutFeedback

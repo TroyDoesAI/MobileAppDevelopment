@@ -1,19 +1,19 @@
 {
-    "logs": [
+  "logs": [
+    {
+      "outputFile": "com.assignment8.app-mergeDebugResources-29:/values-port/values-port.xml",
+      "map": [
         {
-            "outputFile": "com.assignment8.app-mergeDebugResources-29:/values-port/values-port.xml",
-            "map": [
-                {
-                    "source": "/Users/jair/.gradle/caches/transforms-3/b14585e0ae3314e7a64bac79062dab1c/transformed/appcompat-1.4.1/res/values-port/values-port.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "55",
-                        "endOffsets": "106"
-                    }
-                }
-            ]
+          "source": "/Users/jair/.gradle/caches/transforms-3/b14585e0ae3314e7a64bac79062dab1c/transformed/appcompat-1.4.1/res/values-port/values-port.xml",
+          "from": {
+            "startLines": "2",
+            "startColumns": "4",
+            "startOffsets": "55",
+            "endColumns": "55",
+            "endOffsets": "106"
+          }
         }
-    ]
+      ]
+    }
+  ]
 }

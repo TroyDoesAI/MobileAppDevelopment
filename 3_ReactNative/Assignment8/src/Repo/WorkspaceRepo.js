@@ -28,14 +28,20 @@
 //   return workspacesJson;
 // };
 
-import { Workspace, Channel, Message } from '../Model/DataClasses';
+import {Workspace, Channel, Message} from '../Model/DataClasses';
 
 const workspacesJson = require('../Resources/Workspaces.json');
 // Created a helper function convertToWorkspaceInstance that transforms a workspace JSON object into an instance of the Workspace class. It does this recursively for channels and messages.
-const convertToWorkspaceInstance = (workspaceJson) => {
+const convertToWorkspaceInstance = workspaceJson => {
   const channels = workspaceJson.channels.map(channelJson => {
-    const messages = channelJson.messages.map(messageJson => 
-      new Message(messageJson.id, messageJson.content, messageJson.posted, messageJson.member)
+    const messages = channelJson.messages.map(
+      messageJson =>
+        new Message(
+          messageJson.id,
+          messageJson.content,
+          messageJson.posted,
+          messageJson.member,
+        ),
     );
     return new Channel(channelJson.id, channelJson.name, messages);
   });
@@ -43,5 +49,7 @@ const convertToWorkspaceInstance = (workspaceJson) => {
 };
 
 export const GET_WORKSPACES = async () => {
-  return workspacesJson.map(workspaceJson => convertToWorkspaceInstance(workspaceJson));
+  return workspacesJson.map(workspaceJson =>
+    convertToWorkspaceInstance(workspaceJson),
+  );
 };

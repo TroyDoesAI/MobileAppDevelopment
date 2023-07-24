@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for Assignment8/src/Model/WorkspaceViewModel.js</title>
+    <title>Code coverage report for Assignment8/src/Utils/ElapsedTimeFormatter.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../prettify.css" />
     <link rel="stylesheet" href="../../../base.css" />
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../index.html">All files</a> / <a href="index.html">Assignment8/src/Model</a> WorkspaceViewModel.js</h1>
+        <h1><a href="../../../index.html">All files</a> / <a href="index.html">Assignment8/src/Utils</a> ElapsedTimeFormatter.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">78.57% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>10/10</span>
+                <span class='fraction'>11/14</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/0</span>
+                <span class='fraction'>3/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>3/3</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">78.57% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>10/10</span>
+                <span class='fraction'>11/14</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line high'></div>
+    <div class='status-line medium'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -83,54 +83,45 @@
 <a name='L18'></a><a href='#L18'>18</a>
 <a name='L19'></a><a href='#L19'>19</a>
 <a name='L20'></a><a href='#L20'>20</a>
-<a name='L21'></a><a href='#L21'>21</a>
-<a name='L22'></a><a href='#L22'>22</a>
-<a name='L23'></a><a href='#L23'>23</a>
-<a name='L24'></a><a href='#L24'>24</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L21'></a><a href='#L21'>21</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">272x</span>
+<span class="cline-any cline-yes">272x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">14x</span>
-<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-yes">272x</span>
+<span class="cline-any cline-yes">272x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">14x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">272x</span>
+<span class="cline-any cline-yes">272x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">272x</span>
+<span class="cline-any cline-yes">272x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">272x</span>
+<span class="cline-any cline-yes">272x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">14x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from 'react';
-import {GET_WORKSPACES} from '../Repo/WorkspaceRepo';
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">// Utils/ElapsedTimeFormatter.js
+export const formatElapsedTime = mostRecentDate =&gt; {
+  const now = new Date();
+  const diff = now - mostRecentDate;
 &nbsp;
-export const WorkspaceContext = React.createContext();
-&nbsp;
-export const WorkspaceProvider = props =&gt; {
-  const [workspaces, setWorkspaces] = React.useState([]);
-  const [workspace, setWorkspace] = React.useState();
-&nbsp;
-  React.useEffect(() =&gt; {
-    const fetchData = async () =&gt; {
-      const ws = await GET_WORKSPACES();
-      setWorkspaces(ws);
-    };
-    fetchData();
-  }, []);
-&nbsp;
-  return (
-    &lt;WorkspaceContext.Provider value={{workspaces, workspace, setWorkspace}}&gt;
-      {props.children}
-    &lt;/WorkspaceContext.Provider&gt;
-  );
+  const seconds = Math.floor(diff / 1000);
+  <span class="missing-if-branch" title="if path not taken" >I</span>if (seconds &lt; 60) {
+<span class="cstat-no" title="statement not covered" >    return `${seconds} secs`;</span>
+  }
+  const minutes = Math.floor(seconds / 60);
+  <span class="missing-if-branch" title="if path not taken" >I</span>if (minutes &lt; 60) {
+<span class="cstat-no" title="statement not covered" >    return `${minutes} mins`;</span>
+  }
+  const hours = Math.floor(minutes / 60);
+  <span class="missing-if-branch" title="if path not taken" >I</span>if (hours &lt; 24) {
+<span class="cstat-no" title="statement not covered" >    return `${hours} hours`;</span>
+  }
+  const days = Math.floor(hours / 24);
+  return `${days} days`;
 };
 &nbsp;</pre></td></tr></table></pre>
 
