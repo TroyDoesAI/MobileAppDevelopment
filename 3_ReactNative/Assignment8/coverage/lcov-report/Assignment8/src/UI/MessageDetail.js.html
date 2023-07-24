@@ -25,7 +25,7 @@
           <div class="fl pad1y space-right2">
             <span class="strong">100% </span>
             <span class="quiet">Statements</span>
-            <span class="fraction">5/5</span>
+            <span class="fraction">6/6</span>
           </div>
 
           <div class="fl pad1y space-right2">
@@ -37,13 +37,13 @@
           <div class="fl pad1y space-right2">
             <span class="strong">100% </span>
             <span class="quiet">Functions</span>
-            <span class="fraction">1/1</span>
+            <span class="fraction">2/2</span>
           </div>
 
           <div class="fl pad1y space-right2">
             <span class="strong">100% </span>
             <span class="quiet">Lines</span>
-            <span class="fraction">5/5</span>
+            <span class="fraction">6/6</span>
           </div>
         </div>
         <p class="quiet">
@@ -101,8 +101,20 @@
 <a name='L40'></a><a href='#L40'>40</a>
 <a name='L41'></a><a href='#L41'>41</a>
 <a name='L42'></a><a href='#L42'>42</a>
-<a name='L43'></a><a href='#L43'>43</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L43'></a><a href='#L43'>43</a>
+<a name='L44'></a><a href='#L44'>44</a>
+<a name='L45'></a><a href='#L45'>45</a>
+<a name='L46'></a><a href='#L46'>46</a>
+<a name='L47'></a><a href='#L47'>47</a>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -113,8 +125,14 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -124,6 +142,14 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -147,24 +173,29 @@
 &nbsp;
 // Import necessary libraries and components
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
-import {formatDate} from '../Model/DataUtil'; // Import the formatDate function
+import {StyleSheet, Text, View, TouchableOpacity} from 'react-native'; // &lt;-- Added TouchableOpacity
+import {formatDate} from '../Model/DataUtil';
 &nbsp;
-// Define the MessageDetail component
-const MessageDetail = ({route}) =&gt; {
+const MessageDetail = ({route, navigation}) =&gt; { // &lt;-- Added navigation prop
   const {message, channelName} = route.params;
   const dateFormatted = formatDate(message.posted);
 &nbsp;
-  // Return the rendered component
   return (
     &lt;View style={styles.container}&gt;
       &lt;Text style={styles.item}&gt;{message.content}&lt;/Text&gt;
       &lt;Text style={styles.item}&gt;{dateFormatted}&lt;/Text&gt;
+      
+      &lt;TouchableOpacity 
+        onPress={() =&gt; navigation.goBack()} // &lt;-- This makes the button go back
+        accessibilityLabel="back to channel" // &lt;-- This is what the test is looking for
+        style={styles.backButton}
+      &gt;
+        &lt;Text style={styles.backText}&gt;Back to {channelName}&lt;/Text&gt;
+      &lt;/TouchableOpacity&gt;
     &lt;/View&gt;
   );
 };
 &nbsp;
-// Define the styles for the component
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -174,16 +205,24 @@ const styles = StyleSheet.create({
   },
   item: {
     fontSize: 24,
-    alignSelf: 'center', // Center-align the item text
+    alignSelf: 'center',
   },
   date: {
-    width: '100%', // Stretch across container
+    width: '100%',
     fontSize: 24,
-    textAlign: 'right', // This aligns the text to the right
+    textAlign: 'right',
   },
+  backButton: {
+    marginTop: 20,
+    padding: 10,
+    backgroundColor: '#ddd', // A light gray background color
+    borderRadius: 5,
+  },
+  backText: {
+    fontSize: 18,
+  }
 });
 &nbsp;
-// Export the component
 export default MessageDetail;
 &nbsp;</pre></td></tr></table></pre>
 
@@ -199,7 +238,7 @@ export default MessageDetail;
         rel="noopener noreferrer"
         >istanbul</a
       >
-      at 2023-07-24T00:49:21.654Z
+      at 2023-07-24T01:00:54.385Z
     </div>
     <script src="../../../prettify.js"></script>
     <script>
