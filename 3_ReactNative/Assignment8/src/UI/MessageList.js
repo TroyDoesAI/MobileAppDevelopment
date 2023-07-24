@@ -45,7 +45,8 @@ const MessageList = ({route, navigation}) => {
       headerLeft: () => (
         <TouchableOpacity
           onPress={() => navigation.goBack()}
-          style={styles.backButton}>
+          style={styles.backButton}
+          accessibilityLabel="back to channel">
           <Icon name="chevron-left" size={25} color="blue" />
           <Text style={styles.backText}>{workspaceName}</Text>
         </TouchableOpacity>

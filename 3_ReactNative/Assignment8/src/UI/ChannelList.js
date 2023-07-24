@@ -21,7 +21,8 @@ const ChannelList = ({navigation, route}) => {
       headerLeft: () => (
         <TouchableOpacity
           onPress={() => navigation.goBack()}
-          style={styles.backButton}>
+          style={styles.backButton}
+          accessibilityLabel="back to workspaces">
           <Icon name="chevron-left" size={25} color="blue" />
           <Text style={styles.backText}>Workspaces</Text>
         </TouchableOpacity>
