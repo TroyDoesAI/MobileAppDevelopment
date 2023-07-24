@@ -170,8 +170,8 @@ FNF:7
 FNH:7
 FNDA:6,(anonymous_0)
 FNDA:6,(anonymous_1)
-FNDA:28,(anonymous_2)
-FNDA:28,(anonymous_3)
+FNDA:23,(anonymous_2)
+FNDA:23,(anonymous_3)
 FNDA:2,(anonymous_4)
 FNDA:18,(anonymous_5)
 FNDA:12,(anonymous_6)
@@ -180,8 +180,8 @@ DA:11,6
 DA:12,6
 DA:14,6
 DA:15,6
-DA:17,28
-DA:22,28
+DA:17,23
+DA:22,23
 DA:23,2
 DA:35,6
 DA:38,18
@@ -247,8 +247,8 @@ FNDA:24,(anonymous_2)
 FNDA:4,(anonymous_3)
 FNDA:4,(anonymous_4)
 FNDA:4,(anonymous_5)
-FNDA:15,(anonymous_6)
-FNDA:15,(anonymous_7)
+FNDA:10,(anonymous_6)
+FNDA:10,(anonymous_7)
 FNDA:1,(anonymous_8)
 FNDA:24,(anonymous_9)
 FNDA:20,(anonymous_10)
@@ -269,8 +269,8 @@ DA:33,4
 DA:34,4
 DA:38,8
 DA:39,4
-DA:41,15
-DA:46,15
+DA:41,10
+DA:46,10
 DA:47,1
 DA:59,8
 DA:62,24

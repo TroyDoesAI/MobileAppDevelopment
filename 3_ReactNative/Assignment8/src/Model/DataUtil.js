@@ -8,8 +8,8 @@ export const formatDate = date => {
   };
 
   const timeOptions = {
-    hour: '2-digit',
-    minute: '2-digit',
+    hour: 'numeric',
+    minute: 'numeric',
     hour12: true,
   };
 
