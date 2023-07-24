@@ -25,9 +25,16 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    padding: 10,
   },
   item: {
     fontSize: 24,
+    alignSelf: 'center', // Center-align the item text
+  },
+  date: {
+    width: '100%', // Stretch across container
+    fontSize: 24,
+    textAlign: 'right', // This aligns the text to the right
   },
 });
 

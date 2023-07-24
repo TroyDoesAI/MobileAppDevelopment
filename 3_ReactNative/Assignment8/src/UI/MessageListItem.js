@@ -25,22 +25,24 @@ const MessageListItem = ({message, navigation}) => {
 // Define the styles for the component
 const styles = StyleSheet.create({
   container: {
-    flexDirection: 'column', // Change to column to stack name above message
+    flexDirection: 'column',
     padding: 10,
     borderBottomWidth: 1,
     borderBottomColor: '#ddd',
   },
   posterName: {
-    fontWeight: 'bold', // Give the poster name some weight
-    marginBottom: 5, // Add some space between name and message
+    fontWeight: 'bold',
+    marginBottom: 5,
   },
   item: {
     paddingLeft: 10,
     fontSize: 18,
   },
   date: {
+    width: '100%', // Stretch across container
     paddingLeft: 10,
     fontSize: 14,
+    textAlign: 'right', // This aligns the text to the right
   },
 });
 

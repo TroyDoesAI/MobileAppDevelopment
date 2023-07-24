@@ -11,7 +11,15 @@ const MessageList = ({route, navigation}) => {
   // Deconstruct values from the route params
   const {channelId, channelName, workspaceName} = route.params;
 
-  // UseEffect to fetch messages when channelId changes
+  // Define the sort function
+  const sortMessagesByDate = messages => {
+    return messages
+      .slice()
+      .sort((a, b) => new Date(b.posted) - new Date(a.posted));
+  };
+
+  const sortedMessages = sortMessagesByDate(messages);
+
   useEffect(() => {
     const fetchMessagesForChannel = async channelId => {
       try {
@@ -49,7 +57,7 @@ const MessageList = ({route, navigation}) => {
 
   return (
     <FlatList
-      data={messages}
+      data={sortedMessages}
       keyExtractor={item => item.id.toString()}
       renderItem={({item}) => (
         <MessageListItem
@@ -58,7 +66,7 @@ const MessageList = ({route, navigation}) => {
           channelName={channelName}
         />
       )}
-      initialNumToRender={20} // Ensure the first 20 items are rendered initially
+      initialNumToRender={20}
     />
   );
 };

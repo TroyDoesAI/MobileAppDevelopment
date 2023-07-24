@@ -3,17 +3,25 @@ import {FlatList} from 'react-native';
 import WorkspaceListItem from './WorkspaceListItem';
 import {WorkspaceContext} from '../Model/WorkspaceViewModel';
 
+function sortWorkspacesByDate(workspaces) {
+  return workspaces
+    .slice()
+    .sort((a, b) => new Date(b.createdDate) - new Date(a.createdDate));
+}
+
 const WorkspaceList = ({navigation}) => {
-  const {workspaces} = useContext(WorkspaceContext); // Use the context here
+  const {workspaces} = useContext(WorkspaceContext);
+
+  const sortedWorkspaces = sortWorkspacesByDate(workspaces);
 
   return (
     <FlatList
-      data={workspaces}
-      keyExtractor={item => item.id} // Use the 'id' property of each item as the key
+      data={sortedWorkspaces}
+      keyExtractor={item => item.id.toString()} // Ensure the key is a string
       renderItem={({item}) => (
         <WorkspaceListItem workspace={item} navigation={navigation} />
       )}
-      initialNumToRender={20} // Ensure the first 20 items are rendered initially
+      initialNumToRender={20}
     />
   );
 };
