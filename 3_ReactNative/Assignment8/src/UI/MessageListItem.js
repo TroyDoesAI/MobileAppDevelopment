@@ -3,7 +3,7 @@
 // Import necessary libraries and components
 import React from 'react';
 import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
-import {formatDate} from '../Model/DataUtil'; // Import the formatDate function
+import {formatDate} from '../Model/DataUtil'; // <-- Imported formatDate function
 
 // Define the MessageListItem component
 const MessageListItem = ({message, navigation}) => {
