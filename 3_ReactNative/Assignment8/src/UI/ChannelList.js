@@ -1,6 +1,4 @@
-// ChannelList.js
-
-import React, {useLayoutEffect} from 'react';
+import React, {useLayoutEffect, useCallback} from 'react';
 import {FlatList, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import ChannelListItem from './ChannelListItem';
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -10,26 +8,36 @@ const ChannelList = ({navigation, route}) => {
   const {workspaceName} = route.params;
   const {channels} = React.useContext(ChannelContext); // Consume context
 
+  const HeaderTitle = useCallback(
+    () => (
+      <Text numberOfLines={1} ellipsizeMode="tail" style={styles.title}>
+        {workspaceName}
+      </Text>
+    ),
+    [workspaceName],
+  );
+
+  const HeaderLeft = useCallback(
+    () => (
+      <TouchableOpacity
+        onPress={() => navigation.goBack()}
+        style={styles.backButton}
+        accessibilityLabel="back to workspaces">
+        <Icon name="chevron-left" size={25} color="blue" />
+        <Text style={styles.backText}>Workspaces</Text>
+      </TouchableOpacity>
+    ),
+    [navigation],
+  );
+
   useLayoutEffect(() => {
     navigation.setOptions({
-      headerTitle: () => (
-        <Text numberOfLines={1} ellipsizeMode="tail" style={styles.title}>
-          {workspaceName}
-        </Text>
-      ),
-      headerLeft: () => (
-        <TouchableOpacity
-          onPress={() => navigation.goBack()}
-          style={styles.backButton}
-          accessibilityLabel="back to workspaces">
-          <Icon name="chevron-left" size={25} color="blue" />
-          <Text style={styles.backText}>Workspaces</Text>
-        </TouchableOpacity>
-      ),
+      headerTitle: HeaderTitle,
+      headerLeft: HeaderLeft,
       headerTitleAlign: 'center',
       headerBackTitleVisible: false,
     });
-  }, [navigation, workspaceName]);
+  }, [navigation, HeaderTitle, HeaderLeft]);
 
   return (
     <FlatList
