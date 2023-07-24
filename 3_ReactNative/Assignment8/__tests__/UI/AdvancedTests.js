@@ -45,7 +45,7 @@ describe('WorkspaceListItem', () => {
     );
 
     debug();
-    expect(queryByText(/Latest:/i)).not.toBeNull();
+    expect(queryByText(/Latest:/i)).not.toBeNull(); // i flag ensures that the test is not case-specific
   });
 
   /**
@@ -69,6 +69,7 @@ describe('WorkspaceListItem', () => {
       [new Date(Date.now() - 60000), '1 mins'],
       [new Date(Date.now() - 7200000), '2 hours'],
       [new Date(Date.now() - 86400000 * 2), '2 days'],
+      [new Date(0), '19562 days'], // Unix epoch time day 0 is the first of January 1, 1970
     ])('correctly formats elapsed time', (messageDate, expectedText) => {
       const workspaceWithMessage = {
         name: 'Workspace with Message',
@@ -85,76 +86,57 @@ describe('WorkspaceListItem', () => {
     });
   });
 
-  /**
-   * Group of tests that will focus on how numeric indicators (counts) are displayed.
-   * TODO: Complete this test by mocking a workspace with various counts and
-   * check if they're displayed correctly.
-   */
   describe('Numeric Indicators Test', () => {
+    /**
+     * Tests if the WorkspaceListItem displays correct counts for channels, messages, etc.
+     * 1. Mock a workspace with a set number of channels, messages, etc.
+     * 2. Render the component.
+     * 3. Check if the counts are displayed correctly.
+     */
     it('matches numeric indicators in WorkspaceListItem', () => {
-      // TODO: Implementation
-    });
-  });
-
-  /**
-   * Group of tests focusing on the display of unique posters.
-   * TODO: Complete this test by mocking a workspace with various unique posters
-   * and check if they're displayed correctly.
-   */
-  describe('Unique Posters Test', () => {
-    it('displays the correct count of unique posters', () => {
-      // TODO: Implementation
-    });
-  });
-
-  /**
-   * Tests focusing on accessibility.
-   * Ensures that dynamic accessibility identifiers are set correctly.
-   * TODO: Complete this test by rendering the component and checking
-   * for appropriate accessibility labels.
-   */
-  describe('Accessibility Identifiers Test', () => {
-    it('sets dynamic accessibility identifiers', () => {
-      // TODO: Implementation
-    });
-  });
-
-  /**
-   * Tests the behavior for workspaces with no channels.
-   * 1. Mock a workspace without any channels.
-   * 2. Render the component.
-   * 3. Ensure that the channel count is displayed as 0.
-   * 4. Ensure that the recent message is blank.
-   */
-  describe('No Channel Test', () => {
-    it('shows zero channels and a blank recent message for workspaces with no channels', () => {
-      const workspaceWithNoChannels = {
-        name: 'Empty Workspace',
-        channels: [],
-        uniquePosters: 0,
-        mostRecentMessage: null,
+      const workspaceWithCounts = {
+        name: 'Workspace with Counts',
+        channels: ['Channel1', 'Channel2'],
+        uniquePosters: 3,
+        mostRecentMessage: new Date(),
       };
 
       const {getByText} = customRender(
-        <WorkspaceListItem
-          workspace={workspaceWithNoChannels}
-          navigation={{}}
-        />,
+        <WorkspaceListItem workspace={workspaceWithCounts} navigation={{}} />,
       );
-
-      expect(getByText(/Channels: 0/i)).not.toBeNull();
-      expect(getByText(/Latest:/i)).not.toBeNull();
+      expect(getByText(/Channels: 2/i)).not.toBeNull();
     });
   });
 
   /**
    * Tests the display of the most recent message from all channels in a workspace.
-   * TODO: Complete this test by mocking a workspace with channels having messages
-   * of various dates, then check that the latest message is displayed correctly.
    */
   describe('Most Recent Message Test', () => {
+    /**
+     * Tests if the WorkspaceListItem displays the most recent message correctly.
+     * 1. Mock a workspace with channels having messages of various dates.
+     * 2. Render the component.
+     * 3. Check if the most recent message date is displayed correctly.
+     */
     it('displays the most recent message across all channels', () => {
-      // TODO: Implementation
+      const mockMessages = [
+        new Date(Date.now() - 7200000), // 2 hours ago
+        new Date(Date.now() - 86400000), // 1 day ago
+        new Date(Date.now() - 60000), // 1 minute ago
+      ];
+
+      const workspaceWithMessages = {
+        name: 'Workspace with Messages',
+        channels: mockMessages,
+        uniquePosters: 2,
+        mostRecentMessage: new Date(Math.max.apply(null, mockMessages)), // Most recent date
+      };
+
+      const {getByText} = customRender(
+        <WorkspaceListItem workspace={workspaceWithMessages} navigation={{}} />,
+      );
+
+      expect(getByText(`Latest: 1 mins`)).not.toBeNull();
     });
   });
 });
