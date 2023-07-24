@@ -7,11 +7,8 @@ import {GET_MESSAGES_FOR_CHANNEL} from '../Repo/MessageRepo';
 
 const MessageList = ({route, navigation}) => {
   const {messages, setMessages} = useContext(MessageContext);
-
-  // Deconstruct values from the route params
   const {channelId, channelName, workspaceName} = route.params;
 
-  // Define the sort function
   const sortMessagesByDate = messages => {
     return messages
       .slice()
@@ -22,17 +19,10 @@ const MessageList = ({route, navigation}) => {
 
   useEffect(() => {
     const fetchMessagesForChannel = async channelId => {
-      try {
-        const fetchedMessages = await GET_MESSAGES_FOR_CHANNEL(channelId);
-        setMessages(fetchedMessages);
-      } catch (error) {
-        console.error('Error fetching messages:', error);
-      }
+      const fetchedMessages = await GET_MESSAGES_FOR_CHANNEL(channelId);
+      setMessages(fetchedMessages);
     };
-
-    if (route.params && route.params.channelId) {
-      fetchMessagesForChannel(route.params.channelId);
-    }
+    fetchMessagesForChannel(route.params.channelId);
   }, [route.params]);
 
   useLayoutEffect(() => {
