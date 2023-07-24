@@ -19,10 +19,6 @@ const workspacesJson = require('../Resources/Workspaces.json');
 export const GET_CHANNELS_FOR_WORKSPACE = async workspaceId => {
   const workspace = workspacesJson.find(ws => ws.id === workspaceId);
 
-  if (!workspace) {
-    return [];
-  }
-
   const channels = workspace.channels.map(channelData => {
     const messages = channelData.messages.map(messageData => {
       return new Message(
