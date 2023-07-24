@@ -121,7 +121,24 @@
 <a name='L56'></a><a href='#L56'>56</a>
 <a name='L57'></a><a href='#L57'>57</a>
 <a name='L58'></a><a href='#L58'>58</a>
-<a name='L59'></a><a href='#L59'>59</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a>
+<a name='L76'></a><a href='#L76'>76</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -157,10 +174,27 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -215,21 +249,28 @@ const ChannelListItem = ({channel, navigation, workspaceName}) =&gt; {
     });
   };
 &nbsp;
-  // Use the utility function to get the elapsed time
   const elapsedTime = formatElapsedTime(new Date(channel.mostRecentMessage));
 &nbsp;
   return (
-    &lt;TouchableOpacity onPress={handlePress}&gt;
+    &lt;TouchableOpacity onPress={handlePress} accessibilityLabel={channel.name}&gt;
       &lt;View style={styles.container}&gt;
         &lt;Text style={styles.item}&gt;{channel.name}&lt;/Text&gt;
         &lt;View style={styles.details}&gt;
-          &lt;Text style={styles.detailText}&gt;
+          &lt;Text
+            style={styles.detailText}
+            accessibilityLabel={`count for ${channel.name}`}&gt;
             Messages: {channel.messages.length}
           &lt;/Text&gt;
-          &lt;Text style={styles.detailText}&gt;
+          &lt;Text
+            style={styles.detailText}
+            accessibilityLabel={`members active in ${channel.name}`}&gt;
             Members: {channel.uniquePosters}
           &lt;/Text&gt;
-          &lt;Text style={styles.detailText}&gt;Latest: {elapsedTime} ago&lt;/Text&gt;
+          &lt;Text
+            style={styles.detailText}
+            accessibilityLabel={`latest message in ${channel.name}`}&gt;
+            Latest: {elapsedTime} ago
+          &lt;/Text&gt;
         &lt;/View&gt;
       &lt;/View&gt;
     &lt;/TouchableOpacity&gt;
@@ -237,6 +278,16 @@ const ChannelListItem = ({channel, navigation, workspaceName}) =&gt; {
 };
 &nbsp;
 export default ChannelListItem;
+&nbsp;
+/*
+ChannelListItem.js: This component represents a single channel in the channel list within a specific workspace.
+&nbsp;
+For each channel, it shows the channel name, the number of messages, the number of unique members, and the time of the latest message.
+This component also contains a TouchableOpacity wrapper that enables navigation to the Messages page when pressed.
+The ChannelListItem component receives the channel data, navigation object, and workspace name as props.
+When a channel is pressed, the user is navigated to the Messages screen, with the channel ID, channel name, and workspace name passed as parameters.
+Key elements of the channel information are assigned accessibility labels based on the channel's name to support automated UI testing.
+*/
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -244,7 +295,7 @@ export default ChannelListItem;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-07-24T20:37:20.883Z
+                at 2023-07-24T21:27:07.903Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>
