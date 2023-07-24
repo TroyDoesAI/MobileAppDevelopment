@@ -23,15 +23,15 @@
         </h1>
         <div class="clearfix">
           <div class="fl pad1y space-right2">
-            <span class="strong">85.71% </span>
+            <span class="strong">100% </span>
             <span class="quiet">Statements</span>
-            <span class="fraction">6/7</span>
+            <span class="fraction">5/5</span>
           </div>
 
           <div class="fl pad1y space-right2">
-            <span class="strong">50% </span>
+            <span class="strong">100% </span>
             <span class="quiet">Branches</span>
-            <span class="fraction">1/2</span>
+            <span class="fraction">0/0</span>
           </div>
 
           <div class="fl pad1y space-right2">
@@ -41,9 +41,9 @@
           </div>
 
           <div class="fl pad1y space-right2">
-            <span class="strong">83.33% </span>
+            <span class="strong">100% </span>
             <span class="quiet">Lines</span>
-            <span class="fraction">5/6</span>
+            <span class="fraction">4/4</span>
           </div>
         </div>
         <p class="quiet">
@@ -107,11 +107,7 @@
 <a name='L46'></a><a href='#L46'>46</a>
 <a name='L47'></a><a href='#L47'>47</a>
 <a name='L48'></a><a href='#L48'>48</a>
-<a name='L49'></a><a href='#L49'>49</a>
-<a name='L50'></a><a href='#L50'>50</a>
-<a name='L51'></a><a href='#L51'>51</a>
-<a name='L52'></a><a href='#L52'>52</a>
-<a name='L53'></a><a href='#L53'>53</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L49'></a><a href='#L49'>49</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -129,16 +125,12 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -181,16 +173,12 @@ const workspacesJson = require('../Resources/Workspaces.json');
  */
 &nbsp;
 export const GET_CHANNELS_FOR_WORKSPACE = async workspaceId =&gt; {
-  try {
-    // Search through the workspaces to find a workspace with the given ID.
-    const workspace = workspacesJson.find(ws =&gt; ws.id === workspaceId);
+  // Search through the workspaces to find a workspace with the given ID.
+  const workspace = workspacesJson.find(ws =&gt; ws.id === workspaceId);
 &nbsp;
-    // If a workspace is found with the matching ID, return its associated channels.
-    // If not found, return an empty array.
-    return workspace ? workspace.channels : <span class="branch-1 cbranch-no" title="branch not covered" >[];</span>
-  } catch (error) {
-<span class="cstat-no" title="statement not covered" >    console.error('Error while parsing json:', error);</span>
-  }
+  // If a workspace is found with the matching ID, return its associated channels.
+  // If not found, return an empty array.
+  return workspace.channels;
 };
 &nbsp;
 /*
@@ -229,7 +217,7 @@ in the data) and managing potential errors.
         rel="noopener noreferrer"
         >istanbul</a
       >
-      at 2023-07-24T01:36:20.662Z
+      at 2023-07-24T18:09:38.101Z
     </div>
     <script src="../../../prettify.js"></script>
     <script>

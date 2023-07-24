@@ -230,9 +230,9 @@ import {GET_MESSAGES_FOR_CHANNEL} from '../Repo/MessageRepo';
 &nbsp;
 const MessageList = ({route, navigation}) =&gt; {
   const {messages, setMessages} = useContext(MessageContext);
-  const {channelId, channelName, workspaceName} = route.params;
+  const {channelName, workspaceName} = route.params;
 &nbsp;
-  const sortMessagesByDate = messages =&gt; {
+  const sortMessagesByDate = msgs =&gt; {
     return messages
       .slice()
       .sort((a, b) =&gt; new Date(b.posted) - new Date(a.posted));
@@ -246,7 +246,7 @@ const MessageList = ({route, navigation}) =&gt; {
       setMessages(fetchedMessages);
     };
     fetchMessagesForChannel(route.params.channelId);
-  }, [route.params]);
+  }, [route.params, setMessages]); // check
 &nbsp;
   useLayoutEffect(() =&gt; {
     navigation.setOptions({
@@ -316,7 +316,7 @@ export default MessageList;
         rel="noopener noreferrer"
         >istanbul</a
       >
-      at 2023-07-24T01:36:20.662Z
+      at 2023-07-24T18:09:38.101Z
     </div>
     <script src="../../../prettify.js"></script>
     <script>

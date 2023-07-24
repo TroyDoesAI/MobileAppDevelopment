@@ -2,8 +2,6 @@
 
 import React from 'react';
 import {TouchableWithoutFeedback, StyleSheet, Text, View} from 'react-native';
-
-import {WorkspaceContext} from '../Model/WorkspaceViewModel';
 import {ChannelContext} from '../Model/ChannelViewModel';
 
 const styles = StyleSheet.create({
