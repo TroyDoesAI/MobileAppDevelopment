@@ -11,7 +11,7 @@ const WorkspaceCard = ({workspace, navigation}) => {
   return (
     <TouchableWithoutFeedback
       onPress={() => {
-        setSelectedWorkspace(workspace);
+        setWorkspace(workspace);
         navigation.navigate('Channels', {title: workspace.name});
       }}>
       <View style={styles.container}>

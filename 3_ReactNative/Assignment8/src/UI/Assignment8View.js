@@ -6,7 +6,7 @@
  */
 
 import React, {useState, useEffect} from 'react';
-import {View, ScrollView} from 'react-native';
+import {ScrollView} from 'react-native';
 import WorkspaceListItem from './WorkspaceListItem';
 import workspacesData from '../Resources/Workspaces.json';
 

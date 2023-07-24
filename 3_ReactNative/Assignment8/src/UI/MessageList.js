@@ -7,9 +7,9 @@ import {GET_MESSAGES_FOR_CHANNEL} from '../Repo/MessageRepo';
 
 const MessageList = ({route, navigation}) => {
   const {messages, setMessages} = useContext(MessageContext);
-  const {channelId, channelName, workspaceName} = route.params;
+  const {channelName, workspaceName} = route.params;
 
-  const sortMessagesByDate = messages => {
+  const sortMessagesByDate = msgs => {
     return messages
       .slice()
       .sort((a, b) => new Date(b.posted) - new Date(a.posted));
@@ -23,7 +23,7 @@ const MessageList = ({route, navigation}) => {
       setMessages(fetchedMessages);
     };
     fetchMessagesForChannel(route.params.channelId);
-  }, [route.params]);
+  }, [route.params, setMessages]); // check
 
   useLayoutEffect(() => {
     navigation.setOptions({

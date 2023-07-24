@@ -1,11 +1,10 @@
 // ChannelList.js
 
-import React, {useLayoutEffect, useState, useEffect} from 'react';
+import React, {useLayoutEffect} from 'react';
 import {FlatList, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import ChannelListItem from './ChannelListItem';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {ChannelContext} from '../Model/ChannelViewModel';
-import {GET_CHANNELS_FOR_WORKSPACE} from '../Repo/ChannelRepo';
 
 const ChannelList = ({navigation, route}) => {
   const {workspaceName} = route.params;

@@ -17,11 +17,6 @@ const styles = StyleSheet.create({
 
 const ChannelListItem = ({channel, navigation, workspaceName}) => {
   const handlePress = () => {
-    // navigation.navigate('Messages', {
-    //     messages: channel.messages,
-    //     channelName: channel.name,
-    //     workspaceName: workspaceName
-    // });
     navigation.navigate('Messages', {
       channelId: channel.id, // Pass the channel ID instead of messages
       channelName: channel.name,
