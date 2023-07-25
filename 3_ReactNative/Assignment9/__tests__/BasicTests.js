@@ -13,8 +13,8 @@
  * EDIT TO BE YOUR CREDENTIALS
  * **************************************************************************/
 
-const cruzid = '<cruzid>@ucsc.edu'
-const studentid = '<studentid>'
+const cruzid = 'traschul@ucsc.edu'
+const studentid = '1815098'
 
 /* **************************************************************************
  * DO NOT MODIFY THIS FILE BELOW HERE

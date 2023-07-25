@@ -5,10 +5,55 @@
  * the express written permission of the copyright holder.
  */
 
+// Required React and React Navigation imports.
 import React from 'react';
-import Main from './src/Main';
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
 
-export default App = () => {
-  return <Main />;
+// UI components.
+import WorkspaceList from './src/UI/WorkspaceList';
+import ChannelList from './src/UI/ChannelList';
+import MessageList from './src/UI/MessageList';
+import MessageDetail from './src/UI/MessageDetail';
+import Login from './src/UI/Login'; // Import the new Login component
+
+// Providers (or Contexts) for each Model.
+import {WorkspaceProvider} from './src/Model/WorkspaceViewModel';
+import {ChannelProvider} from './src/Model/ChannelViewModel';
+import {MessageProvider} from './src/Model/MessageViewModel';
+
+// Initialize the Stack navigator.
+const Stack = createStackNavigator();
+
+const App = () => {
+  return (
+    <MessageProvider>
+      <WorkspaceProvider>
+        <ChannelProvider>
+          <NavigationContainer>
+            <Stack.Navigator initialRouteName="Login"> 
+              <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
+              <Stack.Screen name="Workspaces" component={WorkspaceList} />
+              <Stack.Screen name="Channels" component={ChannelList} />
+              <Stack.Screen
+                name="Messages"
+                component={MessageList}
+                options={({ route }) => ({ title: route.params.channelName })}
+              />
+              <Stack.Screen
+                name="MessageDetail"
+                component={MessageDetail}
+                options={({ route }) => ({
+                  title: route.params.message.member.name,
+                  headerBackTitle: route.params.channelName,
+                })}
+              />
+            </Stack.Navigator>
+          </NavigationContainer>
+        </ChannelProvider>
+      </WorkspaceProvider>
+    </MessageProvider>
+  );
 };
 
+export default App;
