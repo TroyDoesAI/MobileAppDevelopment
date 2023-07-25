@@ -1,7 +1,24 @@
+// import React from 'react';
+// import {render} from '@testing-library/react-native';
+// import WorkspaceListItem from '../../src/UI/WorkspaceListItem';
+// import {ChannelContext} from '../../src/Model/ChannelViewModel';
+
+// const mockContextValue = {
+//   loadChannelsForWorkspace: jest.fn(),
+// };
+
+// const customRender = (ui, options) =>
+//   render(
+//     <ChannelContext.Provider value={mockContextValue}>
+//       {ui}
+//     </ChannelContext.Provider>,
+//     options,
+//   );
+
 import React from 'react';
-import {render} from '@testing-library/react-native';
+import { render, cleanup, waitFor } from '@testing-library/react-native';
 import WorkspaceListItem from '../../src/UI/WorkspaceListItem';
-import {ChannelContext} from '../../src/Model/ChannelViewModel';
+import { ChannelContext } from '../../src/Model/ChannelViewModel';
 
 const mockContextValue = {
   loadChannelsForWorkspace: jest.fn(),
@@ -14,6 +31,10 @@ const customRender = (ui, options) =>
     </ChannelContext.Provider>,
     options,
   );
+
+afterEach(() => {
+  cleanup();
+});
 
 /**
  * This test suite focuses on the `WorkspaceListItem` component.
@@ -70,7 +91,7 @@ describe('WorkspaceListItem', () => {
       [new Date(Date.now() - 7200000), '2 hours'],
       [new Date(Date.now() - 86400000 * 2), '2 days'],
       [new Date(0), '19562 days'], // Unix epoch time day 0 is the first of January 1, 1970
-    ])('correctly formats elapsed time', (messageDate, expectedText) => {
+    ])('correctly formats elapsed time', async (messageDate, expectedText) => {
       const workspaceWithMessage = {
         name: 'Workspace with Message',
         channels: [],
@@ -82,8 +103,8 @@ describe('WorkspaceListItem', () => {
         <WorkspaceListItem workspace={workspaceWithMessage} navigation={{}} />,
       );
 
-      expect(getByText(`Latest: ${expectedText}`)).not.toBeNull();
-    });
+      await waitFor(() => expect(getByText(`Latest: ${expectedText}`)).toBeDefined());
+  });
   });
 
   describe('Numeric Indicators Test', () => {
