@@ -41,14 +41,12 @@ describe('WorkspaceListItem', () => {
       mostRecentMessage: null,
     };
 
-    const {queryByText, debug} = customRender(
+    const {queryByText} = customRender(
       <WorkspaceListItem
         workspace={workspaceWithoutMessages}
         navigation={mockNavigation}
       />,
     );
-
-    debug();
     expect(queryByText(/Latest:/i)).not.toBeNull(); // i flag ensures that the test is not case-specific
   });
 

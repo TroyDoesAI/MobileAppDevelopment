@@ -5,20 +5,23 @@ import {formatElapsedTime} from '../Utils/ElapsedTimeFormatter'; // Ensure this 
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: 'column', // Changed to column to stack details vertically
+    flexDirection: 'row', // Changed to row to align elements horizontally
+    alignItems: 'center', // Align items vertically in the row
     padding: 10,
     borderBottomWidth: 1,
     borderBottomColor: '#ddd',
     marginBottom: 10, // Adding some bottom margin for separation
   },
   item: {
-    paddingLeft: 10,
-    fontSize: 18,
+    flex: 1, // Make the workspace name take the available space
+    fontSize: 14,
     marginBottom: 5, // Small margin for some spacing
   },
   details: {
+    flexDirection: 'row', // Align icon and text horizontally
+    alignItems: 'center', // Center items vertically
     paddingLeft: 10,
-    fontSize: 14,
+    fontSize: 10,
     color: 'grey',
   },
 });

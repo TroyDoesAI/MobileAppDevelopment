@@ -12,15 +12,24 @@ const styles = StyleSheet.create({
     borderBottomColor: '#ddd',
   },
   item: {
-    paddingLeft: 10,
-    fontSize: 18,
+    flex: 1, // Make the workspace name take the available space
+    fontSize: 14,
+    marginBottom: 5, // Small margin for some spacing
   },
   details: {
-    flexDirection: 'column',
-    alignItems: 'flex-end',
+    flexDirection: 'row', // Align icon and text horizontally
+    alignItems: 'center', // Center items vertically
+    paddingLeft: 10,
+    fontSize: 10,
+    color: 'grey',
   },
   detailText: {
-    fontSize: 14,
+    fontSize: 10,
+    color: '#888',
+    marginRight: 10,
+  },
+  lastDetailText: {
+    fontSize: 10,
     color: '#888',
   },
 });
@@ -42,17 +51,17 @@ const ChannelListItem = ({channel, navigation, workspaceName}) => {
         <Text style={styles.item}>{channel.name}</Text>
         <View style={styles.details}>
           <Text
-            style={styles.detailText}
+            style={styles.detailText} // Keep this style for Messages
             accessibilityLabel={`count for ${channel.name}`}>
             Messages: {channel.messages.length}
           </Text>
           <Text
-            style={styles.detailText}
+            style={styles.detailText} // Keep this style for Members
             accessibilityLabel={`members active in ${channel.name}`}>
             Members: {channel.uniquePosters}
           </Text>
           <Text
-            style={styles.detailText}
+            style={styles.lastDetailText} // Use the new style for Latest
             accessibilityLabel={`latest message in ${channel.name}`}>
             Latest: {elapsedTime} ago
           </Text>
