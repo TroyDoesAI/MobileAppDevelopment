@@ -1,11 +1,13 @@
 // UI/Login.js
 
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { View, TextInput, Button, StyleSheet, Alert } from 'react-native';
+import AuthContext from '../Model/AuthContext';
 
 const Login = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const { signIn } = useContext(AuthContext);
 
   const handleLogin = async () => {
     try {
@@ -20,10 +22,10 @@ const Login = ({ navigation }) => {
       if (response.ok) {
         const data = await response.json();
         if (data.accessToken) {
+          signIn(data.accessToken);
           navigation.navigate('Workspaces');
         }
       } else {
-        // Handle unsuccessful login attempts
         if (response.status === 401) {
           const errorMessage = await response.text();
           console.error(errorMessage);
@@ -51,7 +53,7 @@ const Login = ({ navigation }) => {
         placeholder="Password"
         value={password}
         onChangeText={setPassword}
-        secureTextEntry={true}  // hide the password
+        secureTextEntry={true}
       />
       <Button title="Login" onPress={handleLogin} />
     </View>

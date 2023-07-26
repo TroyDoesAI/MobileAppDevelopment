@@ -13,9 +13,7 @@
  * Use your own username and password for these tests
  * **************************************************************************/
 
-it(`Says... I'm Not A Real Test, Delete Me!`, async () => {
-});
-
+it(`Says... I'm Not A Real Test, Delete Me!`, async () => {});
 
 /*
  * Log in
