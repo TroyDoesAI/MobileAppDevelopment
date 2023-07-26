@@ -22,25 +22,22 @@ class ChannelsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        workspaceJson = arguments?.getString("workspace") // Get the workspace JSON
-        return inflater.inflate(R.layout.fragment_channels, container, false) // Inflate the layout for the ChannelsFragment
+        workspaceJson = arguments?.getString("workspace")
+        return inflater.inflate(R.layout.fragment_channels, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Instantiate the ViewModel
         channelsViewModel = ViewModelProvider(this).get(ChannelsViewModel::class.java)
 
         workspaceJson?.let {
             val workspace: DataClasses.Workspace = DataClasses.Workspace.fromJson(it)
-            channelsViewModel.fetchChannels(workspace.id) // fetch channels
+            channelsViewModel.fetchChannels(workspace.id)
         }
 
-        // Observe changes in the ViewModel's LiveData
         channelsViewModel.channelsLiveData.observe(viewLifecycleOwner) { channels ->
             channelAdapter = ChannelAdapter(channels, ::onChannelClicked)
-            // Find the RecyclerView in the layout and set its layout manager
             val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerview)
             recyclerView.layoutManager = LinearLayoutManager(context)
             recyclerView.adapter = channelAdapter
@@ -49,7 +46,6 @@ class ChannelsFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        // Get the workspace name
         workspaceJson?.let {
             val workspace: DataClasses.Workspace = DataClasses.Workspace.fromJson(it)
             (activity as AppCompatActivity).supportActionBar?.title = workspace.name
@@ -58,14 +54,13 @@ class ChannelsFragment : Fragment() {
     }
 
     fun onChannelClicked(channel: DataClasses.Channel) {
-        val messagesFragment = MessagesFragment() // Instantiate the new fragment
-        val args = Bundle() // Create a new bundle to hold the arguments
-        val channelJson = channel.toJson() // Convert channel object to JSON
+        val messagesFragment = MessagesFragment()
+        val args = Bundle()
+        val channelJson = channel.toJson()
 
-        args.putString("channel", channelJson) // Add the channel JSON string to the arguments
-        messagesFragment.arguments = args // Set the arguments for the fragment
+        args.putString("channel", channelJson)
+        messagesFragment.arguments = args
 
-        // Replace the current fragment with the new one
         requireActivity().supportFragmentManager.beginTransaction()
             .replace(R.id.fragmentContainerView, messagesFragment)
             .addToBackStack(null)

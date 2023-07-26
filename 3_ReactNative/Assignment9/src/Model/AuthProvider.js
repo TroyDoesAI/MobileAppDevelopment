@@ -6,6 +6,7 @@ const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(null);
 
   const signIn = newToken => {
+    console.log("\nToken received:", newToken);
     setToken(newToken);
   };
 

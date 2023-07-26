@@ -19,7 +19,6 @@ class WorkspacesViewModel : ViewModel() {
                 val workspaceList = ApiHandler.getWorkspaces()
                 _workspacesLiveData.value = workspaceList
             } catch (e: Exception) {
-                // Log the exception
                 Log.e("WorkspacesViewModel", "Error fetching workspaces", e)
             }
         }

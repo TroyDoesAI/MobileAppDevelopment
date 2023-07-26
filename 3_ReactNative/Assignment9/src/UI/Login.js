@@ -1,13 +1,13 @@
 // UI/Login.js
 
-import React, { useState, useContext } from 'react';
-import { View, TextInput, Button, StyleSheet, Alert } from 'react-native';
+import React, {useState, useContext} from 'react';
+import {View, TextInput, Button, StyleSheet, Alert} from 'react-native';
 import AuthContext from '../Model/AuthContext';
 
-const Login = ({ navigation }) => {
+const Login = ({navigation}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const { signIn } = useContext(AuthContext);
+  const {signIn} = useContext(AuthContext);
 
   const handleLogin = async () => {
     try {
@@ -16,7 +16,7 @@ const Login = ({ navigation }) => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({email, password}),
       });
 
       if (response.ok) {
@@ -29,13 +29,19 @@ const Login = ({ navigation }) => {
         if (response.status === 401) {
           const errorMessage = await response.text();
           console.error(errorMessage);
-          Alert.alert('Login Failed', 'Please check your credentials and try again.');
+          Alert.alert(
+            'Login Failed',
+            'Please check your credentials and try again.',
+          );
         } else {
           throw new Error('Unexpected error occurred during login.');
         }
       }
     } catch (error) {
-      console.error('There was a problem with the fetch operation:', error.message);
+      console.error(
+        'There was a problem with the fetch operation:',
+        error.message,
+      );
       Alert.alert('Login Error', 'An error occurred. Please try again later.');
     }
   };

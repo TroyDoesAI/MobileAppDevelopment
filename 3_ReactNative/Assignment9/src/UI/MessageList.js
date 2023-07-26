@@ -8,7 +8,6 @@ import {FlatList, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import MessageListItem from './MessageListItem';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {MessageContext} from '../Model/MessageViewModel';
-import {GET_MESSAGES_FOR_CHANNEL} from '../Repo/MessageRepo';
 
 const HeaderTitle = ({channelName}) => (
   <Text numberOfLines={1} ellipsizeMode="tail" style={styles.title}>
@@ -27,22 +26,19 @@ const HeaderLeft = ({navigation, workspaceName}) => (
 );
 
 const MessageList = ({route, navigation}) => {
-  const {messages, setMessages} = useContext(MessageContext);
-  const {channelName, workspaceName} = route.params;
+  const {messages, loadMessagesForChannel} = useContext(MessageContext);
+  const {channelId, channelName, workspaceName} = route.params;
 
   const sortMessagesByDate = msgs => {
     return msgs.slice().sort((a, b) => new Date(b.posted) - new Date(a.posted));
   };
 
-  const sortedMessages = sortMessagesByDate(messages);
+  // useEffect(() => {
+  //   console.log("\n\nFetching messages for channelId:", channelId);
+  //   loadMessagesForChannel(channelId);
+  // }, [channelId, loadMessagesForChannel]);
 
-  useEffect(() => {
-    const fetchMessagesForChannel = async channelId => {
-      const fetchedMessages = await GET_MESSAGES_FOR_CHANNEL(channelId);
-      setMessages(fetchedMessages);
-    };
-    fetchMessagesForChannel(route.params.channelId);
-  }, [route.params, setMessages]);
+  const sortedMessages = sortMessagesByDate(messages);
 
   const memoizedHeaderTitle = useCallback(
     () => <HeaderTitle channelName={channelName} />,

@@ -1,19 +1,16 @@
 // WorkspaceRepo.js
 
-import { Workspace } from '../Model/DataClasses';
+import {Workspace} from '../Model/DataClasses';
 
-export const GET_WORKSPACES = async (token) => {
+export const GET_WORKSPACES = async token => {
   const response = await fetch('https://cse118.com/api/v2/workspace', {
     method: 'GET',
     headers: {
-      'Authorization': `Bearer ${token}`,
+      Authorization: `Bearer ${token}`,
       'Content-Type': 'application/json',
     },
   });
 
-  console.log("Token:", token);
-  console.log(response.status);
-  console.log(response.statusText);
   if (!response.ok) {
     throw new Error('Failed to fetch workspaces');
   }

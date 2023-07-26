@@ -14,9 +14,9 @@ const MessageListItem = ({message, navigation}) => {
   return (
     <TouchableOpacity onPress={handlePress}>
       <View style={styles.container}>
-        <Text style={styles.posterName}>{message.member.name}</Text>
+        {/* <Text style={styles.posterName}>{message.member.name}</Text> */}
         <Text style={styles.item}>{message.content}</Text>
-        <Text style={styles.date}>{formatDate(message.posted)}</Text>
+        {/* <Text style={styles.date}>{formatDate(message.posted)}</Text> */}
       </View>
     </TouchableOpacity>
   );

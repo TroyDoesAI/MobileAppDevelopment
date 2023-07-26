@@ -4,7 +4,7 @@ import React, {useContext, useState, useEffect} from 'react';
 import {FlatList} from 'react-native';
 import WorkspaceListItem from './WorkspaceListItem';
 import {WorkspaceContext} from '../Model/WorkspaceViewModel';
-import AuthContext from '../Model/AuthContext';  // Import AuthContext
+import AuthContext from '../Model/AuthContext'; // Import AuthContext
 import {GET_WORKSPACES} from '../Repo/WorkspaceRepo'; // Import GET_WORKSPACES function
 
 function sortWorkspacesByDate(workspaces) {
@@ -23,12 +23,14 @@ const WorkspaceList = ({navigation}) => {
       GET_WORKSPACES(token)
         .then(data => setFetchedWorkspaces(data))
         .catch(error => {
-          console.error("Error fetching workspaces:", error);
+          console.error('Error fetching workspaces:', error);
         });
     }
   }, [token]);
 
-  const sortedWorkspaces = sortWorkspacesByDate(fetchedWorkspaces.length > 0 ? fetchedWorkspaces : workspaces);
+  const sortedWorkspaces = sortWorkspacesByDate(
+    fetchedWorkspaces.length > 0 ? fetchedWorkspaces : workspaces,
+  );
 
   return (
     <FlatList

@@ -15,8 +15,8 @@ import edu.ucsc.cse118.assignment3.MainActivity
 import edu.ucsc.cse118.assignment3.R
 import edu.ucsc.cse118.assignment3.model.SharedViewModel
 import kotlinx.coroutines.launch
-import android.text.Editable // Ref: https://developer.android.com/reference/android/text/Editable - This is the interface for text whose content and markup can be changed (as opposed to immutable text like Strings). If you make a DynamicLayout of an Editable, the layout will be reflowed as the text is changed.
-import android.text.TextWatcher // Ref: https://developer.android.com/reference/android/text/TextWatcher - When an object of this type is attached to an Editable, its methods will be called when the text is changed.
+import android.text.Editable
+import android.text.TextWatcher
 
 class LoginFragment : Fragment() {
     private lateinit var mainActivity: MainActivity

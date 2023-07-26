@@ -24,8 +24,6 @@ import androidx.appcompat.app.AlertDialog
 import android.content.DialogInterface
 import kotlinx.coroutines.withContext
 
-// ItemTouchHelper ref: https://developer.android.com/reference/androidx/recyclerview/widget/ItemTouchHelper
-// SnackBar ref: https://stackoverflow.com/questions/51972083/kotlin-create-a-snackbar
 class MessagesFragment : Fragment() {
     private lateinit var messageAdapter: MessageAdapter
     private val uiScope = CoroutineScope(Dispatchers.Main)
@@ -55,19 +53,17 @@ class MessagesFragment : Fragment() {
                     it to member
                 }
                 uiScope.launch {
-                    // Find the RecyclerView in the layout and set its layout manager
                     val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerview)
                     recyclerView.layoutManager = LinearLayoutManager(context)
-                    messageAdapter = MessageAdapter(members as MutableList<Pair<DataClasses.Message, DataClasses.Member>>, ::onMessageClicked) // TODO FIX THIS SHIT LOL!
+                    messageAdapter = MessageAdapter(members as MutableList<Pair<DataClasses.Message, DataClasses.Member>>, ::onMessageClicked)
                     recyclerView.adapter = messageAdapter
-                    (activity as AppCompatActivity).supportActionBar?.title = "${channel?.name ?: "Unknown Channel"}" // handle null case
+                    (activity as AppCompatActivity).supportActionBar?.title = "${channel?.name ?: "Unknown Channel"}"
 
-                    // Setup the swipe to delete functionality after setting up the RecyclerView and adapter
                     setUpSwipeToDelete(recyclerView)
                 }
             }
         }
-        // FAB icon on click listener
+
         view.findViewById<FloatingActionButton>(R.id.fab).setOnClickListener { onFabClicked() }
     }
 
@@ -86,10 +82,10 @@ class MessagesFragment : Fragment() {
         val messageFragment = MessageFragment()
         val args = Bundle()
         val messageJson = messageMemberPair.first.toJson()
-        val memberJson = messageMemberPair.second.toJson() // serialize the member to JSON as well
+        val memberJson = messageMemberPair.second.toJson()
 
         args.putString("message", messageJson)
-        args.putString("member", memberJson) // pass the member as an argument
+        args.putString("member", memberJson)
         messageFragment.arguments = args
 
         requireActivity().supportFragmentManager.beginTransaction()
@@ -98,7 +94,6 @@ class MessagesFragment : Fragment() {
             .commit()
     }
 
-    // This function sets up the swipe to delete functionality
     private fun setUpSwipeToDelete(recyclerView: RecyclerView) {
         val swipeToDeleteCallback = object : SimpleCallback(0, RIGHT) { // Enable swipe to right
             override fun onMove(
@@ -106,7 +101,7 @@ class MessagesFragment : Fragment() {
                 viewHolder: RecyclerView.ViewHolder,
                 target: RecyclerView.ViewHolder
             ): Boolean {
-                return false // Not handling drag and drop in this use case
+                return false
             }
 
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
@@ -118,10 +113,9 @@ class MessagesFragment : Fragment() {
                         val messageMemberPair = messageAdapter.getMessageMemberPair(position)
                         val messageId = messageMemberPair.first.id
 
-                        // Perform deletion on a background thread
                         bgScope.launch {
                             ApiHandler.deleteMessage(messageId)
-                            withContext(Dispatchers.IO) { // Delete the message
+                            withContext(Dispatchers.IO) {
                             Snackbar.make(recyclerView, "Message Deleted", Snackbar.LENGTH_SHORT).show()
                             }
                         }
@@ -136,7 +130,7 @@ class MessagesFragment : Fragment() {
             }
         }
         itemTouchHelper = ItemTouchHelper(swipeToDeleteCallback)
-        itemTouchHelper?.attachToRecyclerView(recyclerView) // Attach to the RecyclerView
+        itemTouchHelper?.attachToRecyclerView(recyclerView)
     }
 
     override fun onDestroyView() {
