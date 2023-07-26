@@ -33,10 +33,10 @@ const MessageList = ({route, navigation}) => {
     return msgs.slice().sort((a, b) => new Date(b.posted) - new Date(a.posted));
   };
 
-  // useEffect(() => {
-  //   console.log("\n\nFetching messages for channelId:", channelId);
-  //   loadMessagesForChannel(channelId);
-  // }, [channelId, loadMessagesForChannel]);
+  useEffect(() => {
+    console.log("\n\nFetching messages for channelId:", channelId);
+    loadMessagesForChannel(channelId);
+  }, [channelId, loadMessagesForChannel]);
 
   const sortedMessages = sortMessagesByDate(messages);
 
