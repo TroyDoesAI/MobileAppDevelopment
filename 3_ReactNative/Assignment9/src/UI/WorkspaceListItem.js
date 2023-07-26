@@ -4,34 +4,41 @@ import React, { useState, useEffect } from 'react';
 import { TouchableWithoutFeedback, StyleSheet, Text, View } from 'react-native';
 import { ChannelContext } from '../Model/ChannelViewModel';
 import { formatElapsedTime } from '../Utils/ElapsedTimeFormatter';
+import { GET_MEMBERS_FOR_WORKSPACE } from '../Repo/MembersRepo';
+import { Workspace, Member, Message } from '../Model/DataClasses';
 
 const styles = StyleSheet.create({
-  // ... (styles remain the same)
+
 });
 
 const WorkspaceListItem = ({ workspace, navigation }) => {
   const { loadChannelsForWorkspace } = React.useContext(ChannelContext);
 
-  const [channels, setChannels] = useState([]);
+  const [members, setMembers] = useState([]);
+  const [mostRecentMessageTime, setMostRecentMessageTime] = useState(null);
 
-  // Fetch channels when a workspace is selected
-  const fetchChannels = async () => {
-    try {
-      const response = await fetch(`/workspace/${workspace.id}/channel`); // Add your base API URL
-      if (response.ok) {
-        const data = await response.json();
-        setChannels(data);
-      } else {
-        console.error("Failed to fetch channels");
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const fetchedMembers = await GET_MEMBERS_FOR_WORKSPACE(workspace.id); // Remember to pass the required token if needed
+        if (!fetchedMembers) {
+          throw new Error("Failed to fetch members for the workspace");
+        }
+        setMembers(fetchedMembers);
+
+        // Using the helper methods from Workspace class
+        // This might need a change if you aren't getting the channels from the same source anymore
+        const ws = new Workspace(workspace.id, workspace.name, workspace.channels); 
+        setMostRecentMessageTime(ws.mostRecentMessage);
+      } catch (error) {
+        console.error("Failed to fetch data:", error.message);
       }
-    } catch (error) {
-      console.error("Error fetching channels:", error);
-    }
-  };
+    };
 
-  // When a workspace is clicked
+    fetchData();
+  }, [workspace.id]);
+
   const handleWorkspaceClick = async () => {
-    await fetchChannels();
     await loadChannelsForWorkspace(workspace.id);
     navigation.navigate('Channels', {
       workspaceName: workspace.name,
@@ -45,24 +52,14 @@ const WorkspaceListItem = ({ workspace, navigation }) => {
     >
       <View style={styles.container}>
         <Text style={styles.item}>{workspace.name}</Text>
-        <Text
-          style={styles.details}
-          accessibilityLabel={`count for ${workspace.name}`}
-        >
-          {`Channels: ${channels.length}`}
+        <Text style={styles.details} accessibilityLabel={`count for ${workspace.name}`}>
+          {`Channels: ${workspace.channels}`}
         </Text>
-        {/* You might need to fetch and compute the uniquePosters and mostRecentMessageTime separately */}
-        <Text
-          style={styles.details}
-          accessibilityLabel={`members active in ${workspace.name}`}
-        >
-          {`Members: TODO`} {/* Replace 'TODO' with your computation for unique posters */}
+        <Text style={styles.details} accessibilityLabel={`members active in ${workspace.name}`}>
+          {`Members: ${new Set(members.map(m => m.id)).size}`} {/* Assuming that members is an array of Member objects */}
         </Text>
-        <Text
-          style={styles.details}
-          accessibilityLabel={`latest message in ${workspace.name}`}
-        >
-          {`Latest: TODO`} {/* Replace 'TODO' with your computation for the most recent message */}
+        <Text style={styles.details} accessibilityLabel={`latest message in ${workspace.name}`}>
+          {`Latest: ${mostRecentMessageTime ? formatElapsedTime(mostRecentMessageTime) : 'N/A'}`}
         </Text>
       </View>
     </TouchableWithoutFeedback>

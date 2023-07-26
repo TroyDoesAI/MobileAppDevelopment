@@ -1,3 +1,4 @@
+// Model/DataClasses.js
 export class Workspace {
   constructor(id, name, channels) {
     this.id = id;
