@@ -61,6 +61,7 @@ struct Assignment4View: View {
             Text(monthYearFormatter.string(from: date))
                 .font(.title2)
                 .padding(.bottom, 20)
+                .accessibility(identifier: "monthYearLabel") // Added accessibility identifier
             ForEach(generateCalendarArray(), id: \.self) { week in
                 HStack {
                     ForEach(week, id: \.self) { day in
@@ -77,6 +78,8 @@ struct Assignment4View: View {
                         .foregroundColor(.white)
                         .cornerRadius(10)
                 }
+                .accessibility(identifier: "previousMonthButton") // Added accessibility identifier
+                
                 Button(action: currentMonth) {
                     Text("Today")
                         .padding()
@@ -84,6 +87,8 @@ struct Assignment4View: View {
                         .foregroundColor(.white)
                         .cornerRadius(10)
                 }
+                .accessibility(identifier: "currentMonthButton") // Added accessibility identifier
+                
                 Button(action: nextMonth) {
                     Text("Next")
                         .padding()
@@ -91,6 +96,7 @@ struct Assignment4View: View {
                         .foregroundColor(.white)
                         .cornerRadius(10)
                 }
+                .accessibility(identifier: "nextMonthButton") // Added accessibility identifier
             }
             .padding(.top, 20)
             Spacer()
