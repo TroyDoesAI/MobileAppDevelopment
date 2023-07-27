@@ -3,6 +3,7 @@ import React, {useState, useEffect, useContext} from 'react';
 import {TouchableWithoutFeedback, StyleSheet, Text, View} from 'react-native';
 import {ChannelContext} from '../Model/ChannelViewModel';
 import AuthContext from '../Model/AuthContext';
+import { HeaderBackButton } from '@react-navigation/stack';
 
 const styles = StyleSheet.create({
   // Your styles here
