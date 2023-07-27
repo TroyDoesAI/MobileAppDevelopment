@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">12.5% </span>
+                <span class="strong">87.5% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>1/8</span>
+                <span class='fraction'>7/8</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/4</span>
+                <span class='fraction'>2/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/2</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">12.5% </span>
+                <span class="strong">87.5% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>1/8</span>
+                <span class='fraction'>7/8</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -93,32 +93,32 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">20x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">20x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">20x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">20x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">60x</span>
+<span class="cline-any cline-yes">60x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">// WorkspaceRepo.js
 &nbsp;
 import {Workspace} from '../Model/DataClasses';
 &nbsp;
-export const GET_WORKSPACES = <span class="fstat-no" title="function not covered" >as</span>ync token =&gt; {
-  const response = <span class="cstat-no" title="statement not covered" >await fetch('https://cse118.com/api/v2/workspace', {</span>
+export const GET_WORKSPACES = async token =&gt; {
+  const response = await fetch('https://cse118.com/api/v2/workspace', {
     method: 'GET',
     headers: {
       Authorization: `Bearer ${token}`,
@@ -126,16 +126,16 @@ export const GET_WORKSPACES = <span class="fstat-no" title="function not covered
     },
   });
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  if (!response.ok) {</span>
+  <span class="missing-if-branch" title="if path not taken" >I</span>if (!response.ok) {
 <span class="cstat-no" title="statement not covered" >    throw new Error('Failed to fetch workspaces');</span>
   }
 &nbsp;
-  const workspacesJson = <span class="cstat-no" title="statement not covered" >await response.json();</span>
+  const workspacesJson = await response.json();
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  return workspacesJson.map(<span class="fstat-no" title="function not covered" >wo</span>rkspaceJson =&gt; {</span>
+  return workspacesJson.map(workspaceJson =&gt; {
     // This conversion assumes channels are already populated in the response
-    const channels = <span class="cstat-no" title="statement not covered" >workspaceJson.channels || [];</span>
-<span class="cstat-no" title="statement not covered" >    return new Workspace(workspaceJson.id, workspaceJson.name, channels);</span>
+    const channels = workspaceJson.channels || <span class="branch-1 cbranch-no" title="branch not covered" >[];</span>
+    return new Workspace(workspaceJson.id, workspaceJson.name, channels);
   });
 };
 &nbsp;</pre></td></tr></table></pre>
@@ -145,7 +145,7 @@ export const GET_WORKSPACES = <span class="fstat-no" title="function not covered
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-07-27T00:24:01.679Z
+                at 2023-07-27T01:18:06.271Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

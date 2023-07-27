@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">54.16% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/24</span>
+                <span class='fraction'>13/24</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">35.71% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/14</span>
+                <span class='fraction'>5/14</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">65% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/20</span>
+                <span class='fraction'>13/20</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line medium'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -122,9 +122,9 @@
 <a name='L57'></a><a href='#L57'>57</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">60x</span>
+<span class="cline-any cline-yes">60x</span>
+<span class="cline-any cline-yes">60x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -141,9 +141,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">17x</span>
+<span class="cline-any cline-yes">17x</span>
+<span class="cline-any cline-yes">17x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -156,31 +156,31 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">17x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">// Model/DataClasses.js
 export class Workspace {
-<span class="fstat-no" title="function not covered" >  co</span>nstructor(id, name, channels) {
-<span class="cstat-no" title="statement not covered" >    this.id = id;</span>
-<span class="cstat-no" title="statement not covered" >    this.name = name;</span>
-<span class="cstat-no" title="statement not covered" >    this.channels = channels;</span>
+  constructor(id, name, channels) {
+    this.id = id;
+    this.name = name;
+    this.channels = channels;
   }
 &nbsp;
 <span class="fstat-no" title="function not covered" >  ge</span>t uniquePosters() {
@@ -196,10 +196,10 @@ export class Workspace {
 }
 &nbsp;
 export class Channel {
-<span class="fstat-no" title="function not covered" >  co</span>nstructor(id, name, messageCount) {
-<span class="cstat-no" title="statement not covered" >    this.id = id;</span>
-<span class="cstat-no" title="statement not covered" >    this.name = name;</span>
-<span class="cstat-no" title="statement not covered" >    this._messageCount = messageCount; </span> // Use underscore to denote private/internal variable
+  constructor(id, name, messageCount) {
+    this.id = id;
+    this.name = name;
+    this._messageCount = messageCount;  // Use underscore to denote private/internal variable
   }
 &nbsp;
 <span class="fstat-no" title="function not covered" >  ge</span>t uniquePosters() {
@@ -211,24 +211,24 @@ export class Channel {
 <span class="cstat-no" title="statement not covered" >    return Math.max(...this.messages.map(<span class="fstat-no" title="function not covered" >me</span>ssage =&gt; <span class="cstat-no" title="statement not covered" >message.posted)</span>);</span>
   }
 &nbsp;
-<span class="fstat-no" title="function not covered" >  ge</span>t messageCount() {
-<span class="cstat-no" title="statement not covered" >    return this._messageCount; </span> // Use the internal variable here
+  get messageCount() {
+    return this._messageCount;  // Use the internal variable here
   }
 }
 &nbsp;
 export class Message {
-<span class="fstat-no" title="function not covered" >  co</span>nstructor(id, content, posted, member) {
-<span class="cstat-no" title="statement not covered" >    this.id = id;</span>
-<span class="cstat-no" title="statement not covered" >    this.content = content;</span>
-<span class="cstat-no" title="statement not covered" >    this.posted = new Date(posted);</span>
-<span class="cstat-no" title="statement not covered" >    this.member = member;</span>
+  constructor(id, content, posted, member) {
+    this.id = id;
+    this.content = content;
+    this.posted = new Date(posted);
+    this.member = member;
   }
 }
 &nbsp;
 export class Member {
-<span class="fstat-no" title="function not covered" >  co</span>nstructor(id, name) {
-<span class="cstat-no" title="statement not covered" >    this.id = id;</span>
-<span class="cstat-no" title="statement not covered" >    this.name = name;</span>
+  constructor(id, name) {
+    this.id = id;
+    this.name = name;
   }
 }
 &nbsp;</pre></td></tr></table></pre>
@@ -238,7 +238,7 @@ export class Member {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-07-27T00:24:01.679Z
+                at 2023-07-27T01:18:06.271Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

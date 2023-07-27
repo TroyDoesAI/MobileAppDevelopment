@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">14.28% </span>
+                <span class="strong">92.85% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>2/14</span>
+                <span class='fraction'>13/14</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">85.71% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/7</span>
+                <span class='fraction'>6/7</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">14.28% </span>
+                <span class="strong">92.85% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>2/14</span>
+                <span class='fraction'>13/14</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -145,32 +145,21 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">37x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">37x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -179,12 +168,23 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">24x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">17x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -219,22 +219,22 @@ import ChannelListItem from './ChannelListItem';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {ChannelContext} from '../Model/ChannelViewModel';
 &nbsp;
-const ChannelList = <span class="fstat-no" title="function not covered" >({</span>navigation, route}) =&gt; {
-  const {workspaceName} = <span class="cstat-no" title="statement not covered" >route.params;</span>
-  const {channels} = <span class="cstat-no" title="statement not covered" >React.useContext(ChannelContext);</span> // Consume context
+const ChannelList = ({navigation, route}) =&gt; {
+  const {workspaceName} = route.params;
+  const {channels} = React.useContext(ChannelContext); // Consume context
 &nbsp;
-  const HeaderTitle = <span class="cstat-no" title="statement not covered" >useCallback(</span>
-<span class="fstat-no" title="function not covered" >    ()</span> =&gt; (
-<span class="cstat-no" title="statement not covered" >      &lt;Text numberOfLines={1} ellipsizeMode="tail" style={styles.title}&gt;</span>
+  const HeaderTitle = useCallback(
+    () =&gt; (
+      &lt;Text numberOfLines={1} ellipsizeMode="tail" style={styles.title}&gt;
         {workspaceName}
       &lt;/Text&gt;
     ),
     [workspaceName],
   );
 &nbsp;
-  const HeaderLeft = <span class="cstat-no" title="statement not covered" >useCallback(</span>
-<span class="fstat-no" title="function not covered" >    ()</span> =&gt; (
-<span class="cstat-no" title="statement not covered" >      &lt;TouchableOpacity</span>
+  const HeaderLeft = useCallback(
+    () =&gt; (
+      &lt;TouchableOpacity
         onPress={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >navigation.goBack()}</span>
         style={styles.backButton}
         accessibilityLabel="back to workspaces"&gt;
@@ -245,8 +245,8 @@ const ChannelList = <span class="fstat-no" title="function not covered" >({</spa
     [navigation],
   );
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  useLayoutEffect(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    navigation.setOptions({</span>
+  useLayoutEffect(() =&gt; {
+    navigation.setOptions({
       headerTitle: HeaderTitle,
       headerLeft: HeaderLeft,
       headerTitleAlign: 'center',
@@ -254,12 +254,12 @@ const ChannelList = <span class="fstat-no" title="function not covered" >({</spa
     });
   }, [navigation, HeaderTitle, HeaderLeft]);
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  return (</span>
+  return (
     &lt;FlatList
       data={channels}
-      keyExtractor={<span class="fstat-no" title="function not covered" >it</span>em =&gt; <span class="cstat-no" title="statement not covered" >item.id.toString()}</span>
-      renderItem={<span class="fstat-no" title="function not covered" >({</span>item}) =&gt; (
-<span class="cstat-no" title="statement not covered" >        &lt;ChannelListItem</span>
+      keyExtractor={item =&gt; item.id.toString()}
+      renderItem={({item}) =&gt; (
+        &lt;ChannelListItem
           channel={item}
           navigation={navigation}
           workspaceName={workspaceName} // Pass the workspace name to ChannelListItem
@@ -295,7 +295,7 @@ export default ChannelList;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-07-27T00:24:01.679Z
+                at 2023-07-27T01:18:06.271Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">6.66% </span>
+                <span class="strong">93.33% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>1/15</span>
+                <span class='fraction'>14/15</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">75% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/4</span>
+                <span class='fraction'>3/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">87.5% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/8</span>
+                <span class='fraction'>7/8</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">6.66% </span>
+                <span class="strong">93.33% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>1/15</span>
+                <span class='fraction'>14/15</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -120,36 +120,36 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">30x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">40x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">30x</span>
+<span class="cline-any cline-yes">30x</span>
+<span class="cline-any cline-yes">30x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">30x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">30x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">30x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">70x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">60x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -166,37 +166,37 @@ import {WorkspaceContext} from '../Model/WorkspaceViewModel';
 import AuthContext from '../Model/AuthContext'; // Import AuthContext
 import {GET_WORKSPACES} from '../Repo/WorkspaceRepo'; // Import GET_WORKSPACES function
 &nbsp;
-function <span class="fstat-no" title="function not covered" >sortWorkspacesByDate(</span>workspaces) {
-<span class="cstat-no" title="statement not covered" >  return workspaces</span>
+function sortWorkspacesByDate(workspaces) {
+  return workspaces
     .slice()
-    .sort(<span class="fstat-no" title="function not covered" >(a</span>, b) =&gt; <span class="cstat-no" title="statement not covered" >new Date(b.createdDate) - new Date(a.createdDate))</span>;
+    .sort((a, b) =&gt; new Date(b.createdDate) - new Date(a.createdDate));
 }
 &nbsp;
-const WorkspaceList = <span class="fstat-no" title="function not covered" >({</span>navigation}) =&gt; {
-  const {token} = <span class="cstat-no" title="statement not covered" >useContext(AuthContext);</span> // Get the token from AuthContext
-  const {workspaces} = <span class="cstat-no" title="statement not covered" >useContext(WorkspaceContext);</span>
-  const [fetchedWorkspaces, setFetchedWorkspaces] = <span class="cstat-no" title="statement not covered" >useState([]);</span>
+const WorkspaceList = ({navigation}) =&gt; {
+  const {token} = useContext(AuthContext); // Get the token from AuthContext
+  const {workspaces} = useContext(WorkspaceContext);
+  const [fetchedWorkspaces, setFetchedWorkspaces] = useState([]);
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  useEffect(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    if (token) {</span>
-<span class="cstat-no" title="statement not covered" >      GET_WORKSPACES(token)</span>
-        .then(<span class="fstat-no" title="function not covered" >da</span>ta =&gt; <span class="cstat-no" title="statement not covered" >setFetchedWorkspaces(data))</span>
+  useEffect(() =&gt; {
+    <span class="missing-if-branch" title="else path not taken" >E</span>if (token) {
+      GET_WORKSPACES(token)
+        .then(data =&gt; setFetchedWorkspaces(data))
         .catch(<span class="fstat-no" title="function not covered" >er</span>ror =&gt; {
 <span class="cstat-no" title="statement not covered" >          console.error('Error fetching workspaces:', error);</span>
         });
     }
   }, [token]);
 &nbsp;
-  const sortedWorkspaces = <span class="cstat-no" title="statement not covered" >sortWorkspacesByDate(</span>
+  const sortedWorkspaces = sortWorkspacesByDate(
     fetchedWorkspaces.length &gt; 0 ? fetchedWorkspaces : workspaces,
   );
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  return (</span>
+  return (
     &lt;FlatList
       data={sortedWorkspaces}
-      keyExtractor={<span class="fstat-no" title="function not covered" >it</span>em =&gt; <span class="cstat-no" title="statement not covered" >item.id.toString()}</span> // Ensure the key is a string
-      renderItem={<span class="fstat-no" title="function not covered" >({</span>item}) =&gt; (
-<span class="cstat-no" title="statement not covered" >        &lt;WorkspaceListItem workspace={item} navigation={navigation} /&gt;</span>
+      keyExtractor={item =&gt; item.id.toString()} // Ensure the key is a string
+      renderItem={({item}) =&gt; (
+        &lt;WorkspaceListItem workspace={item} navigation={navigation} /&gt;
       )}
       initialNumToRender={20}
     /&gt;
@@ -211,7 +211,7 @@ export default WorkspaceList;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-07-27T00:24:01.679Z
+                at 2023-07-27T01:18:06.271Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>
