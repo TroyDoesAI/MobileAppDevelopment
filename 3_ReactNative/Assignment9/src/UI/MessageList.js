@@ -34,7 +34,7 @@ const MessageList = ({route, navigation}) => {
   };
 
   useEffect(() => {
-    console.log("\n\nFetching messages for channelId:", channelId);
+    console.log('\n\nFetching messages for channelId:', channelId);
     loadMessagesForChannel(channelId);
   }, [channelId, loadMessagesForChannel]);
 

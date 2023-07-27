@@ -1,6 +1,6 @@
 // src/Model/AuthContext.js
 
-import { createContext } from 'react';
+import {createContext} from 'react';
 
 const AuthContext = createContext({
   token: null, // Access token

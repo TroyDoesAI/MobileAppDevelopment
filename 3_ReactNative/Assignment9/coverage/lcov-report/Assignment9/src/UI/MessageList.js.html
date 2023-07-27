@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">14.81% </span>
+                <span class="strong">16% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>4/27</span>
+                <span class='fraction'>4/25</span>
             </div>
         
             
@@ -39,14 +39,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/13</span>
+                <span class='fraction'>0/12</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">15.38% </span>
+                <span class="strong">16.66% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>4/26</span>
+                <span class='fraction'>4/24</span>
             </div>
         
             
@@ -156,12 +156,7 @@
 <a name='L91'></a><a href='#L91'>91</a>
 <a name='L92'></a><a href='#L92'>92</a>
 <a name='L93'></a><a href='#L93'>93</a>
-<a name='L94'></a><a href='#L94'>94</a>
-<a name='L95'></a><a href='#L95'>95</a>
-<a name='L96'></a><a href='#L96'>96</a>
-<a name='L97'></a><a href='#L97'>97</a>
-<a name='L98'></a><a href='#L98'>98</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L94'></a><a href='#L94'>94</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -197,14 +192,11 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -267,7 +259,6 @@ import {FlatList, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import MessageListItem from './MessageListItem';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {MessageContext} from '../Model/MessageViewModel';
-import {GET_MESSAGES_FOR_CHANNEL} from '../Repo/MessageRepo';
 &nbsp;
 const HeaderTitle = <span class="fstat-no" title="function not covered" >({</span>channelName}) =&gt; (
 <span class="cstat-no" title="statement not covered" >  &lt;Text numberOfLines={1} ellipsizeMode="tail" style={styles.title}&gt;</span>
@@ -286,22 +277,19 @@ const HeaderLeft = <span class="fstat-no" title="function not covered" >({</span
 );
 &nbsp;
 const MessageList = <span class="fstat-no" title="function not covered" >({</span>route, navigation}) =&gt; {
-  const {messages, setMessages} = <span class="cstat-no" title="statement not covered" >useContext(MessageContext);</span>
-  const {channelName, workspaceName} = <span class="cstat-no" title="statement not covered" >route.params;</span>
+  const {messages, loadMessagesForChannel} = <span class="cstat-no" title="statement not covered" >useContext(MessageContext);</span>
+  const {channelId, channelName, workspaceName} = <span class="cstat-no" title="statement not covered" >route.params;</span>
 &nbsp;
   const sortMessagesByDate = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >ms</span>gs =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >    return msgs.slice().sort(<span class="fstat-no" title="function not covered" >(a</span>, b) =&gt; <span class="cstat-no" title="statement not covered" >new Date(b.posted) - new Date(a.posted))</span>;</span>
   };
 &nbsp;
-  const sortedMessages = <span class="cstat-no" title="statement not covered" >sortMessagesByDate(messages);</span>
-&nbsp;
 <span class="cstat-no" title="statement not covered" >  useEffect(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-    const fetchMessagesForChannel = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >as</span>ync channelId =&gt; {</span>
-      const fetchedMessages = <span class="cstat-no" title="statement not covered" >await GET_MESSAGES_FOR_CHANNEL(channelId);</span>
-<span class="cstat-no" title="statement not covered" >      setMessages(fetchedMessages);</span>
-    };
-<span class="cstat-no" title="statement not covered" >    fetchMessagesForChannel(route.params.channelId);</span>
-  }, [route.params, setMessages]);
+<span class="cstat-no" title="statement not covered" >    console.log('\n\nFetching messages for channelId:', channelId);</span>
+<span class="cstat-no" title="statement not covered" >    loadMessagesForChannel(channelId);</span>
+  }, [channelId, loadMessagesForChannel]);
+&nbsp;
+  const sortedMessages = <span class="cstat-no" title="statement not covered" >sortMessagesByDate(messages);</span>
 &nbsp;
   const memoizedHeaderTitle = <span class="cstat-no" title="statement not covered" >useCallback(</span>
 <span class="fstat-no" title="function not covered" >    ()</span> =&gt; <span class="cstat-no" title="statement not covered" >&lt;HeaderTitle channelName={channelName} /&gt;,</span>
@@ -361,7 +349,7 @@ export default MessageList;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-07-26T20:30:19.960Z
+                at 2023-07-27T00:24:01.679Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

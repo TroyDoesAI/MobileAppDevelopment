@@ -15,8 +15,6 @@ const ChannelListItem = ({channel, navigation, workspaceName}) => {
     });
   };
 
-  const messagesCount = channel.messages ? channel.messages.length : 0; 
-
   return (
     <TouchableOpacity onPress={handlePress} accessibilityLabel={channel.name}>
       <View style={styles.container}>
@@ -25,9 +23,8 @@ const ChannelListItem = ({channel, navigation, workspaceName}) => {
           <Text
             style={styles.detailText}
             accessibilityLabel={`count for ${channel.name}`}>
-            Messages: {messagesCount}
+            Messages: {channel.messageCount}
           </Text>
-
         </View>
       </View>
     </TouchableOpacity>

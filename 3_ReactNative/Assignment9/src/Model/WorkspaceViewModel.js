@@ -1,16 +1,15 @@
 // Model/WorkspaceViewModel.js
 
-import React, { useContext } from 'react';
-import { GET_WORKSPACES } from '../Repo/WorkspaceRepo';
+import React, {useContext} from 'react';
+import {GET_WORKSPACES} from '../Repo/WorkspaceRepo';
 import AuthContext from '../Model/AuthContext';
-
 
 export const WorkspaceContext = React.createContext();
 
 export const WorkspaceProvider = props => {
   const [workspaces, setWorkspaces] = React.useState([]);
   const [workspace, setWorkspace] = React.useState();
-  const { token } = useContext(AuthContext);
+  const {token} = useContext(AuthContext);
 
   React.useEffect(() => {
     const fetchData = async () => {
@@ -23,7 +22,7 @@ export const WorkspaceProvider = props => {
   }, [token]);
 
   return (
-    <WorkspaceContext.Provider value={{ workspaces, workspace, setWorkspace }}>
+    <WorkspaceContext.Provider value={{workspaces, workspace, setWorkspace}}>
       {props.children}
     </WorkspaceContext.Provider>
   );

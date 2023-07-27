@@ -10,11 +10,14 @@ export const MessageProvider = ({children}) => {
   const [messages, setMessages] = useState([]);
   const {token} = useContext(AuthContext);
 
-  const loadMessagesForChannel = useCallback(async channelId => {
-    setMessages([]);
-    const fetchedMessages = await GET_MESSAGES_FOR_CHANNEL(channelId, token);
-    setMessages(fetchedMessages);
-  }, [token]);
+  const loadMessagesForChannel = useCallback(
+    async channelId => {
+      setMessages([]);
+      const fetchedMessages = await GET_MESSAGES_FOR_CHANNEL(channelId, token);
+      setMessages(fetchedMessages);
+    },
+    [token],
+  );
 
   return (
     <MessageContext.Provider value={{messages, loadMessagesForChannel}}>
@@ -22,4 +25,3 @@ export const MessageProvider = ({children}) => {
     </MessageContext.Provider>
   );
 };
-

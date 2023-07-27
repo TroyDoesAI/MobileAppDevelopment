@@ -19,10 +19,10 @@ export class Workspace {
 }
 
 export class Channel {
-  constructor(id, name, messages) {
+  constructor(id, name, messageCount) {
     this.id = id;
     this.name = name;
-    this.messages = messages;
+    this._messageCount = messageCount;  // Use underscore to denote private/internal variable
   }
 
   get uniquePosters() {
@@ -32,6 +32,10 @@ export class Channel {
 
   get mostRecentMessage() {
     return Math.max(...this.messages.map(message => message.posted));
+  }
+
+  get messageCount() {
+    return this._messageCount;  // Use the internal variable here
   }
 }
 
