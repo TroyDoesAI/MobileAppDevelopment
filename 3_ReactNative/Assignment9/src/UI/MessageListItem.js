@@ -1,12 +1,30 @@
 // MessageListItem.js
 
 // Import necessary libraries and components
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
-import {formatDate} from '../Model/DataUtil'; // <-- Imported formatDate function
+import {formatDate} from '../Model/DataUtil';
+import MemberRepository from '../Repo/MembersRepo'; // Adjust the path as needed.
 
 // Define the MessageListItem component
-const MessageListItem = ({message, navigation}) => {
+const MessageListItem = ({message, navigation, accessToken}) => {
+  const [memberName, setMemberName] = useState("Loading...");
+
+  useEffect(() => {
+    const fetchMemberName = async () => {
+      try {
+        console.log("\n\n\naccessToken:", accessToken) // Log the passed in accessToken
+        const name = await MemberRepository.fetchMemberById(message.member.id, accessToken);
+        setMemberName(name);
+      } catch (error) {
+        console.error("Failed to fetch the member name:", error);
+        setMemberName("Error loading name");
+      }
+    };
+
+    fetchMemberName();
+  }, [message.member.id, accessToken]);  // Updated dependency array
+
   const handlePress = () => {
     navigation.navigate('MessageDetail', {message: message});
   };
@@ -14,9 +32,9 @@ const MessageListItem = ({message, navigation}) => {
   return (
     <TouchableOpacity onPress={handlePress}>
       <View style={styles.container}>
-        {/* <Text style={styles.posterName}>{message.member.name}</Text> */}
+        <Text style={styles.posterName}>{memberName}</Text>
         <Text style={styles.item}>{message.content}</Text>
-        {/* <Text style={styles.date}>{formatDate(message.posted)}</Text> */}
+        <Text style={styles.date}>{formatDate(message.posted)}</Text>
       </View>
     </TouchableOpacity>
   );
@@ -39,10 +57,10 @@ const styles = StyleSheet.create({
     fontSize: 18,
   },
   date: {
-    width: '100%', // Stretch across container
+    width: '100%',
     paddingLeft: 10,
     fontSize: 14,
-    textAlign: 'right', // This aligns the text to the right
+    textAlign: 'right',
   },
 });
 

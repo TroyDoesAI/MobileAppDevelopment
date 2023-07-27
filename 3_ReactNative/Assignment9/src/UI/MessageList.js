@@ -1,3 +1,5 @@
+// MessageList.js
+
 import React, {
   useLayoutEffect,
   useContext,
@@ -8,6 +10,7 @@ import {FlatList, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import MessageListItem from './MessageListItem';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {MessageContext} from '../Model/MessageViewModel';
+import AuthContext from '../Model/AuthContext';
 
 const HeaderTitle = ({channelName}) => (
   <Text numberOfLines={1} ellipsizeMode="tail" style={styles.title}>
@@ -28,13 +31,14 @@ const HeaderLeft = ({navigation, workspaceName}) => (
 const MessageList = ({route, navigation}) => {
   const {messages, loadMessagesForChannel} = useContext(MessageContext);
   const {channelId, channelName, workspaceName} = route.params;
+  const { token } = useContext(AuthContext);  // Extract the token from AuthContext
 
   const sortMessagesByDate = msgs => {
     return msgs.slice().sort((a, b) => new Date(b.posted) - new Date(a.posted));
   };
 
   useEffect(() => {
-    console.log('\n\nFetching messages for channelId:', channelId);
+    // console.log('\n\nFetching messages for channelId:', channelId);
     loadMessagesForChannel(channelId);
   }, [channelId, loadMessagesForChannel]);
 
@@ -67,6 +71,7 @@ const MessageList = ({route, navigation}) => {
           message={item}
           navigation={navigation}
           channelName={channelName}
+          accessToken={token}  // Pass the token as accessToken prop
         />
       )}
       initialNumToRender={20}
