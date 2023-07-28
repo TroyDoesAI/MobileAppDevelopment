@@ -1,5 +1,5 @@
 // UI/WorkspaceListItem.js
-import React, {useState, useEffect, useContext} from 'react';
+import React, {useState, useContext} from 'react';
 import {TouchableWithoutFeedback, StyleSheet, Text, View} from 'react-native';
 import {ChannelContext} from '../Model/ChannelViewModel';
 import AuthContext from '../Model/AuthContext';

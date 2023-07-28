@@ -18,20 +18,16 @@ const NewMessageScreen = ({route, navigation}) => {
   }, [navigation]);
 
   const handleAddMessage = async () => {
-    const response = await fetch(
-      `https://cse118.com/api/v2/channel/${channelId}/message`,
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${accessToken}`,
-        },
-        body: JSON.stringify({
-          content: messageContent,
-        }),
+    await fetch(`https://cse118.com/api/v2/channel/${channelId}/message`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${accessToken}`,
       },
-    );
-    const responseData = await response.json();
+      body: JSON.stringify({
+        content: messageContent,
+      }),
+    });
     navigation.goBack();
   };
 

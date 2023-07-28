@@ -1,12 +1,10 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import {GET_CHANNELS_FOR_WORKSPACE} from '../Repo/ChannelRepo';
-import AuthContext from '../Model/AuthContext';
 
 export const ChannelContext = React.createContext();
 
 export const ChannelProvider = props => {
   const [channels, setChannels] = React.useState([]);
-  const {token} = useContext(AuthContext);
 
   const loadChannelsForWorkspace = async (workspaceId, token) => {
     setChannels([]);

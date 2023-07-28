@@ -4,7 +4,7 @@ import React, {useEffect} from 'react'; // <-- Import useEffect
 import {StyleSheet, Text, View} from 'react-native';
 
 const MessageDetail = ({route, navigation}) => {
-  const {message, channelName} = route.params;
+  const {message} = route.params;
   const dateFormatted = message.posted;
 
   useEffect(() => {

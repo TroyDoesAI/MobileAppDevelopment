@@ -1,5 +1,3 @@
-// MessageList.js
-
 import React, {
   useLayoutEffect,
   useContext,
@@ -10,7 +8,7 @@ import {FlatList, Text, StyleSheet, Button} from 'react-native';
 import MessageListItem from './MessageListItem';
 import {MessageContext} from '../Model/MessageViewModel';
 import AuthContext from '../Model/AuthContext';
-import {useIsFocused} from '@react-navigation/native'; // <-- Import the useIsFocused hook
+import {useIsFocused} from '@react-navigation/native';
 
 const HeaderTitle = ({channelName}) => (
   <Text numberOfLines={1} ellipsizeMode="tail" style={styles.title}>
@@ -18,12 +16,25 @@ const HeaderTitle = ({channelName}) => (
   </Text>
 );
 
+const AddMessageButton = ({navigation, channelId, token}) => (
+  <Button
+    title="add"
+    onPress={() =>
+      navigation.navigate('NewMessage', {
+        channelId: channelId,
+        token: token,
+      })
+    }
+    accessibilityLabel="add message"
+  />
+);
+
 const MessageList = ({route, navigation}) => {
   const {messages, loadMessagesForChannel} = useContext(MessageContext);
   const {channelId, channelName} = route.params;
   const {token} = useContext(AuthContext);
 
-  const isFocused = useIsFocused(); // <-- Use the useIsFocused hook here
+  const isFocused = useIsFocused();
 
   const sortMessagesByDate = msgs => {
     return msgs.slice().sort((a, b) => new Date(b.posted) - new Date(a.posted));
@@ -31,10 +42,9 @@ const MessageList = ({route, navigation}) => {
 
   useEffect(() => {
     if (isFocused) {
-      // <-- Check if the screen is focused
-      loadMessagesForChannel(channelId); // If so, fetch the messages
+      loadMessagesForChannel(channelId);
     }
-  }, [channelId, loadMessagesForChannel, isFocused]); // <-- Add isFocused as a dependency
+  }, [channelId, loadMessagesForChannel, isFocused]);
 
   const sortedMessages = sortMessagesByDate(messages);
 
@@ -43,26 +53,26 @@ const MessageList = ({route, navigation}) => {
     [channelName],
   );
 
+  const memoizedAddMessageButton = useCallback(
+    () => (
+      <AddMessageButton
+        navigation={navigation}
+        channelId={channelId}
+        token={token}
+      />
+    ),
+    [navigation, channelId, token],
+  );
+
   useLayoutEffect(() => {
     navigation.setOptions({
       headerTitle: memoizedHeaderTitle,
       headerTitleAlign: 'center',
       headerBackTitleVisible: false,
       headerBackAccessibilityLabel: 'back to channels',
-      headerRight: () => (
-        <Button
-          title="add"
-          onPress={() =>
-            navigation.navigate('NewMessage', {
-              channelId: channelId,
-              token: token,
-            })
-          }
-          accessibilityLabel="add message"
-        />
-      ),
+      headerRight: memoizedAddMessageButton, // Use the memoized version here
     });
-  }, [navigation, memoizedHeaderTitle]);
+  }, [navigation, memoizedHeaderTitle, memoizedAddMessageButton]);
 
   return (
     <FlatList

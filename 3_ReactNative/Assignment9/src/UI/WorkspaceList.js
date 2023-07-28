@@ -1,6 +1,6 @@
 // WorkspaceList.js
 
-import React, {useContext, useState, useEffect} from 'react';
+import React, {useContext, useState, useEffect, useCallback} from 'react';
 import {FlatList, Button} from 'react-native';
 import WorkspaceListItem from './WorkspaceListItem';
 import {WorkspaceContext} from '../Model/WorkspaceViewModel';
@@ -13,6 +13,24 @@ function sortWorkspacesByDate(workspaces) {
     .sort((a, b) => new Date(b.createdDate) - new Date(a.createdDate));
 }
 
+const HeaderLeftButton = ({onPress}) => (
+  <Button
+    onPress={onPress}
+    title="Logout"
+    color="#000"
+    accessibilityLabel="logout"
+  />
+);
+
+const HeaderRightButton = ({onPress}) => (
+  <Button
+    onPress={onPress}
+    title="Reset"
+    color="#000"
+    accessibilityLabel="reset"
+  />
+);
+
 const WorkspaceList = ({navigation}) => {
   const {token, signOut} = useContext(AuthContext);
   const {workspaces} = useContext(WorkspaceContext);
@@ -24,7 +42,7 @@ const WorkspaceList = ({navigation}) => {
     }
   }, [token]);
 
-  const handleReset = async () => {
+  const handleReset = useCallback(async () => {
     await fetch('https://cse118.com/api/v2/reset', {
       method: 'PUT',
       headers: {
@@ -33,39 +51,25 @@ const WorkspaceList = ({navigation}) => {
       },
     });
 
-    // Refetch the workspaces to update the UI.
     const updatedWorkspaces = await GET_WORKSPACES(token);
     setFetchedWorkspaces(updatedWorkspaces);
-  };
+  }, [token]);
 
-  // Custom header with logout and reset button
+  const handleSignOut = useCallback(() => {
+    signOut();
+    navigation.reset({
+      index: 0,
+      routes: [{name: 'Login'}],
+    });
+  }, [signOut, navigation]);
+
   React.useLayoutEffect(() => {
     navigation.setOptions({
-      headerLeft: () => (
-        <Button
-          onPress={() => {
-            signOut();
-            navigation.reset({
-              index: 0,
-              routes: [{name: 'Login'}],
-            });
-          }}
-          title="Logout"
-          color="#000"
-          accessibilityLabel="logout"
-        />
-      ),
-      headerRight: () => (
-        <Button
-          onPress={handleReset}
-          title="Reset"
-          color="#000"
-          accessibilityLabel="reset"
-        />
-      ),
+      headerLeft: () => <HeaderLeftButton onPress={handleSignOut} />,
+      headerRight: () => <HeaderRightButton onPress={handleReset} />,
       headerBackTitleVisible: false,
     });
-  }, [navigation, signOut]);
+  }, [navigation, handleSignOut, handleReset]);
 
   const sortedWorkspaces = sortWorkspacesByDate(
     fetchedWorkspaces.length > 0 ? fetchedWorkspaces : workspaces,
