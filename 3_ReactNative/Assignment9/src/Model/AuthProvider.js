@@ -1,8 +1,8 @@
 // src/Model/AuthProvider.js
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import AuthContext from './AuthContext';
 
-const AuthProvider = ({ children }) => {
+const AuthProvider = ({children}) => {
   const [token, setToken] = useState(null);
 
   const signIn = newToken => {
@@ -15,7 +15,7 @@ const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ token, signIn, signOut }}>
+    <AuthContext.Provider value={{token, signIn, signOut}}>
       {children}
     </AuthContext.Provider>
   );

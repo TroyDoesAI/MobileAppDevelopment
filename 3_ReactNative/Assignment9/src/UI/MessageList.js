@@ -31,7 +31,7 @@ const HeaderLeft = ({navigation, workspaceName}) => (
 const MessageList = ({route, navigation}) => {
   const {messages, loadMessagesForChannel} = useContext(MessageContext);
   const {channelId, channelName, workspaceName} = route.params;
-  const { token } = useContext(AuthContext);  // Extract the token from AuthContext
+  const {token} = useContext(AuthContext); // Extract the token from AuthContext
 
   const sortMessagesByDate = msgs => {
     return msgs.slice().sort((a, b) => new Date(b.posted) - new Date(a.posted));
@@ -71,7 +71,7 @@ const MessageList = ({route, navigation}) => {
           message={item}
           navigation={navigation}
           channelName={channelName}
-          accessToken={token}  // Pass the token as accessToken prop
+          accessToken={token} // Pass the token as accessToken prop
         />
       )}
       initialNumToRender={20}

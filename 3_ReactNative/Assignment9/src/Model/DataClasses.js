@@ -22,7 +22,7 @@ export class Channel {
   constructor(id, name, messageCount) {
     this.id = id;
     this.name = name;
-    this._messageCount = messageCount;  // Use underscore to denote private/internal variable
+    this._messageCount = messageCount; // Use underscore to denote private/internal variable
   }
 
   get uniquePosters() {
@@ -35,7 +35,7 @@ export class Channel {
   }
 
   get messageCount() {
-    return this._messageCount;  // Use the internal variable here
+    return this._messageCount; // Use the internal variable here
   }
 }
 

@@ -6,9 +6,8 @@ import {StyleSheet, Text, View, TouchableOpacity} from 'react-native'; // <-- Ad
 import {formatDate} from '../Model/DataUtil';
 
 const MessageDetail = ({route, navigation}) => {
-  // <-- Added navigation prop
   const {message, channelName} = route.params;
-  const dateFormatted = formatDate(message.posted);
+  const dateFormatted = message.posted;
 
   return (
     <View style={styles.container}>

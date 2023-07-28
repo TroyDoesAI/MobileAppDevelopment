@@ -53,7 +53,7 @@ const Login = ({navigation}) => {
         placeholder="Email"
         value={email}
         onChangeText={setEmail}
-        accessibilityLabel='email'
+        accessibilityLabel="email"
       />
       <TextInput
         style={styles.input}
@@ -61,9 +61,9 @@ const Login = ({navigation}) => {
         value={password}
         onChangeText={setPassword}
         secureTextEntry={true}
-        accessibilityLabel='password'
+        accessibilityLabel="password"
       />
-      <Button title="Login" onPress={handleLogin} accessibilityLabel="login"/>
+      <Button title="Login" onPress={handleLogin} accessibilityLabel="login" />
     </View>
   );
 };
