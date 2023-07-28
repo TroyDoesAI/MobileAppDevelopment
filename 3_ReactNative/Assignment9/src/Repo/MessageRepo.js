@@ -16,7 +16,7 @@ export const GET_MESSAGES_FOR_CHANNEL = async (channelId, token) => {
   );
 
   const messagesJson = await response.json();
-  console.log('messagesJson:', messagesJson);
+  // console.log('messagesJson:', messagesJson);
 
   // get the members of the channel
   let allMembers = await MemberRepository.fetchAllMembers(token);

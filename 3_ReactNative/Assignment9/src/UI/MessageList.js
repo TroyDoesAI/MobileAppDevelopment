@@ -51,7 +51,7 @@ const MessageList = ({route, navigation}) => {
       headerBackAccessibilityLabel: 'back to channels',
       headerRight: () => (
         <Button
-          title="+"
+          title="add"
           onPress={() =>
             navigation.navigate('NewMessage', {
               channelId: channelId,
