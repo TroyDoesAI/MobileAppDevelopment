@@ -1,5 +1,4 @@
 // WorkspaceList.js
-
 import React, {useContext, useState, useEffect} from 'react';
 import {FlatList, Button} from 'react-native';
 import WorkspaceListItem from './WorkspaceListItem';
@@ -20,11 +19,8 @@ const WorkspaceList = ({navigation}) => {
 
   useEffect(() => {
     if (token) {
-      GET_WORKSPACES(token)
-        .then(data => setFetchedWorkspaces(data))
-        .catch(error => {
-          console.error('Error fetching workspaces:', error);
-        });
+      GET_WORKSPACES(token).then(data => setFetchedWorkspaces(data));
+      // Removed the .catch() block
     }
   }, [token]);
 
@@ -37,15 +33,15 @@ const WorkspaceList = ({navigation}) => {
             signOut();
             navigation.reset({
               index: 0,
-              routes: [{name: 'Login'}], // Assuming your login screen's route name is "Login"
+              routes: [{name: 'Login'}],
             });
           }}
           title="Logout"
           color="#000"
-          accessibilityLabel="logout" // For testing purposes
+          accessibilityLabel="logout"
         />
       ),
-      headerBackTitleVisible: false, // Hide back title
+      headerBackTitleVisible: false,
     });
   }, [navigation, signOut]);
 

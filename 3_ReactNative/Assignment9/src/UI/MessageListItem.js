@@ -12,19 +12,13 @@ const MessageListItem = ({message, navigation, accessToken}) => {
 
   useEffect(() => {
     const fetchMemberName = async () => {
-      try {
-        console.log('\n\n\naccessToken:', accessToken); // Log the passed in accessToken
-        const name = await MemberRepository.fetchMemberById(
-          message.member.id,
-          accessToken,
-        );
-        setMemberName(name);
-      } catch (error) {
-        console.error('Failed to fetch the member name:', error);
-        setMemberName('Error loading name');
-      }
+      console.log('\n\n\naccessToken:', accessToken); // Log the passed in accessToken
+      const name = await MemberRepository.fetchMemberById(
+        message.member.id,
+        accessToken,
+      );
+      setMemberName(name);
     };
-
     fetchMemberName();
   }, [message.member.id, accessToken]); // Updated dependency array
 

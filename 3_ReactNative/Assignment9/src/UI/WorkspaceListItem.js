@@ -3,7 +3,6 @@ import React, {useState, useEffect, useContext} from 'react';
 import {TouchableWithoutFeedback, StyleSheet, Text, View} from 'react-native';
 import {ChannelContext} from '../Model/ChannelViewModel';
 import AuthContext from '../Model/AuthContext';
-import {HeaderBackButton} from '@react-navigation/stack';
 
 const styles = StyleSheet.create({
   // Your styles here
@@ -16,15 +15,10 @@ const WorkspaceListItem = ({workspace, navigation}) => {
 
   const handleWorkspaceClick = async () => {
     setLoading(true);
-    try {
-      await loadChannelsForWorkspace(workspace.id, token); // <-- Pass the token here
-      navigation.navigate('Channels', {
-        workspaceName: workspace.name,
-      });
-    } catch (error) {
-      console.error('Error loading channels:', error.message);
-      // Potentially display a message to the user here
-    }
+    await loadChannelsForWorkspace(workspace.id, token); // <-- Pass the token here
+    navigation.navigate('Channels', {
+      workspaceName: workspace.name,
+    });
     setLoading(false);
   };
 
