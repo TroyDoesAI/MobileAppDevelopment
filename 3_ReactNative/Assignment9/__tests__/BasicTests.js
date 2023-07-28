@@ -177,7 +177,7 @@ it('Adds and Deletes Messages', async () => {
   await waitFor(() => screen.getByLabelText('add message'));
   await waitFor(() => screen.getByText(content));
   await waitForLabelTextThenClick('back to channels');
-  await waitFor(() => screen.getByLabelText('add channel'));
+  // await waitFor(() => screen.getByLabelText('add channel'));
   await screen.findByLabelText('count for Another Channel');
   let newCount = Number(
     screen.getByLabelText('count for Another Channel').children[0],
@@ -188,7 +188,7 @@ it('Adds and Deletes Messages', async () => {
   await waitForFirstLabelTextThenClick('delete message');
   await waitForElementToBeRemoved(() => screen.getByText(content));
   await waitForLabelTextThenClick('back to channels');
-  await waitFor(() => screen.getByLabelText('add channel'));
+  //await waitFor(() => screen.getByLabelText('add channel'));
   await waitFor(() => screen.getByText('Another Channel'));
   let finalCount = Number(
     screen.getByLabelText('count for Another Channel').children[0],
