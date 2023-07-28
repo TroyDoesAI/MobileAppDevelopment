@@ -1,40 +1,38 @@
-import React, {useState} from 'react';
-import {View, TextInput, Button, StyleSheet, Alert} from 'react-native';
+// NewMessageScreen.js
 
-const NewMessageScreen = ({route, navigation}) => {
+import React, { useState, useLayoutEffect } from 'react';
+import { View, TextInput, Button, StyleSheet } from 'react-native';
+
+const NewMessageScreen = ({ route, navigation }) => {
   const [messageContent, setMessageContent] = useState('');
   const channelId = route.params.channelId;
-  const accessToken = route.params.token; // Retrieve the token from route.params
+  const accessToken = route.params.token;
+
+  // Use the useLayoutEffect hook to set navigation options for the component
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      // This will set the accessibility label for the default back navigation
+      headerBackAccessibilityLabel: 'back to channel',
+      headerBackTitle: 'Cancel', 
+    });
+  }, [navigation]);
 
   const handleAddMessage = async () => {
-    try {
-      const response = await fetch(
-        `https://cse118.com/api/v2/channel/${channelId}/message`,
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${accessToken}`, // Use the actual token here
-          },
-          body: JSON.stringify({
-            content: messageContent,
-          }),
+    const response = await fetch(
+      `https://cse118.com/api/v2/channel/${channelId}/message`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${accessToken}`,
         },
-      );
-
-      if (response.status !== 201) {
-        throw new Error('Failed to add message');
-      }
-
-      const responseData = await response.json();
-      console.log('New message added:', responseData);
-
-      navigation.goBack();
-    } catch (error) {
-      Alert.alert('Error', 'Failed to add the message. Please try again.', [
-        {text: 'OK'},
-      ]);
-    }
+        body: JSON.stringify({
+          content: messageContent,
+        }),
+      },
+    );
+    const responseData = await response.json();
+    navigation.goBack();
   };
 
   return (
@@ -46,7 +44,9 @@ const NewMessageScreen = ({route, navigation}) => {
         accessibilityLabel="content"
         placeholder="Enter your message"
       />
-      <Button title="Add" onPress={handleAddMessage} />
+      <Button title="Add" onPress={handleAddMessage} 
+      accessibilityLabel="add"
+      />
     </View>
   );
 };
