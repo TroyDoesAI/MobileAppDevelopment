@@ -18,6 +18,7 @@ const WorkspaceListItem = ({workspace, navigation}) => {
     await loadChannelsForWorkspace(workspace.id, token); // <-- Pass the token here
     navigation.navigate('Channels', {
       workspaceName: workspace.name,
+      //token: token,  // <-- Pass the token here 
     });
     setLoading(false);
   };

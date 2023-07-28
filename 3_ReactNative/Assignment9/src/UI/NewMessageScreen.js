@@ -1,9 +1,9 @@
 // NewMessageScreen.js
 
-import React, { useState, useLayoutEffect } from 'react';
-import { View, TextInput, Button, StyleSheet } from 'react-native';
+import React, {useState, useLayoutEffect} from 'react';
+import {View, TextInput, Button, StyleSheet} from 'react-native';
 
-const NewMessageScreen = ({ route, navigation }) => {
+const NewMessageScreen = ({route, navigation}) => {
   const [messageContent, setMessageContent] = useState('');
   const channelId = route.params.channelId;
   const accessToken = route.params.token;
@@ -13,7 +13,7 @@ const NewMessageScreen = ({ route, navigation }) => {
     navigation.setOptions({
       // This will set the accessibility label for the default back navigation
       headerBackAccessibilityLabel: 'back to channel',
-      headerBackTitle: 'Cancel', 
+      headerBackTitle: 'Cancel',
     });
   }, [navigation]);
 
@@ -44,9 +44,7 @@ const NewMessageScreen = ({ route, navigation }) => {
         accessibilityLabel="content"
         placeholder="Enter your message"
       />
-      <Button title="Add" onPress={handleAddMessage} 
-      accessibilityLabel="add"
-      />
+      <Button title="Add" onPress={handleAddMessage} accessibilityLabel="add" />
     </View>
   );
 };
