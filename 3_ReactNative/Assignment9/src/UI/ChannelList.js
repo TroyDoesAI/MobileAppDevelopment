@@ -1,7 +1,8 @@
 // ChannelList.js
 
 import React, {useLayoutEffect, useCallback} from 'react';
-import {FlatList, Text, StyleSheet} from 'react-native';
+
+import {FlatList, Button, Text, StyleSheet} from 'react-native';
 import ChannelListItem from './ChannelListItem';
 import {ChannelContext} from '../Model/ChannelViewModel';
 
@@ -24,6 +25,17 @@ const ChannelList = ({navigation, route}) => {
       headerTitleAlign: 'center',
       headerBackTitleVisible: false,
       headerBackAccessibilityLabel: 'back to workspaces', // Setting the accessibility label for the default back button
+      headerRight: () => (
+        <Button
+          onPress={() => {
+            console.log('Add Channel pressed!');
+          }}
+          title="Add Channel"
+          color="#000" // Change the color according to your preference
+          // TODO add channel functionality
+          accessibilityLabel="add channel" // This is the accessibility label
+        />
+      ),
     });
   }, [navigation, HeaderTitle]);
 
