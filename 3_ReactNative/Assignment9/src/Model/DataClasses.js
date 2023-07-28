@@ -5,17 +5,6 @@ export class Workspace {
     this.name = name;
     this.channels = channels;
   }
-
-  get uniquePosters() {
-    const members = this.channels.flatMap(channel =>
-      channel.messages.map(message => message.member.id),
-    );
-    return new Set(members).size;
-  }
-
-  get mostRecentMessage() {
-    return Math.max(...this.channels.map(channel => channel.mostRecentMessage));
-  }
 }
 
 export class Channel {
@@ -23,15 +12,6 @@ export class Channel {
     this.id = id;
     this.name = name;
     this._messageCount = messageCount; // Use underscore to denote private/internal variable
-  }
-
-  get uniquePosters() {
-    const members = this.messages.map(message => message.member.id);
-    return new Set(members).size;
-  }
-
-  get mostRecentMessage() {
-    return Math.max(...this.messages.map(message => message.posted));
   }
 
   get messageCount() {

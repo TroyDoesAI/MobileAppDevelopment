@@ -17,7 +17,6 @@ const WorkspaceListItem = ({workspace, navigation}) => {
   const handleWorkspaceClick = async () => {
     setLoading(true);
     try {
-      console.log('\nUsing token:', token);
       await loadChannelsForWorkspace(workspace.id, token); // <-- Pass the token here
       navigation.navigate('Channels', {
         workspaceName: workspace.name,

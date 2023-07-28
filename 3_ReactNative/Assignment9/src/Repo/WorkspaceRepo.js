@@ -11,14 +11,9 @@ export const GET_WORKSPACES = async token => {
     },
   });
 
-  if (!response.ok) {
-    throw new Error('Failed to fetch workspaces');
-  }
-
   const workspacesJson = await response.json();
 
   return workspacesJson.map(workspaceJson => {
-    // This conversion assumes channels are already populated in the response
     const channels = workspaceJson.channels || [];
     return new Workspace(workspaceJson.id, workspaceJson.name, channels);
   });

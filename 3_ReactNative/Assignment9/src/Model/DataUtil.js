@@ -1,4 +1,5 @@
 // DataUtils.js
+
 // Date formatting utility
 export const formatDate = date => {
   const dateOptions = {

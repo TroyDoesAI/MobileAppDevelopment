@@ -15,16 +15,11 @@ export const GET_MESSAGES_FOR_CHANNEL = async (channelId, token) => {
     },
   );
 
-  if (!response.ok) {
-    throw new Error('Failed to fetch messages for the channel');
-  }
-
   const messagesJson = await response.json();
   console.log('messagesJson:', messagesJson);
 
   // get the members of the channel
   let allMembers = await MemberRepository.fetchAllMembers(token);
-  console.log('allMembers:', allMembers);
 
   // Convert the JSON data to Message instances.
   return messagesJson.map(messageJson => {
@@ -33,7 +28,6 @@ export const GET_MESSAGES_FOR_CHANNEL = async (channelId, token) => {
       messageJson.id,
       messageJson.content,
       messageJson.posted,
-      // This assumes the message JSON includes a member object. Adjust as necessary.
       new Member(messageJson.member, member.name),
     );
   });

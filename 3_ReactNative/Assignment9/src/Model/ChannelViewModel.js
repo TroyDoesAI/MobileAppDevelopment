@@ -14,7 +14,6 @@ export const ChannelProvider = props => {
       workspaceId,
       token,
     );
-    console.log('Fetched channels:', fetchedChannels);
     setChannels(fetchedChannels);
   };
 
