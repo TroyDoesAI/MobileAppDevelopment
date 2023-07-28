@@ -18,9 +18,8 @@ export const GET_CHANNELS_FOR_WORKSPACE = async (workspaceId, token) => {
   const channelsJson = await response.json();
 
   // Directly map the channelsJson to create Channel objects
-  return channelsJson.map(channelJson => new Channel(
-    channelJson.id,
-    channelJson.name,
-    channelJson.messages,
-  ));
+  return channelsJson.map(
+    channelJson =>
+      new Channel(channelJson.id, channelJson.name, channelJson.messages),
+  );
 };

@@ -1,25 +1,23 @@
 // MessageDetail.js
 
-// Import necessary libraries and components
-import React from 'react';
-import {StyleSheet, Text, View, TouchableOpacity} from 'react-native'; // <-- Added TouchableOpacity
-import {formatDate} from '../Model/DataUtil';
+import React, {useEffect} from 'react'; // <-- Import useEffect
+import {StyleSheet, Text, View} from 'react-native';
 
 const MessageDetail = ({route, navigation}) => {
   const {message, channelName} = route.params;
   const dateFormatted = message.posted;
 
+  useEffect(() => {
+    // Set the accessibilityLabel for the default navigation back button
+    navigation.setOptions({
+      headerBackAccessibilityLabel: 'back to channel',
+    });
+  }, [navigation]);
+
   return (
     <View style={styles.container}>
       <Text style={styles.item}>{message.content}</Text>
       <Text style={styles.item}>{dateFormatted}</Text>
-
-      <TouchableOpacity
-        onPress={() => navigation.goBack()} // <-- This makes the button go back
-        accessibilityLabel="back to channel" // <-- This is what the test is looking for
-        style={styles.backButton}>
-        <Text style={styles.backText}>Back to {channelName}</Text>
-      </TouchableOpacity>
     </View>
   );
 };
@@ -39,15 +37,6 @@ const styles = StyleSheet.create({
     width: '100%',
     fontSize: 24,
     textAlign: 'right',
-  },
-  backButton: {
-    marginTop: 20,
-    padding: 10,
-    backgroundColor: '#ddd', // A light gray background color
-    borderRadius: 5,
-  },
-  backText: {
-    fontSize: 18,
   },
 });
 

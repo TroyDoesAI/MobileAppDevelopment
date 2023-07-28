@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">83.33% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>5/6</span>
+                <span class='fraction'>7/7</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/2</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">83.33% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>5/6</span>
+                <span class='fraction'>7/7</span>
             </div>
         
             
@@ -106,20 +106,7 @@
 <a name='L41'></a><a href='#L41'>41</a>
 <a name='L42'></a><a href='#L42'>42</a>
 <a name='L43'></a><a href='#L43'>43</a>
-<a name='L44'></a><a href='#L44'>44</a>
-<a name='L45'></a><a href='#L45'>45</a>
-<a name='L46'></a><a href='#L46'>46</a>
-<a name='L47'></a><a href='#L47'>47</a>
-<a name='L48'></a><a href='#L48'>48</a>
-<a name='L49'></a><a href='#L49'>49</a>
-<a name='L50'></a><a href='#L50'>50</a>
-<a name='L51'></a><a href='#L51'>51</a>
-<a name='L52'></a><a href='#L52'>52</a>
-<a name='L53'></a><a href='#L53'>53</a>
-<a name='L54'></a><a href='#L54'>54</a>
-<a name='L55'></a><a href='#L55'>55</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L44'></a><a href='#L44'>44</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -130,15 +117,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -151,8 +130,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -173,26 +151,24 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">// MessageDetail.js
 &nbsp;
-// Import necessary libraries and components
-import React from 'react';
-import {StyleSheet, Text, View, TouchableOpacity} from 'react-native'; // &lt;-- Added TouchableOpacity
-import {formatDate} from '../Model/DataUtil';
+import React, {useEffect} from 'react'; // &lt;-- Import useEffect
+import {StyleSheet, Text, View} from 'react-native';
 &nbsp;
 const MessageDetail = ({route, navigation}) =&gt; {
   const {message, channelName} = route.params;
   const dateFormatted = message.posted;
 &nbsp;
+  useEffect(() =&gt; {
+    // Set the accessibilityLabel for the default navigation back button
+    navigation.setOptions({
+      headerBackAccessibilityLabel: 'back to channel',
+    });
+  }, [navigation]);
+&nbsp;
   return (
     &lt;View style={styles.container}&gt;
       &lt;Text style={styles.item}&gt;{message.content}&lt;/Text&gt;
       &lt;Text style={styles.item}&gt;{dateFormatted}&lt;/Text&gt;
-&nbsp;
-      &lt;TouchableOpacity
-        onPress={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >navigation.goBack()}</span> // &lt;-- This makes the button go back
-        accessibilityLabel="back to channel" // &lt;-- This is what the test is looking for
-        style={styles.backButton}&gt;
-        &lt;Text style={styles.backText}&gt;Back to {channelName}&lt;/Text&gt;
-      &lt;/TouchableOpacity&gt;
     &lt;/View&gt;
   );
 };
@@ -213,15 +189,6 @@ const styles = StyleSheet.create({
     fontSize: 24,
     textAlign: 'right',
   },
-  backButton: {
-    marginTop: 20,
-    padding: 10,
-    backgroundColor: '#ddd', // A light gray background color
-    borderRadius: 5,
-  },
-  backText: {
-    fontSize: 18,
-  },
 });
 &nbsp;
 export default MessageDetail;
@@ -232,7 +199,7 @@ export default MessageDetail;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-07-28T02:25:31.474Z
+                at 2023-07-28T02:56:52.565Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

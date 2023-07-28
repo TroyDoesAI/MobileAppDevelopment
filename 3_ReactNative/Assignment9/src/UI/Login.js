@@ -10,36 +10,26 @@ const Login = ({navigation}) => {
   const {signIn} = useContext(AuthContext);
 
   const handleLogin = async () => {
-    try {
-      const response = await fetch('https://cse118.com/api/v2/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({email, password}),
-      });
-  
-      if (response.ok) {
-        const data = await response.json();
-        if (data.accessToken) {
-          signIn(data.accessToken);
-          navigation.navigate('Workspaces');
-        }
-      } else {
-        if (response.status === 401) {
-          const errorMessage = await response.text();
-          console.error(errorMessage);
-          Alert.alert(
-            'Login Failed',
-            'Please check your credentials and try again.',
-          );
-        }
-      }
-    } catch (error) {
-      // Here, you can optionally handle other errors.
+    const response = await fetch('https://cse118.com/api/v2/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({email, password}),
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      signIn(data.accessToken);
+      navigation.navigate('Workspaces');
+    } else {
+      Alert.alert(
+        'Login Failed',
+        'Please check your credentials and try again.',
+      );
     }
   };
-  
+
   return (
     <View style={styles.container}>
       <TextInput

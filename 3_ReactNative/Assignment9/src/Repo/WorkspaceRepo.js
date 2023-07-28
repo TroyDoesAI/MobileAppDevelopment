@@ -14,7 +14,7 @@ export const GET_WORKSPACES = async token => {
   const workspacesJson = await response.json();
 
   return workspacesJson.map(workspaceJson => {
-    const channels = workspaceJson.channels || [];
+    const channels = workspaceJson.channels;
     return new Workspace(workspaceJson.id, workspaceJson.name, channels);
   });
 };
