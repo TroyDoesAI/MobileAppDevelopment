@@ -26695,3 +26695,5 @@
 *.json
 *.info
 *.info
+*.json
+*.map
