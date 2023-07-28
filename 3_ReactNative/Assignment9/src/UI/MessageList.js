@@ -6,7 +6,7 @@ import React, {
   useEffect,
   useCallback,
 } from 'react';
-import {FlatList, Text, StyleSheet} from 'react-native';
+import {FlatList, Text, StyleSheet, Button} from 'react-native';
 import MessageListItem from './MessageListItem';
 import {MessageContext} from '../Model/MessageViewModel';
 import AuthContext from '../Model/AuthContext';
@@ -43,6 +43,18 @@ const MessageList = ({route, navigation}) => {
       headerTitleAlign: 'center',
       headerBackTitleVisible: false,
       headerBackAccessibilityLabel: 'back to channels', // Setting accessibilityLabel for the default back button
+      headerRight: () => (
+        <Button
+          title="+"
+          onPress={() =>
+            navigation.navigate('NewMessage', {
+              channelId: channelId, // Pass the channelId as a param to NewMessageScreen
+              token: token, // Optionally, pass the token if required by the NewMessageScreen
+            })
+          }
+          accessibilityLabel="add a message"
+        />
+      ),
     });
   }, [navigation, memoizedHeaderTitle]);
 

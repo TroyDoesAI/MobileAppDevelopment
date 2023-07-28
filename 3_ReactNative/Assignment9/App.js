@@ -23,7 +23,7 @@ import Login from './src/UI/Login'; // Import the new Login component
 import {WorkspaceProvider} from './src/Model/WorkspaceViewModel';
 import {ChannelProvider} from './src/Model/ChannelViewModel';
 import {MessageProvider} from './src/Model/MessageViewModel';
-
+import NewMessageScreen from './src/UI/NewMessageScreen';
 import AuthProvider from './src/Model/AuthProvider'; // Import the new AuthProvider
 
 // Initialize the Stack navigator.
@@ -56,6 +56,11 @@ const App = () => {
                     title: route.params.message.member.name,
                     headerBackTitle: route.params.channelName,
                   })}
+                />
+                <Stack.Screen // <-- Add this line
+                  name="NewMessage"
+                  component={NewMessageScreen}
+                  options={{title: 'New Message'}}
                 />
               </Stack.Navigator>
             </NavigationContainer>
