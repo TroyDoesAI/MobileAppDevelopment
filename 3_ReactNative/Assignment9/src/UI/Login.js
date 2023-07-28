@@ -18,7 +18,7 @@ const Login = ({navigation}) => {
         },
         body: JSON.stringify({email, password}),
       });
-
+  
       if (response.ok) {
         const data = await response.json();
         if (data.accessToken) {
@@ -33,19 +33,13 @@ const Login = ({navigation}) => {
             'Login Failed',
             'Please check your credentials and try again.',
           );
-        } else {
-          throw new Error('Unexpected error occurred during login.');
         }
       }
     } catch (error) {
-      console.error(
-        'There was a problem with the fetch operation:',
-        error.message,
-      );
-      Alert.alert('Login Error', 'An error occurred. Please try again later.');
+      // Here, you can optionally handle other errors.
     }
   };
-
+  
   return (
     <View style={styles.container}>
       <TextInput
