@@ -15,7 +15,13 @@ const deleteMessage = async (messageId, accessToken) => {
   });
 };
 
-const MessageListItem = ({message, navigation, accessToken}) => {
+const MessageListItem = ({
+  message,
+  navigation,
+  accessToken,
+  channelId,
+  channelName,
+}) => {
   const [memberName, setMemberName] = useState('Loading...');
 
   useEffect(() => {
@@ -40,7 +46,14 @@ const MessageListItem = ({message, navigation, accessToken}) => {
       outputRange: [-20, 0, 0, 1],
     });
     return (
-      <TouchableOpacity onPress={() => deleteMessage(message.id, accessToken)}>
+      <TouchableOpacity
+        onPress={async () => {
+          await deleteMessage(message.id, accessToken);
+          navigation.replace('Messages', {
+            channelId: channelId,
+            channelName: channelName,
+          });
+        }}>
         <View style={styles.deleteBox}>
           <Animated.Text
             style={[

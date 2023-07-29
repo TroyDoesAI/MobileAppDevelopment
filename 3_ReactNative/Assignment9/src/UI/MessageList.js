@@ -1,3 +1,5 @@
+// MessageList.js
+
 import React, {
   useLayoutEffect,
   useContext,
@@ -82,6 +84,7 @@ const MessageList = ({route, navigation}) => {
         <MessageListItem
           message={item}
           navigation={navigation}
+          channelId={channelId}
           channelName={channelName}
           accessToken={token}
         />
