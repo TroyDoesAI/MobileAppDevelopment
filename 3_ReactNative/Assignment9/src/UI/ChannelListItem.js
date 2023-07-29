@@ -23,7 +23,7 @@ const ChannelListItem = ({channel, navigation, workspaceName}) => {
           <Text
             style={styles.detailText}
             accessibilityLabel={`count for ${channel.name}`}>
-            Messages: {channel.messageCount}
+            {`${channel.messageCount ? 1 : ''}`}
           </Text>
         </View>
       </View>
