@@ -37,9 +37,7 @@ const WorkspaceList = ({navigation}) => {
   const [fetchedWorkspaces, setFetchedWorkspaces] = useState([]);
 
   useEffect(() => {
-    if (token) {
-      GET_WORKSPACES(token).then(data => setFetchedWorkspaces(data));
-    }
+    GET_WORKSPACES(token).then(data => setFetchedWorkspaces(data));
   }, [token]);
 
   const handleReset = useCallback(async () => {

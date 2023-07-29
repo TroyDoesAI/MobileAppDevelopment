@@ -1,14 +1,13 @@
 // ChannelList.js
-
 import React, {useLayoutEffect, useCallback} from 'react';
-
-import {FlatList, Button, Text, StyleSheet} from 'react-native';
+import {FlatList, Text, StyleSheet} from 'react-native';
 import ChannelListItem from './ChannelListItem';
 import {ChannelContext} from '../Model/ChannelViewModel';
+import Icon from 'react-native-vector-icons/Ionicons'; // <-- Import here
 
 const ChannelList = ({navigation, route}) => {
   const {workspaceName} = route.params;
-  const {channels} = React.useContext(ChannelContext); // Consume context
+  const {channels} = React.useContext(ChannelContext);
 
   const HeaderTitle = useCallback(
     () => (
@@ -24,16 +23,13 @@ const ChannelList = ({navigation, route}) => {
       headerTitle: HeaderTitle,
       headerTitleAlign: 'center',
       headerBackTitleVisible: false,
-      headerBackAccessibilityLabel: 'back to workspaces', // Setting the accessibility label for the default back button
+      headerBackAccessibilityLabel: 'back to workspaces',
       headerRight: () => (
-        <Button
-          onPress={() => {
-            console.log('Add Channel pressed!');
-          }}
-          title="Add Channel"
-          color="#000" // Change the color according to your preference
-          // TODO add channel functionality
-          accessibilityLabel="add channel" // This is the accessibility label
+        <Icon
+          name="add-circle"
+          size={24}
+          color="#000"
+          accessibilityLabel="add channel"
         />
       ),
     });
@@ -47,10 +43,10 @@ const ChannelList = ({navigation, route}) => {
         <ChannelListItem
           channel={item}
           navigation={navigation}
-          workspaceName={workspaceName} // Pass the workspace name to ChannelListItem
+          workspaceName={workspaceName}
         />
       )}
-      initialNumToRender={20} // Ensure the first 20 items are rendered initially
+      initialNumToRender={20}
     />
   );
 };

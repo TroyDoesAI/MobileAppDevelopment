@@ -36,7 +36,9 @@ const App = () => {
         <WorkspaceProvider>
           <ChannelProvider>
             <NavigationContainer>
-              <Stack.Navigator initialRouteName="Login" screenOptions={{ animationEnabled: false }}>
+              <Stack.Navigator
+                initialRouteName="Login"
+                screenOptions={{animationEnabled: false}}>
                 <Stack.Screen
                   name="Login"
                   component={Login}
@@ -57,7 +59,7 @@ const App = () => {
                     headerBackTitle: route.params.channelName,
                   })}
                 />
-                <Stack.Screen 
+                <Stack.Screen
                   name="NewMessage"
                   component={NewMessageScreen}
                   options={{title: 'New Message'}}
