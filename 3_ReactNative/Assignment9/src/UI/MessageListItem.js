@@ -75,7 +75,7 @@ const MessageListItem = ({
       <TouchableOpacity onPress={handlePress}>
         <View style={styles.container}>
           <Text style={styles.posterName}>{memberName}</Text>
-          <Text style={styles.item}>{message.content}</Text>
+          <Text style={styles.item} accessibilityLabel='content'>{message.content}</Text>
           <Text style={styles.date}>{formatDate(message.posted)}</Text>
         </View>
       </TouchableOpacity>
