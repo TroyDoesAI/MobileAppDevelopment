@@ -1,6 +1,10 @@
-// WorkspaceList.js
-
-import React, {useContext, useState, useEffect, useCallback} from 'react';
+import React, {
+  useContext,
+  useState,
+  useEffect,
+  useCallback,
+  useMemo,
+} from 'react';
 import {FlatList, Button} from 'react-native';
 import WorkspaceListItem from './WorkspaceListItem';
 import {WorkspaceContext} from '../Model/WorkspaceViewModel';
@@ -12,24 +16,6 @@ function sortWorkspacesByDate(workspaces) {
     .slice()
     .sort((a, b) => new Date(b.createdDate) - new Date(a.createdDate));
 }
-
-const HeaderLeftButton = ({onPress}) => (
-  <Button
-    onPress={onPress}
-    title="Logout"
-    color="#000"
-    accessibilityLabel="logout"
-  />
-);
-
-const HeaderRightButton = ({onPress}) => (
-  <Button
-    onPress={onPress}
-    title="Reset"
-    color="#000"
-    accessibilityLabel="reset"
-  />
-);
 
 const WorkspaceList = ({navigation}) => {
   const {token, signOut} = useContext(AuthContext);
@@ -61,13 +47,37 @@ const WorkspaceList = ({navigation}) => {
     });
   }, [signOut, navigation]);
 
+  const headerLeft = useMemo(
+    () => (
+      <Button
+        onPress={handleSignOut}
+        title="Logout"
+        color="#000"
+        accessibilityLabel="logout"
+      />
+    ),
+    [handleSignOut],
+  );
+
+  const headerRight = useMemo(
+    () => (
+      <Button
+        onPress={handleReset}
+        title="Reset"
+        color="#000"
+        accessibilityLabel="reset"
+      />
+    ),
+    [handleReset],
+  );
+
   React.useLayoutEffect(() => {
     navigation.setOptions({
-      headerLeft: () => <HeaderLeftButton onPress={handleSignOut} />,
-      headerRight: () => <HeaderRightButton onPress={handleReset} />,
+      headerLeft: () => headerLeft,
+      headerRight: () => headerRight,
       headerBackTitleVisible: false,
     });
-  }, [navigation, handleSignOut, handleReset]);
+  }, [navigation, headerLeft, headerRight]);
 
   const sortedWorkspaces = sortWorkspacesByDate(
     fetchedWorkspaces.length > 0 ? fetchedWorkspaces : workspaces,

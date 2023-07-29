@@ -1,10 +1,7 @@
 // ChannelListItem.js
-import React from 'react';
-import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 
-const styles = StyleSheet.create({
-  // Your styles here
-});
+import React from 'react';
+import {Text, View, TouchableOpacity} from 'react-native';
 
 const ChannelListItem = ({channel, navigation, workspaceName}) => {
   const handlePress = () => {
@@ -17,12 +14,10 @@ const ChannelListItem = ({channel, navigation, workspaceName}) => {
 
   return (
     <TouchableOpacity onPress={handlePress} accessibilityLabel={channel.name}>
-      <View style={styles.container}>
-        <Text style={styles.item}>{channel.name}</Text>
-        <View style={styles.details}>
-          <Text
-            style={styles.detailText}
-            accessibilityLabel={`count for ${channel.name}`}>
+      <View>
+        <Text>{channel.name}</Text>
+        <View>
+          <Text accessibilityLabel={`count for ${channel.name}`}>
             {`${channel.messageCount ? 1 : ''}`}
           </Text>
         </View>

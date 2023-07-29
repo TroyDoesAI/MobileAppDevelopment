@@ -1,6 +1,6 @@
 // MessageDetail.js
 
-import React, {useEffect} from 'react'; // <-- Import useEffect
+import React, {useEffect} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 
 const MessageDetail = ({route, navigation}) => {

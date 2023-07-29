@@ -14,7 +14,6 @@ export const MessageProvider = ({children}) => {
     async channelId => {
       setMessages([]);
       const fetchedMessages = await GET_MESSAGES_FOR_CHANNEL(channelId, token);
-      console.log('Fetched messages:', fetchedMessages);
       setMessages(fetchedMessages);
     },
     [token],

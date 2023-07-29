@@ -1,9 +1,10 @@
 // MessageListItem.js
+
 import React, {useState, useEffect} from 'react';
 import {StyleSheet, Text, View, TouchableOpacity, Animated} from 'react-native';
 import {Swipeable} from 'react-native-gesture-handler';
 import {formatDate} from '../Model/DataUtil';
-import MemberRepository from '../Repo/MembersRepo'; // Adjust the path as needed.
+import MemberRepository from '../Repo/MembersRepo';
 
 const deleteMessage = async (messageId, accessToken) => {
   await fetch(`https://cse118.com/api/v2/message/${messageId}`, {
@@ -15,7 +16,6 @@ const deleteMessage = async (messageId, accessToken) => {
   });
 };
 
-// const MessageListItem = ({message, navigation, accessToken}) => {
 const MessageListItem = ({
   message,
   navigation,

@@ -1,12 +1,9 @@
 // UI/WorkspaceListItem.js
+
 import React, {useState, useContext} from 'react';
-import {TouchableWithoutFeedback, StyleSheet, Text, View} from 'react-native';
+import {TouchableWithoutFeedback, Text, View} from 'react-native';
 import {ChannelContext} from '../Model/ChannelViewModel';
 import AuthContext from '../Model/AuthContext';
-
-const styles = StyleSheet.create({
-  // Your styles here
-});
 
 const WorkspaceListItem = ({workspace, navigation}) => {
   const [isLoading, setLoading] = useState(false);
@@ -29,11 +26,9 @@ const WorkspaceListItem = ({workspace, navigation}) => {
       accessibilityLabel={workspace.name}
       disabled={isLoading} // Prevent additional clicks while loading
     >
-      <View style={styles.container}>
-        <Text style={styles.item}>{workspace.name}</Text>
-        <Text
-          style={styles.details}
-          accessibilityLabel={`count for ${workspace.name}`}>
+      <View>
+        <Text>{workspace.name}</Text>
+        <Text accessibilityLabel={`count for ${workspace.name}`}>
           {`Channels: ${workspace.channels}`}
         </Text>
       </View>

@@ -1,10 +1,8 @@
-import React from 'react';
-import {TouchableWithoutFeedback, StyleSheet, Text, View} from 'react-native';
-import {WorkspaceContext} from '../Model/WorkspaceViewModel';
+// WorkspaceCard.js
 
-const styles = StyleSheet.create({
-  // TODO : Add styles to the card
-});
+import React from 'react';
+import {TouchableWithoutFeedback, Text, View} from 'react-native';
+import {WorkspaceContext} from '../Model/WorkspaceViewModel';
 
 const WorkspaceCard = ({workspace, navigation}) => {
   const {setWorkspace} = React.useContext(WorkspaceContext);
@@ -14,10 +12,11 @@ const WorkspaceCard = ({workspace, navigation}) => {
         setWorkspace(workspace);
         navigation.navigate('Channels', {title: workspace.name});
       }}>
-      <View style={styles.container}>
-        <Text style={styles.item}>{workspace.name}</Text>
+      <View>
+        <Text>{workspace.name}</Text>
       </View>
     </TouchableWithoutFeedback>
   );
 };
+
 export default WorkspaceCard;

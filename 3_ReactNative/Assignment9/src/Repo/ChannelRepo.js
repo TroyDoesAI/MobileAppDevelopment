@@ -3,7 +3,6 @@
 import {Channel} from '../Model/DataClasses';
 
 export const GET_CHANNELS_FOR_WORKSPACE = async (workspaceId, token) => {
-  // console.log('\nToken in ChannelRepo:', token);
   const response = await fetch(
     `https://cse118.com/api/v2/workspace/${workspaceId}/channel`,
     {
